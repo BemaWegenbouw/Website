@@ -24,7 +24,7 @@
     </div>
 	<div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#myPage" title="To Top">HOOFDPAGINA</a></li>
+      <li class="active"><a href="#myPage" title="To Top">Hoofdpagina</a></li>
 	  <li><a href="#overons">OVER ONS</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">DIENSTEN <span class="caret"></span></a>
         <ul class="dropdown-menu">
