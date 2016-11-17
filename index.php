@@ -25,7 +25,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#myPage" title="To Top">Hoofdpagina</a></li>
 	  <li><a href="#overons">OVER ONS</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">DIENSTEN <span class="caret"></span></a>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#diensten">DIENSTEN</a></li>
           <li><a href="#Grondwerk">GRONDWERK</a></li>
