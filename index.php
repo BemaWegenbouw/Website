@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bema wegenbouw B.V</title>
+  <title>Bema Wegenbouw BV</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
   
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -20,11 +19,11 @@
         <span class="icon-bar"></span> 
 				
       </button >
-      <a class="navbar-brand" href="#myPage" title="To Top"><img src="afbeeldingen/bemalogo4.png"></a>
+      <a class="navbar-brand" href="#myPage" title="To Top"><img src="assets/img/logo.png"></a>
     </div>
 	<div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#myPage" title="To Top">HOOFDPAGINA</a></li>
+      <li class="active"><a href="#myPage" title="To Top">Hoofdpagina</a></li>
 	  <li><a href="#overons">OVER ONS</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">DIENSTEN <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -64,7 +63,7 @@
     
 <div class="jumbotron text-center">	
 	
-		<h1>Bema wegenbouw B.V</h1> 
+		<h1>Bema Wegenbouw BV</h1> 
 		<p>Kwaliteit staat voorop</p> 
 </div>
     </div>
@@ -79,7 +78,7 @@
 	<div class="col-sm-2"></div>
     <div class="col-sm-8">
       <h2 class="text-center">Over Ons Bedrijf</h2><br>
-      <h4>Lorem ipsum Joey dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       
     </div>
@@ -99,7 +98,7 @@
   <div class="row text-center slideanim">
     <div class="col-sm-4" id="Grondwerk">
       <div class="thumbnail">
-        <img src="afbeeldingen/grondwerk.jpg" alt="Paris" width="400" height="300">
+        <img src="assets/img/grondwerk.jpg" alt="Paris" width="400" height="300">
         <p><strong>Grondwerk</strong></p>
         <p>Met grondwerk word</p>
 
@@ -107,14 +106,14 @@
     </div>
     <div class="col-sm-4" id="Riolering">
       <div class="thumbnail">
-        <img src="afbeeldingen/riolering.jpg" alt="New York" width="400" height="300">
+        <img src="assets/img/riolering.jpg" alt="New York" width="400" height="300">
         <p><strong>Riolering</strong></p>
         <p>We built New York</p>
       </div>
     </div>
     <div class="col-sm-4" id="Machinalebestrating">
       <div class="thumbnail">
-        <img src="afbeeldingen/machinale.jpg" alt="San Francisco" width="400" height="300">
+        <img src="assets/img/machinale.jpg" alt="San Francisco" width="400" height="300">
         <p><strong>Machinale bestrating</strong></p>
         <p>Yes, San Fran is ours</p>
       </div>
@@ -122,21 +121,21 @@
 	
     <div class="col-sm-4" id="Uitvlakken">
       <div class="thumbnail">
-        <img src="afbeeldingen/uitvlakken.jpg" alt="Paris" width="400" height="300">
+        <img src="assets/img/uitvlakken.jpg" alt="Paris" width="400" height="300">
         <p><strong>Uitvlakken</strong></p>
         <p>Yes, we built Paris</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="afbeeldingen/newyork.jpg" alt="New York" width="400" height="300">
+        <img src="assets/img/newyork.jpg" alt="New York" width="400" height="300">
         <p><strong>New York</strong></p>
         <p>We built New York</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="afbeeldingen/sanf.jpg" alt="San Francisco" width="400" height="300">
+        <img src="assets/img/sanf.jpg" alt="San Francisco" width="400" height="300">
         <p><strong>San Francisco</strong></p>
         <p>Yes, San Fran is ours</p>
       </div>
@@ -214,8 +213,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </a>
   <p>Test footer </a></p>
 </footer>
-<script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
