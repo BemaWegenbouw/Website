@@ -39,7 +39,9 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       
-      <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="lang/nl.php"><span class="glyphicon glyphicon-log-in"></span> NL</a></li>
+	  <li><a href="lang/en.php"><span class="glyphicon glyphicon-log-in"></span> EN</a></li>
+	  <li><a href="lang/de.php"><span class="glyphicon glyphicon-log-in"></span> DE</a></li>
     </ul>
 	</div>
   </div>
