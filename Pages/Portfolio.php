@@ -27,9 +27,9 @@
 	  <li><a href="../index.php">Over ons</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="grondwerk.html">Grondwerk</a></li>
-          <li><a href="Riolering.html">Riolering</a></li>
-		  <li><a href="Machinalebestrating.html">Machinale bestrating</a></li>
+          <li><a href="grondwerk.php">Grondwerk</a></li>
+          <li><a href="Riolering.php">Riolering</a></li>
+		  <li><a href="Machinalebestrating.php">Machinale bestrating</a></li>
 		  <li><a href="#Uitvlakken">Uitvlakken</a></li>
         </ul>
       </li>
