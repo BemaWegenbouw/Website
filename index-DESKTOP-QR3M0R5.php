@@ -4,8 +4,8 @@
   <title>Bema Wegenbouw BV</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
   
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -19,35 +19,37 @@
         <span class="icon-bar"></span> 
 				
       </button >
-      <a class="navbar-brand" href="../index.php" title="To Top"><img src="../assets/img/logo.png"></a>
+      <a class="navbar-brand" href="#myPage" title="To Top"><img src="assets/img/logo.png"></a>
     </div>
 	<div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="../index.php" title="To Top">Hoofdpagina</a></li>
-	  <li><a href="../index.php">Over ons</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Diensten <span class="caret"></span></a>
+      <li class="active"><a href="#myPage" title="To Top">Hoofdpagina</a></li>
+	  <li><a href="#overons">Over ons</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="grondwerk.php">Grondwerk</a></li>
-          <li><a href="#riolering.php">Riolering</a></li>
-		  <li><a href="Machinalebestrating.php">Machinale bestrating</a></li>
-		  <li><a href="Uitvlakken.php">Uitvlakken</a></li>
+          <li><a href="#diensten">Diensten</a></li>
+          <li><a href="pages/Grondwerk.html">Grondwerk</a></li>
+          <li><a href="pages/Riolering.html">Riolering</a></li>
+		  <li><a href="pages/Machinalebestrating.html">Machinale bestrating</a></li>
+		  <li><a href="pages/Uitvlakken.html">Uitvlakken</a></li>
         </ul>
       </li>
-	      <li><a href="Portfolio.php">Portfolio</a></li>
+		  <li><a href="pages/Portfolio.html">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
 		  <li><a href="#googleMap">Locatie</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       
-      <li><a href="../lang/nl.php"><span class="glyphicon glyphicon-log-in"></span> NL</a></li>
-	  <li><a href="../lang/en.php"><span class="glyphicon glyphicon-log-in"></span> EN</a></li>
-	  <li><a href="../lang/de.php"><span class="glyphicon glyphicon-log-in"></span> DE</a></li>
+      <li><a href="lang/nl.php"><span class="glyphicon glyphicon-log-in"></span> NL</a></li>
+	  <li><a href="lang/en.php"><span class="glyphicon glyphicon-log-in"></span> EN</a></li>
+	  <li><a href="lang/de.php"><span class="glyphicon glyphicon-log-in"></span> DE</a></li>
     </ul>
 	</div>
   </div>
 </nav>
 
 <!--begin bg-carousel-->
+
 <div id="bg-fade-carousel" class="carousel slide carousel-fade " data-interval="10000"  data-ride="carousel">
 <!-- Wrapper for slides -->
     <div class="carousel-inner">
@@ -70,27 +72,82 @@
 </div>
     </div>
 
-</div><!-- .carousel --> 
+</div>
+<!-- .carousel --> 
 <!--end bg-carousel-->
 
-<!-- Container voor diensten (een portolio class)-->
-<br>
 
-<div class="container"id="Riolering">
-<h2 class="text-center">Riolering</h2><br>
-  <div class="row slideanim">
-    <div class="col-sm-4 col-md-4" style="background-color:yellow;">
-      <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" > 
-	</div>
-    <div class="col-sm-8 col-md-8" style="background-color:pink;">
-    <p><strong>Titel onderdeel</strong></p>
-	<p>blablabla tekst</p>
-	</div>
+<!-- Container (About Section) -->
+<div id="overons" class="container slideanim">
+  <div class="row">
+	<div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h2 class="text-center">Over Ons Bedrijf</h2><br>
+      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      
+    </div>
+    <div class="col-sm-2">
+    </div>
   </div>
 </div>
-  </div>
+
+
+
+
+<!-- Container (Portfolio Section) -->
+
+<div id="diensten" class="container text-center">
+  <h2>DIENSTEN</h2><br>
+  <h4>De volgende diensten bieden wij aan</h4>
+  <div class="row text-center slideanim">
+    <div class="col-sm-4" id="Grondwerk">
+      <div class="thumbnail">
+        <img src="assets/img/grondwerk.jpg" alt="Paris" width="400" height="300">
+        <p><strong>Grondwerk</strong></p>
+        <p>Met grondwerk word</p>
+
+      </div>
+    </div>
+    <div class="col-sm-4" id="Riolering">
+      <div class="thumbnail">
+        <img src="assets/img/riolering.jpg" alt="New York" width="400" height="300">
+        <p><strong>Riolering</strong></p>
+        <p>We built New York</p>
+      </div>
+    </div>
+    <div class="col-sm-4" id="Machinalebestrating">
+      <div class="thumbnail">
+        <img src="assets/img/machinale.jpg" alt="San Francisco" width="400" height="300">
+        <p><strong>Machinale bestrating</strong></p>
+        <p>Yes, San Fran is ours</p>
+      </div>
+    </div>
+	
+    <div class="col-sm-4" id="Uitvlakken">
+      <div class="thumbnail">
+        <img src="assets/img/uitvlakken.jpg" alt="Paris" width="400" height="300">
+        <p><strong>Uitvlakken</strong></p>
+        <p>Yes, we built Paris</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="assets/img/newyork.jpg" alt="New York" width="400" height="300">
+        <p><strong>New York</strong></p>
+        <p>We built New York</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="assets/img/sanf.jpg" alt="San Francisco" width="400" height="300">
+        <p><strong>San Francisco</strong></p>
+        <p>Yes, San Fran is ours</p>
+      </div>
+    </div>
+  </div><br>
 </div>
-<br>
+
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid bg-darkgrey"> 
 <div class="container">
@@ -111,10 +168,7 @@
         <div class="col-sm-6 form-group">
           <input class="form-control" id="name" name="name" placeholder="Naam" type="text" required>
         </div>
-		<div class="col-sm-6 form-group">
-          <input class="form-control" id="lastname" name="lastname" placeholder="Achternaam" type="text" required>
-        </div>
-        <div class="col-sm-12 form-group">
+        <div class="col-sm-6 form-group">
           <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
         </div>
       </div>
@@ -129,8 +183,7 @@
 </div>
 </div>
 
-<div class="container-fluid bg-darkgrey ">
-<h2 class="text-center h2white"> Locatie</h2>
+<div class="container-fluid bg-darkgrey">
 <div id="googleMap" class=" container gmap" ></div>
 </div>
 <!-- Add Google Maps -->
@@ -165,14 +218,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </a>
   <p>Test footer </a></p>
 </footer>
-
-<!--Java script bootstrap -->
-<script src="../assets/js/jquery.min.js"></script>
- <script src="../assets/js/bootstrap.js"></script>
-  
-
-<!--Google maps script-->
-  <script>
+<script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
+<script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {

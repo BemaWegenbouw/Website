@@ -27,13 +27,13 @@
 	  <li><a href="../index.php">Over ons</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="grondwerk.html">Grondwerk</a></li>
-          <li><a href="Riolering.html">Riolering</a></li>
+          <li><a href="grondwerk.php">Grondwerk</a></li>
+          <li><a href="Riolering.php">Riolering</a></li>
 		  <li><a href="#machinalebestrating">Machinale bestrating</a></li>
-		  <li><a href="Uitvlakken.html">Uitvlakken</a></li>
+		  <li><a href="Uitvlakken.php">Uitvlakken</a></li>
         </ul>
       </li>
-	      <li><a href="Portfolio.html">Portfolio</a></li>
+	      <li><a href="Portfolio.php">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
 		  <li><a href="#googleMap">Locatie</a></li>
     </ul>
