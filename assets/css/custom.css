@@ -108,6 +108,7 @@
   .carousel-indicators li.active {
       background-color: #F16123;
   }
+
   .item h4 {
       font-size: 19px;
       line-height: 1.375em;
@@ -170,11 +171,16 @@
 }
 .navbar li a, .navbar .navbar-brand {
       color: black !important;
-	  
   }
-  .navbar li , .navbar .navbar-brand {
-      color: black !important;
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
   }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+
   
   
 

@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Company Page</title>
+  <title>Bema Wegenbouw BV</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/custom.css">
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/bootstrap.js"></script>
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+  
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default transparent navbar-fixed-top">
   <div class="nav-container-fluid">
     <div class="navbar-header">
 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -21,54 +19,78 @@
         <span class="icon-bar"></span> 
 				
       </button >
-      <a class="navbar-brand" href="#">Bema B.V</a>
+      <a class="navbar-brand" href="../index.php" title="To Top"><img src="../assets/img/logo.png"></a>
     </div>
+	<div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="../index.html">HOOFDPAGINA</a></li>
-	  <li><a href="#overons">OVER ONS</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">DIENSTEN <span class="caret"></span></a>
+      <li class="active"><a href="../index.php" title="To Top">Hoofdpagina</a></li>
+	  <li><a href="../index.php">Over ons</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#diensten">DIENSTEN</a></li>
-          <li><a href="#Grondwerk">GRONDWERK</a></li>
-          <li><a href="#Riolering">RIOLERING</a></li>
-		  <li><a href="#Machinalebestrating">MACHINALE BESTRATING</a></li>
-		  <li><a href="#Uitvlakken">UITVLAKKEN</a></li>
+          <li><a href="grondwerk.html">Grondwerk</a></li>
+          <li><a href="#riolering.html">Riolering</a></li>
+		  <li><a href="Machinalebestrating.html">Machinale bestrating</a></li>
+		  <li><a href="Uitvlakken.html">Uitvlakken</a></li>
         </ul>
       </li>
-          <li><a href="#contact">CONTACT</a></li>
-		  <li><a href="#googleMap">LOCATIE</a></li>
+	      <li><a href="Portfolio.html">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+		  <li><a href="#googleMap">Locatie</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       
-      <li><a href="../login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="../lang/nl.php"><span class="glyphicon glyphicon-log-in"></span> NL</a></li>
+	  <li><a href="../lang/en.php"><span class="glyphicon glyphicon-log-in"></span> EN</a></li>
+	  <li><a href="../lang/de.php"><span class="glyphicon glyphicon-log-in"></span> DE</a></li>
     </ul>
+	</div>
   </div>
 </nav>
 
-<div class="jumbotron text-center">
-  <img src="../afbeeldingen/bemalogo4.png"  >
-  <h1>Bema wegenbouw B.V</h1> 
-  <p>Kwaliteit staat voorop</p> 
+<!--begin bg-carousel-->
+<div id="bg-fade-carousel" class="carousel slide carousel-fade " data-interval="10000"  data-ride="carousel">
+<!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="slide1"></div>
+        </div>
+        <div class="item">
+            <div class="slide2"></div>
+        </div>
+        <div class="item">
+            <div class="slide3"></div>
+        </div>
+    </div><!-- .carousel-inner --> 
+    <div class="container carousel-overlay text-center">
+    
+<div class="jumbotron text-center">	
+	
+		<h1>Bema Wegenbouw BV</h1> 
+		<p>Kwaliteit staat voorop</p> 
 </div>
+    </div>
+
+</div><!-- .carousel --> 
+<!--end bg-carousel-->
+
+<!-- Container voor diensten (een portolio class)-->
+<br>
+
+<div class="container"id="Riolering">
+<h2 class="text-center">Riolering</h2><br>
+  <div class="row slideanim">
+    <div class="col-sm-4 col-md-4" style="background-color:yellow;">
+      <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" > 
+	</div>
+    <div class="col-sm-8 col-md-8" style="background-color:pink;">
+    <p><strong>Titel onderdeel</strong></p>
+	<p>blablabla tekst</p>
+	</div>
+  </div>
 </div>
-
-<!-- Container (Portfolio Section) -->
-
-<div id="diensten" class="container text-center">
-  <h2>DIENSTEN</h2><br>
-  <h4>De volgende diensten bieden wij aan</h4>
-  <div class="row text-center slideanim">
-    <div class="col-sm-4" id="Grondwerk">
-      <div class="thumbnail">
-        <img src="../afbeeldingen/grondwerk.jpg" alt="Paris" width="400" height="300">
-        <p><strong>Grondwerk</strong></p>
-        <p>Met grondwerk word</p>
+  </div>
 </div>
-</div>	
-</div>	
-</div><br>
-
-
+<br>
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid bg-darkgrey"> 
 <div class="container">
@@ -89,7 +111,10 @@
         <div class="col-sm-6 form-group">
           <input class="form-control" id="name" name="name" placeholder="Naam" type="text" required>
         </div>
-        <div class="col-sm-6 form-group">
+		<div class="col-sm-6 form-group">
+          <input class="form-control" id="lastname" name="lastname" placeholder="Achternaam" type="text" required>
+        </div>
+        <div class="col-sm-12 form-group">
           <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
         </div>
       </div>
@@ -104,7 +129,8 @@
 </div>
 </div>
 
-<div class="container-fluid bg-darkgrey">
+<div class="container-fluid bg-darkgrey ">
+<h2 class="text-center h2white"> Locatie</h2>
 <div id="googleMap" class=" container gmap" ></div>
 </div>
 <!-- Add Google Maps -->
@@ -140,7 +166,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <p>Test footer </a></p>
 </footer>
 
-<script>
+<!--Java script bootstrap -->
+<script src="../assets/js/jquery.min.js"></script>
+ <script src="../assets/js/bootstrap.js"></script>
+  
+
+<!--Google maps script-->
+  <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
