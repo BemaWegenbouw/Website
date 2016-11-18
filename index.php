@@ -49,6 +49,7 @@
 </nav>
 
 <!--begin bg-carousel-->
+
 <div id="bg-fade-carousel" class="carousel slide carousel-fade " data-interval="10000"  data-ride="carousel">
 <!-- Wrapper for slides -->
     <div class="carousel-inner">
@@ -71,12 +72,13 @@
 </div>
     </div>
 
-</div><!-- .carousel --> 
+</div>
+<!-- .carousel --> 
 <!--end bg-carousel-->
 
 
 <!-- Container (About Section) -->
-<div id="overons" class="container">
+<div id="overons" class="container slideanim">
   <div class="row">
 	<div class="col-sm-2"></div>
     <div class="col-sm-8">
