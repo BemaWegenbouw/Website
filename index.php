@@ -28,12 +28,13 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#diensten">Diensten</a></li>
-          <li><a href="#Grondwerk">Grondwerk</a></li>
-          <li><a href="#Riolering">Riolering</a></li>
-		  <li><a href="#Machinalebestrating">Machinale bestrating</a></li>
-		  <li><a href="#Uitvlakken">Uitvlakken</a></li>
+          <li><a href="pages/Grondwerk.html">Grondwerk</a></li>
+          <li><a href="pages/Riolering.html">Riolering</a></li>
+		  <li><a href="pages/Machinalebestrating.html">Machinale bestrating</a></li>
+		  <li><a href="pages/Uitvlakken.html">Uitvlakken</a></li>
         </ul>
       </li>
+		  <li><a href="pages/Portfolio.html">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
 		  <li><a href="#googleMap">Locatie</a></li>
     </ul>
