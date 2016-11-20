@@ -1,3 +1,15 @@
 # Website
-Official GIT repository of the BEMA Wegenbouw BV website.
-test
+De officiële GIT repository van de nieuwe Bema Wegenbouw BV website.
+
+### Informatie
+Deze site zal volledig in PHP, HTML en CSS worden gemaakt en is gebaseerd op het Bootstrap 3 framework. De uitvoering vindt plaats door een groep studenten van de Christelijke Hogeschool Windesheim te Zwolle en wordt uitgevoerd als KBS-project voor het bedrijf Bema Wegenbouw BV.
+De website valt momenteel live te zien op http://www.bemawegenbouw.com/ terwijl deze in de ontwikkelfase zit. De hiervoor genoemde website staat in directe verbinding met dit GIT repository.
+
+### Contributors
+- J. Benning
+- C. Kloppenburg
+- J. v.d. Heide
+- A. Wildeboer
+- D. Dorenbos
+- P. v. Urk
+- K. Wolters
