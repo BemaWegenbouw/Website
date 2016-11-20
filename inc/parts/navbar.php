@@ -7,21 +7,22 @@
                         <span class="icon-bar"></span>
 
                     </button >
-                    <a class="navbar-brand" href="../index.php" title="To Top"><img src="../assets/img/logo.png"></a>
+                    <a class="navbar-brand" href="#myPage" title="To Top"><img src="assets/img/logo.png"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="../index.php" title="To Top">Hoofdpagina</a></li>
-                        <li><a href="../index.php">Over ons</a></li>
+                        <li class="active"><a href="#myPage" title="To Top">Hoofdpagina</a></li>
+                        <li><a href="#Overons">Over ons</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
-                            <ul class="dropdown-menu">                        
-                                <li><a href="Grondwerk.php">Grondwerk</a></li>
-                                <li><a href="Riolering.php">Riolering</a></li>
-                                <li><a href="Machinalebestrating.php">Machinale bestrating</a></li>
-                                <li><a href="Uitvlakken.php">Uitvlakken</a></li>
+                            <ul class="dropdown-menu">
+                                <li><a href="#diensten">Diensten</a></li>
+                                <li><a href="pages/Grondwerk.php">Grondwerk</a></li>
+                                <li><a href="pages/Riolering.php">Riolering</a></li>
+                                <li><a href="pages/Machinalebestrating.php">Machinale bestrating</a></li>
+                                <li><a href="pages/Uitvlakken.php">Uitvlakken</a></li>
                             </ul>
                         </li>
-                        <li><a href="Portfolio.php">Portfolio</a></li>
+                        <li><a href="pages/Portfolio.php">Portfolio</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="#googleMap">Locatie</a></li>
                     </ul>

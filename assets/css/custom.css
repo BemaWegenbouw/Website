@@ -30,7 +30,7 @@
       line-height: 1.8;
       color: #818181;
 	  background-color: #F1F1F1;
-	  font-family:Playfair !important;
+	  font-family:Calibri !important;
   }
   
   h2 {
@@ -40,6 +40,7 @@
       font-weight: 600;
       margin-bottom: 30px;
   }
+  
   .h2white {
 	  font-size: 24px;
       text-transform: uppercase;
@@ -48,6 +49,7 @@
       margin-bottom: 30px;
 	  
   }
+  
   h4 {
       font-size: 19px;
       line-height: 1.375em;

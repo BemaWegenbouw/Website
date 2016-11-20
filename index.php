@@ -5,23 +5,9 @@
 
 require_once("inc/engine.php");
 $page = "index";
+include("inc/parts/header.php");
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Bema Wegenbouw BV</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/custom.css">
-
-    </head>
-    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-		<!-- Navbar -->
-        <?php include("inc/parts/navbarindex.php"); ?>
-		<!-- Header -->
-		<?php include("inc/parts/header.php"); ?>
         <!-- Container (About Section) -->
         <div id="Overons" class="container slideanim">
             <div class="row">
