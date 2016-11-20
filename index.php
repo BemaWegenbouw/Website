@@ -3,11 +3,10 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-require_once("./inc/engine.php");
+require_once("inc/engine.php");
 $page = "index";
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
