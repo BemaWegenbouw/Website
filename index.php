@@ -10,15 +10,11 @@
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 		<!-- Navbar -->
-        <?php include("navbar.php"); ?>
+        <?php include("pages/navbarindex.php"); ?>
 		<!-- Header -->
-		<?php include("header.php"); ?>
-
-        
-
-
+		<?php include("pages/header.php"); ?>
         <!-- Container (About Section) -->
-        <div id="overons" class="container slideanim">
+        <div id="Overons" class="container slideanim">
             <div class="row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
@@ -31,12 +27,7 @@
                 </div>
             </div>
         </div>
-
-
-
-
         <!-- Container (Portfolio Section) -->
-
         <div id="diensten" class="container text-center">
             <h2>DIENSTEN</h2><br>
             <h4>De volgende diensten bieden wij aan</h4>
@@ -87,54 +78,9 @@
                 </div>
             </div><br>
         </div>
-
-        <!-- Container (Contact Section) -->
-        <?php include ("contact.php") ?>
-        <footer   class="text-center " >
-            <a href="#myPage" title="To Top">
-                <span class="glyphicon glyphicon-chevron-up"></span>
-            </a>
-            <p>Test footer </a></p>
-        </footer>
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.js"></script>
-        <script>
-            $(document).ready(function () {
-                // Add smooth scrolling to all links in navbar + footer link
-                $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
-                    // Make sure this.hash has a value before overriding default behavior
-                    if (this.hash !== "") {
-                        // Prevent default anchor click behavior
-                        event.preventDefault();
-
-                        // Store hash
-                        var hash = this.hash;
-
-                        // Using jQuery's animate() method to add smooth page scroll
-                        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                        $('html, body').animate({
-                            scrollTop: $(hash).offset().top
-                        }, 900, function () {
-
-                            // Add hash (#) to URL when done scrolling (default click behavior)
-                            window.location.hash = hash;
-                        });
-                    } // End if
-                });
-
-                $(window).scroll(function () {
-                    $(".slideanim").each(function () {
-                        var pos = $(this).offset().top;
-
-                        var winTop = $(window).scrollTop();
-                        if (pos < winTop + 600) {
-                            $(this).addClass("slide");
-                        }
-                    });
-                });
-            })
-        </script>
-
-
+		<!-- Container (Contact Section) -->
+        <?php include ("pages/contact.php") ?>
+		<!-- Header -->
+		<?php include("pages/footer.php"); ?>
     </body>
 </html>
