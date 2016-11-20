@@ -4,7 +4,9 @@ require_once "PHPMailer/PHPMailerAutoload.php";
 
 $name = $_POST['name'];
 $email = $_POST['email'];
+$subject = $_POST['subject'];
 $message = $_POST['comments'];
+
 
 $m = new PHPMailer;
 
@@ -21,7 +23,7 @@ $m->From = "testbema@gmail.com";
 $m->FromName = $name;
 $m->addReplyTo("testbema@gmail.com", $name);
 $m->addAddress("testbema@gmail.com", "bema");
-$m->subject = "subject";
+$m->subject = $subject;
 $m->Body = $message;
 
 var_dump($m->send());
