@@ -173,7 +173,7 @@
                                     <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
-                                    <input class="form-control" id="name" name="subject" placeholder="onderwerp" type="text" required>
+                                    <input class="form-control" id="subject" name="subject" placeholder="onderwerp" type="text" required>
                                 </div>
                             </div>
                             <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
