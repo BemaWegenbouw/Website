@@ -1,3 +1,13 @@
+<?php
+
+//Bema Wegenbouw BV Website
+//Copyright 2016
+
+require_once("./inc/engine.php");
+$page = "index";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,9 +20,9 @@
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 		<!-- Navbar -->
-        <?php include("pages/navbarindex.php"); ?>
+        <?php include("inc/parts/navbarindex.php"); ?>
 		<!-- Header -->
-		<?php include("pages/header.php"); ?>
+		<?php include("inc/parts/header.php"); ?>
         <!-- Container (About Section) -->
         <div id="Overons" class="container slideanim">
             <div class="row">
@@ -79,8 +89,8 @@
             </div><br>
         </div>
 		<!-- Container (Contact Section) -->
-        <?php include ("pages/contact.php") ?>
+        <?php include ("inc/pages/contact.php") ?>
 		<!-- Header -->
-		<?php include("pages/footer.php"); ?>
+		<?php include("inc/parts/footer.php"); ?>
     </body>
 </html>
