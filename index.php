@@ -164,20 +164,22 @@
                     <div class="col-sm-7 slideanim">
                         <p>Indien u een afspraak wilt maken, of als u vragen heeft.
                             Kunt u hieronder een email naar sturen. </p>
-                        <div class="row">
-                            <div class="col-sm-6 form-group">
-                                <input class="form-control" id="name" name="name" placeholder="Naam" type="text" required>
+                        <form action="mail.php" method="post">
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <input class="form-control" id="name" name="name" placeholder="Naam" type="text" required>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                                </div>
                             </div>
-                            <div class="col-sm-6 form-group">
-                                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                            <div class="row">
+                                <div class="col-sm-12 form-group">
+                                    <button class="btn btn-default pull-right" type="submit" name="submit" value="Submit">Verzenden</button>
+                                </div>
                             </div>
-                        </div>
-                        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <button class="btn btn-default pull-right" type="submit">Verzenden</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
