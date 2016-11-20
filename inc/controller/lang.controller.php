@@ -1,6 +1,5 @@
 <?php
 
-
 //Set system language
 if (isset($_SESSION["syslang"])) {
 	$syslang = $_SESSION['syslang'];
@@ -11,14 +10,17 @@ if (isset($_SESSION["syslang"])) {
 //Process system language
 switch ($syslang) {
     case "nl":
-        include("../lang/nl.lang.php");
+        include($_SERVER["DOCUMENT_ROOT"] . "/inc/lang/nl.lang.php");
         $langarray = $lang_nl;
         break;
 }
 
+//Create lang array
+$curlang = array_merge($lang_nl, $langarray);
+
+//Lang function for displaying variables
 function lang($langvar) {
-		$curlang = $GLOBALS['langarray'];
-		return $curlang[$langvar];
+		return $GLOBALS['curlang'][$langvar];
 }
 
 ?>
