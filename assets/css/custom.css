@@ -195,13 +195,13 @@
     background-position: center center;
 }
 .slide1 {
-    background-image: url(http://placekitten.com/1000/300);
+    background-image: url("../img/img9.jpg");
 }
 .slide2 {
-    background-image: url(http://placekitten.com/1100/300);
+    background-image: url("../img/img5.jpg");
 }
 .slide3 {
-    background-image: url(http://placekitten.com/1200/300);
+    background-image: url("../img/img6.jpg");
 }
 /* Carousel Fade Effect */
 .carousel.carousel-fade .item {

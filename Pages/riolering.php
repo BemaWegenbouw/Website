@@ -28,7 +28,7 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="grondwerk.php">Grondwerk</a></li>
-          <li><a href="#riolering.php">Riolering</a></li>
+          <li><a href="#Riolering">Riolering</a></li>
 		  <li><a href="Machinalebestrating.php">Machinale bestrating</a></li>
 		  <li><a href="Uitvlakken.php">Uitvlakken</a></li>
         </ul>
@@ -76,11 +76,11 @@
 <!-- Container voor diensten (een portolio class)-->
 <br>
 
-<div class="container"id="Riolering">
+<div class="container" id="Riolering">
 <h2 class="text-center">Riolering</h2><br>
   <div class="row slideanim">
     <div class="col-sm-4 col-md-4" style="background-color:yellow;">
-      <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" > 
+      <img src="../assets/img/img8.jpg" alt="grondwerk" width="100%" > 
 	</div>
     <div class="col-sm-8 col-md-8" style="background-color:pink;">
     <p><strong>Titel onderdeel</strong></p>
