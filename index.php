@@ -13,7 +13,7 @@ include("inc/parts/header.php");
             <div class="row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
-                    <h2 class="text-center">Over Ons Bedrijf</h2><br>
+                    <h2 class="text-center"><?php echo(lang('index_column1_title')); ?></h2><br>
                     <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
@@ -73,9 +73,8 @@ include("inc/parts/header.php");
                 </div>
             </div><br>
         </div>
-		<!-- Container (Contact Section) -->
-        <?php include ("inc/pages/contact.php") ?>
-		<!-- Header -->
+		
+        <?php include ("inc/parts/contact.php") ?>
 		<?php include("inc/parts/footer.php"); ?>
     </body>
 </html>
