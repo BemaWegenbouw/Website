@@ -27,13 +27,13 @@
 	  <li><a href="../index.php">Over ons</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Diensten <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="grondwerk.html">Grondwerk</a></li>
-          <li><a href="Riolering.html">Riolering</a></li>
+          <li><a href="grondwerk.php">Grondwerk</a></li>
+          <li><a href="Riolering.php">Riolering</a></li>
 		  <li><a href="#machinalebestrating">Machinale bestrating</a></li>
-		  <li><a href="Uitvlakken.html">Uitvlakken</a></li>
+		  <li><a href="Uitvlakken.php">Uitvlakken</a></li>
         </ul>
       </li>
-	      <li><a href="Portfolio.html">Portfolio</a></li>
+	      <li><a href="Portfolio.php">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
 		  <li><a href="#googleMap">Locatie</a></li>
     </ul>
@@ -80,7 +80,7 @@
 <h2 class="text-center">Machinale bestrating</h2><br>
   <div class="row slideanim">
     <div class="col-sm-4 col-md-4" style="background-color:yellow;">
-      <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" > 
+      <img src="../assets/img/img13.jpg" alt="grondwerk" width="100%" > 
 	</div>
     <div class="col-sm-8 col-md-8" style="background-color:pink;">
     <p><strong>Titel onderdeel</strong></p>
