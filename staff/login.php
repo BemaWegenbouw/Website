@@ -1,4 +1,5 @@
 <?php
+
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
@@ -9,9 +10,8 @@ include("../inc/parts/staff-header.php");
 ?>
 
         <div class="container">
-
-            <form class="form-signin"  method="POST">
-                <h2 class="form-signin-heading">Hieronder kunt u inloggen</h2>
+            <form class="form-signin" action="login-process.php" method="POST">
+                <h2 class="form-signin-heading">Inloggen Personeel</h2>
                 <label for="inputEmail" class="sr-only">Email adres</label>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email adres" required autofocus name="username">
                 <label for="inputPassword" class="sr-only">wachtwoord</label>
@@ -28,14 +28,11 @@ include("../inc/parts/staff-header.php");
 
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<<<<<<< HEAD
-        <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script src="../assets/js/jquery.min.js"></script>
     	<script src="../assets/js/bootstrap.js"></script>
     </body>
     
-</html>
-=======
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
 </body>
@@ -44,4 +41,3 @@ include("../inc/parts/staff-header.php");
 <script src="../assets/js/bootstrap.js"></script>
 
 </html>
->>>>>>> origin/master
