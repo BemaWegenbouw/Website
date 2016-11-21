@@ -25,6 +25,18 @@ $m->addReplyTo($email, $name);
 $m->addAddress("testbema@gmail.com", "bema");
 $m->Subject = $subject;
 $m->Body = $message;
+//
+//var_dump($m->send());
+$m->send();
+?>
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/bootstrap.js"></script>
+<div class="alert alert-succes">
+    <strong>mail is succesvol verstuurd.</strong> <br> u word nu verwezen naar de hoofdpagina.
+</div>
 
-var_dump($m->send());
+<?php
+
+sleep(3);
+header("Location: ../index.php");
 ?>
