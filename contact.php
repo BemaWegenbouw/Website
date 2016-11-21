@@ -18,7 +18,7 @@ include("inc/parts/header.php");
         <p><span class="glyphicon glyphicon-phone orangeglyph"></span> +31 (0)613471605</p>
         <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl">info@bemawegenbouw.nl</a> </p>
     </div>
-    <div class="col-sm-7 slideanim">
+    <div class="col-sm-7">
         <p>Indien u een afspraak wilt maken, of als u vragen heeft.
             Kunt u hieronder een email naar sturen. </p>
         <form action="#" method="post">
@@ -41,7 +41,7 @@ include("inc/parts/header.php");
             </div>
 
 <?php
-require_once "../PHPMailer/PHPMailerAutoload.php";
+require_once "inc/phpmailer/PHPMailerAutoload.php";
 if (isset($_POST) && !empty($_POST)) {
 
 
@@ -113,5 +113,30 @@ if (isset($_POST) && !empty($_POST)) {
 </div>
 </div>
 
+
+<div class="container-fluid">
+  <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
+    <div id="googleMap" class=" container gmap" ></div>
+</div>
+<!-- Add Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap"></script>
+<script>
+    var myCenter = new google.maps.LatLng(52.18029079999999, 6.929297700000006);
+    function initialize() {
+        var mapProp = {
+            center: myCenter,
+            zoom: 12,
+            scrollwheel: true,
+            draggable: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var marker = new google.maps.Marker({
+            position: myCenter,
+        });
+        marker.setMap(map);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
 <?php include("inc/parts/footer.php"); ?>
