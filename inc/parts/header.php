@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/custom.css">
+        <link rel="stylesheet" href="assets/css/flag-icon.css">
 
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -37,9 +38,9 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li><a href="lang/nl.php"><span class="glyphicon glyphicon-log-in"></span> NL</a></li>
-                        <li><a href="lang/en.php"><span class="glyphicon glyphicon-log-in"></span> EN</a></li>
-                        <li><a href="lang/de.php"><span class="glyphicon glyphicon-log-in"></span> DE</a></li>
+                        <li><a href="lang/nl.php"><span class="flag-icon flag-icon-nl"></span> NL</a></li>
+                        <li><a href="lang/en.php"><span class="flag-icon flag-icon-gb"></span> EN</a></li>
+                        <li><a href="lang/de.php"><span class="flag-icon flag-icon-de"></span> DE</a></li>
                     </ul>
                 </div>
             </div>
