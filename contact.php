@@ -35,13 +35,14 @@ include("inc/parts/header.php");
                 <div class="col-sm-12 form-group">
                     <input class="form-control" id="subject" name="subject" placeholder="onderwerp" type="text" required>
                 </div>
-                <div class="col-sm-12 form-group">
-                <div class="g-recaptcha" data-sitekey="6Ld3mQwUAAAAADPQ8o2-v5q5PGg2ExDm9_f0lmF4"></div>    
-                </div>
             </div>
             <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5" requierd></textarea><br>
+            
             <div class="row">
                 <div class="col-sm-12 form-group">
+                    <div class="col-sm-12 form-group">
+                <div class="g-recaptcha" data-sitekey="6Ld3mQwUAAAAADPQ8o2-v5q5PGg2ExDm9_f0lmF4"></div>    
+                </div>
                     <button class="btn btn-default pull-right" type="submit" name="submit" value="Submit">Verzenden</button>
                 </div>
             </div>
