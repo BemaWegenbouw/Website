@@ -28,6 +28,14 @@ include("../inc/parts/staff-header.php");
 
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<<<<<<< HEAD
+        <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+    	<script src="../assets/js/bootstrap.js"></script>
+    </body>
+    
+</html>
+=======
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
 </body>
@@ -36,3 +44,4 @@ include("../inc/parts/staff-header.php");
 <script src="../assets/js/bootstrap.js"></script>
 
 </html>
+>>>>>>> origin/master
