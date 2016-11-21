@@ -11,7 +11,7 @@
                 <p><span class="glyphicon glyphicon-phone orangeglyph"></span> +31 (0)613471605</p>
                 <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl">info@bemawegenbouw.nl</a> </p>
             </div>
-            <div class="col-sm-7 slideanim">
+            <div class="col-sm-7">
                 <p>Indien u een afspraak wilt maken, of als u vragen heeft.
                     Kunt u hieronder een email naar sturen. </p>
                 <form action="inc/mail.php" method="post">
