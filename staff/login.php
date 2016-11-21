@@ -1,11 +1,10 @@
 <?php
-
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
 require_once("../inc/engine.php");
-$page = "staff-login";
-include("../inc/staff-header.php");
+$page = "index";
+include("../inc/parts/staff-header.php");
 
 ?>
 
@@ -30,7 +29,10 @@ include("../inc/staff-header.php");
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-    </body>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.js"></script>
+
+</body>
+
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.js"></script>
+
 </html>
