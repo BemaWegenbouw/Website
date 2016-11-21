@@ -6,8 +6,9 @@ require_once("inc/engine.php");
 $page = "contact";
 include("inc/parts/header.php");
 ?>
+
 <div class="container" id="Contact">
-<div id="contact" class="container-fluid">
+<div id="contact" class="container-fluid" style="margin-top: -125px;">
 
 <div class="row">
 
