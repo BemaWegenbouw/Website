@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<div id="contact" class="container-fluid bg-darkgrey">
-    <div class="container">
-        <h2 class="text-center h2white">CONTACT</h2>
+<?php if($page != "contact") { echo('<div id="contact" class="container-fluid bg-darkgrey"> <div class="container"> <h2 class="text-center h2white">CONTACT</h2>
 
-        <div class="row">
+<div class="row">'); } ?>
+
+
             <div class="col-sm-5">
                 <p>Neem contact met ons op en u ontvangt binnen 24 uur een bericht terug.</p>
                 <p><span class="glyphicon glyphicon-map-marker orangeglyph"></span> Enschede, NL</p>

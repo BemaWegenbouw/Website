@@ -23,17 +23,17 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php" title="To Top">Hoofdpagina</a></li>
-                        <li><a href="overons.php">Over ons</a></li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="grondwerk.php">Grondwerk</a></li>
-                                <li><a href="riolering.php">Riolering</a></li>
-                                <li><a href="machinalebestrating.php">Machinale bestrating</a></li>
-                                <li><a href="uitvlakken.php">Uitvlakken</a></li>
-                            </ul>
-                        </li>
+                      <li class="active"><a href="index.php" title="To Top">Hoofdpagina</a></li>
+                      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="grondwerk.php">Grondwerk</a></li>
+                              <li><a href="riolering.php">Riolering</a></li>
+                              <li><a href="machinalebestrating.php">Machinale bestrating</a></li>
+                              <li><a href="uitvlakken.php">Uitvlakken</a></li>
+                          </ul>
+                      </li>
                         <li><a href="portfolio.php">Portfolio</a></li>
+                        <li><a href="overons.php">Over ons</a></li>
                         <li><a href="contact.php">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
