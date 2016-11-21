@@ -29,9 +29,7 @@
                 </div>
             </div>
         </div>
-<br>
-	<!-- Container (Contact Section) -->
-		<?php include ("contact.php") ?>
+		<br>
 	<!-- Header -->
 		<?php include("footer.php"); ?>
 </body>
