@@ -39,6 +39,7 @@
 </div>
 
 <div class="container-fluid bg-darkgrey">
+  <h2 class="text-center h2white">Bema Wegenbouw BV - Hoofdkantoor</h2>
     <div id="googleMap" class=" container gmap" ></div>
 </div>
 <!-- Add Google Maps -->
