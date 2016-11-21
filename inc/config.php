@@ -3,11 +3,16 @@
 // Begin de PHP configuratie
 
 $config = array(
-    'db_host' => 'localhost',
+
+	// Database
+    'db_host' => 'mysql.uplits.net',
     'db_name'  => 'bema',
-	'db_user' => 'root',
-	'db_pass' => '',
+	'db_user' => 'bema',
+	'db_pass' => 'BeMaWeGeNbOuW123!',
 	'db_port' => '3306',
+	
+	//...
+	
 )
 
 ?>
