@@ -1,16 +1,18 @@
-<footer   class="text-center " >
-    <a href="#myPage" title="To Top">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-    <p>Test footer </a></p>
+<p />
+
+<footer class="text-center" style="margin-bottom: -50px; background-color: lightgrey; border-radius: 10px; text-align: center; align: center; margin-left: 30%; margin-right: 30%;">
+    Copyright© <a href="http://www.bemawegenbouw.nl/">Bema Wegenbouw BV</a>
+    <br />KvK: 66369711 | BTW-nummer: NL........B01 | Gevestigd te Enschede
 </footer>
 
-<!--Java script bootstrap -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.js"></script>
+<?php //Javascript import ?>
 
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/bootstrap-notify.js"></script>
 
-<!--Google maps script-->
+<?php //Google Maps script ?>
+
 <script>
     $(document).ready(function () {
 // Add smooth scrolling to all links in navbar + footer link
@@ -47,3 +49,5 @@
         });
     })
 </script>
+</body>
+</html>

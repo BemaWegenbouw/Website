@@ -11,7 +11,7 @@ $config = array(
 	'db_pass' => '',
 	'db_port' => '3306',
 	
-	// ...
+	//...
 	
 )
 
