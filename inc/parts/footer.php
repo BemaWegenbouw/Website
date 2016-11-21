@@ -1,8 +1,8 @@
-<footer   class="text-center " >
+<footer class="text-center">
     <a href="#myPage" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    <p>Test footer </a></p>
+    <p>Copyright© Bema Wegenbouw BV - 2016</a></p>
 </footer>
 
 <!--Java script bootstrap -->
@@ -47,3 +47,5 @@
         });
     })
 </script>
+</body>
+</html>
