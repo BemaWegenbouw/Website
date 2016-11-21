@@ -21,9 +21,5 @@ include("inc/parts/header.php");
                 </div>
             </div>
         </div>
-<br>
-        </div>
 
         <?php include("inc/parts/footer.php"); ?>
-    </body>
-</html>

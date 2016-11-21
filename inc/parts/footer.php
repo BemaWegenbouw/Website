@@ -1,5 +1,6 @@
-<hr />
-<footer class="text-center" style="margin-bottom: -50px; background-color: lightgrey; border-radius: 20px;">
+<p />
+
+<footer class="text-center" style="margin-bottom: -50px; background-color: lightgrey;">
     <a href="#myPage" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>

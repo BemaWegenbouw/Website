@@ -9,12 +9,13 @@ include("inc/parts/header.php");
 
 ?>
 <!DOCTYPE html>
-<div class="container slideanim"> <h2 class="text-center h2white">CONTACT</h2>
+<div class="container"> 
 
 <div class="row">
 
 
             <div class="col-sm-5">
+                <h2 class="">Contactinformatie</h2>
                 <p>Neem contact met ons op en u ontvangt binnen 24 uur een bericht terug.</p>
                 <p><span class="glyphicon glyphicon-map-marker orangeglyph"></span> Enschede, NL</p>
                 <p><span class="glyphicon glyphicon-earphone orangeglyph"></span> +31 (0)534779223</p>
@@ -22,6 +23,7 @@ include("inc/parts/header.php");
                 <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl">info@bemawegenbouw.nl</a> </p>
             </div>
             <div class="col-sm-7">
+                <h2 class="">Contactformulier</h2>
                 <p>Indien u een afspraak wilt maken, of als u vragen heeft.
                     Kunt u hieronder een email naar sturen. </p>
                 <form action="inc/mail.php" method="post">
@@ -46,10 +48,9 @@ include("inc/parts/header.php");
             </div>
         </div>
     </div>
-</div>
 
-<div class="container-fluid bg-darkgrey">
-  <h2 class="text-center h2white">Bema Wegenbouw BV - Hoofdkantoor</h2>
+<div class="container-fluid">
+  <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
     <div id="googleMap" class=" container gmap" ></div>
 </div>
 <!-- Add Google Maps -->
@@ -77,6 +78,4 @@ include("inc/parts/header.php");
 
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
-<br>
 <?php include("inc/parts/footer.php"); ?>
