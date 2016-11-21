@@ -18,7 +18,6 @@ include("inc/parts/header.php");
                         <img src="assets/img/img3.jpg" alt="Paris" width="400" height="300">
                         <p><strong><?php echo(lang('index_column1_item1_name')); ?></strong></p>
                         <p><?php echo(lang('index_column1_item1_desc')); ?></p>
-
                     </div>
                 </div>
                 <div class="col-sm-4" id="Riolering">
