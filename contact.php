@@ -6,16 +6,10 @@ require_once("inc/engine.php");
 $page = "contact";
 include("inc/parts/header.php");
 ?>
-<div class="container"id="Portfolio">
-    <h2 class="text-center">Contact</h2><br>
-<?php
-if ($page != "contact") {
-    echo('<div id="contact" class="container-fluid bg-darkgrey"> <div class="container"> <h2 class="text-center h2white">CONTACT</h2>
+<div class="container" id="Portfolio">
+    <div id="contact" class="container-fluid"> <h2 class="text-center">CONTACT</h2>
 
-<div class="row">');
-}
-?>
-
+<div class="row">
 
     <div class="col-sm-5">
         <p>Neem contact met ons op en u ontvangt binnen 24 uur een bericht terug.</p>
@@ -120,40 +114,4 @@ if (isset($_POST) && !empty($_POST)) {
 </div>
 
 
-
-
-<div class="container-fluid bg-darkgrey">
-    <div id="googleMap" class=" container gmap" ></div>
-</div>
-<!-- Add Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap""></script>
-<script>
-    var myCenter = new google.maps.LatLng(52.18029079999999, 6.929297700000006);
-
-    function initialize() {
-        var mapProp = {
-            center: myCenter,
-            zoom: 12,
-            scrollwheel: true,
-            draggable: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
-        var marker = new google.maps.Marker({
-            position: myCenter,
-        });
-
-        marker.setMap(map);
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
-<br>
-<!-- Container (Contact Section) -->
-<!-- Header -->
 <?php include("inc/parts/footer.php"); ?>
-</body>
-</html>
