@@ -1,6 +1,6 @@
 <?php
 
-require_once "PHPMailer/PHPMailerAutoload.php";
+require_once "phpmailer/PHPMailerAutoload.php";
 
 $name = $_POST['name'];
 $email = $_POST['email'];
