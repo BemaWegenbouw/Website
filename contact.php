@@ -9,7 +9,7 @@ include("inc/parts/header.php");
 
 ?>
 <!DOCTYPE html>
-<div id="contact" class="container-fluid bg-darkgrey"> <div class="container slideanim"> <h2 class="text-center h2white">CONTACT</h2>
+<div class="container slideanim"> <h2 class="text-center h2white">CONTACT</h2>
 
 <div class="row">
 
