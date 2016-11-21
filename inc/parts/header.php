@@ -9,7 +9,7 @@
 
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-		<nav class="navbar navbar-default transparent navbar-fixed-top">
+		<nav class="navbar navbar-default transparent navbar-fixed-top" style="">
             <div class="nav-container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -18,7 +18,7 @@
                         <span class="icon-bar"></span>
 
                     </button >
-                    <a class="navbar-brand" href="#myPage" title="To Top"><img src="assets/img/logo.png"></a>
+                    <a class="navbar-brand" href="index.php" title="To Top"><img src="assets/img/logo.png"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
