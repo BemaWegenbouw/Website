@@ -8,7 +8,7 @@ $config = array(
     'db_host' => 'mysql.uplits.net',
     'db_name'  => 'bema',
 	'db_user' => 'bema',
-	'db_pass' => 'BeMaWeGeNbOuW123!',
+	'db_pass' => '',
 	'db_port' => '3306',
 	
 	//...
