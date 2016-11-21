@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php if($page != "contact") { echo('<div id="contact" class="container-fluid bg-darkgrey"> <div class="container"> <h2 class="text-center h2white">CONTACT</h2>
+<?php if($page != "contact") { echo('<div id="contact" class="container-fluid bg-darkgrey"> <div class="container slideanim"> <h2 class="text-center h2white">CONTACT</h2>
 
 <div class="row">'); } ?>
 

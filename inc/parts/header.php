@@ -9,7 +9,6 @@
 
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
 		<nav class="navbar navbar-default transparent navbar-fixed-top">
             <div class="nav-container-fluid">
                 <div class="navbar-header">
@@ -23,7 +22,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                      <li class="active"><a href="index.php" title="To Top">Hoofdpagina</a></li>
+                      <li <?php if ($page == "index") { echo "class='active'"; } ?>><a href="index.php" title="To Top">Hoofdpagina</a></li>
                       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                               <li><a href="grondwerk.php">Grondwerk</a></li>
@@ -32,9 +31,9 @@
                               <li><a href="uitvlakken.php">Uitvlakken</a></li>
                           </ul>
                       </li>
-                        <li><a href="portfolio.php">Portfolio</a></li>
-                        <li><a href="overons.php">Over ons</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li <?php if ($page == "portfolio") { echo "class='active'"; } ?>><a href="portfolio.php">Portfolio</a></li>
+                        <li <?php if ($page == "overons") { echo "class='active'"; } ?>><a href="overons.php">Over ons</a></li>
+                        <li <?php if ($page == "contact") { echo "class='active'"; } ?>><a href="contact.php">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 
@@ -46,7 +45,7 @@
             </div>
         </nav>
 
-        <div id="bg-fade-carousel" class="carousel slide carousel-fade " data-interval="10000"  data-ride="carousel">
+        <div id="bg-fade-carousel" class="carousel carousel-fade " data-interval="10000"  data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
                     <div class="slide1"></div>
@@ -68,3 +67,4 @@
             </div>
 
         </div>
+<div class="container-fluid">

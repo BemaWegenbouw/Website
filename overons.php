@@ -8,7 +8,7 @@ $page = "index";
 include("inc/parts/header.php");
 
 ?>
-        <div id="Overons" class="container slideanim">
+        <div id="Overons" class="container">
             <div class="row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
@@ -21,7 +21,7 @@ include("inc/parts/header.php");
                 </div>
             </div>
         </div>
-
+<p><div class="container" style="border-bottom-style: solid;"></div> </p>
         <div id="diensten" class="container text-center">
             <h2>DIENSTEN</h2><br>
             <h4>De volgende diensten bieden wij aan</h4>
