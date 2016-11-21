@@ -20,17 +20,17 @@ include("inc/parts/header.php");
                               </ol>
                           <div class="carousel-inner" role="listbox">
                                 <div class="item active">
-                                    <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
+                                    <img src="assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
                                 <div class="carousel-caption">
                                             <h3>Chania</h3>
                                             <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
                                           </div>
                                     </div>
                                 <div class="item">
-                                      <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
+                                      <img src="assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
                                     </div>
                                 <div class="item">
-                                      <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
+                                      <img src="assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
                                     </div>
                               </div>
                           <!-- Left and right controls -->
