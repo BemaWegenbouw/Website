@@ -6,11 +6,13 @@
 </footer>
 
 <?php //Javascript import ?>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.js"></script>
 <script src="assets/js/bootstrap-notify.js"></script>
 
 <?php //Google Maps script ?>
+
 <script>
     $(document).ready(function () {
 // Add smooth scrolling to all links in navbar + footer link
