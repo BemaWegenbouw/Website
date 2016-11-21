@@ -280,4 +280,11 @@
     }
   }
   
+  #mailsuccess {
+      background-color: rgba(0, 255, 0, 0.3);
+  }
+  
+  #mailfail{
+      background-color: rgba(255, 0, 0, 0.3);
+  }
   
