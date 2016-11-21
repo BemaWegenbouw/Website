@@ -1,30 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Bema Wegenbouw BV</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../assets/css/bootstrap.css">
-        <link rel="stylesheet" href="../assets/css/custom.css">
-    </head>
-    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-          <!-- Navbar -->
-        <?php include("navbar.php"); ?>
-		<!-- Header -->
-		<?php include("header.php"); ?>
-        <br>
-        <div class="container"id="Portfolio">
+<?php
+
+//Bema Wegenbouw BV Website
+//Copyright 2016
+
+require_once("inc/engine.php");
+$page = "portfolio";
+include("inc/parts/header.php");
+
+?>
+      <div class="container"id="Portfolio">
             <h2 class="text-center">Portfolio</h2><br>
-            <div class="row ">
+            <div class="row">
                 <div class="col-sm-4 col-md-4">
                     <div id="myCarousel" class="carousel slide  text-center" data-ride="carousel">
-                          <!-- Indicators -->
                           <ol class="carousel-indicators">
                                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                                 <li data-target="#myCarousel" data-slide-to="1"></li>
                                 <li data-target="#myCarousel" data-slide-to="2"></li>
                               </ol>
-                          <!-- Wrapper for slides -->
                           <div class="carousel-inner" role="listbox">
                                 <div class="item active">
                                     <img src="../assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
@@ -59,8 +52,8 @@
         </div>
         <br>
 		<!-- Container (Contact Section) -->
-		<?php include ("contact.php") ?>
+		<?php include ("inc/parts/contact.php") ?>
 		<!-- Header -->
-		<?php include("footer.php"); ?>
+		<?php include("inc/parts/footer.php"); ?>
     </body>
 </html>

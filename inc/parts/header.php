@@ -34,7 +34,7 @@
                                 <li><a href="uitvlakken.php">Uitvlakken</a></li>
                             </ul>
                         </li>
-                        <li><a href="pages/Portfolio.php">Portfolio</a></li>
+                        <li><a href="portfolio.php">Portfolio</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="#googleMap">Locatie</a></li>
                     </ul>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </nav>
-		
+
         <div id="bg-fade-carousel" class="carousel slide carousel-fade " data-interval="10000"  data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
@@ -70,5 +70,3 @@
             </div>
 
         </div>
-		
-	
