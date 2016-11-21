@@ -1,3 +1,14 @@
+<?php
+
+//Bema Wegenbouw BV Website
+//Copyright 2016
+
+require_once("inc/engine.php");
+$page = "grondwerk";
+include("inc/parts/header.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,11 +20,6 @@
 
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
-        <!-- Navbar -->
-        <?php include("navbar.php"); ?>
-		<!-- Header -->
-		<?php include("header.php"); ?>
         <!-- Container voor diensten (een portolio class)-->
         <br>
         <div class="container"id="Grondwerk">

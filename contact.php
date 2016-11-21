@@ -22,6 +22,7 @@ include("inc/parts/header.php");
                 <p><span class="glyphicon glyphicon-phone orangeglyph"></span> +31 (0)613471605</p>
                 <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl">info@bemawegenbouw.nl</a> </p>
             </div>
+    
             <div class="col-sm-7">
                 <h2 class="">Contactformulier</h2>
                 <p>Indien u een afspraak wilt maken, of als u vragen heeft.
