@@ -50,9 +50,6 @@ include("inc/parts/header.php");
                 </div>
             </div>
         </div>
-        <br>
-		<!-- Container (Contact Section) -->
-		<?php include ("inc/parts/contact.php") ?>
 		<!-- Header -->
 		<?php include("inc/parts/footer.php"); ?>
     </body>

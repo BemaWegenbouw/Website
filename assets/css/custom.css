@@ -57,28 +57,33 @@
       font-weight: 400;
       margin-bottom: 30px;
   }  
-  
- 
-  
 
-  #cf-footer {
+#cf-footer {
       padding: 60px 50px;
 	  background-color: #333333 ;
   }
-  .bg-darkgrey{
+
+.bg-darkgrey {
 	  background-color:#333333;
   }
-  .bg-grey {
+
+.bg-grey {
       background-color: #f6f6f6;
   }
-  .bg-whitesmoke{
+
+.bg-lightgrey {
+    background-color: lightgrey;
+  }
+  
+.bg-whitesmoke{
 	  background-color : #F1F1F1;
   }
-  .bg-outrageousorange{
+  
+.bg-outrageousorange{
 	  background-color: #F16123;
-	  
   }
-  .orangeglyph {
+
+.orangeglyph {
   color: #F16123;
 }
   
@@ -86,11 +91,13 @@
       color: #F16123;
       font-size: 50px;
   }
-  .logo {
+
+.logo {
       color: #F16123;
       font-size: 200px;
   }
-  .thumbnail {
+
+.thumbnail {
       padding: 0 0 15px 0;
       border: none;
       border-radius: 0;
