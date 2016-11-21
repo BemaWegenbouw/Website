@@ -10,7 +10,7 @@ include("../inc/parts/staff-header.php");
 ?>
 
         <div class="container">
-            <form class="form-signin"  method="POST">
+            <form class="form-signin" action="login-process.php" method="POST">
                 <h2 class="form-signin-heading">Inloggen Personeel</h2>
                 <label for="inputEmail" class="sr-only">Email adres</label>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email adres" required autofocus name="username">
