@@ -13,36 +13,35 @@ include("inc/parts/header.php");
         <div class="row">
 
             <div class="col-sm-5">
-                <h2 class="">Contactinformatie</h2>
-                <p>Neem contact met ons op en u ontvangt binnen 24 uur een bericht terug.</p>
-                <p><span class="glyphicon glyphicon-map-marker orangeglyph"></span> Enschede, NL</p>
-                <p><span class="glyphicon glyphicon-earphone orangeglyph"></span> +31 (0)534779223</p>
-                <p><span class="glyphicon glyphicon-phone orangeglyph"></span> +31 (0)613471605</p>
-                <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl">info@bemawegenbouw.nl</a> </p>
+                <h2 class=""><?php echo(lang('contact_column1_title')); ?></h2>
+                <p><?php echo(lang('contact_column1_head')); ?></p>
+                <p><span class="glyphicon glyphicon-map-marker orangeglyph"></span><?php echo(lang('contact_column1_text1')); ?></p>
+                <p><span class="glyphicon glyphicon-earphone orangeglyph"></span><?php echo(lang('contact_column1_text2')); ?></p>
+                <p><span class="glyphicon glyphicon-phone orangeglyph"></span><?php echo(lang('contact_column1_text3')); ?></p>
+                <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl"><?php echo(lang('contact_column1_text4')); ?></a> </p>
             </div>
             <div class="col-sm-7">
 
-                <h2 class="">Contactformulier</h2>
-                <p>Indien u een afspraak wilt maken, of als u vragen heeft.
-                    Kunt u hieronder een email naar sturen. </p>
+                <h2 class=""><?php echo(lang('contact_column2_title')); ?></h2>
+                <p> <?php echo(lang('contact_column2_head')); ?></p>
 
                 <form action="#" method="post">
                     <div class="row">
 
                         <div class="col-sm-6 form-group">
-                            <input class="form-control" id="name" name="name" placeholder="Naam" type="text" required>
+                            <input class="form-control" id="name" name="name" placeholder="<?php echo(lang('contact_column2_placeholder1')); ?>" type="text" required>
                         </div>
 
                         <div class="col-sm-6 form-group">
-                            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                            <input class="form-control" id="email" name="email" placeholder="<?php echo(lang('contact_column2_placeholder2')); ?>" type="email" required>
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <input class="form-control" id="subject" name="subject" placeholder="Onderwerp" type="text" required>
+                            <input class="form-control" id="subject" name="subject" placeholder="<?php echo(lang('contact_column2_placeholder3')); ?>" type="text" required>
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5" requierd></textarea>
+                            <textarea class="form-control" id="comments" name="comments" placeholder="<?php echo(lang('contact_column2_placeholder4')); ?>" rows="5" requierd></textarea>
                         </div>
 
                         <div class="col-sm-12 form-group">
@@ -50,7 +49,7 @@ include("inc/parts/header.php");
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit">Verzenden</button>
+                            <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button>
                         </div>
 
                     </div>
@@ -66,8 +65,8 @@ include("inc/parts/header.php");
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">Uw mail is niet verzonden.</span>
-                                        <span data-notify="message"><br>De naam is nog niet ingevuld.</span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_error1_2")); ?></span>
                                     </div>'
                             );
                         } elseif (empty($_POST["email"])) {
@@ -76,8 +75,8 @@ include("inc/parts/header.php");
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">Uw mail is niet verzonden.</span>
-                                        <span data-notify="message"><br>het emailadres is nog niet ingevuld.</span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_error1_3")); ?></span>
                                     </div>'
                             );
                         } elseif (empty($_POST["subject"])) {
@@ -86,8 +85,8 @@ include("inc/parts/header.php");
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">Uw mail is niet verzonden.</span>
-                                        <span data-notify="message"><br>Het onderwerp is nog niet ingevuld.</span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_error1_4")); ?></span>
                                     </div>'
                             );
                         } elseif (empty($_POST["comments"])) {
@@ -96,8 +95,8 @@ include("inc/parts/header.php");
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">Uw mail is niet verzonden.</span>
-                                        <span data-notify="message"><br>Het tekstveld is nog niet ingevuld.</span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_error1_5")); ?></span>
                                     </div>'
                             );
                         } else {
@@ -133,7 +132,7 @@ include("inc/parts/header.php");
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-envelope"></span>
-                                        <span data-notify="title">Uw mail is succesvol verzonden.</span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_success")); ?></span>
                                         <!--<span data-notify="message">{2}</span>-->
                                     </div>'
                             );
