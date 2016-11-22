@@ -45,7 +45,7 @@ include("inc/parts/header.php");
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <div class="g-recaptcha" data-sitekey="6LfqqwwUAAAAAOYfMohh04UsOIsYB1viYok9blcC"></div>
+                            <div class="g-recaptcha" data-sitekey="6LfplgwUAAAAAOzIgDSwZHltB5niJ5mIvrsq0mzZ"></div>
                         </div>
 
                         <div class="col-sm-12 form-group">
@@ -59,7 +59,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 	if(isset($_POST['submit'])){
 		
 		$url = 'https://www.google.com/recaptcha/api/siteverify';
-		$privatekey = "6LfqqwwUAAAAAC6U79wrMeDciUwRKku4mb9nSK7Z";
+		$privatekey = "6LfplgwUAAAAAEya75YiEoIAvz5bqdmXbOHtnawI";
 		
 		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
 		
