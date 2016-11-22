@@ -116,10 +116,11 @@ if (isset($_POST) && !empty($_POST)) {
 </div>
 </div>
 
+<div style="margin-left: 17.5%; margin-right: 17.5%; border-top-style: dotted; padding-bottom: 50px; color: #AEAEAE99;"></div>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: -75px;">
   <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
-    <div id="googleMap" class=" container gmap" ></div>
+    <div id="googleMap" class="container gmap"></div>
 </div>
 <!-- Add Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap"></script>
