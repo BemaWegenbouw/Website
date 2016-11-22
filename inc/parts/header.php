@@ -9,6 +9,14 @@
 
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+		<script type="text/javascript">
+	function load()
+	{
+	window.location.href = "#bottom";
+	
+}
+</script>
+<body onload="load()"></body>
 		<nav class="navbar navbar-default transparent navbar-fixed-top">
             <div class="nav-container-fluid">
                 <div class="navbar-header">
@@ -63,6 +71,7 @@
 
                     <h1>Bema Wegenbouw BV</h1>
                     <p>Kwaliteit staat voorop</p>
+					<A name="bottom"></A>
                 </div>
             </div>
 
