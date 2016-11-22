@@ -1,10 +1,12 @@
 <?php
+
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
 require_once("inc/engine.php");
 $page = "contact";
 include("inc/parts/header.php");
+
 ?>
 
 <div class="container" id="Contact">

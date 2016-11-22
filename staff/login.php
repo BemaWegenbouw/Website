@@ -4,8 +4,18 @@
 //Copyright 2016
 
 require_once("../inc/engine.php");
-$page = "index";
+$page = "login";
 include("../inc/parts/staff-header.php");
+
+session_start();
+if (empty($_SESSION['token'])) {
+    if (function_exists('mcrypt_create_iv')) {
+        $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+    } else {
+        $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));
+    }
+}
+$token = $_SESSION['token'];
 
 ?>
 
@@ -21,6 +31,7 @@ include("../inc/parts/staff-header.php");
                         <input type="checkbox" value="remember-me"> Onthoud mijn gegevens
                     </label>
                 </div>
+                <input type="hidden" name="token" value="<?php echo $token; ?>" />
                 <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Inloggen</button>
             </form>
 
