@@ -15,9 +15,10 @@ class security {
        
         //Laat hem buiten de class zoeken
         global $pdo;
+        global $user;
         
         //Stel IP in
-        $ip = $_SERVER["REMOTE_ADDR"];
+        $ip = $user->getIP();
         
         //Maak de query op
         $query = "INSERT INTO logs (ip, action) VALUES (:ip, :action)";
