@@ -27,7 +27,8 @@ include("inc/parts/header.php");
         
         <form action="#" method="post">
             <div class="row">
-				<div class="col-sm-6 form-group">
+                
+                <div class="col-sm-6 form-group">
                     <input class="form-control" id="name" name="name" placeholder="Naam" type="text" required>
                 </div>
                 
@@ -44,105 +45,83 @@ include("inc/parts/header.php");
                 </div>
                 
                 <div class="col-sm-12 form-group">
-                <div class="g-recaptcha" data-sitekey="6LfqqwwUAAAAAOYfMohh04UsOIsYB1viYok9blcC"></div>
+                <div class="g-recaptcha" data-sitekey="6Ld3mQwUAAAAADPQ8o2-v5q5PGg2ExDm9_f0lmF4"></div>
                 </div>
                     
                 <div class="col-sm-12 form-group">
                 <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit">Verzenden</button>
                 </div>
                     
-            </div>						
+                </div>
+                
+
 <?php
-
-//captcha code
 require_once "inc/phpmailer/PHPMailerAutoload.php";
-	if(isset($_POST['submit'])){
-		
-		$url = 'https://www.google.com/recaptcha/api/siteverify';
-		$privatekey = "6LfqqwwUAAAAAC6U79wrMeDciUwRKku4mb9nSK7Z";
-		
-		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
-		
-		$data = json_decode($response);
-		
-		if(isset($data->success) AND $data->success==true){
-			
-				////true - What happens when user is verified
-				
-				if (empty($_POST["name"])) {
-					print(
-						'<div id="mailfail" class="alert alert-succes alert-dismissable">
-							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							<strong>Naam ontbreekt.</strong>
-							</div>');
-				}elseif (empty($_POST["email"])) {
-					print(
-							'<div id="mailfail" class="alert alert-succes alert-dismissable">
-								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-								<strong>Email ontbreekt.</strong>
-							</div>');
-				}elseif (empty($_POST["subject"])) {
-					print(
-							'<div id="mailfail" class="alert alert-succes alert-dismissable">
-								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-								<strong>Onderwerp ontbreekt.</strong>
-							</div>');
-				}elseif (empty($_POST["comments"])) {
-					print(
-							'<div id="mailfail" class="alert alert-succes alert-dismissable">
-								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-								<strong>Tekstveld is leeg.</strong>
-							</div>');
-				}
-				
-					$name = $_POST['name'];
-					$email = $_POST['email'];
-					$subject = $_POST['subject'];
-					$message = $_POST['comments'];
+if (isset($_POST) && !empty($_POST)) {
 
-					$m = new PHPMailer;
+    if (empty($_POST["name"])) {
+        print(
+                '<div id="mailfail" class="alert alert-succes alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Naam ontbreekt.</strong>
+                </div>');
+    } elseif (empty($_POST["email"])) {
+        print(
+                '<div id="mailfail" class="alert alert-succes alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Email ontbreekt.</strong>
+                </div>');
+    } elseif (empty($_POST["subject"])) {
+        print(
+                '<div id="mailfail" class="alert alert-succes alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Onderwerp ontbreekt.</strong>
+                </div>');
+    } elseif (empty($_POST["comments"])) {
+        print(
+                '<div id="mailfail" class="alert alert-succes alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Tekstveld is leeg.</strong>
+                </div>');
+    } else {
 
-					$m->isSMTP();
-					$m->SMTPAuth = true;
-					$m->SMTPDebug = 0;
-					$m->Host = "smtp.gmail.com";
-					$m->Username = "testbema@gmail.com";
-					$m->Password = "BEMAtest1234";
-					$m->SMTPSecure = 'ssl';
-					$m->Port = 465;
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $subject = $_POST['subject'];
+        $message = $_POST['comments'];
 
-					$m->From = $email;
-					$m->FromName = $name;
-					$m->addReplyTo($email, $name);
-					$m->addAddress("j.benning@hotmail.nl", "bema");
-					$m->Subject = $subject;
-					$m->Body = $message;
 
-					$m->send();
-					
-					 
-					print (
-					
-					'<div id="mailsuccess" class="alert alert-succes alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Uw mail is succesvol verzonden.</strong>
-					</div>');
-					 
-		}else{
-				
-					
-					
-					print (
-					'<div id="mailfail" class="alert alert-succes alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Captcha did not work properly, please try again.</strong>
-					</div>');
-					
-		}
-	}
+        $m = new PHPMailer;
+
+        $m->isSMTP();
+        $m->SMTPAuth = true;
+        $m->SMTPDebug = 0;
+        $m->Host = "smtp.gmail.com";
+        $m->Username = "testbema@gmail.com";
+        $m->Password = "BEMAtest1234";
+        $m->SMTPSecure = 'ssl';
+        $m->Port = 465;
+
+        $m->From = $email;
+        $m->FromName = $name;
+        $m->addReplyTo($email, $name);
+        $m->addAddress("testbema@gmail.com", "bema");
+        $m->Subject = $subject;
+        $m->Body = $message;
+
+        $m->send();
+
+        print(
+                '<div id="mailsuccess" class="alert alert-succes alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Uw mail is succesvol verzonden.</strong>
+                </div>'
+        );
+    }
+}
 ?>
-        </form>
 
+        </form>
     </div>
 </div>
 </div>
