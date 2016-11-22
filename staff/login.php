@@ -4,15 +4,23 @@
 //Copyright 2016
 
 require_once("../inc/engine.php");
-$page = "staff-login";
-include("../inc/staff-header.php");
+$page = "login";
+include("../inc/parts/staff-header.php");
+
+if (empty($_SESSION['token'])) {
+    if (function_exists('mcrypt_create_iv')) {
+        $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+    } else {
+        $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));
+    }
+}
+$token = $_SESSION['token'];
 
 ?>
 
         <div class="container">
-
-            <form class="form-signin"  method="POST">
-                <h2 class="form-signin-heading">Hieronder kunt u inloggen</h2>
+            <form class="form-signin" action="login-process.php" method="POST">
+                <h2 class="form-signin-heading">Inloggen Personeel</h2>
                 <label for="inputEmail" class="sr-only">Email adres</label>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email adres" required autofocus name="username">
                 <label for="inputPassword" class="sr-only">wachtwoord</label>
@@ -22,6 +30,7 @@ include("../inc/staff-header.php");
                         <input type="checkbox" value="remember-me"> Onthoud mijn gegevens
                     </label>
                 </div>
+                <input type="hidden" name="token" value="<?php echo $token; ?>" />
                 <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Inloggen</button>
             </form>
 
@@ -29,8 +38,16 @@ include("../inc/staff-header.php");
 
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+    	<script src="../assets/js/bootstrap.js"></script>
     </body>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.js"></script>
+    
+        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.js"></script>
+
 </html>
