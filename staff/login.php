@@ -22,7 +22,7 @@ $token = $_SESSION['token'];
             <form class="form-signin" action="login-process.php" method="POST">
                 <h2 class="form-signin-heading">Inloggen Personeel</h2>
                 <label for="inputEmail" class="sr-only">Email adres</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email adres" required autofocus name="username">
+                <input type="text" id="inputEmail" class="form-control" placeholder="Gebruikersnaam" required autofocus name="username">
                 <label for="inputPassword" class="sr-only">wachtwoord</label>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Wachtwoord" required name="password">
                 <div class="checkbox">
