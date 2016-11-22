@@ -51,6 +51,7 @@ $lang_nl = array(
     "contact_column2_error1_4" => "Het onderwerp is nog niet ingevuld.",
     "contact_column2_error1_5" => "Het tekstveld is nog niet ingevuld.",
     "contact_column2_success" => "Uw mail is succesvol verzonden",
+	"contact_column2_error2_1" => "Uw mail is niet verzonden, probeer het opnieuw",
     "" => "",
     "" => "",
     "" => "",
