@@ -16,6 +16,7 @@ if (isset($_POST) && !empty($_POST) && !empty($_POST['token'])) {
     
 
 } else {
+    $security->log("Visited login-process.php without form submission.");
     die("No form submission detected! Hack attempt blocked and logged.");
 }
     

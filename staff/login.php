@@ -7,7 +7,6 @@ require_once("../inc/engine.php");
 $page = "login";
 include("../inc/parts/staff-header.php");
 
-session_start();
 if (empty($_SESSION['token'])) {
     if (function_exists('mcrypt_create_iv')) {
         $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
