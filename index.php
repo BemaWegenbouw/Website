@@ -9,16 +9,15 @@ include("inc/parts/header.php");
 
 ?>
 
-        <div id="diensten" class="container text-center">
-            <h2><?php echo(lang('index_column1_title')); ?></h2><br>
-            <h4><?php echo(lang('index_column1_sub')); ?></h4>
+        <div id="diensten" class="container text-center" style="margin-top: -50px;">
+            <h2><?php echo(lang('index_column1_title')); ?></h2>
+            <h4 style="margin-top: -25px;"><?php echo(lang('index_column1_sub')); ?></h4>
             <div class="row text-center">
                 <div class="col-sm-4" id="<?php echo(lang('index_column1_item1_name')); ?>">
                     <div class="thumbnail">
                         <img src="assets/img/img3.jpg" alt="Paris" width="400" height="300">
                         <p><strong><?php echo(lang('index_column1_item1_name')); ?></strong></p>
                         <p><?php echo(lang('index_column1_item1_desc')); ?></p>
-
                     </div>
                 </div>
                 <div class="col-sm-4" id="Riolering">

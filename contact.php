@@ -24,29 +24,40 @@ include("inc/parts/header.php");
         <h2 class="">Contactformulier</h2>
         <p>Indien u een afspraak wilt maken, of als u vragen heeft.
             Kunt u hieronder een email naar sturen. </p>
+        
         <form action="#" method="post">
             <div class="row">
+                
                 <div class="col-sm-6 form-group">
                     <input class="form-control" id="name" name="name" placeholder="Naam" type="text" required>
                 </div>
+                
                 <div class="col-sm-6 form-group">
                     <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
                 </div>
+                
                 <div class="col-sm-12 form-group">
                     <input class="form-control" id="subject" name="subject" placeholder="onderwerp" type="text" required>
                 </div>
-            </div>
-            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5" requierd></textarea><br>
-            <div class="row">
+                
                 <div class="col-sm-12 form-group">
-                    <button class="btn btn-default pull-right" type="submit" name="submit" value="Submit">Verzenden</button>
+                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5" requierd></textarea>
                 </div>
-            </div>
+                
+                <div class="col-sm-12 form-group">
+                <div class="g-recaptcha" data-sitekey="6Ld3mQwUAAAAADPQ8o2-v5q5PGg2ExDm9_f0lmF4"></div>
+                </div>
+                    
+                <div class="col-sm-12 form-group">
+                <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit">Verzenden</button>
+                </div>
+                    
+                </div>
+                
 
 <?php
 require_once "inc/phpmailer/PHPMailerAutoload.php";
 if (isset($_POST) && !empty($_POST)) {
-
 
     if (empty($_POST["name"])) {
         print(
@@ -116,10 +127,11 @@ if (isset($_POST) && !empty($_POST)) {
 </div>
 </div>
 
+<div style="margin-left: 17.5%; margin-right: 17.5%; border-top-style: dotted; padding-bottom: 50px; color: #AEAEAE99;"></div>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: -75px;">
   <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
-    <div id="googleMap" class=" container gmap" ></div>
+    <div id="googleMap" class="container gmap"></div>
 </div>
 <!-- Add Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap"></script>
