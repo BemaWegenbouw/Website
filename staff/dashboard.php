@@ -17,9 +17,14 @@ include("../inc/parts/staff-header.php");
 
     <body>
         
+        <center>
         <h1>Dashboard</h1>
-        <h3>Welkom op het staff dashboard!</h3>
-        <a href="logout.php">Loguit</a>
+        <h3>Welkom op het dashboard van het personeel!</h3>
+        
+        <p><br /><br />
+            <strong><h4><a href="logout.php">Loguit</a></h4></strong>
+        </p>
+        </center>
         
     </body>
 

@@ -15,10 +15,15 @@
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <script type="text/javascript" src="../assets/js/noty/themes/noty-theme.js"></script>
+        <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+        
         <!-- Custom styles for this template -->
         <link href="../assets/css/signin.css" rel="stylesheet">
-
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
         <script src="../assets/js/ie-emulation-modes-warning.js"></script>

@@ -3,53 +3,52 @@
 class user {
 
     public function logout($uid) {
-        session_destroy();
+        session_destroy(); //Verwijder de sessie van de gebruiker
     }
     
     public function getIP() {
-        $ip = $_SERVER["REMOTE_ADDR"];
-        return $ip;
+        $ip = $_SERVER["REMOTE_ADDR"]; //Maak een variabele van het IP-adres
+        return $ip; //Stuur IP variabele terug
     }
     
     public function getID($user) {
-        global $pdo;
-        $sth = $pdo->prepare("SELECT uid FROM staff WHERE username = :username");
-        $sth->bindParam(':username', $user, PDO::PARAM_STR);
-        $sth->execute();
-        $result = $sth->fetch(PDO::FETCH_ASSOC);
-        return $result["uid"];
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT uid FROM staff WHERE username = :username"); //Maak de query klaar
+        $sth->bindParam(':username', $user, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result["uid"]; //Geef resultaat terug
     }
     
     public function authorize($user) {
-        $userid = $this->getID($user);
-        $_SESSION["username"] = $user;
-        $_SESSION["uid"] = $userid;
-        return true;
+        $userid = $this->getID($user); //Krijg het userID via de getID functie in dit bestand
+        $_SESSION["username"] = $user; //Stel de username in als sessie variabele
+        $_SESSION["uid"] = $userid; //Stel het userID in als sessievariabele
+        return true; //Geef "goed" als resultaat terug
     }
     
     public function checkUser($user) {
      
-        //Laat hem buiten de class zoeken
-        global $pdo;
+        global $pdo; //Zoek buiten de scope van de functie en class
         
         
-        $sth = $pdo->prepare("SELECT uid FROM staff WHERE username = :username");
-        $sth->bindParam(':username', $user, PDO::PARAM_STR);
-        $sth->execute();
-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+        $sth = $pdo->prepare("SELECT uid FROM staff WHERE username = :username"); //Maak query op
+        $sth->bindParam(':username', $user, PDO::PARAM_STR); //Vervang variabele
+        $sth->execute(); //Uitvoeren
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla resultaat op in variabele
         
-        if(isset($result) && !empty($result)) {
+        if(isset($result) && !empty($result)) { //Check of er resultaat is
             //Gebruiker bestaat
-            return true;
+            return true; //Retourneer "goed"
         } else {
             //Gebruiker bestaat NIET
-            return false;
+            return false; //Retourneer "fout"
         }
         
     }
 	
 }
 
-$user = new user;
+$user = new user; //Zorg dat deze class aangeroepen kan worden met $user->functie();
 
 ?>

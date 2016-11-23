@@ -15,17 +15,19 @@ require_once("controller/lang.controller.php"); //Importeer lang controller
 require_once("controller/security.controller.php"); //Importeer security controller
 
 //Login check. Later verplaatsen naar los bestand!
-//Check of paginanaam 'staff' bevat.
-if (strpos($page, 'staff') !== false) {
+if (strpos($page, 'staff') !== false) { //Check of paginanaam 'staff' bevat.
     
-    //Indien ja, check login
-    if(isset($_SESSION["username"]) && isset($_SESSION["uid"])) {
+    if(isset($_SESSION["username"]) && isset($_SESSION["uid"])) {//Indien de pagina het woord staff bevat, check login
+        
         //Doe niks indien ingelogd
-    } else {
-        header("Location: login.php");
-        die("Not logged in! Redirecting to login...");
-    }
+        
+    } else { //Indien niet ingelogd
+        
+        header("Location: login.php"); //Redirect naar inlogpagina
+        die("Not logged in! Redirecting to login..."); //Stop met het laden van de paginainhoud, geef melding
+        
+    } //Stop de staff check
     
-}
+} //Stop de page check
 
 ?>
