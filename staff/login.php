@@ -3,8 +3,8 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-require_once("../inc/engine.php");
 $page = "login";
+require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
 if (empty($_SESSION['token'])) {

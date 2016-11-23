@@ -11,6 +11,41 @@ class security {
         
     }
     
+    public function hashPassword($pass) {
+        $options = [
+        'cost' => 11,
+        ];
+        return password_hash($pass, PASSWORD_DEFAULT, $options);
+    }
+    
+    public function checkPassword($user, $pass) {
+        global $pdo;
+        
+        $sth = $pdo->prepare("SELECT * FROM staff WHERE username = :username");
+        $sth->bindParam(':username', $user, PDO::PARAM_STR);
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_ASSOC);
+        
+        if(isset($result) && !empty($result)) {
+            
+            //Check het wachtwoord
+            $check = password_verify($pass, $result["password"]);
+            
+            //Verwerk de reactie.
+            if($check == true) {
+                
+                //Wachtwoord klopt
+                return true;
+                
+            } else {
+                //Wachtwoord klopt NIET
+                return false;
+            }
+        
+        }
+        
+    }
+    
     public function log($action) {
        
         //Laat hem buiten de class zoeken

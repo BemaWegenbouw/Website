@@ -1,10 +1,11 @@
 <?php
 
 //Bema Wegenbouw BV Website
+//Made by J.E. v.d. Heide
 //Copyright 2016
 
-require_once("../inc/engine.php");
 $page = "login-process";
+require_once("../inc/engine.php");
 
 if (isset($_POST) && !empty($_POST) && !empty($_POST['token']) &&
     isset($_POST["username"]) && !empty($_POST["username"]) &&
@@ -26,18 +27,19 @@ if (isset($_POST) && !empty($_POST) && !empty($_POST['token']) &&
         $security->log("Insecure password/username given. Hack attempt possible.");
         echo("Insecure login details used.");
         die();
+    } else {
+        
+        $checkusername = $user->checkUser($username);
+        $checkpassword = $security->checkPassword($username, $password);
+    
+        if($checkusername && $checkpassword) {
+            $user->authorize($username);
+            header("Location: dashboard.php");
+        }
+        
     }
     
-    $checkusername = $user->checkUser($username);
-    $checkpassword = $user->checkPassword($username, $password);
     
-    if($checkusername == true && $checkpassword == true) {
-            
-        echo("succes!");
-//Josha maakt dit af!!!!!!!!!!!!!!!
-            
-    }
-
 
 } else {
     $security->log("Visited login-process.php without form submission.");
