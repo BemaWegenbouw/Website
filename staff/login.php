@@ -30,12 +30,7 @@ if(isset($_SESSION["login-error"])) {
                 <label for="inputEmail" class="sr-only">Email adres</label>
                 <input type="text" id="inputEmail" class="form-control" placeholder="Gebruikersnaam" required autofocus name="username">
                 <label for="inputPassword" class="sr-only">wachtwoord</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Wachtwoord" required name="password">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Onthoud mijn gegevens
-                    </label>
-                </div>
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" required name="password">
                 <input type="hidden" name="token" value="<?php echo $token; ?>" />
                 <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Inloggen</button>
             </form>

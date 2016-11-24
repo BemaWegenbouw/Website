@@ -8,14 +8,6 @@ require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
 ?>
-
-<html>
-
-    <head>
-        <title>Dashboard</title>
-    </head>
-
-    <body>
         
         <center>
         <h1>Dashboard</h1>
@@ -26,6 +18,5 @@ include("../inc/parts/staff-header.php");
         </p>
         </center>
         
-    </body>
 
-</html>
+<?php include("../inc/parts/staff-footer.php"); ?>

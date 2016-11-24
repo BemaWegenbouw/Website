@@ -36,3 +36,17 @@
     </head>
 
     <body>
+    
+<?php
+if(isset($_SESSION["login-error"])) {
+    $loginerror = $_SESSION["login-error"];
+    print("<script type='text/javascript'>noty({text: '$loginerror', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+    unset($_SESSION["login-error"]);
+}
+?>
+        
+    <?php if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])) { ?>
+    
+        JE BENT INGELOGD! HEADER HIER!
+        
+    <?php } ?>
