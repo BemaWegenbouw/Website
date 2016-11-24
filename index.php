@@ -34,7 +34,9 @@ include("inc/parts/header.php");
                         <p><?php echo(lang('index_column1_item3_desc')); ?></p>
                     </div>
                 </div>
-
+            </div>
+            
+            <div class="row text-center">
                 <div class="col-sm-4" id="Uitvlakken">
                     <div class="thumbnail">
                         <img src="assets/img/img15.jpg" alt="<?php echo(lang('index_column1_item4_name')); ?>" width="400" height="300">
