@@ -26,6 +26,7 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
+</div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->

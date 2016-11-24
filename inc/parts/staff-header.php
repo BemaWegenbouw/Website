@@ -62,7 +62,7 @@
         
 ?>
         
-    <?php if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"]) && $page != "login") { ?>
+    <?php if($user->LoggedIn() && $page != "login") { ?>
     
             <div id="wrapper">
 
