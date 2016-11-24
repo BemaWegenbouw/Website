@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/custom.css">
         <link rel="stylesheet" href="assets/css/flag-icon.css">
-
+	<script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
         <script type="text/javascript">

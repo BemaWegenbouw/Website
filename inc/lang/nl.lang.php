@@ -4,6 +4,11 @@
 // NL Taalbestand
 
 $lang_nl = array(
+    
+//Global
+//Hierin komen teksten die op alle pagina's zouden kunnen voorkomen
+    "global_error_redirect" => "Er is een fout opgetreden. U wordt doorverwezen naar een andere pagina.",
+    
 //Index
     "index_title" => "Bema Wegenbouw BV",
     "index_slogan" => "Kwaliteit staat voorop",
@@ -51,6 +56,7 @@ $lang_nl = array(
     "contact_column2_error1_4" => "Het onderwerp is nog niet ingevuld.",
     "contact_column2_error1_5" => "Het tekstveld is nog niet ingevuld.",
     "contact_column2_success" => "Uw mail is succesvol verzonden",
+	"contact_column2_error2_1" => "Uw mail is niet verzonden, probeer het opnieuw",
     "" => "",
     "" => "",
     "" => "",
@@ -105,5 +111,11 @@ $lang_nl = array(
     "" => "",
     "" => "",
     "" => "",
+    
+    //Login
+    "login_error1_text" => "De door u opgegeven inloggegevens zijn helaas incorrect.",
+    "login_error2_text" => "Error 2: U heeft zonder geldige invoer een pagina bezocht. Wij hebben deze activiteit vastgelegd voor nader onderzoek.",
+    "login_error3_text" => "Error 3: U heeft proberen in te loggen met onveilige gebruikersgegevens. Uw activiteit staat geregistreerd voor nader onderzoek.",
+    
 );
 ?>
