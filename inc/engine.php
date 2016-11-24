@@ -17,9 +17,9 @@ require_once("controller/security.controller.php"); //Importeer security control
 //Login check. Later verplaatsen naar los bestand!
 if (strpos($page, 'staff') !== false) { //Check of paginanaam 'staff' bevat.
     
-    if(isset($_SESSION["username"]) && isset($_SESSION["uid"])) {//Indien de pagina het woord staff bevat, check login
+    if(isset($_SESSION["username"]) && isset($_SESSION["uid"])) {//Check login
         
-        //Doe niks indien ingelogd
+        
         
     } else { //Indien niet ingelogd
         
@@ -29,5 +29,13 @@ if (strpos($page, 'staff') !== false) { //Check of paginanaam 'staff' bevat.
     } //Stop de staff check
     
 } //Stop de page check
+
+//Check ingelogd en pagina, indien inlogpagina, redirect.
+if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"]) && $page == "login") {
+header("Location: dashboard.php"); //Doorverwijzing
+die(); //Stop met het laden van de pagina
+} //Einde inlogpagina redirect
+
+
 
 ?>
