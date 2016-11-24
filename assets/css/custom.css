@@ -3,7 +3,7 @@
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);
 }
  .container-fluid {
       padding: 60px 50px;
