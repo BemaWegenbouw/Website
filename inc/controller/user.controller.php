@@ -11,6 +11,14 @@ class user {
         return $ip; //Stuur IP variabele terug
     }
     
+    public function LoggedIn() {
+        if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public function getID($user) {
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT uid FROM staff WHERE username = :username"); //Maak de query klaar
