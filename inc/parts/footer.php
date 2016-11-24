@@ -1,8 +1,8 @@
-﻿<p />
+<p />
 
 <footer class="text-center" style="margin-bottom: -50px; background-color: lightgrey; border-radius: 10px; text-align: center; align: center; margin-left: 30px; margin-right: 30px;">
     Copyright© <a href="http://www.bemawegenbouw.nl/">Bema Wegenbouw BV</a>
-    <br />KvK: 66369711 | BTW-nummer: NL........B01 | Gevestigd te Enschede
+    <br />KvK: 66369711 | BTW-nummer: NL856518232B01 | Gevestigd te Enschede
 </footer>
 
 <?php //Javascript import ?>
