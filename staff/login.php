@@ -3,8 +3,8 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-require_once("../inc/engine.php");
 $page = "login";
+require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
 if (empty($_SESSION['token'])) {
@@ -15,6 +15,12 @@ if (empty($_SESSION['token'])) {
     }
 }
 $token = $_SESSION['token'];
+
+if(isset($_SESSION["login-error"])) {
+    $loginerror = $_SESSION["login-error"];
+    print("<script type='text/javascript'>noty({text: '$loginerror', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+    unset($_SESSION["login-error"]);
+}
 
 ?>
 

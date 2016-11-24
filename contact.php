@@ -45,111 +45,132 @@ include("inc/parts/header.php");
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <div class="g-recaptcha" data-sitekey="6Ld3mQwUAAAAADPQ8o2-v5q5PGg2ExDm9_f0lmF4"></div>
+                            <div class="g-recaptcha" data-sitekey="6LfplgwUAAAAAOzIgDSwZHltB5niJ5mIvrsq0mzZ"></div>
                         </div>
 
                         <div class="col-sm-12 form-group">
                             <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button>
                         </div>
 
-                    </div>
-
-
-                    <?php
-                    require_once "inc/phpmailer/PHPMailerAutoload.php";
-                    if (isset($_POST) && !empty($_POST)) {
-
-                        if (empty($_POST["name"])) {
-                            print(
-                                    '<br>
+                    </div>			
+<?php
+//captcha code
+require_once "inc/phpmailer/PHPMailerAutoload.php";
+	if(isset($_POST['submit'])){
+		
+		$url = 'https://www.google.com/recaptcha/api/siteverify';
+		$privatekey = "6LfplgwUAAAAAEya75YiEoIAvz5bqdmXbOHtnawI";
+		
+		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
+		
+		$data = json_decode($response);
+		
+		if(isset($data->success) AND $data->success==true){
+			
+				////true - What happens when user is verified
+				
+				if (empty($_POST["name"])) {
+					print(
+						'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
                                         <span data-notify="message"><br><?php echo(lang("contact_column2_error1_2")); ?></span>
-                                    </div>'
-                            );
-                        } elseif (empty($_POST["email"])) {
-                            print(
-                                    '<br>
+                                    </div>');
+				}elseif (empty($_POST["email"])) {
+					print(
+							'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
                                         <span data-notify="message"><br><?php echo(lang("contact_column2_error1_3")); ?></span>
-                                    </div>'
-                            );
-                        } elseif (empty($_POST["subject"])) {
-                            print(
-                                    '<br>
+                                    </div>');
+				}elseif (empty($_POST["subject"])) {
+					print(
+							'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
                                         <span data-notify="message"><br><?php echo(lang("contact_column2_error1_4")); ?></span>
-                                    </div>'
-                            );
-                        } elseif (empty($_POST["comments"])) {
-                            print(
-                                    '<br>
+                                    </div>');
+				}elseif (empty($_POST["comments"])) {
+					print(
+							'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
                                         <span data-notify="message"><br><?php echo(lang("contact_column2_error1_5")); ?></span>
-                                    </div>'
-                            );
-                        } else {
+                                    </div>');
+				}
+				
+					$name = $_POST['name'];
+					$email = $_POST['email'];
+					$subject = $_POST['subject'];
+					$message = $_POST['comments'];
 
-                            $name = $_POST['name'];
-                            $email = $_POST['email'];
-                            $subject = $_POST['subject'];
-                            $message = $_POST['comments'];
+					$m = new PHPMailer;
 
+					$m->isSMTP();
+					$m->SMTPAuth = true;
+					$m->SMTPDebug = 0;
+					$m->Host = "smtp.gmail.com";
+					$m->Username = "testbema@gmail.com";
+					$m->Password = "BEMAtest1234";
+					$m->SMTPSecure = 'ssl';
+					$m->Port = 465;
 
-                            $m = new PHPMailer;
+					$m->From = $email;
+					$m->FromName = $name;
+					$m->addReplyTo($email, $name);
+					$m->addAddress("j.benning@hotmail.nl", "bema");
+					$m->Subject = $subject;
+					$m->Body = $message;
 
-                            $m->isSMTP();
-                            $m->SMTPAuth = true;
-                            $m->SMTPDebug = 0;
-                            $m->Host = "smtp.gmail.com";
-                            $m->Username = "testbema@gmail.com";
-                            $m->Password = "BEMAtest1234";
-                            $m->SMTPSecure = 'ssl';
-                            $m->Port = 465;
-
-                            $m->From = $email;
-                            $m->FromName = $name;
-                            $m->addReplyTo($email, $name);
-                            $m->addAddress("testbema@gmail.com", "bema");
-                            $m->Subject = $subject;
-                            $m->Body = $message;
-
-                            $m->send();
-
-                            print(
-                                    '<br>
+					$m->send();
+					
+					 
+					print (
+					
+					'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-                                        <span data-notify="icon" class="glyphicon glyphicon-envelope"></span>
-                                        <span data-notify="title"><?php echo(lang("contact_column2_success")); ?></span>
-                                        <!--<span data-notify="message">{2}</span>-->
-                                    </div>'
-                            );
-                        }
-                    }
-                    ?>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
+                                    </div>');
+					 
+		}else{
+				
+					
+					
+					print (
+					'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
+                                    </div>');
+					
+		}
+	}
+?>
 
-                </form>
-            </div>
-        </div>
+        </form>
+
     </div>
+</div>
+</div>
 </div>
 
 <div style="margin-left: 17.5%; margin-right: 17.5%; border-top-style: dotted; padding-bottom: 50px; color: #AEAEAE99;"></div>
 
 <div class="container-fluid" style="margin-top: -75px;">
-    <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
+  <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
     <div id="googleMap" class="container gmap"></div>
 </div>
 <!-- Add Google Maps -->
@@ -172,5 +193,7 @@ include("inc/parts/header.php");
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<script src="assets/js/bootstrap-notify.js"></script>
 <?php include("inc/parts/footer.php"); ?>
+
+
+
