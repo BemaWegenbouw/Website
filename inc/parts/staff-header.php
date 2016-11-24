@@ -12,12 +12,7 @@
 
         <!-- Bootstrap core CSS -->
         <link href="../assets/css/bootstrap.css" rel="stylesheet">
-        
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-        <script type="text/javascript" src="../assets/js/noty/themes/noty-theme.js"></script>
-        <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
         
         <!-- MetisMenu CSS -->
         <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -35,18 +30,6 @@
         <!-- Custom styles for this template -->
         <link href="../assets/css/signin.css" rel="stylesheet">
         <?php } ?>
-        
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-        
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="../assets/js/ie-emulation-modes-warning.js"></script>
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
 
     <body>
@@ -64,8 +47,8 @@
         
     <?php if($user->LoggedIn() && $page != "login") { ?>
     
-            <div id="wrapper">
-
+           
+ <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -396,5 +379,8 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+</div>
+
+
         
     <?php } ?>
