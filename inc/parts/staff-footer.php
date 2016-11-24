@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
@@ -16,6 +17,8 @@
     <![endif]-->
     
 	<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+=======
+>>>>>>> refs/remotes/origin/master
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
@@ -32,7 +35,11 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../assets/js/sb-admin-2.js"></script>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> refs/remotes/origin/master
 </body>
 
 </html>
