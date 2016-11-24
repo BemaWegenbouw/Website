@@ -59,7 +59,7 @@ if(isset($_SESSION["login-error"])) {
 }
 ?>
         
-    <?php if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])) { ?>
+    <?php if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"]) && $page != "login") { ?>
     
             <div id="wrapper">
 
