@@ -7,11 +7,7 @@
 $page = "login-process"; //Stel pagina in
 require_once("../inc/engine.php"); //Laad nodige bestanden
 
-if (isset($_POST) && !empty($_POST) && !empty($_POST['token']) &&// Check correcte post
-    isset($_POST["username"]) && !empty($_POST["username"]) && //Check of gebruikersnaam is gepost
-    isset($_POST["password"]) && !empty($_POST["password"]) && //Check of wachtwoord is gepost
-    isset($_SESSION['token']) && //Check of token is gepost
-    $_SESSION['token'] == $_POST['token']) { //Check of token klopt en zo ja...
+if (isset($_POST) && !empty($_POST) && isset($_POST["username"]) && !empty($_POST["username"]) && isset($_POST["password"]) && !empty($_POST["password"]) && isset($_SESSION['token']) && $_SESSION['token'] == $_POST['token']) {
     
     $_SESSION["token"] = ""; //Zet token naar niks
     
@@ -44,8 +40,6 @@ if (isset($_POST) && !empty($_POST) && !empty($_POST['token']) &&// Check correc
         } //Stop met het checken van correcte login
         
     } // Stop met het checken van schone invoer
-    
-    
 
 } else { //Indien er geen post is...
     $security->log("Visited login-process.php without form submission."); //Log de bezoekpoging
