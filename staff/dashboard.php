@@ -215,20 +215,9 @@ include("../inc/parts/staff-header.php");
                     </div>
                     <!-- /.panel .chat-panel -->
                 </div>
-<<<<<<< HEAD
+
                  <!-- /#page-wrapper -->
 <?php
 include("../inc/parts/staff-footer.php");
 ?>
-=======
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
-
-<?php include("../inc/parts/staff-footer.php"); ?>
->>>>>>> refs/remotes/origin/master
