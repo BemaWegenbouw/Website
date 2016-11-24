@@ -8,7 +8,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../assets/favicon.ico">
 
-        <title>Bema Wegenbouw BV - Staff Login</title>
+        <title>Bema Wegenbouw BV - Personeelszaken</title>
 
         <!-- Bootstrap core CSS -->
         <link href="../assets/css/bootstrap.css" rel="stylesheet">
