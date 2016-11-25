@@ -161,6 +161,7 @@ if(isset($_SESSION["successmsg"])) {
                 <p />
             </form>
                     
+            <table border='1' style='position: absolute; left: 350px; top: 15%;'>
             <?php $user->staffList(); ?>
             
                     

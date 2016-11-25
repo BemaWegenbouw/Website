@@ -8,62 +8,43 @@
         <meta name="author" content="">
         <link rel="icon" href="../assets/favicon.ico">
 
-        <title>Bema Wegenbouw BV - Staff Login</title>
-
-		<?php if($page == "login") {?>
+        <title>Bema Wegenbouw BV - Personeelszaken</title>
+        
         <!-- Bootstrap Core CSS -->
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<!-- MetisMenu CSS -->
 		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-		<!-- Custom CSS -->
-		<link href="../assets/css/signin.css" rel="stylesheet">
-		<!-- Custom Fonts -->
+        <!-- Custom CSS -->
+		<link href="../assets/css/sb-admin-2.css" rel="stylesheet">
+        <!-- Custom Fonts -->
 		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- jQuery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <!-- Noty -->
+        <script type="text/javascript" src="../assets/js/noty/themes/relax.js"></script>
+        <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+        
+		<?php if($page == "login") {?>
+		<link href="../assets/css/signin.css" rel="stylesheet">
 		<?php } ?>
 
-		<?php if($page == "dashboard") {?>
-        <!-- Custom styles for this template -->
-        <!-- Bootstrap Core CSS -->
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<!-- MetisMenu CSS -->
-		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-		<!-- Custom CSS -->
-		<link href="../assets/css/sb-admin-2.css" rel="stylesheet">
+		<?php if($page == "staff-dashboard") { ?>
 		<!-- Morris Charts CSS -->
 		<link href="vendor/morrisjs/morris.css" rel="stylesheet">
-		<!-- Custom Fonts -->
-		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <?php } ?>
        
-		<?php if($page == "tables") {?>
-		<!-- Bootstrap Core CSS -->
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<!-- MetisMenu CSS -->
-		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-		<!-- Custom CSS -->
-		<link href="../assets/css/sb-admin-2.css" rel="stylesheet">
-		<!-- Custom Fonts -->
-		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- DataTables CSS -->
+		<?php if($page == "staff-tables") { ?>
+		<!-- DataTables CSS -->
 		<link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 		<!-- DataTables Responsive CSS -->
 		<link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 		<?php } ?>
-		
-		<?php if($page == "blank") {?>
-        <!-- Bootstrap Core CSS -->
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<!-- MetisMenu CSS -->
-		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-		<!-- Custom CSS -->
-		<link href="../assets/css/sb-admin-2.css" rel="stylesheet">
-		<!-- Custom Fonts -->
-		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <?php } ?>
+        
     </head>
 
     <body>
     
+        
 <?php
         
         //Error display
@@ -320,58 +301,19 @@
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="declaration.php"><i class="fa fa-edit fa-fw"></i> Urendeclaratie</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Administratie<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.php">Flot Charts</a>
+                                    <a href="addstaff.php">Personeel Toevoegen</a>
                                 </li>
                                 <li>
-                                    <a href="morris.php">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.php"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.php">Panels and Wells</a>
+                                    <a href="liststaff.php">Personeelslijst</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.php">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.php">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.php">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.php"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.php">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
+                                    <a href="#">Meer <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
                                             <a href="#">Third Level Item</a>
@@ -386,22 +328,11 @@
                                             <a href="#">Third Level Item</a>
                                         </li>
                                     </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.php">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.php">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
                         </li>
                     </ul>
                 </div>

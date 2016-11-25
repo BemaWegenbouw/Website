@@ -50,8 +50,6 @@ class user {
         
         echo('<link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">'); //Maak de CSS voor de tabel actief
         
-        echo "<table border='1'>"; //Begin met de tabel tag
-        
         $i = 0;
         
         while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
