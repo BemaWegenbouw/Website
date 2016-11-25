@@ -17,11 +17,11 @@ class security {
         
     }
     
-    public function hashPassword($pass) {
+    public function Hash($pass) {
         //Hasht/beveiligd het wachtwoord
         
         $options = [
-        'cost' => 11,
+        'cost' => 15,
         ];
         return password_hash($pass, PASSWORD_DEFAULT, $options);
         

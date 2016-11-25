@@ -47,41 +47,53 @@ class user {
         $sth = $pdo->prepare("SELECT * FROM staff"); //Maak de query klaar
         $sth->bindParam(':username', $user, PDO::PARAM_STR); //Vervang :username naar $user variabele
         $sth->execute(); //Voer de query uit
-        echo "<table border='1'>";
+        
+        echo('<link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">'); //Maak de CSS voor de tabel actief
+        
+        echo "<table border='1'>"; //Begin met de tabel tag
         
         $i = 0;
         
-        echo('<link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">');
-        
-        while($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+        while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
             
             if ($i == 0) {
             $i++;
-            echo "<tr>";
+            echo "<tr>"; //Vertel in HTML dat je tabelkopjes begint
                 
-                foreach ($row as $key => $value) {
-                echo "<th>" . $key . "</th>";
-                }
+                foreach ($row as $key => $value) { //Begin kopjesverwerking
+                    
+                    if($key != 'password') { //Indien het geen wachtwoord betreft
+                        echo "<th>" . $key . "</th>"; //Geef het kopje weer
+                    } //Einde weergave
+                    
+                } //Einde verwerking kopjes
         
-            echo "<th>Bewerken</th></tr>";
-            }
-        
-        echo "<tr>";
-        
-        foreach ($row as $key => $value) {
-            echo "<td>" . $value . "</td>";
-            if ($key == 'uid') {
-            $uid = $value;
-            }
-        }
-        echo "<td><a href='editstaff.php?uid=$uid'>Klik</a></td>";
-        echo "</tr>";
+            echo "<th>Bewerken</th></tr>"; //Maak bewerkkop aan en sluit de kopjes
             
-        }
+            } //Einde kopjesprojectie
         
-        echo "</table>";
+        echo "<tr>"; //Print de openingstag voor tabelinhoud
         
-    }
+        foreach ($row as $key => $value) { //Begin inhoudverwerking
+            
+                if($key != 'password') { //Indien het geen wachtwoord betreft
+                    echo "<td>" . $value . "</td>"; //Print de inhoud
+                } //Einde check
+            
+                if ($key == 'uid') { //Indien het een gebruiker ID betreft
+                    $uid = $value; //Houd deze vast
+                } //Einde check gebruiker ID
+        
+        } //Einde inhoudverwerking
+        
+        echo "<td><a href='editstaff.php?uid=$uid'>Klik</a></td>"; //Plak overal bewerkknop achter
+        echo "</tr>"; //Einde tabel
+            
+        } //Einde PDO tabelverwerking
+        
+        echo "</table>"; //Einde van de tabel
+        
+    } //Einde van de Staff Lijst functie.
     
     public function getID($user) {
         global $pdo; //Zoek naar $pdo buiten deze functie

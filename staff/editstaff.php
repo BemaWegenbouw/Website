@@ -30,24 +30,65 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
         
             //Indien gepost, check post
             
-            //if(isset($_POST["username"]) && isset($_POST["password"])) {
+            if(isset($_POST["rank"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["address"]) && isset($_POST["postalcode"]) && isset($_POST["email"])) {
             
             //Stel post variabelen in
-            $post_username = $_POST["username"];
-            $post_password = $_POST["password"];
             $post_rank = $_POST["rank"];
-            
-                //Gebruikersnaam edit check
-                if($post_username != $username) {
-                    $user->Set("$userid", "username", "$post_username");
+            $post_firstname = $_POST["firstname"];;
+            $post_lastname = $_POST["lastname"];
+            $post_address = $_POST["address"];
+            $post_postalcode = $_POST["postalcode"];
+            $post_email = $_POST["email"];
+                
+                //Wachtwoord check
+                if(isset($_POST["password"]) && !empty($_POST["password"])) {
+                    
+                    $post_password = $_POST["password"]; //Stel wachtwoord post variabele in
+                    
+                    $password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
+                    
+                    $passverify = $security->checkPassword($username, $post_password); //Check of het ingevoerde wachtwoord hetzelfde is
+                    
+                        if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
+                            $hashedpassword = $security->Hash($post_password); //Hash het wachtwoord
+                            $user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
+                        }
                 }
                 
                 //Rang edit check
-                if($post_username != $username) {
+                if($post_rank != $rank) {
                     $user->Set("$userid", "rank_id", "$post_rank");
+                    $rank = $post_rank;
                 }
+                
+                if($post_firstname != $first_name) {
+                    $user->Set("$userid", "first_name", "$post_firstname");
+                    $first_name = $post_firstname;
+                }
+                
+                if($post_lastname != $last_name) {
+                    $user->Set("$userid", "last_name", "$post_lastname");
+                    $last_name = $post_lastname;
+                }
+                
+                if($post_address != $address) {
+                    $user->Set("$userid", "address", "$post_address");
+                    $address = $post_address;
+                }
+                
+                if($post_postalcode != $postal_code) {
+                    $user->Set("$userid", "postal_code", "$post_postalcode");
+                    $postal_code = $post_postalcode;
+                }
+                
+                if($post_email != $email) {
+                    $user->Set("$userid", "email", "$post_email");
+                    $email = $post_email;
+                }
+                
+            $_SESSION["successmsg"] = "Uw wijzigingen zijn succesvol doorgevoerd.";
             
-            //}
+            }
         
         }
         
@@ -65,54 +106,63 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
     
 }
 
-?>
 
+if(isset($_SESSION["successmsg"])) {
+    $successmsg = $_SESSION["successmsg"];
+    print("<script src='../assets/js/noty/jquery.noty.js'></script><script type='text/javascript'>noty({text: '$successmsg', type: 'success', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+    unset($_SESSION["successmsg"]);
+}
+
+?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="position: relative;">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Personeel Wijzigen</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     
-            <div class="container">
-            <form class="form-signin" action="" method="POST">
+           <form class="form" action="" method="POST" style="width: 300px;">
+                
+                <div class="form-group">
+                
+                <label for="inputUsername">Gebruikersnaam</label><br />
+                <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" value="<?php echo($username); ?>" disabled autofocus name="username"><br />
+                
+                <label for="inputPassword">Wachtwoord (invullen = aanpassen)</label><br />
+                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Alleen invullen als je dit aan wilt passen!" value="" name="password"><br />
+                
+                </div>
+                
                 <p>
                 
-                <label for="inputUsername">Gebruikersnaam</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" value="<?php echo($username); ?>" disabled autofocus name="username">
+                <label for="inputFirstname">Voornaam</label><br />
+                <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" value="<?php echo($first_name); ?>" required name="firstname"><br />
                 
-                <label for="inputPassword">Wachtwoord (invullen indien je dit aan wilt passen)</label>
-                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Alleen invullen als je dit aan wilt passen!" value="" name="password">
+                <label for="inputLastname">Achernaam</label><br />
+                <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" value="<?php echo($last_name); ?>" required name="lastname"><br />
                 
-                </p>
+                <label for="inputAddress">Adres</label><br />
+                <input type="text" id="inputAddress" class="form-control" placeholder="Adres" value="<?php echo($address); ?>" required name="address"><br />
                 
-                <p>
-                
-                <label for="inputFirstname">Voornaam</label>
-                <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" value="<?php echo($first_name); ?>" required autofocus name="firstname">
-                
-                <label for="inputLastname">Achernaam</label>
-                <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" value="<?php echo($last_name); ?>" required autofocus name="lastname">
-                
-                <label for="inputAddress">Adres</label>
-                <input type="text" id="inputAddress" class="form-control" placeholder="Adres" value="<?php echo($address); ?>" required autofocus name="address">
-                
-                <label for="inputLastname">Postcode</label>
-                <input type="text" id="inputPostalcode" class="form-control" placeholder="Postcode" value="<?php echo($postal_code); ?>" required autofocus name="postalcode">
+                <label for="inputLastname">Postcode</label><br />
+                <input type="text" id="inputPostalcode" class="form-control" placeholder="Postcode" value="<?php echo($postal_code); ?>" required name="postalcode"><br />
                     
-                <label for="inputEmail">Email adres</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email" value="<?php echo($email); ?>" required autofocus name="email">
+                <label for="inputEmail">Email adres</label><br />
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email" value="<?php echo($email); ?>" required name="email"><br />
                 
-                <label for="inputRank">Rang</label>
-                <input type="text" id="inputRank" class="form-control" placeholder="Email" value="<?php echo($rank); ?>" required autofocus name="rank">
+                <label for="inputRank">Rang</label><br />
+                <input type="text" id="inputRank" class="form-control" placeholder="Email" value="<?php echo($rank); ?>" required name="rank"><br />
                 
                 </p>
                 
-                <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button>
+                <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
             </form>
+                    
+            <?php $user->staffList(); ?>
+            
                     
                 </div>
                 <!-- /.row -->
@@ -121,7 +171,6 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
     <!-- /#wrapper -->
 
 
