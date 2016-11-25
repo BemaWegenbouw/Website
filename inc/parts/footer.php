@@ -10,7 +10,6 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.js"></script>
 
-
 <?php //Google Maps script ?>
 
 <script>

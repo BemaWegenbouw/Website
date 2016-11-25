@@ -19,6 +19,48 @@ class user {
         }
     }
     
+    public function List() {
+        
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM staff"); //Maak de query klaar
+        $sth->bindParam(':username', $user, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        echo "<table border='1'>";
+        
+        $i = 0;
+        
+        echo('<link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">');
+        
+        while($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+            
+            if ($i == 0) {
+            $i++;
+            echo "<tr>";
+                
+                foreach ($row as $key => $value) {
+                echo "<th>" . $key . "</th>";
+                }
+        
+            echo "<th>Bewerken</th></tr>";
+            }
+        
+        echo "<tr>";
+        
+        foreach ($row as $key => $value) {
+            echo "<td>" . $value . "</td>";
+            if ($key == 'uid') {
+            $uid = $value;
+            }
+        }
+        echo "<td><a href='editstaff.php?uid=$uid'>Klik</a></td>";
+        echo "</tr>";
+            
+        }
+        
+        echo "</table>";
+        
+    }
+    
     public function getID($user) {
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT uid FROM staff WHERE username = :username"); //Maak de query klaar
