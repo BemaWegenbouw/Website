@@ -15,15 +15,33 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
 
 ?>
 
-        <div class="container">
-            <form class="form-signin" action="login-process.php" method="POST">
-                <h2 class="form-signin-heading">Personeel Toevoegen</h2>
-                <label for="inputEmail" class="sr-only">Gebruikersnaam</label>
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Personeel Toevoegen</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                    
+            <div class="container">
+            <form class="form-signin" action="" method="POST">
+                <label for="inputEmail" class="sr-only">Email adres</label>
                 <input type="text" id="inputEmail" class="form-control" placeholder="Gebruikersnaam" required autofocus name="username">
                 <label for="inputPassword" class="sr-only">wachtwoord</label>
                 <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" required name="password">
-                <input type="hidden" name="token" value="<?php echo $token; ?>" />
-                <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Inloggen</button>
+                <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button>
             </form>
-
+                    
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<?php include("../inc/parts/staff-footer.php"); ?>

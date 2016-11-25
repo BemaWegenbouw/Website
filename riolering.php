@@ -2,8 +2,8 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-require_once("inc/engine.php");
 $page = "riolering";
+require_once("inc/engine.php");
 include("inc/parts/header.php");
 ?>
 <div class="container"id="Riolering">

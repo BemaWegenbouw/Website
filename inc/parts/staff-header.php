@@ -12,12 +12,7 @@
 
         <!-- Bootstrap core CSS -->
         <link href="../assets/css/bootstrap.css" rel="stylesheet">
-        
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-        <script type="text/javascript" src="../assets/js/noty/themes/noty-theme.js"></script>
-        <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
         
         <!-- MetisMenu CSS -->
         <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -28,6 +23,18 @@
         <!-- Morris Charts CSS -->
         <link href="vendor/morrisjs/morris.css" rel="stylesheet">
 
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../assets/js/sb-admin-2.js"></script>
+        
         <!-- Custom Fonts -->
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         
@@ -35,34 +42,25 @@
         <!-- Custom styles for this template -->
         <link href="../assets/css/signin.css" rel="stylesheet">
         <?php } ?>
-        
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-        
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="../assets/js/ie-emulation-modes-warning.js"></script>
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
 
     <body>
     
 <?php
-if(isset($_SESSION["login-error"])) {
-    $loginerror = $_SESSION["login-error"];
-    print("<script type='text/javascript'>noty({text: '$loginerror', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-    unset($_SESSION["login-error"]);
-}
+        
+        //Error display
+        if(isset($_SESSION["login-error"])) {
+        $loginerror = $_SESSION["login-error"];
+        print("<script type='text/javascript'>noty({text: '$loginerror', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        unset($_SESSION["login-error"]);
+        } //Einde error display
+        
 ?>
         
-    <?php if(isset($_SESSION["uid"]) && !empty($_SESSION["uid"])) { ?>
+    <?php if($user->LoggedIn() && $page != "login") { ?>
     
-            <div id="wrapper">
-
+           
+ <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -272,12 +270,12 @@ if(isset($_SESSION["login-error"])) {
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Gebruikersprofiel</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Loguit</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -291,7 +289,7 @@ if(isset($_SESSION["login-error"])) {
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Zoeken...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -301,46 +299,46 @@ if(isset($_SESSION["login-error"])) {
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="flot.php">Flot Charts</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="morris.php">Morris.js Charts</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a href="forms.php"><i class="fa fa-edit fa-fw"></i> Forms</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="panels-wells.php">Panels and Wells</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Buttons</a>
+                                    <a href="buttons.php">Buttons</a>
                                 </li>
                                 <li>
-                                    <a href="notifications.html">Notifications</a>
+                                    <a href="notifications.php">Notifications</a>
                                 </li>
                                 <li>
-                                    <a href="typography.html">Typography</a>
+                                    <a href="typography.php">Typography</a>
                                 </li>
                                 <li>
-                                    <a href="icons.html"> Icons</a>
+                                    <a href="icons.php"> Icons</a>
                                 </li>
                                 <li>
-                                    <a href="grid.html">Grid</a>
+                                    <a href="grid.php">Grid</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -379,10 +377,10 @@ if(isset($_SESSION["login-error"])) {
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Blank Page</a>
+                                    <a href="blank.php">Blank Page</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">Login Page</a>
+                                    <a href="login.php">Login Page</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -393,5 +391,8 @@ if(isset($_SESSION["login-error"])) {
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+</div>
+
+
         
     <?php } ?>
