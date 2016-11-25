@@ -10,37 +10,55 @@
 
         <title>Bema Wegenbouw BV - Staff Login</title>
 
-        <!-- Bootstrap core CSS -->
-        <link href="../assets/css/bootstrap.css" rel="stylesheet">
-        <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-        
-        <!-- MetisMenu CSS -->
-        <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+		<?php if($page == "login") {?>
+        <!-- Bootstrap Core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- MetisMenu CSS -->
+		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="../assets/css/signin.css" rel="stylesheet">
+		<!-- Custom Fonts -->
+		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<?php } ?>
 
-        <!-- Custom CSS -->
-        <link href="../assets/css/sb-admin-2.css" rel="stylesheet">
-
-        <!-- Morris Charts CSS -->
-        <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-
-        <!-- jQuery -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="vendor/metisMenu/metisMenu.min.js"></script>
-
-        <!-- Custom Theme JavaScript -->
-        <script src="../assets/js/sb-admin-2.js"></script>
-        
-        <!-- Custom Fonts -->
-        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        
-        <?php if($page == "login") {?>
+		<?php if($page == "dashboard") {?>
         <!-- Custom styles for this template -->
-        <link href="../assets/css/signin.css" rel="stylesheet">
+        <!-- Bootstrap Core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- MetisMenu CSS -->
+		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="../assets/css/sb-admin-2.css" rel="stylesheet">
+		<!-- Morris Charts CSS -->
+		<link href="vendor/morrisjs/morris.css" rel="stylesheet">
+		<!-- Custom Fonts -->
+		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <?php } ?>
+       
+		<?php if($page == "tables") {?>
+		<!-- Bootstrap Core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- MetisMenu CSS -->
+		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="../assets/css/sb-admin-2.css" rel="stylesheet">
+		<!-- Custom Fonts -->
+		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- DataTables CSS -->
+		<link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+		<!-- DataTables Responsive CSS -->
+		<link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+		<?php } ?>
+		
+		<?php if($page == "blank") {?>
+        <!-- Bootstrap Core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- MetisMenu CSS -->
+		<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="../assets/css/sb-admin-2.css" rel="stylesheet">
+		<!-- Custom Fonts -->
+		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <?php } ?>
     </head>
 
@@ -70,7 +88,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php">Bema Personeelszaken</a>
+                <a class="navbar-brand" href="staff-dashboard.php">Bema Personeelszaken</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -391,7 +409,7 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-</div>
+
 
 
         
