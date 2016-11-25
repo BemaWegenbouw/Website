@@ -16,7 +16,7 @@ include("../inc/parts/staff-header.php");
         <p><br /><br />
             
             <link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">
-            <?php $user->List(); ?>
+            <?php $user->staffList(); $user->Set('1', 'username', 'tuser'); ?>
             
             <!--<strong><h4><a href="logout.php">Loguit</a></h4></strong>-->
         </p>

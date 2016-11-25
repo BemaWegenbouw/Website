@@ -19,7 +19,29 @@ class user {
         }
     }
     
-    public function List() {
+    public function Get($userid, $value) {
+        
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM staff WHERE uid = :uid"); //Maak de query klaar
+        $sth->bindParam(':uid', $userid, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result[$value]; //Geef resultaat terug
+        
+    }
+    
+    public function Set($userid, $what, $value) {
+        
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("UPDATE staff SET $what = :value WHERE uid = :uid"); //Maak de query klaar
+        $sth->bindParam(':value', $value, PDO::PARAM_STR);
+        $sth->bindParam(':uid', $userid, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        return(true);
+        
+    }
+    
+    public function staffList() {
         
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT * FROM staff"); //Maak de query klaar
@@ -84,6 +106,26 @@ class user {
         
         $sth = $pdo->prepare("SELECT uid FROM staff WHERE username = :username"); //Maak query op
         $sth->bindParam(':username', $user, PDO::PARAM_STR); //Vervang variabele
+        $sth->execute(); //Uitvoeren
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla resultaat op in variabele
+        
+        if(isset($result) && !empty($result)) { //Check of er resultaat is
+            //Gebruiker bestaat
+            return true; //Retourneer "goed"
+        } else {
+            //Gebruiker bestaat NIET
+            return false; //Retourneer "fout"
+        }
+        
+    }
+    
+    public function checkID($uid) {
+     
+        global $pdo; //Zoek buiten de scope van de functie en class
+        
+        
+        $sth = $pdo->prepare("SELECT username FROM staff WHERE uid = :uid"); //Maak query op
+        $sth->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang variabele
         $sth->execute(); //Uitvoeren
         $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla resultaat op in variabele
         

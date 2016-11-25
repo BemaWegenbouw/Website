@@ -20,7 +20,7 @@ include("../inc/parts/staff-header.php");
                     
             <div class="container">
                 
-            <?php $user->List(); ?>
+            <?php $user->staffList(); ?>
                     
                 </div>
                 <!-- /.row -->
