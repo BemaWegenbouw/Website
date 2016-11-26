@@ -303,6 +303,16 @@
                         <li>
                             <a href="declaration.php"><i class="fa fa-edit fa-fw"></i> Urendeclaratie</a>
                         </li>
+						
+						<!--start tables / blank template kopieer deze om een nieuwe pagina te maken
+						als je tabellen wilt hebben of zo.-->
+						 <li>
+                            <a href="tables.php"><i class="fa fa-edit fa-fw"></i> Tables (template)</a>
+                        </li>
+						 <li>
+                            <a href="blank.php"><i class="fa fa-edit fa-fw"></i> Blank (template)</a>
+                        </li>
+						<!--einde tables / blank template-->
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> Administratie<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
