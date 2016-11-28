@@ -3,7 +3,7 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-$page = "staff-blank";
+$page = "staff-declaration";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
@@ -13,7 +13,7 @@ include("../inc/parts/staff-header.php");
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                        <h1 class="page-header">Urendeclaratie</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
