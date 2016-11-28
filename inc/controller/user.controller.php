@@ -45,7 +45,6 @@ class user {
         
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT * FROM staff"); //Maak de query klaar
-        $sth->bindParam(':username', $user, PDO::PARAM_STR); //Vervang :username naar $user variabele
         $sth->execute(); //Voer de query uit
         
         echo('<link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">'); //Maak de CSS voor de tabel actief
