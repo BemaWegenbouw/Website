@@ -2,8 +2,8 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-require_once("inc/engine.php");
 $page = "grondwerk";
+require_once("inc/engine.php");
 include("inc/parts/header.php");
 ?>
 
