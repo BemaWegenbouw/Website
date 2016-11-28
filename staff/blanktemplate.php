@@ -3,26 +3,19 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-$page = "staff-list";
+$page = "staff-blank";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
 ?>
-
         <!-- Page Content -->
-        <div id="page-wrapper col-sm-12">
+        <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Personeelslijst</h1>
+                        <h1 class="page-header">Blank</h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    
-            <div class="container">
-                
-                <table border='1'>
-            <?php $user->staffList(); ?>
-                    
                 </div>
                 <!-- /.row -->
             </div>
@@ -33,5 +26,8 @@ include("../inc/parts/staff-header.php");
     </div>
     <!-- /#wrapper -->
 
+<?php
 
-<?php include("../inc/parts/staff-footer.php"); ?>
+include("../inc/parts/staff-footer.php");
+
+?>
