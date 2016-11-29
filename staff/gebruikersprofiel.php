@@ -19,14 +19,15 @@ include("../inc/parts/staff-header.php");
         $email = $user->Get($userid, 'email');
         $function = $user->Get($userid, 'function');
 
+		$geslaagdbericht = false;
+		
 		if(isset($_POST) && !empty($_POST)) {
         
             //Indien gepost, check post
             
-            if(isset($_POST["rank"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["address"]) && isset($_POST["postalcode"]) && isset($_POST["email"])) {
+            if(isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["address"]) && isset($_POST["postalcode"]) && isset($_POST["email"])) {
             
             //Stel post variabelen in
-            $post_rank = $_POST["rank"];
             $post_firstname = $_POST["firstname"];;
             $post_lastname = $_POST["lastname"];
             $post_address = $_POST["address"];
@@ -49,11 +50,6 @@ include("../inc/parts/staff-header.php");
                 }
                 
                 //Rang edit check
-                if($post_rank != $rank) {
-                    $user->Set("$userid", "rank_id", "$post_rank");
-                    $rank = $post_rank;
-                }
-                
                 if($post_firstname != $first_name) {
                     $user->Set("$userid", "first_name", "$post_firstname");
                     $first_name = $user->Get($userid, 'first_name');
@@ -79,7 +75,7 @@ include("../inc/parts/staff-header.php");
                     $email = $post_email;
                 }
                 
-            $_SESSION["successmsg"] = "Uw wijzigingen zijn succesvol doorgevoerd.";
+				$geslaagdbericht = true;
             
             }
         
@@ -96,7 +92,13 @@ include("../inc/parts/staff-header.php");
                     <!-- /.col-lg-12 -->
                     
            <form class="form" action="" method="POST" style="width: 300px;">
-                
+              <?php if($geslaagdbericht) { ?>
+				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
+				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+				<p>De instellinge zijn successvol gewijzigd!</p>				
+				</div>
+			  <?php } ?>
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
