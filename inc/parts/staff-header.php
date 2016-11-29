@@ -123,6 +123,7 @@
                                     <a href="timetable.php"><i class="fa fa-edit fa-fw"></i> Rooster</a>
                                 </li>
                                 <!--einde tables / blank template-->
+								<?php if($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
                                 <li>
                                     <a href="#"><i class="fa fa-user fa-fw"></i> Administratie<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
@@ -154,6 +155,8 @@
                                 <li>
                                     <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
                                 </li>
+							</li>
+							<?php } ?>	
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
