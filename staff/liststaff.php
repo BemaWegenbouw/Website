@@ -5,13 +5,17 @@
 
 $page = "staff-list";
 require_once("../inc/engine.php");
+if($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("edit_staff")) {
+header("Location: dashboard.php");
+die("Unauthorized."); }
+
 include("../inc/parts/staff-header.php");
 
 ?>
 
         <!-- Page Content -->
-        <div id="page-wrapper col-sm-12">
-            <div class="container-fluid">
+        <div id="page-wrapper">
+            <div class="container col-xs-12">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Personeelslijst</h1>
