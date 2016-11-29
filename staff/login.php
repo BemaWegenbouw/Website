@@ -3,8 +3,8 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-require_once("../inc/engine.php");
 $page = "login";
+require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
 if (empty($_SESSION['token'])) {
@@ -16,6 +16,12 @@ if (empty($_SESSION['token'])) {
 }
 $token = $_SESSION['token'];
 
+if(isset($_SESSION["login-error"])) {
+    $loginerror = $_SESSION["login-error"];
+    print("<script type='text/javascript'>noty({text: '$loginerror', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+    unset($_SESSION["login-error"]);
+}
+
 ?>
 
         <div class="container">
@@ -24,30 +30,13 @@ $token = $_SESSION['token'];
                 <label for="inputEmail" class="sr-only">Email adres</label>
                 <input type="text" id="inputEmail" class="form-control" placeholder="Gebruikersnaam" required autofocus name="username">
                 <label for="inputPassword" class="sr-only">wachtwoord</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Wachtwoord" required name="password">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Onthoud mijn gegevens
-                    </label>
-                </div>
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" required name="password">
                 <input type="hidden" name="token" value="<?php echo $token; ?>" />
                 <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Inloggen</button>
             </form>
 
         </div> <!-- /container -->
 
-
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
-	<script src="../assets/js/jquery.min.js"></script>
-    	<script src="../assets/js/bootstrap.js"></script>
-    </body>
-    
-        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-
-</body>
-
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.js"></script>
-
-</html>
+<?php
+include("../inc/parts/staff-footer.php");
+?>

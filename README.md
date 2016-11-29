@@ -22,3 +22,6 @@ Dit website development project wordt mede mogelijk gemaakt door Uplits, Bema We
 
 ### Contact
 Voor aan de website en de ontwikkeling gerelateerde meldingen kunt u een issue aanmaken in dit Git repository of contact opnemen via het contactformulier op de website. Uw aanvragen zullen binnen uiterlijk 48 uur na ontvangst worden behandeld.
+
+### Overig
+...
