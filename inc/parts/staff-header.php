@@ -82,7 +82,7 @@
                             <ul class="dropdown-menu dropdown-alert">
                                 <li><a href="#"><i class="fa fa-user fa-fw"></i> Gebruikersprofiel</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
+                                <li><a href="instellingen.php"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Loguit</a>
