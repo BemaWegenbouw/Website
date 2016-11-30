@@ -122,6 +122,9 @@
                                 <li>
                                     <a href="timetable.php"><i class="fa fa-edit fa-fw"></i> Rooster</a>
                                 </li>
+								<li>
+                                    <a href="passwordchange.php"><i class="fa fa-edit fa-fw"></i> Wijzig wachtwoord</a>
+                                </li>
                                 <!--einde tables / blank template-->
 								<?php if($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
                                 <li>
