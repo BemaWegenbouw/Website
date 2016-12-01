@@ -9,36 +9,33 @@ include("../inc/parts/staff-header.php");
 
 
 		$userid= $_SESSION["uid"];
- 
         $username = $user->Get($userid, 'username');
+		$passwordchange = '';
 		
-        
-			$passwordchange = '';	
+			
+		if(isset($_POST["username"]) && isset($_POST["oldpassword"])
+			&& isset($_POST["newpassword1"]) && isset($_POST["newpassword2"])){
 		
-				   
-              	if(isset($_POST['newpassword1']) == isset($_POST['newpassword2'])) {      
-                    $post_password = $_POST["newpassword1"]; //Stel wachtwoord post variabele in               
-
-					$password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
-					$passverify = $security->checkPassword($username, $post_password); //Check of het ingevoerde wachtwoord hetzelfde is
-                    
-                        if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
-                            $hashedpassword = $security->Hash($post_password); //Hash het wachtwoord
-                            $user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
-							$passwordchange = true;
-                        }	
-					
-				}else {
-					$passwordchange = false;
-						
-						
-                }
+		if(isset($_POST['newpassword1']) == isset($_POST['newpassword2'])) {      
+			$post_password = $_POST["newpassword1"]; //Stel wachtwoord post variabele in               
 				 
-		   
+			$password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
+                    
+			$passverify = $security->checkPassword($username, $post_password); //Check of het ingevoerde wachtwoord hetzelfde is
+			
+				if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
+					$hashedpassword = $security->Hash($post_password); //Hash het wachtwoord
+					$user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
+				}
 		
-        
+			$passwordchange = true;
        
+		}
+	}else{
+		$passwordchange = false;
+	}
 	
+
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -50,7 +47,7 @@ include("../inc/parts/staff-header.php");
                     <!-- /.col-lg-12 -->
                     
            <form class="form" action="" method="POST" style="width: 300px;">
-              <?php if($passwordchange !=false) { ?>
+              <?php if($passwordchange) { ?>
 				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
 				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
 				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
