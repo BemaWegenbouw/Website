@@ -3,7 +3,7 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-$page = "staff-blank";
+$page = "blank";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
@@ -14,6 +14,15 @@ include("../inc/parts/staff-header.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Blank</h1>
+	<?php 
+	
+	$userid = 3;
+	$username = 'joey';
+	$pass = 'Amokin1991';
+	$hashedpassword=$security -> hash($pass);
+    $user->Set("$userid", "password", "$hashedpassword");            
+	
+	?>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
