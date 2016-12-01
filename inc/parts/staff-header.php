@@ -80,7 +80,7 @@
                                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-alert">
-                                <li><a href="#"><i class="fa fa-user fa-fw"></i> Gebruikersprofiel</a>
+                                <li><a href="gebruikersprofiel.php"><i class="fa fa-user fa-fw"></i> Gebruikersprofiel</a>
                                 </li>
                                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
                                 </li>
@@ -121,6 +121,9 @@
                                 </li>
                                 <li>
                                     <a href="timetable.php"><i class="fa fa-edit fa-fw"></i> Rooster</a>
+                                </li>
+								<li>
+                                    <a href="passwordchange.php"><i class="fa fa-edit fa-fw"></i> Wijzig wachtwoord</a>
                                 </li>
                                 <!--einde tables / blank template-->
 								<?php if($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
