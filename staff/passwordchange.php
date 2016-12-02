@@ -11,34 +11,40 @@ include("../inc/parts/staff-header.php");
 		$userid= $_SESSION["uid"];
  
         $username = $user->Get($userid, 'username');
-		
+		$geslaagdbericht = '';
+
+		if(isset($_POST) && !empty($_POST)) {
         
-			$passwordchange = '';	
-		
-				   
-              	if(isset($_POST['newpassword1']) == isset($_POST['newpassword2'])) {      
-                    $post_password = $_POST["newpassword1"]; //Stel wachtwoord post variabele in               
+		$post_checkoldpassword = $_POST["oldpassword"];
+		$oldpassverify = $security->checkPassword($username, $post_checkoldpassword); //Check of het ingevoerde wachtwoord hetzelfde is
+		if($oldpassverify == true) { //Als het ingevoerde wachtwoord hetzelfde is
+        
+			$checknewpassword1 = $_POST["newpassword1"];
+			$checknewpassword2 = $_POST["newpassword2"];    
+			
+			if ($checknewpassword1 == $checknewpassword2){
+				//Stel post variabelen in
+				$post_oldpassword = $_POST["oldpassword"];
+				
+				$post_newpassword = $_POST["newpassword1"];
 
 					$password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
-					$passverify = $security->checkPassword($username, $post_password); //Check of het ingevoerde wachtwoord hetzelfde is
-                    
-                        if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
-                            $hashedpassword = $security->Hash($post_password); //Hash het wachtwoord
-                            $user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
-							$passwordchange = true;
-                        }	
 					
-				}else {
-					$passwordchange = false;
-						
-						
-                }
-				 
-		   
-		
-        
-       
-	
+					$passverify = $security->checkPassword($username, $post_newpassword); //Check of het ingevoerde wachtwoord hetzelfde is
+					
+						if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
+							$hashedpassword = $security->Hash($post_newpassword); //Hash het wachtwoord
+							$user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
+							$geslaagdbericht = 'goed';
+						}
+                }else{
+				$geslaagdbericht = 'fout';	
+				}
+		}else{
+				$geslaagdbericht = 'fout';	
+				}
+		}
+				
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -50,20 +56,21 @@ include("../inc/parts/staff-header.php");
                     <!-- /.col-lg-12 -->
                     
            <form class="form" action="" method="POST" style="width: 300px;">
-              <?php if($passwordchange !=false) { ?>
+              <?php if($geslaagdbericht == 'goed') { ?>
 				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
 				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
 				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
 				<p>Het wachtwoord is successvol gewijzigd!</p>			
 				</div>
 			  <?php } ?>
-			  <?php if($passwordchange == false) { ?>
+			  <?php if($geslaagdbericht == 'fout') { ?>
 				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
 				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
 				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<p>Het wachtwoord is niet gewijzigd!</p>				
+				<p>Het wachtwoord is niet gewijzigd!</p>			
 				</div>
 			  <?php } ?>
+			 
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
