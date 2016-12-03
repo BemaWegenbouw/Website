@@ -33,8 +33,9 @@ if(isset($_SESSION["login-error"])) {
                 <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" required name="password">
                 <input type="hidden" name="token" value="<?php echo $token; ?>" />
                 <button class="btn btn-lg btn-primary btn-block" backgroundcolor="grey" type="submit" name="submit">Inloggen</button>
-            </form>
-
+            <br><h4><a class="button" href="resetpassword.php">Wachtwoord vergeten?</a></h4>
+			</form>
+		
         </div> <!-- /container -->
 
 <?php
