@@ -35,7 +35,10 @@
             <!-- Morris Charts CSS -->
             <link href="calendar/timetable.css" rel="stylesheet">
         <?php } ?> 
-
+		<?php if ($page == "resetpassword") { ?>
+            <!-- Morris Charts CSS -->
+            <link href="../assets/css/signin.css" rel="stylesheet">
+        <?php } ?>
         <?php if ($page == "staff-tables") { ?>
             <!-- DataTables CSS -->
             <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
