@@ -32,7 +32,16 @@
         <script src="vendor/raphael/raphael.min.js"></script>
 		<script src="vendor/morrisjs/morris.min.js"></script>
 		<script src="data/morris-data.js"></script>
-        <?php } ?>
+                <?php } ?>
+                
+                <?php if($page == "staff-calender") {?>
+                 <script src='calender/lib/moment.min.js'></script>
+                <script src='calender/lib/jquery.min.js'></script>
+                <script src='calender/fullcalendar.min.js'></script>
+    
+                <?php } ?>
+                
+                
 
 </body>
 

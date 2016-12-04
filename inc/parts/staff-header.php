@@ -45,6 +45,12 @@
             <!-- DataTables Responsive CSS -->
             <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
         <?php } ?>
+            
+              <?php if ($page == "staff-calender") { ?>
+            <link href='calender/fullcalendar.css' rel='stylesheet' />
+            <link href='calender/fullcalendar.print.css' rel='stylesheet' media='print' />
+        <?php } ?>
+
 
     </head>
 
