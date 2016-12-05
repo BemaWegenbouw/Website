@@ -35,13 +35,22 @@
             <!-- Morris Charts CSS -->
             <link href="calendar/timetable.css" rel="stylesheet">
         <?php } ?> 
-
+		<?php if ($page == "resetpassword") { ?>
+            <!-- Morris Charts CSS -->
+            <link href="../assets/css/signin.css" rel="stylesheet">
+        <?php } ?>
         <?php if ($page == "staff-tables") { ?>
             <!-- DataTables CSS -->
             <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
             <!-- DataTables Responsive CSS -->
             <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
         <?php } ?>
+            
+              <?php if ($page == "staff-calender") { ?>
+            <link href='calender/fullcalendar.css' rel='stylesheet' />
+            <link href='calender/fullcalendar.print.css' rel='stylesheet' media='print' />
+        <?php } ?>
+
 
     </head>
 
