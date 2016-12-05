@@ -17,6 +17,10 @@
         <link href="../assets/css/sb-admin-2.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!--        css scripts for clock-->
+        <link rel="stylesheet" type="text/css" href="../../assets/clockpicker-gh-pages/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+        <link rel="stylesheet" type="text/css" href="../../assets/clockpicker-gh-pages/assets/css/github.min.css">
         <!-- jQuery -->
         <script type="text/javascript" src="vendor/jquery/"></script>
         <!-- Noty -->
