@@ -23,7 +23,7 @@ include("../inc/parts/staff-header.php");
                         <div class="col-sm-6 form-group">
                             begintijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="start_time"class="form-control" value="00:00" required>
+                                <input type="text" name="start_time"class="form-control" value="00:00" required disabled autofocus>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -32,14 +32,14 @@ include("../inc/parts/staff-header.php");
                         <div class="col-sm-6 form-group">
                             eindtijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="end_time"class="form-control" value="00:00" required>
+                                <input type="text" name="end_time"class="form-control" value="00:00" required disabled autofocus>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-12 form-group">
-                            pauze (in minuten):<input class="form-control" id="break" name="break" placeholder="(in minuten)" type="number" min="0" value="0" required>
+                            pauze (in minuten):<input class="form-control" id="break" name="break" placeholder="(in minuten)" type="number" min="0" max="150" value="0" required>
                         </div>
                         <div class="col-sm-12 form-group">
                             <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit">verzenden</button>
