@@ -17,10 +17,6 @@ include("../inc/parts/staff-header.php");
                 <h1 class="page-header">Urendeclaratie</h1>
                 <div class="col-sm-4">
                     <form method="get" action="declaration.php">
-                        <!--
-                        datum: <input type="text" name="date" placeholder="dd-mm-jjjj" required><br>
-                        pattern="[0-9.-]{3}+-[0-9.-]{3}+-[0-9]{4}"
-                        -->
                         <div class="col-sm-12 form-group">
                             datum:<input class="form-control" id="date" name="date" placeholder="dd-mm-jjjj" type="text" pattern="[0-9.-]{3}+[0-9.-]{3}+[0-9]{4}" required>
                         </div>
@@ -48,13 +44,6 @@ include("../inc/parts/staff-header.php");
                         <div class="col-sm-12 form-group">
                             <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit">verzenden</button>
                         </div>
-                        <!--
-                                                begintijd: <input type="text" name="start_date" placeholder="00:00" required>
-                                                eindtijd: <input type="text" name="end_date" placeholder="00:00" required><br>
-                                                <input type="checkbox" name="break" value="false"> ik heb geen pauze gehad.<br>
-                                                pauze: <input type="text" name ="break_time" placeholder="in minuten"><br>
-                                                <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit">verzenden</button>-->
-
                     </form>
                 </div>
             </div>
