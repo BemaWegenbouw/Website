@@ -20,6 +20,16 @@
                 <div align="center"><?php $calendar->GetAvailability($uid); ?></div>
                 <!--                vraagt de huidige beschikbaarheid op-->
                 <br />
+                <div align="center"> <form method="post" action="calendar-process.php">
+
+
+
+                        Begintijd <input type="text"     name="start_time"        value="08:00">
+                        Eindtijd <input type="text"      name="end_time"  value="09:00">
+                        date <input type="date" name="workingdate"  >
+                        <input type="submit"             name="knopcalendar"        value="verstuur">  </form> </div>
+                <!--                        dit is het invoerformulier voor nieuwe uren-->
+                <br />
             </div>
         </div>
     </div>
