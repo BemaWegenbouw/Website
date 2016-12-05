@@ -14,6 +14,8 @@ require_once("controller/content.controller.php"); //Importeer inhoud controller
 require_once("controller/lang.controller.php"); //Importeer lang controller
 require_once("controller/security.controller.php"); //Importeer security controller
 require_once("controller/permission.controller.php"); //Importeer permission controller
+require_once("controller/restore.controller.php"); //Importeer restore controller
+require_once("controller/calendar.controller.php"); //Importeer permission controller
 //Login check. Later verplaatsen naar los bestand!
 if (strpos($page, 'staff') !== false) { //Check of paginanaam 'staff' bevat.
     
