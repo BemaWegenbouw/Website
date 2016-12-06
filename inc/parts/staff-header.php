@@ -31,11 +31,7 @@
             <!-- Morris Charts CSS -->
             <link href="vendor/morrisjs/morris.css" rel="stylesheet">
         <?php } ?>
-        <?php if ($page == "staff-calendar") { ?>
-            <!-- Morris Charts CSS -->
-            <link href="calendar/timetable.css" rel="stylesheet">
-        <?php } ?> 
-		<?php if ($page == "resetpassword") { ?>
+        <?php if ($page == "resetpassword") { ?>
             <!-- Morris Charts CSS -->
             <link href="../assets/css/signin.css" rel="stylesheet">
         <?php } ?>
@@ -45,6 +41,10 @@
             <!-- DataTables Responsive CSS -->
             <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
         <?php } ?>
+
+
+
+
 
     </head>
 
@@ -125,44 +125,44 @@
                                 <li>
                                     <a href="timetable.php"><i class="fa fa-edit fa-fw"></i> Rooster</a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="passwordchange.php"><i class="fa fa-edit fa-fw"></i> Wijzig wachtwoord</a>
                                 </li>
                                 <!--einde tables / blank template-->
-								<?php if($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
-                                <li>
-                                    <a href="#"><i class="fa fa-user fa-fw"></i> Administratie<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="addstaff.php">Personeel Toevoegen</a>
-                                        </li>
-                                        <li>
-                                            <a href="liststaff.php">Personeelslijst</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Meer <span class="fa arrow"></span></a>
-                                            <ul class="nav nav-third-level">
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                            </ul>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                                <li>
-                                    <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
-                                </li>
-							</li>
-							<?php } ?>	
+                                <?php if ($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
+                                    <li>
+                                        <a href="#"><i class="fa fa-user fa-fw"></i> Administratie<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="addstaff.php">Personeel Toevoegen</a>
+                                            </li>
+                                            <li>
+                                                <a href="liststaff.php">Personeelslijst</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Meer <span class="fa arrow"></span></a>
+                                                <ul class="nav nav-third-level">
+                                                    <li>
+                                                        <a href="#">Third Level Item</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Third Level Item</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Third Level Item</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Third Level Item</a>
+                                                    </li>
+                                                </ul>
+                                        </ul>
+                                        <!-- /.nav-second-level -->
+                                    </li>
+                                    <li>
+                                        <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
+                                    </li>
+                                    </li>
+                                <?php } ?>	
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
