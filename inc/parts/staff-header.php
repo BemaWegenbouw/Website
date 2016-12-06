@@ -41,6 +41,11 @@
             <!-- DataTables Responsive CSS -->
             <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
         <?php } ?>
+		<?php if ($page == "staff-declaration") { ?>
+
+			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+        <?php } ?>
 
 
 
