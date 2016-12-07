@@ -20,7 +20,7 @@ include("../inc/parts/staff-header.php");
                         <div class="col-sm-12 form-group">
                             datum:
                             <div class="input-group date datepicker" data-provide="datepicker">
-                                <input type="text" name="date "class="form-control" placeholder="DD/MM/YYYY">
+                                <input type="text" name="date "class="form-control" placeholder="DD/MM/YYYY" required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
