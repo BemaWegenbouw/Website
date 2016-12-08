@@ -18,7 +18,7 @@
         <!-- Custom Fonts -->
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- jQuery -->
-        <script type="text/javascript" src="vendor/jquery/"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
         <!-- Noty -->
         <script type="text/javascript" src="../assets/js/noty/themes/relax.js"></script>
         <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
