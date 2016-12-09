@@ -3,7 +3,7 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-$page = "staff-blank";
+$page = "staff-passwordchange";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
@@ -77,13 +77,13 @@ include("../inc/parts/staff-header.php");
                 <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" value="<?php echo($username); ?>" disabled autofocus name="username"><br />
                 
                 <label for="inputPassword">Oude wachtwoord</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Oude wachtwoord" value="" name="oldpassword"><br />
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Oude wachtwoord" value="" name="oldpassword"><br />
                 
 				<label for="inputPassword">Nieuwe wachtwoord</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Nieuwe wachtwoord" value="" name="newpassword1"><br />
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Nieuwe wachtwoord" value="" name="newpassword1"><br />
                 
 				<label for="inputPassword">Nieuwe wachtwoord (check)</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Herhaal wachtwoord" value="" name="newpassword2"><br />
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Herhaal wachtwoord" value="" name="newpassword2"><br />
                 
                 </div>
 				

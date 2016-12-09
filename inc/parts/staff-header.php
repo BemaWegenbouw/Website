@@ -30,6 +30,8 @@
         <?php if ($page == "staff-dashboard") { ?>
             <!-- Morris Charts CSS -->
             <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
         <?php } ?>
         <?php if ($page == "resetpassword") { ?>
             <!-- Morris Charts CSS -->
@@ -171,7 +173,8 @@
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
-                    </div>
+						
+					</div>
                     <!-- /.navbar-static-side -->
                 </nav>
 
