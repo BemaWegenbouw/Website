@@ -8,7 +8,6 @@ include("../inc/parts/staff-header.php");
 $uid = $_SESSION["uid"];
 ?>
 
-<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 <?php
 if (isset($_POST) && !empty($_POST)) {
 
@@ -41,7 +40,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="col-sm-12 form-group">
                             datum:
                             <div class="input-group date datepicker" data-provide="datepicker">
-                                <input type="date" name="date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <input type="date" name="date"class="form-control" placeholder="yyyy/mm/dd" required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
@@ -88,18 +87,3 @@ if (isset($_POST) && !empty($_POST)) {
 <?php
 include("../inc/parts/staff-footer.php");
 ?>
-
-<script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-<script>
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-//        startDate: '-3d',
-        todayBtn: "linked",
-        language: "nl",
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true,
-        toggleActive: true
-    });
-</script>
