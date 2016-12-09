@@ -18,7 +18,7 @@
         <!-- Custom Fonts -->
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- jQuery -->
-        <script type="text/javascript" src="vendor/jquery/"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
         <!-- Noty -->
         <script type="text/javascript" src="../assets/js/noty/themes/relax.js"></script>
         <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
@@ -30,6 +30,8 @@
         <?php if ($page == "staff-dashboard") { ?>
             <!-- Morris Charts CSS -->
             <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
         <?php } ?>
         <?php if ($page == "resetpassword") { ?>
             <!-- Morris Charts CSS -->
@@ -171,7 +173,8 @@
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
-                    </div>
+						
+					</div>
                     <!-- /.navbar-static-side -->
                 </nav>
 
