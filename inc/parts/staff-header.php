@@ -29,9 +29,14 @@
 
         <?php if ($page == "staff-dashboard") { ?>
             <!-- Morris Charts CSS -->
-            <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
-			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+            <link type="text/css" href="vendor/morrisjs/morris.css" rel="stylesheet">
+			<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+			<!-- DataTables CSS -->
+            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
+            <!-- DataTables Responsive CSS -->
+            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
         <?php } ?>
         <?php if ($page == "resetpassword") { ?>
             <!-- Morris Charts CSS -->
@@ -39,14 +44,14 @@
         <?php } ?>
         <?php if ($page == "staff-tables") { ?>
             <!-- DataTables CSS -->
-            <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
             <!-- DataTables Responsive CSS -->
-            <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
         <?php } ?>
 		<?php if ($page == "staff-declaration") { ?>
-
-			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
-			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+			<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
         <?php } ?>
 
 
