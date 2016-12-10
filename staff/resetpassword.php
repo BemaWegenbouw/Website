@@ -56,7 +56,7 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
 						$m->addReplyTo($fromemail, $name);
 						$m->addAddress($useremail, "Wachtwoord reset");
 						$m->Subject = $subject;
-						$m->Body = $message. "\n". "http://localhost/staff/passwordreset.php?tempcode=".$temp_code;
+						$m->Body = $message. "\n". "http://localhost/staff/passwordresetForm.php?tempcode=".$temp_code;
 
 						$m->send();
 						$restore->insert($userid,$temp_code);	
