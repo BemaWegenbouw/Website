@@ -12,15 +12,16 @@ include("../inc/parts/staff-header.php");
   $sending = '';
   if(isset($_POST) && !empty($_POST)) {
        
-	   $userid = $uid;
-		$date = $_POST["date"];
+		$userid = $uid;
+		$start_date = $_POST["start_date"];
+		$end_date = $_POST["end_date"];
 		$start = $_POST['start_time'];
 		$start_time = "$start:00";
 		$end = $_POST['end_time'];
 		$end_time = "$end:00";
 		$comment = $_POST["comment"];
 	
-		$free->insert($userid, $date,$start_time,$end_time,$comment); // insert the free form into the FREE table
+		$free->insert($userid, $start_date,$end_date,$start_time,$end_time,$comment); // insert the free form into the FREE table
 	$sending = true;
 }else {
 	$sending = false;
@@ -134,9 +135,18 @@ include("../inc/parts/staff-header.php");
 						<h1>Vrij vragen</h1>
 						</div>
 						<div class="col-sm-12 form-group">
-                            Datum:
+                            Van:
                             <div class="input-group date datepicker" data-provide="datepicker">
-                                <input type="date" name="date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <input type="date" name="start_date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-sm-12 form-group">
+                            Tot:
+                            <div class="input-group date datepicker" data-provide="datepicker">
+                                <input type="date" name="end_date"class="form-control" placeholder="yyyy-mm-dd" required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
@@ -181,9 +191,9 @@ include("../inc/parts/staff-header.php");
 						</div> 
 			<!-- end calender -->
 			</div>
-			<div>
+			<div class="container">
 			<h1> Test print vrij aanvragen</h1>
-			<?php $free->freeList();?>
+			<?php $free->freeListCompleet();?>
 			</div>
          </div>
 
