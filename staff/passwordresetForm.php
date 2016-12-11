@@ -74,14 +74,6 @@ die("Unauthorized.");
 				<p>De instellinge zijn niet verzonden!</p>				
 				</div>
 				<?php } ?>
-				
-				
-				
-				
-				
-				<?php echo $tempcode;
-					echo $userNAME;
-					?>
             </form>
 
     </div> <!-- /container -->
