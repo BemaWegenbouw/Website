@@ -18,7 +18,7 @@
         <!-- Custom Fonts -->
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- jQuery -->
-        <script type="text/javascript" src="vendor/jquery/"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
         <!-- Noty -->
         <script type="text/javascript" src="../assets/js/noty/themes/relax.js"></script>
         <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
@@ -29,7 +29,14 @@
 
         <?php if ($page == "staff-dashboard") { ?>
             <!-- Morris Charts CSS -->
-            <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+            <link type="text/css" href="vendor/morrisjs/morris.css" rel="stylesheet">
+			<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+			<!-- DataTables CSS -->
+            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
+            <!-- DataTables Responsive CSS -->
+            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
         <?php } ?>
         <?php if ($page == "resetpassword") { ?>
             <!-- Morris Charts CSS -->
@@ -37,16 +44,21 @@
         <?php } ?>
         <?php if ($page == "staff-tables") { ?>
             <!-- DataTables CSS -->
-            <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
             <!-- DataTables Responsive CSS -->
-            <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
         <?php } ?>
 		<?php if ($page == "staff-declaration") { ?>
-
-			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
-			<link rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+			<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
         <?php } ?>
-
+		<?php if ($page == "staff-freeapplications") { ?>
+            <!-- DataTables CSS -->
+            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
+            <!-- DataTables Responsive CSS -->
+            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
+        <?php } ?>
 
 
 
@@ -144,25 +156,12 @@
                                             <li>
                                                 <a href="liststaff.php">Personeelslijst</a>
                                             </li>
-                                            <li>
-                                                <a href="#">Meer <span class="fa arrow"></span></a>
-                                                <ul class="nav nav-third-level">
-                                                    <li>
-                                                        <a href="#">Third Level Item</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Third Level Item</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Third Level Item</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Third Level Item</a>
-                                                    </li>
-                                                </ul>
+											<li>
+                                                <a href="freeapplications.php">Vrij aanvragingen</a>
+                                            </li>                                                                                   
                                         </ul>
                                         <!-- /.nav-second-level -->
-                                    </li>
+                                    
                                     <li>
                                         <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
                                     </li>
@@ -171,7 +170,8 @@
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
-                    </div>
+						
+					</div>
                     <!-- /.navbar-static-side -->
                 </nav>
 
