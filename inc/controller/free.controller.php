@@ -27,7 +27,7 @@ class free {
 		$nee = 'nee';
 		
         while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
-			echo '<option value="'.$ja.'">"'.$ja.'"</option><option value="'.$nee.'">"'.$ja.'"</option>';
+			echo '<option value="'.$ja.'">"'.$ja.'"</option>';
 			echo '<option value="'.$nee.'">"'.$ja.'"</option>';
         }
         
