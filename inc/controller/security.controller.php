@@ -9,7 +9,7 @@ class security {
         //Checkt het risico van een gebruiker
     }
     
-    public function sanitize($input) {
+    public function Sanitize($input) {
         //Maakt gebruikersinvoer schoon
         
         $input = filter_var($input, FILTER_SANITIZE_STRING);

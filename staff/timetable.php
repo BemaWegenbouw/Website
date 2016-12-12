@@ -5,7 +5,7 @@
 //Copyright 2016
 
     $page = "staff-calendar";
-    require_once("calendar.php"); //is het php script van de calendar
+   
     require_once("../inc/engine.php"); //voegt de controllers toe
     include("../inc/parts/staff-header.php");
 
@@ -33,5 +33,7 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <?php
+include("../inc/parts/staff-footer.php");
+?>
