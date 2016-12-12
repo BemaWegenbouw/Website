@@ -6,7 +6,7 @@
 $page = "staff-dashboard";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
- 
+
  $uid = $_SESSION["uid"];
   
   $sending = '';
@@ -130,7 +130,7 @@ include("../inc/parts/staff-header.php");
 			<div class="row">
 				<div class="col-sm-4">
 				<form method="POST">
-						<div class="row" style="margin:1px;">
+						
 						<div class="col-sm-12">
 						<h1>Vrij vragen</h1>
 						</div>
@@ -177,26 +177,30 @@ include("../inc/parts/staff-header.php");
                         </div>
 						
 						
-						<div class="col-sm-6 form-group">
-						<button class="btn btn-lg btn-primary btn-right" backgroundcolor="blue" type="submit" name="submit">Verzenden</button><br />
-						</div>
-						</div>
-						</form>
-						</div>
-						<!-- end free -->   
-						<!-- start calender -->       
-						 <div class="col-sm-8" >
-							<h1> Calender komt hier </h1>
-							
-						</div> 
+                        <div class="col-sm-6 form-group">
+                        <button class="btn btn-lg btn-primary btn-right" backgroundcolor="blue" type="submit" name="submit">Verzenden</button><br />
+                        </div>
+                       
+                        </form>
+                        </div>
+                        <!-- end free -->  
+                        
+                        <!-- start calender -->  
+                        <div class="col-sm-8">
+                            <h1> Hier komt de calender</h1>
+                         <div class="container-fluid" style="position: relative;">
+                        <div id='calendar'  ></div><br />
+                        <!--                roept de calender aan-->
+                         </div>
+                        </div>
 			<!-- end calender -->
-			</div>
-			<div class="container">
+                        
+			
+         </div>
+                        <div class="container">
 			<h1> Test print vrij aanvragen</h1>
 			<?php $free->freeListCompleet();?>
 			</div>
-         </div>
-
         <!-- /#page-wrapper -->
 <?php
 include("../inc/parts/staff-footer.php");
