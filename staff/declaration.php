@@ -35,7 +35,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="col-sm-12 form-group">
                             datum:
                             <div class="input-group date datepicker" data-provide="datepicker">
-                                <input type="date" name="date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <input type="date" name="date"class="form-control" placeholder="jjjj-mm-dd" required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
@@ -44,7 +44,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="col-sm-6 form-group">
                             begintijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="start_time"class="form-control" placeholder="00:00" required >
+                                <input type="time" name="start_time"class="form-control" placeholder="--:--" required >
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -53,7 +53,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="col-sm-6 form-group">
                             eindtijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="end_time"class="form-control" placeholder="00:00" required >
+                                <input type="time" name="end_time"class="form-control" placeholder="--:--" required >
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
