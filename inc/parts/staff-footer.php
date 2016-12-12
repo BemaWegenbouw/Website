@@ -145,12 +145,64 @@
 				toggleActive: true
 			});
 		</script>
+                <!--Calendar scripts-->
+                <script src='calendar/lib/moment.min.js'></script>               
+                <script src='calendar/fullcalendar.min.js'></script>
+                <script src='calendar/fullcalendar.js'></script>
+                <script src='calendar/locale/nl.js'></script>
+                <script>
+
+                    $(document).ready(function () {
+
+                        $('#calendar').fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,agendaWeek,agendaDay,listMonth'
+                            },
+                            defaultDate: '<?php print date("Y-m-d"); ?>',
+                            navLinks: true, // can click day/week names to navigate views
+                            businessHours: true, // display business hours
+                            editable: false,
+                            events: [
+                <?php
+                $calendar->CalendarView($uid);
+                ?>]
+                        });
+
+                    });
+
+                </script>
 		<?php } ?>
 		
-		<?php if($page == "staff-calender") {?>
-		 <script src='calender/lib/moment.min.js'></script>
-		<script src='calender/lib/jquery.min.js'></script>
-		<script src='calender/fullcalendar.min.js'></script>
+		<?php if($page == "staff-calendar") {?>
+		<script src='calendar/lib/moment.min.js'></script>               
+                <script src='calendar/fullcalendar.min.js'></script>
+                <script src='calendar/fullcalendar.js'></script>
+                <script src='calendar/locale/nl.js'></script>
+                <script>
+
+                    $(document).ready(function () {
+
+                        $('#calendar').fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,agendaWeek,agendaDay,listMonth'
+                            },
+                            defaultDate: '<?php print date("Y-m-d"); ?>',
+                            navLinks: true, // can click day/week names to navigate views
+                            businessHours: true, // display business hours
+                            editable: false,
+                            events: [
+                <?php
+                $calendar->CalendarView($uid);
+                ?>]
+                        });
+
+                    });
+
+                </script>
 
 		<?php } ?>
 		
