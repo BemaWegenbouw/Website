@@ -80,10 +80,10 @@
             <div class="jumbotron text-center">
 
                 <h1>Bema Wegenbouw BV</h1>
-                <p>Kwaliteit staat voorop</p>
+                <h2 class="h2white">Kwaliteit staat voorop</h2>
                 <A name="bottom"></A>
             </div>
         </div>
 
     </div>
-    <div class="container-fluid">
+    

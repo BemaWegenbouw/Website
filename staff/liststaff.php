@@ -22,7 +22,7 @@ include("../inc/parts/staff-header.php");
                     </div>
                     <!-- /.col-lg-12 -->
                     
-            <div class="container">
+            <div class="container" style="max-width: 1000px;">
                 
                 <table border='1'>
             <?php $user->staffList(); ?>
