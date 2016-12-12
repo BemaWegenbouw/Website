@@ -37,6 +37,8 @@
             <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
             <!-- DataTables Responsive CSS -->
             <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
+             <link href='calendar/fullcalendar.css' rel='stylesheet' />
+            <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
         <?php } ?>
         <?php if ($page == "resetpassword") { ?>
             <!-- Morris Charts CSS -->
@@ -59,7 +61,10 @@
             <!-- DataTables Responsive CSS -->
             <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
         <?php } ?>
-
+            <?php if ($page == "staff-calendar") { ?>
+            <link href='calendar/fullcalendar.css' rel='stylesheet' />
+            <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+        <?php } ?>
 
 
 
