@@ -27,11 +27,36 @@
 		});
 		</script>
         <?php } ?>
+		<?php if($page == "staff-freeapplications") {?>
+        <!-- DataTables JavaScript -->
+		<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+		<script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+		<script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
+		<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+		<script>
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable({
+				responsive: true
+			});
+		});
+		</script>
+        <?php } ?>
 		
 		<?php if($page == "staff-dashboard") {?>
         <script src="vendor/raphael/raphael.min.js"></script>
 		<script src="vendor/morrisjs/morris.min.js"></script>
 		<script src="data/morris-data.js"></script>
+		<script type="text/javascript" src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="vendor/datatables-responsive/dataTables.responsive.js"></script>
+		 <script>
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable({
+				responsive: true
+			});
+		});
+		</script>
+	
 		<script type="text/javascript" src="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js"></script>
 		<script type="text/javascript">
 			$('.clockpicker').clockpicker()
@@ -96,7 +121,18 @@
 			hljs.initHighlightingOnLoad();
 		</script>
 		<script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
+		<script>
+			$('.datepicker').datepicker({
+				format: 'yyyy-mm-dd',
+		//        startDate: '-3d',
+				todayBtn: "linked",
+				language: "nl",
+				calendarWeeks: true,
+				autoclose: true,
+				todayHighlight: true,
+				toggleActive: true
+			});
+		</script>
 		<script>
 			$('.datepicker').datepicker({
 				format: 'dd/mm/yyyy',
@@ -181,6 +217,19 @@
 		<script type="text/javascript">
 			hljs.configure({tabReplace: '    '});
 			hljs.initHighlightingOnLoad();
+		</script>
+		<script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+		<script>
+			$('.datepicker').datepicker({
+				format: 'yyyy-mm-dd',
+		//        startDate: '-3d',
+				todayBtn: "linked",
+				language: "nl",
+				calendarWeeks: true,
+				autoclose: true,
+				todayHighlight: true,
+				toggleActive: true
+			});
 		</script>
 		<?php } ?>
                 

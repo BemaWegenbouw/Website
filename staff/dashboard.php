@@ -6,7 +6,26 @@
 $page = "staff-dashboard";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
-  $uid = $_SESSION["uid"];
+ 
+ $uid = $_SESSION["uid"];
+  
+  $sending = '';
+  if(isset($_POST) && !empty($_POST)) {
+       
+		$userid = $uid;
+		$start_date = $_POST["start_date"];
+		$end_date = $_POST["end_date"];
+		$start = $_POST['start_time'];
+		$start_time = "$start:00";
+		$end = $_POST['end_time'];
+		$end_time = "$end:00";
+		$comment = $_POST["comment"];
+	
+		$free->insert($userid, $start_date,$end_date,$start_time,$end_time,$comment); // insert the free form into the FREE table
+	$sending = true;
+}else {
+	$sending = false;
+}
 ?>
 
         <div id="page-wrapper">
@@ -110,41 +129,51 @@ include("../inc/parts/staff-header.php");
 			<!-- start free && calender -->
 			<div class="row">
 				<div class="col-sm-4">
-				<form>
+				<form method="POST">
 						<div class="row" style="margin:1px;">
 						<div class="col-sm-12">
 						<h1>Vrij vragen</h1>
 						</div>
 						<div class="col-sm-12 form-group">
-                            datum:
+                            Van:
                             <div class="input-group date datepicker" data-provide="datepicker">
-                                <input type="text" name="date "class="form-control" placeholder="DD/MM/YYYY" required>
+                                <input type="date" name="start_date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-sm-12 form-group">
+                            Tot:
+                            <div class="input-group date datepicker" data-provide="datepicker">
+                                <input type="date" name="end_date"class="form-control" placeholder="yyyy-mm-dd" required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
-                            begintijd:
+                            Begintijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="start_time"class="form-control" value="00:00" required >
+                                <input type="text" name="start_time" class="form-control" placeholder="00:00" value="" required >
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
-                            eindtijd:
+                            Eindtijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="end_time"class="form-control" value="00:00" required >
+                                <input type="text" name="end_time"class="form-control" placeholder="00:00" value="" required >
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
                             </div>
+							
                         </div>
 						<div class="col-sm-12 form-group">
-                            datum:
-                            <textarea class="form-control" id="comments" name="comments" placeholder="Reden" rows="10" requierd></textarea>
+                            Reden:
+                            <textarea class="form-control" id="comment" name="comment" placeholder="Reden"  value="" rows="10" requierd></textarea>
                         </div>
 						
 						
@@ -155,11 +184,16 @@ include("../inc/parts/staff-header.php");
 						</form>
 						</div>
 						<!-- end free -->   
-             <!-- start calender -->       
-              <div class="container" >
-							<h1> Calender komt hier </h1>						
-			</div> 
+						<!-- start calender -->       
+						 <div class="col-sm-8" >
+							<h1> Calender komt hier </h1>
+							
+						</div> 
 			<!-- end calender -->
+			</div>
+			<div class="container">
+			<h1> Test print vrij aanvragen</h1>
+			<?php $free->freeListCompleet();?>
 			</div>
          </div>
 
