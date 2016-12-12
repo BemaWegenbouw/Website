@@ -5,49 +5,36 @@ class Calendar {
    public function GetAvailability($uid) {
         
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT start_time , end_time, date, duty_id FROM availability where uid=:uid" ); //Maak de query klaar
+        $sth = $pdo->prepare("SELECT start_time , end_time, day FROM availability where uid=:uid ORDER BY FIELD(day, 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag');" ); //Maak de query klaar
  
              $sth->bindParam(':uid', $uid, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
-        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
-        
-        $i = 0;
-        
-        echo "<table style=' border: 1px solid #ccccff;
-       color:black; background:#f5f5ef; width:80% '>";
-        
-        print "<tr><th>starting time</th> <th>ending time </th> <th>date </th> <th>AvailabilityNr</th> <th>Adjust </th><th>Delete availability</th> </tr>";
-        
-        while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
-            
-            if ($i == 0) {
-            $i++;
+ $tdcolor1="#e6e6ff";//
+ $tdcolor2="#f0f5f5";//
+         print "<table width='60%'>"."<th>Begin Tijd</th> <th>Eind Tijd</th> <th>Dag</th> ";
          
+            while ($row=$sth->fetch()){
                 
-          
-            
-            } //Einde kopjesprojectie
+                $tdcolor3=$tdcolor1;
+                $tdcolor1=$tdcolor2;
+                $tdcolor2=$tdcolor3;
+                
+        $starting_time=$row["start_time"];
+        $ending_time=$row["end_time"];
+        $day=$row["day"];
         
-        echo " <tr> "; //Print de openingstag voor tabelinhoud
-        
-        foreach ($row as $key => $value) { //Begin inhoudverwerking
-            
-                    echo " <td> " . $value .   " </td> "; //Print de inhoud
-     
-      if ($key == 'duty_id') { //Indien het een gebruiker ID betreft
-                    $duty_id = $value; //Houd deze vast
-                      print "<td><a href='edit_availability.php?duty_id=$duty_id'>Adjust</a></td>";
-                       print "<td><a href='delete_availability.php?duty_id=$duty_id'>Delete</a></td>";
-                } //Einde check gebruiker ID
-        } //Einde inhoudverwerking
-      
-        echo " </tr> "; //Einde tabel
-           
-        } //Einde PDO tabelverwerking
-         //Plak overal bewerkknop achter
-        echo "</table>"; //Einde van de tabel
+   
+        print "<tr>".
+        "<td style='background:$tdcolor3;'>".$starting_time."</td>".
+        "<td style='background:$tdcolor3;'>".$ending_time."</td>".
+        "<td style='background:$tdcolor3;'>".$day."</td>".
+        "</tr>";
+        }
        
-    } //Einde functie GetAvailability
+           
+         print "</table>";
+      
+   }
     
      public function SetTheUpdateAvailability($duty_id, $original, $replacement) {
         
@@ -154,7 +141,7 @@ class Calendar {
     public function CalendarView($uid) {
         
     global $pdo;
-        $stmt23=$pdo->prepare ("select start_time, end_time, date from availability
+        $stmt23=$pdo->prepare ("select start_time, end_time, date from work_hour
                                                         where uid = :uid");
              $stmt23->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele         
         $stmt23->execute();
@@ -165,7 +152,7 @@ class Calendar {
         $time_table_date=$row["date"];
        
         
-        print "{ title:'Available',
+        print "{ title:'Geplande uren',
                  start:'".$time_table_date."T".$time_table_startingtime."',
                  end:'".$time_table_date."T".$time_table_endingtime."' },"
                
