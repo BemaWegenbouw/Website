@@ -27,6 +27,13 @@
 			});
 		});
 		</script>
+		<script>
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable({
+				responsive: true
+			});
+		});
+		</script>
         <?php } ?>
 		<?php if($page == "staff-freeapplications") {?>
         <!-- DataTables JavaScript -->
@@ -37,6 +44,13 @@
 		<script>
 		$(document).ready(function() {
 			$('#dataTables-example').DataTable({
+				responsive: true
+			});
+		});
+		</script>
+		<script>
+		$(document).ready(function() {
+			$('#example').DataTable({
 				responsive: true
 			});
 		});
