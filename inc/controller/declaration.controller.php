@@ -32,6 +32,7 @@ class declaration {
         $sth = $pdo->prepare("SELECT * FROM declaration"); //Maak de query klaar
         $sth->execute(); //Voer de query uit
 
+		
         echo"<table width='100%' class='table table-striped table-bordered table-hover' id='dataTables-exampl'>"; //begin tabel
 
         $i = 0;

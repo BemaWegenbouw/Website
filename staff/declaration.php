@@ -8,7 +8,6 @@ include("../inc/parts/staff-header.php");
 $uid = $_SESSION["uid"];
 ?>
 
-<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 <?php
 if (isset($_POST) && !empty($_POST)) {
 
@@ -90,6 +89,7 @@ if (isset($_POST) && !empty($_POST)) {
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
+		
     </div>
     <!-- /.container-fluid -->
 </div>
@@ -102,90 +102,5 @@ if (isset($_POST) && !empty($_POST)) {
 include("../inc/parts/staff-footer.php");
 ?>
 
-<script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-<script>
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        //        startDate: '-3d',
-        todayBtn: "linked",
-        language: "nl",
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true,
-        toggleActive: true
-    });//variabelen voor de datum kiezer
-</script>
-<script>
-    $('.btn-number').click(function (e) {
-        e.preventDefault();
-
-        fieldName = $(this).attr('data-field');
-        type = $(this).attr('data-type');
-        var input = $("input[name='" + fieldName + "']");
-        var currentVal = parseInt(input.val());
-        if (!isNaN(currentVal)) {
-            if (type == 'minus') {
-
-                if (currentVal > input.attr('min')) {
-                    input.val(currentVal - 15).change();
-                }
-                if (parseInt(input.val()) == input.attr('min')) {
-//                    $(this).attr('disabled', true);
-                }
-
-            } else if (type == 'plus') {
-
-                if (currentVal < input.attr('max')) {
-                    input.val(currentVal + 15).change();
-                }
-                if (parseInt(input.val()) == input.attr('max')) {
-//                    $(this).attr('disabled', true);
-                }
-
-            }
-        } else {
-            input.val(0);
-        }
-    });
-    $('.input-number').focusin(function () {
-        $(this).data('oldValue', $(this).val());
-    });
-    $('.input-number').change(function () {
-
-        minValue = parseInt($(this).attr('min'));
-        maxValue = parseInt($(this).attr('max'));
-        valueCurrent = parseInt($(this).val());
-
-        name = $(this).attr('name');
-        if (valueCurrent >= minValue) {
-            $(".btn-number[data-type='minus'][data-field='" + name + "']")//.removeAttr('disabled')
-        } else {
-            alert('Sorry, het minimum aantal is bereikt');
-            $(this).val($(this).data('minValue'));
-        }
-        if (valueCurrent <= maxValue) {
-            $(".btn-number[data-type='plus'][data-field='" + name + "']")//.removeAttr('disabled')
-        } else {
-            alert('Sorry, het minimum aantal is bereikt');
-            $(this).val($(this).data('maxValue'));
-        }
 
 
-    });
-    $(".input-number").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-                // Allow: Ctrl+A
-                        (e.keyCode == 65 && e.ctrlKey === true) ||
-                        // Allow: home, end, left, right
-                                (e.keyCode >= 35 && e.keyCode <= 39)) {
-                    // let it happen, don't do anything
-                    return;
-                }
-                // Ensure that it is a number and stop the keypress
-                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-                    e.preventDefault();
-                }
-            });
-</script>

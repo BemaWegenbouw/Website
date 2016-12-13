@@ -141,7 +141,7 @@ class Calendar {
     public function CalendarView($uid) {
         
     global $pdo;
-        $stmt23=$pdo->prepare ("select start_time, end_time, date from work_hour
+        $stmt23=$pdo->prepare ("select start_time, end_time, date from work_schedule
                                                         where uid = :uid");
              $stmt23->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele         
         $stmt23->execute();
