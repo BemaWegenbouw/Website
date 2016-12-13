@@ -46,7 +46,7 @@ include("../inc/parts/staff-header.php");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     
-                                    <h3>APPEL RULES!</h3>
+                                    <h3>APPLE<br>SUCKS!</h3>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ include("../inc/parts/staff-header.php");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     
-                                    <h3>Uren declareren</h3>
+                                    <h3>Uren<br>declareren</h3>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ include("../inc/parts/staff-header.php");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                    
-                                    <h3>Wijzig wachtwoord</h3>
+                                    <h3>Wijzig<br>wachtwoord</h3>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@ include("../inc/parts/staff-header.php");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     
-                                    <h3>Gebruikersprofiel</h3>
+                                    <h3>Gebruikers-<br>profiel</h3>
                                 </div>
                             </div>
                         </div>

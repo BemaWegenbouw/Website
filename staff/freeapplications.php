@@ -7,6 +7,7 @@ $page = "staff-freeapplications";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
+
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -16,6 +17,7 @@ include("../inc/parts/staff-header.php");
 			
 		<div class='row'>
 		<div class='col-lg-12'>
+		<form method='POST'>
 		<div class='panel panel-default'>
 		<div class='panel-heading'>
 		</div>
@@ -36,17 +38,44 @@ include("../inc/parts/staff-header.php");
         </thead>
 		<tbody>
 		<?php $free->freeListCompleet();?>
-
+		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		</tbody>
 		</table>
 		</div>
 		</div>
+		</form>
 		</div>
 		</div>
         </div>
         <!-- /#page-wrapper -->
-		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
-    </div>
+		
+    <?php
+	
+	if(isset($_POST) && !empty($_POST)){
+	
+	foreach ( $_POST as $key => $value){
+		print $key. " ". $value . " ";
+		
+		if($value == 'false'){
+			
+			$free->denyFree($key);
+			
+			/* 	in verify moet true of false komen te staan.
+				andere tabel wijzigen rooster ( nu comment naar foutgekeurd)
+				Verwijder de record en en sla het op in een backup tabel.
+				*/
+		}else {
+			
+			$free->approveFree($key);
+			/* 	in verify moet true of false komen te staan.
+				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
+				Verwijder de record en en sla het op in een backup tabel.
+				*/
+		}
+	}  
+} 
+	?>
+	</div>
     <!-- /#wrapper -->
 
 <?php
