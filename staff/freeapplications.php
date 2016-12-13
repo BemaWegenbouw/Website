@@ -42,8 +42,8 @@ include("../inc/parts/staff-header.php");
 		<?php $free->approveRequest();?>
 		
 		</tbody>
-		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		</table>
+		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		</div>
 		</div>
 		</form>
@@ -55,7 +55,7 @@ include("../inc/parts/staff-header.php");
 		<div class='col-lg-12'>
 		<div class='panel panel-default'>
 		<div class='panel-heading'>
-		<h1> Opgeslagen vrij aanvragen</h1>
+		<h1> Opgeslagen vrij aanvragingen</h1>
 		</div>
 		
 		<div class='panel-body'>
@@ -87,9 +87,25 @@ include("../inc/parts/staff-header.php");
 	if(isset($_POST) && !empty($_POST)){
 	
 	foreach ( $_POST as $key => $value){
-		print $key. " ". $value . " ";
+
 		
-		if($value == 'false'){
+		
+		/* controleer of er user al is ingeroosterd*/
+		$startdate = $free->get($key,'start_date');
+		$enddate = $free->get($key,'end_date');
+		$uidKey = $free->get($key,'uid');
+		$check = $free->checkRequestExist($uidKey,$startdate,$enddate);
+		
+		
+		/*
+		$datetime1 =new Datetime('2006-11-12');
+		$datetime2 = new Datetime('2006-11-16');
+		$interval = $datetime1->diff($datetime2);
+		$temp = $interval->format('%d%');
+		
+		 */
+
+			if($value == 'false'){
 			
 			$free->denyFree($key);
 			
@@ -100,19 +116,26 @@ include("../inc/parts/staff-header.php");
 		}else {
 			
 			
-			$startdate = $free->get($key,'start_date');
-			$enddate = $free->get($key,'end_date');
+			
 			$free->approveFree($key);
 			/* 	in verify moet true of false komen te staan.
 				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
 				Verwijder de record en en sla het op in een backup tabel.
 				*/
-		
-			$free->updateWorkHours($uid,$startdate,$enddate);
 			
-		}
-	}  
-} 
+			$free->updateWorkHours($uidKey,$startdate,$enddate);
+			
+			}
+		
+		
+		
+		 
+		}var_dump($check); 
+		
+		
+	}
+	
+	 
 	?>
 	</div>
     <!-- /container -->

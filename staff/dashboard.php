@@ -236,6 +236,8 @@ include("../inc/parts/staff-header.php");
 		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		
 		</div>
+		<br>
+	
 		<!-- end tabl -->
 		</div>
         <!-- /#page-wrapper -->
