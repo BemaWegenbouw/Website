@@ -26,12 +26,15 @@ class free {
         return $result[$value]; //Geef resultaat terug
 	}
 	
-	public function approveRequest(){
-	
-	global $pdo; //Zoek naar $pdo buiten deze functie
-	$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id 
-							FROM free f join staff s on f.uid = s.uid WHERE verify is null"); //query
-	$sth->execute(); //Voer de query uit
+		
+		
+		
+		public function approveRequest(){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id 
+								FROM free f join staff s on f.uid = s.uid WHERE verify is null"); //query
+		$sth->execute(); //Voer de query uit
 		
 	
 		
@@ -80,6 +83,17 @@ class free {
 
 	}
 	
+	public function checkRequestExist($uid,$startdate,$enddate){
+		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+		$sth = $pdo->prepare ("Select date from work_schedule WHERE uid = :uid AND (date >= :startdate and date <= :enddate)"); 
+		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+		$sth->bindparam(':startdate', $startdate, PDO::PARAM_STR);//query
+		$sth->bindparam(':enddate', $enddate, PDO::PARAM_STR);//query
+		$sth->execute(); //Voer de query uit
+		$result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result['date']; //Geef resultaat terug
+	}
+	
 	public function approveFree($key){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
@@ -126,7 +140,27 @@ class free {
 		
 	}
 	
+	public function insertNewWorkHours($uid,$startdate){
+		
+		/*
+		$date = $startdate;
+		$daycount = 0;
+		$i = $temp;
 	
+		while ($daycount > $temp){
+		*/
+		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+		$sth = $pdo->prepare ("INSERT INTO work_schedule (uid,start_time,end_time, date)  VALUES (:uid,'00:00:00','00:00:00', :date)"); 
+		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+		$sth->bindparam(':date', $startdate, PDO::PARAM_STR);//query
+		$sth->execute(); //Voer de query uit
+		/*
+		$date->add(new DateInterval('P1D'));
+		$daycount = $daycount + 1; 
+	}
+	*/
+	
+}
 }
 
 	
