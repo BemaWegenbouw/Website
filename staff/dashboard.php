@@ -7,6 +7,25 @@ $page = "staff-dashboard";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
+ $uid = $_SESSION["uid"];
+  
+  $sending = '';
+  if(isset($_POST) && !empty($_POST)) {
+       
+		$userid = $uid;
+		$start_date = $_POST["start_date"];
+		$end_date = $_POST["end_date"];
+		$start = $_POST['start_time'];
+		$start_time = "$start:00";
+		$end = $_POST['end_time'];
+		$end_time = "$end:00";
+		$comment = $_POST["comment"];
+	
+		$free->insert($userid, $start_date,$end_date,$start_time,$end_time,$comment); // insert the free form into the FREE table
+	$sending = true;
+}else {
+	$sending = false;
+}
 ?>
 
         <div id="page-wrapper">
@@ -23,11 +42,11 @@ include("../inc/parts/staff-header.php");
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
+                                    <i class="fa fa-apple fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    
+                                    <h3>APPEL RULES!</h3>
                                 </div>
                             </div>
                         </div>
@@ -45,17 +64,17 @@ include("../inc/parts/staff-header.php");
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
+                                    <i class="fa fa-edit fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    
+                                    <h3>Uren declareren</h3>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="declaration.php">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Zie Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -67,17 +86,17 @@ include("../inc/parts/staff-header.php");
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                    <i class="fa fa-lock fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                   
+                                    <h3>Wijzig wachtwoord</h3>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="passwordchange.php">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Zie Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -89,15 +108,15 @@ include("../inc/parts/staff-header.php");
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
+                                    <i class="fa  fa-android fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Contact opnemen</div>
+                                    
+                                    <h3>Gebruikersprofiel</h3>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="gebruikersprofiel.php">
                             <div class="panel-footer">
                                 <span class="pull-left">Zie Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -105,118 +124,121 @@ include("../inc/parts/staff-header.php");
                             </div>
                         </a>
                     </div>
-                </div>
+                </div>		
             </div>
-                    <!-- /.panel -->
-                    <div class="chat-panel panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> Chat
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
+			<!-- start free && calender -->
+			<div class="row">
+				<div class="col-sm-4">
+				<form method="POST">
+						
+						<div class="col-sm-12">
+						<h1>Vrij vragen</h1>
+						</div>
+						<div class="col-sm-12 form-group">
+                            Van:
+                            <div class="input-group date datepicker" data-provide="datepicker">
+                                <input type="date" name="start_date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="chat">
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                                            </small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
+						<div class="col-sm-12 form-group">
+                            Tot:
+                            <div class="input-group date datepicker" data-provide="datepicker">
+                                <input type="date" name="end_date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
-                </div>
+                        <div class="col-sm-6 form-group">
+                            Begintijd:
+                            <div class="input-group clockpicker" data-autoclose="true">
+                                <input type="text" name="start_time" class="form-control" placeholder="00:00" value="" required >
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            Eindtijd:
+                            <div class="input-group clockpicker" data-autoclose="true">
+                                <input type="text" name="end_time"class="form-control" placeholder="00:00" value="" required >
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+							
+                        </div>
+						<div class="col-sm-12 form-group">
+                            Reden:
+                            <textarea class="form-control" id="comment" name="comment" placeholder="Reden"  value="" rows="10" requierd></textarea>
+                        </div>
+						
+						
+                        <div class="col-sm-6 form-group">
+                        <button class="btn btn-lg btn-primary btn-right" backgroundcolor="blue" type="submit" name="submit">Verzenden</button><br />
+                        </div>
+                       
+                        </form>
+                        </div>
+                        <!-- end free -->  
+                        
+                        <!-- start calender -->  
+                        <div class="col-sm-8">
+                            <h1> Hier komt de calender</h1>
+                         <div class="container-fluid" style="position: relative;">
+                        <div id='calendar'  ></div><br />
+                        <!--                roept de calender aan-->
+                         </div>
+                        </div>
+			<!-- end calender -->
+                        
+			
+         </div>
+        <!-- start table -->  
+		<div class="container-fluid">
+            <div>
+			<h1> Test print vrij aanvragen</h1>
+			
+		<div class='row'>
+		<div class='col-lg-12'>
+		<div class='panel panel-default'>
+		<div class='panel-heading'>
+		</div>
+		
+		<div class='panel-body'>
+		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+		<thead>
+			<tr>
+				<th>Voornaam</th>
+				<th>Achternaam</th>
+				<th>Van</th>
+				<th>Tot</th>
+				<th>Start tijd</th>
+				<th>Eind tijd</th>
+				<th>Reden</th>
+				<th>Goedkeuring</th>		
+			</tr>
+        </thead>
+		<tbody>
+		<?php $free->freeListCompleet();?>
 
-                 <!-- /#page-wrapper -->
+		</tbody>
+		</table>
+		</div>
+		</div>
+		</div>
+		</div>
+        </div>
+        
+		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
+		
+		</div>
+		<!-- end tabl -->
+		</div>
+        <!-- /#page-wrapper -->
 <?php
 include("../inc/parts/staff-footer.php");
 ?>
