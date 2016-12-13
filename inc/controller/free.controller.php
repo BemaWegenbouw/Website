@@ -17,6 +17,14 @@ class free {
         
     }
 	
+	public function get($id,$value){
+		global $pdo; //Zoek naar $pdo buiten deze functie
+         $sth = $pdo->prepare("SELECT * FROM free WHERE id = :id"); //Maak de query klaar
+        $sth->bindParam(':id', $id, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result[$value]; //Geef resultaat terug
+	}
 	
 	
 	public function freeListCompleet(){
@@ -82,6 +90,19 @@ class free {
 		global $pdo; //Zoek naar $pdo buiten deze functie
 		
 	}
+	
+	public function updateWorkHours($uid,$startdate,$enddate){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+		$sth = $pdo->prepare ("UPDATE work_schedule set start_time = '00:00', end_time ='00:00' WHERE uid = :uid AND (date >= :startdate and date <= :enddate)"); 
+		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+		$sth->bindparam(':startdate', $startdate, PDO::PARAM_STR);//query
+		$sth->bindparam(':enddate', $enddate, PDO::PARAM_STR);//query
+		$sth->execute(); //Voer de query uit
+		
+	}
+	
+	
 }
 
 	

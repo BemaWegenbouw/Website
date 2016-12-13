@@ -6,7 +6,7 @@
 $page = "staff-freeapplications";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
-
+ $uid = $_SESSION["uid"];
 
 ?>
         <!-- Page Content -->
@@ -66,11 +66,17 @@ include("../inc/parts/staff-header.php");
 				*/
 		}else {
 			
+			
+			$startdate = $free->get($key,'start_date');
+			$enddate = $free->get($key,'end_date');
 			$free->approveFree($key);
 			/* 	in verify moet true of false komen te staan.
 				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
 				Verwijder de record en en sla het op in een backup tabel.
 				*/
+		
+			$free->updateWorkHours($uid,$startdate,$enddate);
+			
 		}
 	}  
 } 
