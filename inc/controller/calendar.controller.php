@@ -141,7 +141,7 @@ class Calendar {
     public function CalendarView($uid) {
         
     global $pdo;
-        $stmt23=$pdo->prepare ("select start_time, end_time, date from work_hour
+        $stmt23=$pdo->prepare ("select start_time, end_time, date from work_schedule
                                                         where uid = :uid");
              $stmt23->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele         
         $stmt23->execute();
@@ -151,19 +151,26 @@ class Calendar {
            $time_table_endingtime=$row["end_time"];
         $time_table_date=$row["date"];
        
+        if ($row["start_time"] == '00:00:00' && $row["end_time"] == '00:00:00'){ 
         
-        print "{ title:'Geplande uren',
+			print "{ title:'Vrij',
+                 start:'".$time_table_date."',
+                 end:'".$time_table_date."' },";
+		
+		}else{
+			
+			print "{ title:'Geplande uren',
                  start:'".$time_table_date."T".$time_table_startingtime."',
-                 end:'".$time_table_date."T".$time_table_endingtime."' },"
+                 end:'".$time_table_date."T".$time_table_endingtime."' },";
+               
+        }       
                
                 
                 
                 
-                
-                
         
                 
-        ;}
+        }
                 
         }        
           
