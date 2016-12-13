@@ -12,14 +12,16 @@ include("../inc/parts/staff-header.php");
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-            <div>
-			<h1> Test print vrij aanvragen</h1>
-			
+            
+	
+		<!-- start vrijvraag goedkeuring tabel -->	
 		<div class='row'>
 		<div class='col-lg-12'>
+		<br>
 		<form method='POST'>
 		<div class='panel panel-default'>
 		<div class='panel-heading'>
+		<h1>Openstaande vrij aanvragingen</h1>
 		</div>
 		
 		<div class='panel-body'>
@@ -37,17 +39,48 @@ include("../inc/parts/staff-header.php");
 			</tr>
         </thead>
 		<tbody>
-		<?php $free->freeListCompleet();?>
-		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
+		<?php $free->approveRequest();?>
+		
 		</tbody>
+		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		</table>
 		</div>
 		</div>
 		</form>
 		</div>
+		</div><br>
+		<!-- eind vrijvraag goedkeuring tabel -->
+		<!-- start gehele vrijvraag tabel -->
+		<div class='row'>
+		<div class='col-lg-12'>
+		<div class='panel panel-default'>
+		<div class='panel-heading'>
+		<h1> Opgeslagen vrij aanvragen</h1>
 		</div>
-        </div>
-        <!-- /#page-wrapper -->
+		
+		<div class='panel-body'>
+		<table class='table table-striped table-bordered table-hover' id='example'>
+		<thead>
+			<tr>
+				<th>Voornaam</th>
+				<th>Achternaam</th>
+				<th>Van</th>
+				<th>Tot</th>
+				<th>Start tijd</th>
+				<th>Eind tijd</th>
+				<th>Reden</th>
+				<th>Goedkeuring</th>		
+			</tr>
+        </thead>
+		<tbody>
+		<?php $free->freeListCompleet();?>		
+		</tbody>
+		</table>
+		</div>
+		</div>
+		</div>
+		</div>
+        <!-- eind gehele vrijvraag tabel -->
 		
     <?php
 	
@@ -82,7 +115,9 @@ include("../inc/parts/staff-header.php");
 } 
 	?>
 	</div>
-    <!-- /#wrapper -->
+    <!-- /container -->
+	</div>
+	<!-- /page wrapper -->
 
 <?php
 
