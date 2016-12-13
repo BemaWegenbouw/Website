@@ -26,17 +26,14 @@ class free {
         return $result[$value]; //Geef resultaat terug
 	}
 	
-	
-	public function freeListCompleet(){
+	public function approveRequest(){
 	
 	global $pdo; //Zoek naar $pdo buiten deze functie
 	$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id 
-							FROM free f join staff s on f.uid = s.uid"); //query
+							FROM free f join staff s on f.uid = s.uid WHERE verify is null"); //query
 	$sth->execute(); //Voer de query uit
 		
-		$true = true;
-		$false = false;
-		
+	
 		
 		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
 		echo "<tr class='gradeA'>
@@ -49,6 +46,33 @@ class free {
 			  <td>" . $row['comment'] . "</td>
 			 <td><select style='width:80%; 'name='".$row['id']."' id='inputID' class='form-control'
 			  required><option value='true'>ja</option><option value='false'>nee</option></select></td>
+			  </tr>";
+			
+		}
+		
+
+	}
+	
+	public function freeListCompleet(){
+	
+	global $pdo; //Zoek naar $pdo buiten deze functie
+	$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id,verify 
+							FROM free f join staff s on f.uid = s.uid where verify is not NULL"); //query
+	$sth->execute(); //Voer de query uit
+		
+		
+		
+		
+		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
+		echo "<tr class='gradeA'>
+			  <td>" . $row['first_name'] . "</td>
+			  <td>" . $row['last_name'] . "</td>
+			  <td>" . $row['start_date'] . "</td>
+			  <td>" . $row['end_date'] . "</td>
+			  <td>" . $row['start_time']. "</td>
+			  <td>" . $row['end_time'] . "</td>
+			  <td>" . $row['comment'] . "</td>
+			  <td>" . $row['verify'] . "</td>
 			  </tr>";
 			
 		}
