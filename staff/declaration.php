@@ -29,18 +29,12 @@ if (isset($_POST) && !empty($_POST)) {
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Urendeclaratie</h1>
-                <p>
-                    <?php {
-                        $declaration->declist();
-                    }
-                    ?>
-                </p>
                 <div class="col-sm-4">
                     <form method="post" action="declaration.php">
                         <div class="col-sm-12 form-group">
                             datum:
                             <div class="input-group date datepicker" data-provide="datepicker">
-                                <input type="date" name="date"class="form-control" placeholder="yyyy/mm/dd" required>
+                                <input type="date" name="date"class="form-control" placeholder="yyyy-mm-dd" required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
@@ -65,17 +59,37 @@ if (isset($_POST) && !empty($_POST)) {
                             </div>
                         </div>
                         <div class="col-sm-12 form-group">
-                            pauze (in minuten):<input class="form-control" id="break" name="break" placeholder="(in minuten)" type="number" min="0" max="150" required>
+                            pauze:
+
+                            <div >
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-number" type="button" data-type="minus" data-field="break" ><span class="glyphicon glyphicon-minus"></span></button>
+                                    </span>
+                                    <input type="text" class="form-control" name="break" value="0" min="0" max="150">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-number" type="button" data-type="plus" data-field="break"><span class="glyphicon glyphicon-plus"></span></button>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col-sm-12 form-group">
-                            <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit">verzenden</button>
+                            <button class="btn btn-block btn-default pull-left" type="submit" name="submit" value="Submit">verzenden</button>
                         </div>
                     </form>
                 </div>
+
+                <?php {
+                    $declaration->declist();
+                }
+                ?>
+
             </div>
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
+		
     </div>
     <!-- /.container-fluid -->
 </div>
@@ -87,3 +101,6 @@ if (isset($_POST) && !empty($_POST)) {
 <?php
 include("../inc/parts/staff-footer.php");
 ?>
+
+
+

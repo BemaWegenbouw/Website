@@ -6,6 +6,7 @@
 $page = "staff-freeapplications";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
+ $uid = $_SESSION["uid"];
 
 ?>
         <!-- Page Content -->
@@ -13,12 +14,74 @@ include("../inc/parts/staff-header.php");
             <div class="container-fluid">
             <div>
 			<h1> Test print vrij aanvragen</h1>
-			<?php $free->freeListCompleet();?>
-			</div>
+			
+		<div class='row'>
+		<div class='col-lg-12'>
+		<form method='POST'>
+		<div class='panel panel-default'>
+		<div class='panel-heading'>
+		</div>
+		
+		<div class='panel-body'>
+		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+		<thead>
+			<tr>
+				<th>Voornaam</th>
+				<th>Achternaam</th>
+				<th>Van</th>
+				<th>Tot</th>
+				<th>Start tijd</th>
+				<th>Eind tijd</th>
+				<th>Reden</th>
+				<th>Goedkeuring</th>		
+			</tr>
+        </thead>
+		<tbody>
+		<?php $free->freeListCompleet();?>
+		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
+		</tbody>
+		</table>
+		</div>
+		</div>
+		</form>
+		</div>
+		</div>
         </div>
         <!-- /#page-wrapper -->
-
-    </div>
+		
+    <?php
+	
+	if(isset($_POST) && !empty($_POST)){
+	
+	foreach ( $_POST as $key => $value){
+		print $key. " ". $value . " ";
+		
+		if($value == 'false'){
+			
+			$free->denyFree($key);
+			
+			/* 	in verify moet true of false komen te staan.
+				andere tabel wijzigen rooster ( nu comment naar foutgekeurd)
+				Verwijder de record en en sla het op in een backup tabel.
+				*/
+		}else {
+			
+			
+			$startdate = $free->get($key,'start_date');
+			$enddate = $free->get($key,'end_date');
+			$free->approveFree($key);
+			/* 	in verify moet true of false komen te staan.
+				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
+				Verwijder de record en en sla het op in een backup tabel.
+				*/
+		
+			$free->updateWorkHours($uid,$startdate,$enddate);
+			
+		}
+	}  
+} 
+	?>
+	</div>
     <!-- /#wrapper -->
 
 <?php
