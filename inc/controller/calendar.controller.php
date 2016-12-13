@@ -9,9 +9,10 @@ class Calendar {
  
              $sth->bindParam(':uid', $uid, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
- $tdcolor1="#e6e6ff";//
- $tdcolor2="#f0f5f5";//
-         print "<table width='60%'>"."<th>Begin Tijd</th> <th>Eind Tijd</th> <th>Dag</th> ";
+ $tdcolor1="#f5f5f0";//
+ $tdcolor2="#d0e1e1
+";//
+         print "<table width='100%'>"."<th style= 'font-size:25px'>Dag</th> <th style= 'font-size:25px'>Begin Tijd</th> <th style= 'font-size:25px'>Eind Tijd</th> ";
          
             while ($row=$sth->fetch()){
                 
@@ -25,9 +26,10 @@ class Calendar {
         
    
         print "<tr>".
-        "<td style='background:$tdcolor3;'>".$starting_time."</td>".
-        "<td style='background:$tdcolor3;'>".$ending_time."</td>".
-        "<td style='background:$tdcolor3;'>".$day."</td>".
+        "<td style='background:$tdcolor3; font-size:15px'>".$day."</td>".                
+        "<td style='background:$tdcolor3; font-size:15px'>".$starting_time."</td>".
+        "<td style='background:$tdcolor3; font-size:15px'>".$ending_time."</td>".
+
         "</tr>";
         }
        
@@ -36,16 +38,7 @@ class Calendar {
       
    }
     
-     public function SetTheUpdateAvailability($duty_id, $original, $replacement) {
-        
-        global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("UPDATE availability SET $original = :replacement WHERE duty_id = :duty_id"); //Maak de query klaar
-        $sth->bindParam(':replacement', $replacement, PDO::PARAM_STR);
-        $sth->bindParam(':duty_id', $duty_id, PDO::PARAM_STR); //Vervang :username naar $user variabele
-        $sth->execute(); //Voer de query uit
-        return(true);
-        
-    }
+  
     
     
     
@@ -151,30 +144,68 @@ class Calendar {
            $time_table_endingtime=$row["end_time"];
         $time_table_date=$row["date"];
        
-        if ($row["start_time"] == '00:00:00' && $row["end_time"] == '00:00:00'){ 
         
-			print "{ title:'Vrij',
-                 start:'".$time_table_date."',
-                 end:'".$time_table_date."' },";
-		
-		}else{
-			
-			print "{ title:'Geplande uren',
+        print "{ title:'Geplande uren',
                  start:'".$time_table_date."T".$time_table_startingtime."',
-                 end:'".$time_table_date."T".$time_table_endingtime."' },";
+                 end:'".$time_table_date."T".$time_table_endingtime."' },"
                
-        }       
-               
+                
+                
                 
                 
                 
         
                 
-        }
+        ;}
                 
         }        
           
+    
+
+
+        public function ShowStartTime($uid, $day) {
+                global $pdo;
+            $stmt23=$pdo->prepare ("select start_time from availability
+                                                        where uid = :uid AND day = :day");
+             $stmt23->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele      
+              $stmt23->bindParam(':day', $day, PDO::PARAM_STR); //Vervang :username naar $user variabele  
+        $stmt23->execute();
+        
+        while ($row=$stmt23->fetch())
+        {$startingtimeMonday=$row["start_time"];
             
+        print $startingtimeMonday;
+        }}
+
+ public function ShowEndTime($uid, $day) {
+               global $pdo;
+            $stmt23=$pdo->prepare ("select end_time from availability
+                                                        where uid = :uid AND day = :day");
+             $stmt23->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele      
+              $stmt23->bindParam(':day', $day, PDO::PARAM_STR); //Vervang :username naar $user variabele  
+        $stmt23->execute();
+        
+        while ($row=$stmt23->fetch())
+        {$endingtimeMonday=$row["end_time"];
+            
+        print $endingtimeMonday;
+        }}
+
+
+
+   public function SetTheUpdateAvailability( $uid, $start_time, $end_time, $day) {
+        
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("UPDATE availability SET start_time = :start_time, end_time = :end_time WHERE day = :day AND uid = :uid"); //Maak de query klaar
+        $sth->bindParam(':start_time', $start_time, PDO::PARAM_STR);
+        $sth->bindParam(':end_time', $end_time, PDO::PARAM_STR);
+        $sth->bindParam(':day', $day, PDO::PARAM_STR);
+        $sth->bindParam(':uid', $uid, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+        return(true);
+        
+    }
+        
       
     
 } //Einde class
