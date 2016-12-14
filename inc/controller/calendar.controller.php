@@ -139,9 +139,79 @@ class Calendar {
                 
         }        
           
+         
+        
+        
+        public function DropDownMenuPlannedHours() {
+           
+            global $pdo;
+        $stmt23=$pdo->prepare ("SELECT first_name, last_name, uid FROM staff");//de permission laat ik achterwege
+        
+        $stmt23->execute();
+          
+        while ($row=$stmt23->fetch()){
             
+        $first_name=$row['first_name'];
+        $last_name=$row['last_name'];
+        $uidd=$row['uid'];
+            
+            
+         print    '<li><button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" value="'.$uidd.'" name="'.$uidd.'">'.$first_name." ".$last_name."</button><br /></li>";
+        
+        
+            
+        }  
+            
+            
+        }
+        
+        public function countstaff(){
+            global $pdo;
+        
+            $stmt23=$pdo->prepare ("SELECT COUNT(uid)visje FROM staff");//de permission laat ik achterwege
+        
+        $stmt23->execute();
+          
+        while ($row=$stmt23->fetch()){
+            
+        $count=$row['visje'];
+        return $count;
+        }}
       
     
+        
+        
+ public function CalendarAllView() {
+        
+    global $pdo;
+        $stmt23=$pdo->prepare ("SELECT first_name, last_name, start_time, end_time, date FROM work_schedule JOIN staff ON staff.uid = work_schedule.uid
+                                                        ");
+            
+        $stmt23->execute();
+        
+        while ($row=$stmt23->fetch())
+        {$time_table_startingtime=$row["start_time"];
+           $time_table_endingtime=$row["end_time"];
+        $time_table_date=$row["date"];
+       $first_name=$row['first_name'];
+        $last_name=$row['last_name'];
+        
+        
+		print "{ title:'".$first_name." ".$last_name."',
+                 start:'".$time_table_date."T".$time_table_startingtime."',
+                 end:'".$time_table_date."T".$time_table_endingtime."' },";
+		
+               
+                
+                
+                
+        
+                
+        }
+                
+        }        
+        
+        
 } //Einde class
 
 
