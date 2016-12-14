@@ -33,5 +33,7 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <?php
+include("../inc/parts/staff-footer.php");
+?>
