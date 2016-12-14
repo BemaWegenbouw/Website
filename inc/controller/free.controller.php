@@ -17,53 +17,153 @@ class free {
         
     }
 	
+	public function get($id,$value){
+		global $pdo; //Zoek naar $pdo buiten deze functie
+         $sth = $pdo->prepare("SELECT * FROM free WHERE id = :id"); //Maak de query klaar
+        $sth->bindParam(':id', $id, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result[$value]; //Geef resultaat terug
+	}
+	
+		
+		
+		
+		public function approveRequest(){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id 
+								FROM free f join staff s on f.uid = s.uid WHERE verify is null"); //query
+		$sth->execute(); //Voer de query uit
+		
+	
+		
+		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
+		echo "<tr class='gradeA'>
+			  <td>" . $row['first_name'] . "</td>
+			  <td>" . $row['last_name'] . "</td>
+			  <td>" . $row['start_date'] . "</td>
+			  <td>" . $row['end_date'] . "</td>
+			  <td>" . $row['start_time']. "</td>
+			  <td>" . $row['end_time'] . "</td>
+			  <td>" . $row['comment'] . "</td>
+			 <td><select style='width:80%; 'name='".$row['id']."' id='inputID' class='form-control'
+			  required><option value='true'>ja</option><option value='false'>nee</option></select></td>
+			  </tr>";
+			
+		}
+		
+
+	}
 	
 	public function freeListCompleet(){
 	
 	global $pdo; //Zoek naar $pdo buiten deze functie
-	$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,verify 
-							FROM free f join staff s on f.uid = s.uid"); //query
+	$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id,verify 
+							FROM free f join staff s on f.uid = s.uid where verify is not NULL"); //query
 	$sth->execute(); //Voer de query uit
 		
 		
 		
-		echo "<div class='row'>";
-		echo "<div class='col-lg-12'>";
-		echo "<div class='panel panel-default'>";
-		echo "<div class='panel-heading'>";	
-		echo "</div>";
 		
-		echo "<div class='panel-body'>";
-		echo "<table class='table table-striped table-bordered table-hover' id='dataTables-example'>"; // start a table tag in the HTML
-		echo "<thead>";
-			echo "<tr>";
-				echo "<th>"."Voornaam"."</th>";
-				echo "<th>"."Achternaam"."</th>";
-				echo "<th>"."Van"."</th>";
-				echo "<th>"."Tot"."</th>";
-				echo "<th>"."Start tijd"."</th>";
-				echo "<th>"."Eind tijd"."</th>";
-				echo "<th>"."Reden"."</th>";
-				echo "<th>"."Goedkeuring"."</th>";				
-			echo "</tr>";
-        echo "</thead>";
-		echo "<tbody";
 		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
-		echo "<tr class='gradeA'><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['start_date'] . "</td><td>" . $row['end_date'] . "</td><td>" . $row['start_time']
-			. "</td><td>" . $row['end_time'] . "</td><td>" . $row['comment'] . "</td>
-			<td><div style='color:green;'><input type='checkbox' name='verified'>"." Goedkeuren"."</div>"."<br>
-			<div style='color:red;'><input type='checkbox' name='unverified'>"." Afkeuren"."</div>". $row['verify'] . "</td></tr>";  //$row['index'] the index here is a field name
+		echo "<tr class='gradeA'>
+			  <td>" . $row['first_name'] . "</td>
+			  <td>" . $row['last_name'] . "</td>
+			  <td>" . $row['start_date'] . "</td>
+			  <td>" . $row['end_date'] . "</td>
+			  <td>" . $row['start_time']. "</td>
+			  <td>" . $row['end_time'] . "</td>
+			  <td>" . $row['comment'] . "</td>
+			  <td>" . $row['verify'] . "</td>
+			  </tr>";
+			
 		}
-		echo "<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>";
-		echo "</tbody>";
-		echo "</table>"; //Close the table in HTML
-		echo "</div>";
-		echo "</div>";
-		echo "</div>";
-		echo "</div>";
+		
+
+	}
+	
+	public function checkRequestExist($uid,$startdate,$enddate){
+		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+		$sth = $pdo->prepare ("Select date from work_schedule WHERE uid = :uid AND (date >= :startdate and date <= :enddate)"); 
+		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+		$sth->bindparam(':startdate', $startdate, PDO::PARAM_STR);//query
+		$sth->bindparam(':enddate', $enddate, PDO::PARAM_STR);//query
+		$sth->execute(); //Voer de query uit
+		$result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result['date']; //Geef resultaat terug
+	}
+	
+	public function approveFree($key){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("UPDATE free SET verify = 'true' WHERE id = :id"); //query
+		$sth->bindparam(':id', $key, PDO::PARAM_STR);
+		$sth->execute(); //Voer de query uit
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("UPDATE free SET comment = 'goedgekeurd' WHERE id = :id"); //query
+		$sth->bindparam(':id', $key, PDO::PARAM_STR);
+		$sth->execute(); //Voer de query uit
+		
+		
+	
+	}
+	
+	public function denyFree($key){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("UPDATE free SET verify = 'false' WHERE id = :id"); //query
+		$sth->bindparam(':id', $key, PDO::PARAM_STR);
+		$sth->execute(); //Voer de query uit
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("UPDATE free SET comment = 'foutgekeurd' WHERE id = :id"); //query
+		$sth->bindparam(':id', $key, PDO::PARAM_STR);
+		$sth->execute(); //Voer de query uit
+	}
+	
+	public function backupFree(){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
 		
 	}
+	
+	public function updateWorkHours($uid,$startdate,$enddate){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+		$sth = $pdo->prepare ("UPDATE work_schedule set start_time = '00:00', end_time ='00:00' WHERE uid = :uid AND (date >= :startdate and date <= :enddate)"); 
+		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+		$sth->bindparam(':startdate', $startdate, PDO::PARAM_STR);//query
+		$sth->bindparam(':enddate', $enddate, PDO::PARAM_STR);//query
+		$sth->execute(); //Voer de query uit
+		
+	}
+	
+	public function insertNewWorkHours($uid,$startdate){
+		
+		/*
+		$date = $startdate;
+		$daycount = 0;
+		$i = $temp;
+	
+		while ($daycount > $temp){
+		*/
+		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+		$sth = $pdo->prepare ("INSERT INTO work_schedule (uid,start_time,end_time, date)  VALUES (:uid,'00:00:00','00:00:00', :date)"); 
+		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+		$sth->bindparam(':date', $startdate, PDO::PARAM_STR);//query
+		$sth->execute(); //Voer de query uit
+		/*
+		$date->add(new DateInterval('P1D'));
+		$daycount = $daycount + 1; 
+	}
+	*/
+	
 }
+}
+
+	
 
 $free = new free;
 
