@@ -12,7 +12,7 @@ class Calendar {
  $tdcolor1="#f5f5f0";//
  $tdcolor2="#d0e1e1
 ";//
-         print "<table width='100%'>"."<th style= 'font-size:25px'>Dag</th> <th style= 'font-size:25px'>Begin Tijd</th> <th style= 'font-size:25px'>Eind Tijd</th> ";
+         print "<table width='100%' class='table table-bordered table-inverse'>"."<th style= 'font-size:25px'>Dag</th> <th style= 'font-size:25px'>Begin Tijd</th> <th style= 'font-size:25px'>Eind Tijd</th> ";
          
             while ($row=$sth->fetch()){
                 

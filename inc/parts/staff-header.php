@@ -61,6 +61,15 @@
 			<!-- DataTables Responsive CSS -->
 			<link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
         <?php } ?>
+                        		<?php if ($page == "staff-availability") { ?>
+			<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+			<!-- DataTables CSS -->
+			<link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
+			<!-- DataTables Responsive CSS -->
+			<link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
+        <?php } ?>
 		<?php if ($page == "staff-freeapplications") { ?>
             <!-- DataTables CSS -->
             <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
@@ -151,7 +160,7 @@
                                     <a href="tables.php"><i class="fa fa-edit fa-fw"></i> Tables (template)</a>
                                 </li>
                                 <li>
-                                    <a href="timetable.php"><i class="fa fa-edit fa-fw"></i> Rooster</a>
+                                    <a href="availability.php"><i class="fa fa-edit fa-fw"></i> Beschikbaarheid</a>
                                 </li>
                                 <li>
                                     <a href="passwordchange.php"><i class="fa fa-edit fa-fw"></i> Wijzig wachtwoord</a>
