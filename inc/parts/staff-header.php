@@ -80,7 +80,10 @@
             <link href='calendar/fullcalendar.css' rel='stylesheet' />
             <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
         <?php } ?>
-
+ <?php if ($page == "staff-planning") { ?>
+            <link href='calendar/fullcalendar.css' rel='stylesheet' />
+            <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+        <?php } ?>
 
 
     </head>
