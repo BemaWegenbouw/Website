@@ -83,7 +83,7 @@ include("../inc/parts/staff-header.php");
         <!-- eind gehele vrijvraag tabel -->
 		
     <?php
-	
+	require_once "../inc/phpmailer/PHPMailerAutoload.php";
 	if(isset($_POST) && !empty($_POST)){
 	
 	foreach ( $_POST as $key => $value){
@@ -94,7 +94,9 @@ include("../inc/parts/staff-header.php");
 		$startdate = $free->get($key,'start_date');
 		$enddate = $free->get($key,'end_date');
 		$uidKey = $free->get($key,'uid');
-		
+		/* naam voor de email */
+		$firstname = $user->get($uidKey,'first_name');
+		$lastname= $user->get($uidKey,'last_name');
 		
 		
 		/*
@@ -113,6 +115,35 @@ include("../inc/parts/staff-header.php");
 				andere tabel wijzigen rooster ( nu comment naar foutgekeurd)
 				Verwijder de record en en sla het op in een backup tabel.
 				*/
+				
+				
+				     $name= $firstname . " " .$lastname;
+						$useremail = $user->Get($uidKey, 'email');
+						$fromemail = 'j.benning@hotmail.nl';
+						$subject = 'Vrij aanvraag van ' . $startdate . ' tot ' . $enddate;
+						$messagePart1 = 'Geachte ' . $name ; 
+						$messagePart2 = 'Uw aanvraag om vrij te zijn van ' . $startdate . ' tot ' . $enddate . ' is helaas niet goedgekeurd.' ;
+						$m = new PHPMailer;
+
+						$m->isSMTP();
+						$m->SMTPAuth = true;
+						$m->SMTPDebug = 0;
+						$m->Host = "smtp.gmail.com";
+						$m->Username = "testbema@gmail.com";
+						$m->Password = "BEMAtest1234";
+						$m->SMTPSecure = 'ssl';
+						$m->Port = 465;
+
+						$m->From = $fromemail;
+						$m->FromName = 'Bema wegenbouw bv';
+						$m->addReplyTo($fromemail, $name);
+						$m->addAddress($useremail);
+						$m->Subject = $subject;
+						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
+
+						$m->send();
+						
+						
 		}if ($value == 'true'){ 
 			
 			
@@ -126,12 +157,48 @@ include("../inc/parts/staff-header.php");
 			
 			$free->updateWorkHours($uidKey,$startdate,$enddate);
 			
+			
+						
+						$name= $firstname . " " .$lastname;
+						$useremail = $user->Get($uidKey, 'email');
+						$fromemail = 'j.benning@hotmail.nl';
+						$subject = 'Vrij aanvraag van ' . $startdate . ' tot ' . $enddate;
+						$messagePart1 = 'Geachte ' . $name ; 
+						$messagePart2 = 'Uw aanvraag om vrij te zijn van ' . $startdate . ' tot ' . $enddate . ' is goedgekeurd.' ;
+
+						$m = new PHPMailer;
+
+						$m->isSMTP();
+						$m->SMTPAuth = true;
+						$m->SMTPDebug = 0;
+						$m->Host = "smtp.gmail.com";
+						$m->Username = "testbema@gmail.com";
+						$m->Password = "BEMAtest1234";
+						$m->SMTPSecure = 'ssl';
+						$m->Port = 465;
+
+						$m->From = $fromemail;
+						$m->FromName = 'Bema wegenbouw bv';
+						$m->addReplyTo($fromemail, $name);
+						$m->addAddress($useremail);
+						$m->Subject = $subject;
+						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
+
+						$m->send();
+						
+			
 			}
 		
 		
 		
 		 
 		} 
+		$currenturl = $_SERVER['REQUEST_URI'];
+		print
+		"<script type='text/javascript'>
+		window.location.href = 'freeapplications.php';
+		</script>";
+		
 	}
 		
 	

@@ -27,7 +27,15 @@ class free {
 	}
 	
 		
+	public function getStaff($uid,$value){
 		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("SELECT * FROM free f join staff s on f.uid = s.uid WHERE uid = :uid"); //query
+		$sth->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele
+		$sth->execute(); //Voer de query uit
+		$result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result[$value]; //Geef resultaat terug
+	}	
 		
 		public function approveRequest(){
 		
