@@ -103,7 +103,10 @@ if (isset($_POST) && !empty($_POST)) {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php $declaration->declistcompleet(); ?>
+                                                    <?php
+                                                    $userid = $uid;
+                                                    $declaration->declistcompleet($userid);
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
