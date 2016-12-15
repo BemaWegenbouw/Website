@@ -79,28 +79,54 @@ if (isset($_POST) && !empty($_POST)) {
                         </div>
                     </form>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <!-- /.panel-heading -->
+                            <div class='row'>
+                                <div class='col-lg-12'>
+                                    <div class='panel panel-default'>
+                                        <div class='panel-heading'>
+                                        </div>
 
-                <?php {
-                    $declaration->declist();
-                }
-                ?>
+                                        <div class='panel-body'>
+                                            <table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Voornaam</th>
+                                                        <th>Achternaam</th>
+                                                        <th>datum</th>
+                                                        <th>Start tijd</th>
+                                                        <th>Eind tijd</th>
+                                                        <th>pauze</th>
 
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $declaration->declistcompleet(); ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+                <!-- /.container-fluid -->
             </div>
-            <!-- /.col-lg-12 -->
+            <!-- /#page-wrapper -->
+
         </div>
-        <!-- /.row -->
-		
-    </div>
-    <!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-</div>
-<!-- /#wrapper -->
-
-<?php
-include("../inc/parts/staff-footer.php");
-?>
+        <?php
+        include("../inc/parts/staff-footer.php");
+        ?>
 
 
 

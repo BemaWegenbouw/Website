@@ -29,12 +29,12 @@ class declaration {
     public function declist() {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT * FROM declaration"); //Maak de query klaar
+        $sth = $pdo->prepare("SELECT first_name voornaam, last_name achternaam, date datum, start_time starttijd, end_time eindtijd, break pauze FROM declaration d JOIN staff s ON d.uid=s.uid;"); //Maak de query klaar
         $sth->execute(); //Voer de query uit
 
-		
-        echo"<table width='100%' class='table table-striped table-bordered table-hover' id='dataTables-exampl'>"; //begin tabel
-
+        echo'           ';
+//        echo"<table width='100%' class='table table-striped table-bordered table-hover' id='dataTables-exampl'>"; //begin tabel
+        echo"<tbody>"; //begin tabel
         $i = 0;
 
         while ($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
@@ -59,11 +59,33 @@ class declaration {
 
             echo "</tr>"; //Einde tabel
         } //Einde PDO tabelverwerking
-
-        echo "</table>"; //Einde van de tabel
+        echo "</tbody>";
+//        echo "</table></div></div></div></div>"; //Einde van de tabel
     }
 
 //Einde van de Staff Lijst functie.
+    public function decListCompleet() {
+
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
+							FROM declaration d join staff s on d.uid = s.uid"); //query
+        $sth->execute(); //Voer de query uit
+
+
+
+
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {   //Creates a loop to loop through results
+            echo "<tr class='gradeA'>
+			  <td>" . $row['first_name'] . "</td>
+			  <td>" . $row['last_name'] . "</td>
+			  <td>" . $row['date'] . "</td>
+			  <td>" . $row['start_time'] . "</td>
+			  <td>" . $row['end_time'] . "</td>
+			  <td>" . $row['break'] . "</td>
+			  </tr>";
+        }
+    }
+
 }
 
 $declaration = new declaration;
