@@ -94,7 +94,7 @@ include("../inc/parts/staff-header.php");
 		$startdate = $free->get($key,'start_date');
 		$enddate = $free->get($key,'end_date');
 		$uidKey = $free->get($key,'uid');
-		$check = $free->checkRequestExist($uidKey,$startdate,$enddate);
+		
 		
 		
 		/*
@@ -113,10 +113,11 @@ include("../inc/parts/staff-header.php");
 				andere tabel wijzigen rooster ( nu comment naar foutgekeurd)
 				Verwijder de record en en sla het op in een backup tabel.
 				*/
-		}else {
+		}if ($value == 'true'){ 
 			
 			
-			
+			print $key . " " . $value;
+		    
 			$free->approveFree($key);
 			/* 	in verify moet true of false komen te staan.
 				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
@@ -130,10 +131,11 @@ include("../inc/parts/staff-header.php");
 		
 		
 		 
-		}var_dump($check); 
-		
-		
+		} 
 	}
+		
+	
+	
 	
 	 
 	?>
