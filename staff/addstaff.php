@@ -110,13 +110,12 @@ if(isset($_SESSION["error"])) {
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-                <div class="row">
+                
                     <div class="col-lg-12">
-                        <h1 class="page-header">Personeel Toevoegen</h1>
+                        <h1 class="page-header">Personeel Toevoegen</h1><br>
                     </div>
                     <!-- /.col-lg-12 -->
-                    
-            <div class="container" style="padding: 0px; margin: 20px;">
+            <div class="col-sm-4">                
                       <form class="form" action="" method="POST" style="">
                 
                 <div class="form-group">
@@ -162,7 +161,7 @@ if(isset($_SESSION["error"])) {
             
                     </div>
                 
-                </div>
+                
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
