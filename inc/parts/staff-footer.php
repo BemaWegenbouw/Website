@@ -56,7 +56,36 @@
 		});
 		</script>
         <?php } ?>
-		
+		<?php if($page == "staff-planning") {?>
+                <!--Calendar scripts-->
+                <script src='calendar/lib/moment.min.js'></script>               
+                <script src='calendar/fullcalendar.min.js'></script>
+                <script src='calendar/fullcalendar.js'></script>
+                <script src='calendar/locale/nl.js'></script>
+                <script>
+
+                    $(document).ready(function () {
+
+                        $('#calendar').fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,agendaWeek,listMonth'
+                            },
+                            defaultDate: '<?php print date("Y-m-d"); ?>',
+                            navLinks: true, // can click day/week names to navigate views
+                            businessHours: true, // display business hours
+                            editable: true,
+                            events: [
+                <?php
+                $calendar->CalendarAllView();
+                ?>]
+                        });
+
+                    });
+
+                </script>
+                <?php } ?>
 		<?php if($page == "staff-dashboard") {?>
         <script src="vendor/raphael/raphael.min.js"></script>
 		<script src="vendor/morrisjs/morris.min.js"></script>
@@ -223,7 +252,37 @@
                 </script>
 
 		<?php } ?>
-                <?php if($page == "staff-availability") {?>
+                <?php if($page == "staff-calendar") {?>
+		<script src='calendar/lib/moment.min.js'></script>               
+                <script src='calendar/fullcalendar.min.js'></script>
+                <script src='calendar/fullcalendar.js'></script>
+                <script src='calendar/locale/nl.js'></script>
+                <script>
+
+                    $(document).ready(function () {
+
+                        $('#calendar').fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,agendaWeek,agendaDay,listMonth'
+                            },
+                            defaultDate: '<?php print date("Y-m-d"); ?>',
+                            navLinks: true, // can click day/week names to navigate views
+                            businessHours: true, // display business hours
+                            editable: false,
+                            events: [
+                <?php
+                $calendar->CalendarView($uid);
+                ?>]
+                        });
+
+                    });
+
+                </script>
+
+		<?php } ?>
+                <?php if($page == "staff-planning") {?>
 		 <!-- DataTables JavaScript -->
 		<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 		<script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
