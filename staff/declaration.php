@@ -34,7 +34,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="col-sm-12 form-group">
                             datum:
                             <div class="input-group date datepicker" data-provide="datepicker">
-                                <input type="date" name="date"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <input type="date" name="date"class="form-control" placeholder="jjjj-mm-dd" required>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
@@ -43,7 +43,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="col-sm-6 form-group">
                             begintijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="start_time"class="form-control" placeholder="00:00" required >
+                                <input type="time" name="start_time"class="form-control" placeholder="--:--" required >
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -52,7 +52,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="col-sm-6 form-group">
                             eindtijd:
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" name="end_time"class="form-control" placeholder="00:00" required >
+                                <input type="time" name="end_time"class="form-control" placeholder="--:--" required >
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -79,28 +79,57 @@ if (isset($_POST) && !empty($_POST)) {
                         </div>
                     </form>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <!-- /.panel-heading -->
+                            <div class='row'>
+                                <div class='col-lg-12'>
+                                    <div class='panel panel-default'>
+                                        <div class='panel-heading'>
+                                        </div>
 
-                <?php {
-                    $declaration->declist();
-                }
-                ?>
+                                        <div class='panel-body'>
+                                            <table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Voornaam</th>
+                                                        <th>Achternaam</th>
+                                                        <th>datum</th>
+                                                        <th>Start tijd</th>
+                                                        <th>Eind tijd</th>
+                                                        <th>pauze</th>
 
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $userid = $uid;
+                                                    $declaration->declistcompleet($userid);
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+                <!-- /.container-fluid -->
             </div>
-            <!-- /.col-lg-12 -->
+            <!-- /#page-wrapper -->
+
         </div>
-        <!-- /.row -->
-		
-    </div>
-    <!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-</div>
-<!-- /#wrapper -->
-
-<?php
-include("../inc/parts/staff-footer.php");
-?>
+        <?php
+        include("../inc/parts/staff-footer.php");
+        ?>
 
 
 

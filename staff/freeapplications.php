@@ -42,8 +42,8 @@ include("../inc/parts/staff-header.php");
 		<?php $free->approveRequest();?>
 		
 		</tbody>
-		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		</table>
+		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		</div>
 		</div>
 		</form>
@@ -55,7 +55,7 @@ include("../inc/parts/staff-header.php");
 		<div class='col-lg-12'>
 		<div class='panel panel-default'>
 		<div class='panel-heading'>
-		<h1> Opgeslagen vrij aanvragen</h1>
+		<h1> Opgeslagen vrij aanvragingen</h1>
 		</div>
 		
 		<div class='panel-body'>
@@ -83,13 +83,31 @@ include("../inc/parts/staff-header.php");
         <!-- eind gehele vrijvraag tabel -->
 		
     <?php
-	
+	require_once "../inc/phpmailer/PHPMailerAutoload.php";
 	if(isset($_POST) && !empty($_POST)){
 	
 	foreach ( $_POST as $key => $value){
-		print $key. " ". $value . " ";
+
 		
-		if($value == 'false'){
+		
+		/* controleer of er user al is ingeroosterd*/
+		$startdate = $free->get($key,'start_date');
+		$enddate = $free->get($key,'end_date');
+		$uidKey = $free->get($key,'uid');
+		/* naam voor de email */
+		$firstname = $user->get($uidKey,'first_name');
+		$lastname= $user->get($uidKey,'last_name');
+		
+		
+		/*
+		$datetime1 =new Datetime('2006-11-12');
+		$datetime2 = new Datetime('2006-11-16');
+		$interval = $datetime1->diff($datetime2);
+		$temp = $interval->format('%d%');
+		
+		 */
+
+			if($value == 'false'){
 			
 			$free->denyFree($key);
 			
@@ -97,22 +115,96 @@ include("../inc/parts/staff-header.php");
 				andere tabel wijzigen rooster ( nu comment naar foutgekeurd)
 				Verwijder de record en en sla het op in een backup tabel.
 				*/
-		}else {
+				
+				
+				     $name= $firstname . " " .$lastname;
+						$useremail = $user->Get($uidKey, 'email');
+						$fromemail = 'j.benning@hotmail.nl';
+						$subject = 'Vrij aanvraag van ' . $startdate . ' tot ' . $enddate;
+						$messagePart1 = 'Geachte ' . $name ; 
+						$messagePart2 = 'Uw aanvraag om vrij te zijn van ' . $startdate . ' tot ' . $enddate . ' is helaas niet goedgekeurd.' ;
+						$m = new PHPMailer;
+
+						$m->isSMTP();
+						$m->SMTPAuth = true;
+						$m->SMTPDebug = 0;
+						$m->Host = "smtp.gmail.com";
+						$m->Username = "testbema@gmail.com";
+						$m->Password = "BEMAtest1234";
+						$m->SMTPSecure = 'ssl';
+						$m->Port = 465;
+
+						$m->From = $fromemail;
+						$m->FromName = 'Bema wegenbouw bv';
+						$m->addReplyTo($fromemail, $name);
+						$m->addAddress($useremail);
+						$m->Subject = $subject;
+						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
+
+						$m->send();
+						
+						
+		}if ($value == 'true'){ 
 			
 			
-			$startdate = $free->get($key,'start_date');
-			$enddate = $free->get($key,'end_date');
+			print $key . " " . $value;
+		    
 			$free->approveFree($key);
 			/* 	in verify moet true of false komen te staan.
 				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
 				Verwijder de record en en sla het op in een backup tabel.
 				*/
-		
-			$free->updateWorkHours($uid,$startdate,$enddate);
 			
-		}
-	}  
-} 
+			$free->updateWorkHours($uidKey,$startdate,$enddate);
+			
+			
+						
+						$name= $firstname . " " .$lastname;
+						$useremail = $user->Get($uidKey, 'email');
+						$fromemail = 'j.benning@hotmail.nl';
+						$subject = 'Vrij aanvraag van ' . $startdate . ' tot ' . $enddate;
+						$messagePart1 = 'Geachte ' . $name ; 
+						$messagePart2 = 'Uw aanvraag om vrij te zijn van ' . $startdate . ' tot ' . $enddate . ' is goedgekeurd.' ;
+
+						$m = new PHPMailer;
+
+						$m->isSMTP();
+						$m->SMTPAuth = true;
+						$m->SMTPDebug = 0;
+						$m->Host = "smtp.gmail.com";
+						$m->Username = "testbema@gmail.com";
+						$m->Password = "BEMAtest1234";
+						$m->SMTPSecure = 'ssl';
+						$m->Port = 465;
+
+						$m->From = $fromemail;
+						$m->FromName = 'Bema wegenbouw bv';
+						$m->addReplyTo($fromemail, $name);
+						$m->addAddress($useremail);
+						$m->Subject = $subject;
+						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
+
+						$m->send();
+						
+			
+			}
+		
+		
+		
+		 
+		} 
+		$currenturl = $_SERVER['REQUEST_URI'];
+		print
+		"<script type='text/javascript'>
+		window.location.href = 'freeapplications.php';
+		</script>";
+		
+	}
+		
+	
+	
+	
+	 
 	?>
 	</div>
     <!-- /container -->
