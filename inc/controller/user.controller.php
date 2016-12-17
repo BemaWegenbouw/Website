@@ -47,8 +47,6 @@ class user {
         $sth = $pdo->prepare("SELECT * FROM staff"); //Maak de query klaar
         $sth->execute(); //Voer de query uit
         
-        echo('<link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">'); //Maak de CSS voor de tabel actief
-        
         $i = 0;
         
         while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
@@ -83,12 +81,12 @@ class user {
         
         } //Einde inhoudverwerking
         
-        echo "<td><a href='editstaff.php?uid=$uid'>Klik</a></td>"; //Plak overal bewerkknop achter
+        echo "<td><a href='editstaff.php?uid=$uid'>Berwerken</a></td>"; //Plak overal bewerkknop achter
         echo "</tr>"; //Einde tabel
             
         } //Einde PDO tabelverwerking
         
-        echo "</table>"; //Einde van de tabel
+        echo "</tbody>"; //Einde van de tabel
         
     } //Einde van de Staff Lijst functie.
     

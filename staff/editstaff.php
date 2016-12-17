@@ -116,7 +116,7 @@ if(isset($_SESSION["successmsg"])) {
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid" style="position: relative;">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Personeel Wijzigen</h1>
@@ -160,15 +160,34 @@ if(isset($_SESSION["successmsg"])) {
                 <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
             </form>
-                    
-            <table border='1' style='position: absolute; left: 350px; top: 15%;'>
-            <?php $user->staffList(); ?>
-            
-                    
+                              
                 </div>
                 <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+			</div>
+			<!-- /.container-fluid -->
+
+		<!-- start gehele vrijvraag tabel -->
+		<div class='container-fluid'>
+		<div class='row'>
+		<div class='col-sm-12'>
+		<div class='panel panel-default'>
+		<div class='panel-heading'>
+		<h1> Opgeslagen vrij aanvragingen</h1>
+		</div>
+		
+		<div class='panel-body'>
+		<table class='table table-striped table-bordered table-hover' id='example'>
+		
+		<tbody>
+		<?php $user->staffList(); ?>	
+		</tbody>
+		</table>
+		</div>
+		</div>
+		</div>
+		</div>
+        <!-- eind gehele vrijvraag tabel -->
+        </div>  
         </div>
         <!-- /#page-wrapper -->
 
