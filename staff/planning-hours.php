@@ -13,7 +13,6 @@ include("../inc/parts/staff-header.php");
 
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="row"> <input class="form-control"></div>
             <div class="row">
                             <div class="col-sm-6">
                             <h1> Hier komt de calender</h1>
@@ -22,54 +21,82 @@ include("../inc/parts/staff-header.php");
                         <br />
                         <!--                roept de calender aan-->
                          </div>
+                            
                             </div>
             <div class="container-fluid">
                 <div class="row">
-                       <div class="container col-sm-6">
-                        <h1 class="page-header">Uren Plannen</h1>
-                       
-                         <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Medewerker
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-        <form action="" method="get">
- 
-      <?php  $calendar->DropDownMenuPlannedHours(); ?>
-      
-      
-      
-      </form>
-    </ul>
+                       <div class="col-sm-6">
+                        
+                        
+             
+            
+                        
+                    <div class='panel panel-default'>
+		<div class='panel-heading'>
+		<h3>Beschikbaarheid</h3>
+		</div>
+		
+		<div class='panel-body'>
+		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+		<thead>
+			<tr>
+                                <th>Persoon</th>
+				<th>Dag</th>
+				<th>Begin tijd/th>
+				<th>Eind Tijd</th>
+						
+			</tr>
+        </thead>
+		<tbody>
+		<?php $calendar->GetAvailability();?>
+		
+		</tbody>
+		</table>
+		
+		</div>
+		</div>         
                            
-                        
-                        <?php  
-                     
+                      <div class='panel panel-default'>
+		<div class='panel-heading'>
+		<h3>Ingeplande Medewerkers</h3>
+		</div>
+		
+		<div class='panel-body'>
+		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+		<thead>
+			<tr>
+                                <th>Voornaam</th>
+				<th>Achternaam</th>
+				<th>userCode</th>
+                                <th>Start Tijd</th>
+				<th>Eind Tijd</th>
+                                <th>Datum</th>
+                                <th>Verwijder</th>
+						
+			</tr>
+        </thead>
+		<tbody>
+		  <?php $calendar->SelectPlannedHours();  ?>
+		
+		</tbody>
+		</table>
+		
+		</div>
+		</div>           
                          
-                            $xxx=1;
-                      
-                            while ($xxx<($calendar->countstaff())+1){
-                            
-                     if(isset($_GET[$xxx])){
-                         $value=($_GET[$xxx]);
-                         $calendar->GetAvailability($value);
-                     }
-                     $xxx++;}
+                    
                             
                             
-                        ?>
-            </div>
-                         
                         
-           
+                            
+                        
+                 
 
-                       
-                            
     
-                                 
+                     </div>            
 
-</body>
-</html>
-  </div>
+
+
                         
                         
                         
@@ -79,7 +106,7 @@ include("../inc/parts/staff-header.php");
                         
                         
                         
-                    </div>
+                    
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
@@ -87,10 +114,42 @@ include("../inc/parts/staff-header.php");
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+        <div class="row">
 
+            <div class="col-sm-4">
+                <form action="planning-verwerk.php" method="post">
+                                            <div class="col-sm-2" ><div class="dropup">
+   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Medewerker
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        
+        
+       <?php $calendar->DropDownMenuPlannedHours(); ?>
+        
+        
+    </ul></div></div>
+                <div class="input-group date datepicker" data-provide="datepicker" >
+                                <input type="date" name="dateplanning"class="form-control" placeholder="yyyy-mm-dd" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>  </div></div>
+
+                            
+                            
+                            <label>Start Tijd</label>  <input type="time" class="form_control" name="starttimeplanning" >
+                            <label>Eind Tijd</label>  <input type="time" class="form_control" name="endtimeplanning" >
+                            <label></label>  <input type="submit" class="form_control" >
+                                              <div class="dropdown">
+ 
+                        </form>
+                       
+                            </div> 
+                             </div>
     </div>
+</div>
     <!-- /#wrapper -->
-
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    
 <?php
 
 include("../inc/parts/staff-footer.php");
