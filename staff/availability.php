@@ -197,7 +197,21 @@ $uid = $_SESSION["uid"];
                      <br>
                      <br>
                      <h1>Huidige beschikbaarheid</h1>
-                     <?php $calendar->GetAvailability($uid); ?>
+                     		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+		<thead>
+			<tr>
+                                <th>Persoon</th>
+				<th>Dag</th>
+				<th>Begin tijd/th>
+				<th>Eind Tijd</th>
+						
+			</tr>
+        </thead>
+		<tbody>
+		<?php $calendar->GetAvailabilitySingle($uid);?>
+		
+		</tbody>
+		</table>
                      
                      <br>
                      <br>
