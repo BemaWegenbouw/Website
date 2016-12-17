@@ -27,7 +27,15 @@ class free {
 	}
 	
 		
+	public function getStaff($uid,$value){
 		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("SELECT * FROM free f join staff s on f.uid = s.uid WHERE uid = :uid"); //query
+		$sth->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele
+		$sth->execute(); //Voer de query uit
+		$result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result[$value]; //Geef resultaat terug
+	}	
 		
 		public function approveRequest(){
 		
@@ -83,44 +91,23 @@ class free {
 
 	}
 	
-	public function checkRequestExist($uid,$startdate,$enddate){
-		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
-		$sth = $pdo->prepare ("Select date from work_schedule WHERE uid = :uid AND (date >= :startdate and date <= :enddate)"); 
-		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
-		$sth->bindparam(':startdate', $startdate, PDO::PARAM_STR);//query
-		$sth->bindparam(':enddate', $enddate, PDO::PARAM_STR);//query
-		$sth->execute(); //Voer de query uit
-		$result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
-        return $result['date']; //Geef resultaat terug
-	}
-	
+
 	public function approveFree($key){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET verify = 'true' WHERE id = :id"); //query
+		$sth = $pdo->prepare ("UPDATE free SET verify = 'goedgekeurd' WHERE id = :id"); //query
 		$sth->bindparam(':id', $key, PDO::PARAM_STR);
 		$sth->execute(); //Voer de query uit
-		
-		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET comment = 'goedgekeurd' WHERE id = :id"); //query
-		$sth->bindparam(':id', $key, PDO::PARAM_STR);
-		$sth->execute(); //Voer de query uit
-		
-		
 	
 	}
 	
 	public function denyFree($key){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET verify = 'false' WHERE id = :id"); //query
+		$sth = $pdo->prepare ("UPDATE free SET verify = 'afgekeurd' WHERE id = :id"); //query
 		$sth->bindparam(':id', $key, PDO::PARAM_STR);
 		$sth->execute(); //Voer de query uit
-		
-		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET comment = 'foutgekeurd' WHERE id = :id"); //query
-		$sth->bindparam(':id', $key, PDO::PARAM_STR);
-		$sth->execute(); //Voer de query uit
+	
 	}
 	
 	public function backupFree(){
@@ -132,12 +119,33 @@ class free {
 	public function updateWorkHours($uid,$startdate,$enddate){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
-		$sth = $pdo->prepare ("UPDATE work_schedule set start_time = '00:00', end_time ='00:00' WHERE uid = :uid AND (date >= :startdate and date <= :enddate)"); 
+		$sth = $pdo->prepare ("DELETE FROM work_schedule WHERE uid = :uid AND (date >= :start_date and date < :end_date)"); 
 		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
-		$sth->bindparam(':startdate', $startdate, PDO::PARAM_STR);//query
-		$sth->bindparam(':enddate', $enddate, PDO::PARAM_STR);//query
+		$sth->bindparam(':start_date', $startdate, PDO::PARAM_STR);//query
+		$sth->bindparam(':end_date', $enddate, PDO::PARAM_STR);//query
 		$sth->execute(); //Voer de query uit
 		
+		
+		$date = $startdate; 	
+		$date2 = $enddate;
+		
+		while ($date < $date2){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+		$sth = $pdo->prepare ("INSERT INTO work_schedule (uid,start_time,end_time, date) VALUES (:uid,'00:00:00','00:00:00', :date)"); 
+		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+		$sth->bindparam(':date', $date, PDO::PARAM_STR);//query
+		$sth->execute(); //Voer de query uit
+		
+		$time_original = strtotime($date);
+		$time_add      = $time_original + (3600*24); //add seconds of one day
+
+		$new_date      = date("Y-m-d", $time_add);
+		$date = $new_date;
+	
+		/* $daycount = $daycount + 1; */
+
+	}
 	}
 	
 	public function insertNewWorkHours($uid,$startdate){
