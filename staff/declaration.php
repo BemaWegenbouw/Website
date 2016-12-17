@@ -25,11 +25,17 @@ if (isset($_POST) && !empty($_POST)) {
     ?>
 <!-- Page Content -->
 <div id="page-wrapper">
-    <div class="container-fluid">
+    
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Urendeclaratie</h1>
-                <div class="col-sm-4">
+			<div class="col-lg-12">
+				<h1 class="page-header">Urendeclaratie</h1>
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+			
+				<div class="container-fluid">
+				<div class='row'>
+				<div class="col-sm-5">
                     <form method="post" action="declaration.php">
                         <div class="col-sm-12 form-group">
                             datum:
@@ -79,18 +85,21 @@ if (isset($_POST) && !empty($_POST)) {
                         </div>
                     </form>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <!-- /.panel-heading -->
+                            </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+					<br>
+					
+				  <!-- /.panel-heading -->
+							<div class='container-fluid'>
                             <div class='row'>
                                 <div class='col-lg-12'>
                                     <div class='panel panel-default'>
                                         <div class='panel-heading'>
                                         </div>
 
-                                        <div class='panel-body'>
-                                            <table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                                        <div width="auto" class='panel-body'>
+                                            <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
                                                 <thead>
                                                     <tr>
                                                         <th>Voornaam</th>
@@ -113,19 +122,9 @@ if (isset($_POST) && !empty($_POST)) {
                                     </div>
                                 </div>
                             </div>
+							</div>	
+					</div>
 
-                        </div>
-                        <!-- /.col-lg-12 -->
-                    </div>
-                    <!-- /.row -->
-
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /#page-wrapper -->
-
-        </div>
-        <!-- /#wrapper -->
 
         <?php
         include("../inc/parts/staff-footer.php");
