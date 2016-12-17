@@ -50,7 +50,7 @@ class user {
         $i = 0;
         
         while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
-            
+           /* 
             if ($i == 0) {
             $i++;
             echo "<tr>"; //Vertel in HTML dat je tabelkopjes begint
@@ -65,7 +65,7 @@ class user {
         
             echo "<th>Bewerken</th></tr>"; //Maak bewerkkop aan en sluit de kopjes
             
-            } //Einde kopjesprojectie
+            } //Einde kopjesprojectie */
         
         echo "<tr>"; //Print de openingstag voor tabelinhoud
         
@@ -89,6 +89,32 @@ class user {
         echo "</tbody>"; //Einde van de tabel
         
     } //Einde van de Staff Lijst functie.
+	
+	public function staffList2() {
+        
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM staff"); //Maak de query klaar
+        $sth->execute(); //Voer de query uit
+     
+	while($row = $sth->fetch(PDO::FETCH_ASSOC)){	 
+        echo "<tr class='gradeA'>
+			  <td>" . $row['uid'] . "</td>
+			  <td>" . $row['username'] . "</td>
+			  <td>" . $row['rank_id'] . "</td>
+			  <td>" . $row['first_name'] . "</td>
+			  <td>" . $row['last_name']. "</td>
+			  <td>" . $row['address'] . "</td>
+			  <td>" . $row['postal_code'] . "</td>
+			  <td>" . $row['email'] . "</td>
+			  <td>" . $row['function'] . "</td>
+			  <td><a href='editstaff.php?uid=$uid'>Berwerken</a></td>
+			  </tr>";   		
+        } //Einde PDO tabelverwerking
+        
+   
+			
+    } //Einde van de Staff Lijst functie.
+
     
     public function getID($user) {
         global $pdo; //Zoek naar $pdo buiten deze functie

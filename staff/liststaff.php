@@ -14,7 +14,7 @@ include("../inc/parts/staff-header.php");
 ?>
 
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div  id="page-wrapper">
             
                 <div class="row">
                     <div class="col-lg-12">
@@ -22,31 +22,45 @@ include("../inc/parts/staff-header.php");
                     </div>
                     <!-- /.col-lg-12 -->
 			    </div>
-       <div class='container-fluid'>
-	   <div class='col-lg-12'>
-		<div class='panel panel-default'>
-		<div class='panel-heading'>
-		<h1> Alle personeel</h1>
+       <!-- start gehele vrijvraag tabel -->
+	   <div class='container-fluid'>
+		<div class='row'>
+		<div class='col-sm-12'>
+		<div class='col-sm-12 panel panel-default'>
+		<div class='panel'>
+		<h1> Complete Personeelslijst</h1>
 		</div>
 		
-		<div class='panel-body'>
-		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+		<div  width="auto" class='panel-body'>
+		<table width="100%"class='table table-striped table-bordered table-hover' id='scrolltable'>
+		<thead>
+			<tr>
+				<th>GebruikerID</th>
+				<th>Accountnaam</th>
+				<th>Rang</th>
+				<th>Voornaam</th>
+				<th>Achternaam</th>
+				<th>Adres</th>
+				<th>Postcode</th>
+				<th>E-mail</th>	
+				<th>Functie</th>
+				<th>Bewerken</th>				
+			</tr>
+        </thead>
 		<tbody>
-            <?php $user->staffList(); ?>
-                    
-                
-                <!-- /.row -->
-				<!-- start gehele vrijvraag tabel -->
-		
-				
-		
+		<?php $user->staffList();?>		
+		</tbody>
 		</table>
 		</div>
 		</div>
 		</div>
-		</div>
+		
         <!-- eind gehele vrijvraag tabel -->
-        </div>
+		</div>
+		<!-- einde row-->
+		</div>
+		<!-- einde container -->
+		</div>
         <!-- /#page-wrapper -->
 
    

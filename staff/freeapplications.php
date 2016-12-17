@@ -9,23 +9,29 @@ include("../inc/parts/staff-header.php");
  $uid = $_SESSION["uid"];
 
 ?>
+	
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
-            
+		
+		 <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Vrij aanvragingen</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+			    </div>
 	
-		<!-- start vrijvraag goedkeuring tabel -->	
+	<!-- start gehele vrijvraag tabel -->
+	   <div class='container-fluid'>
 		<div class='row'>
-		<div class='col-lg-12'>
-		<br>
+		<div class='col-sm-12'>
 		<form method='POST'>
 		<div class='panel panel-default'>
-		<div class='panel-heading'>
+		<div class='panel'>
 		<h1>Openstaande vrij aanvragingen</h1>
 		</div>
 		
-		<div class='panel-body'>
-		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+		<div  width="auto" class='panel-body'>
+		<table width="100%"class='table table-striped table-bordered table-hover' id='scrolltable2'>
 		<thead>
 			<tr>
 				<th>Voornaam</th>
@@ -35,31 +41,31 @@ include("../inc/parts/staff-header.php");
 				<th>Start tijd</th>
 				<th>Eind tijd</th>
 				<th>Reden</th>
-				<th>Goedkeuring</th>		
+				<th>Goedkeuring</th>			
 			</tr>
         </thead>
 		<tbody>
-		<?php $free->approveRequest();?>
-		
+		<?php $free->approveRequest();?>		
 		</tbody>
 		</table>
 		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
 		</div>
 		</div>
-		</form>
+		<form method='POST'>
 		</div>
-		</div><br>
-		<!-- eind vrijvraag goedkeuring tabel -->
+		
+        <!-- eind gehele vrijvraag tabel -->
 		<!-- start gehele vrijvraag tabel -->
-		<div class='row'>
-		<div class='col-lg-12'>
-		<div class='panel panel-default'>
-		<div class='panel-heading'>
+	   
+		<div class='col-sm-12'>
+		<form method='POST'>
+		<div class='col-sm-12 panel panel-default'>
+		<div class='panel'>
 		<h1> Opgeslagen vrij aanvragingen</h1>
 		</div>
 		
-		<div class='panel-body'>
-		<table class='table table-striped table-bordered table-hover' id='example'>
+		<div  width="auto" class='panel-body'>
+		<table width="100%"class='table table-striped table-bordered table-hover' id='scrolltable'>
 		<thead>
 			<tr>
 				<th>Voornaam</th>
@@ -69,7 +75,7 @@ include("../inc/parts/staff-header.php");
 				<th>Start tijd</th>
 				<th>Eind tijd</th>
 				<th>Reden</th>
-				<th>Goedkeuring</th>		
+				<th>Goedkeuring</th>			
 			</tr>
         </thead>
 		<tbody>
@@ -79,7 +85,7 @@ include("../inc/parts/staff-header.php");
 		</div>
 		</div>
 		</div>
-		</div>
+		
         <!-- eind gehele vrijvraag tabel -->
 		
     <?php
@@ -208,6 +214,8 @@ include("../inc/parts/staff-header.php");
 	?>
 	</div>
     <!-- /container -->
+
+	</div>
 	</div>
 	<!-- /page wrapper -->
 
