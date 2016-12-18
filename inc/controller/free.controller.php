@@ -83,7 +83,7 @@ class free {
 			  <td>" . $row['start_time']. "</td>
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['comment'] . "</td>
-			  <td>" . $row['verify'] . "</td>
+			  <td class=" . $row["verify"] . ">" . $row['verify'] . "</td>
 			  </tr>";
 			
 		}
