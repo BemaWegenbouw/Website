@@ -33,6 +33,7 @@ $uid = $_SESSION["uid"];
                                                         <th>Start tijd</th>
                                                         <th>Eind tijd</th>
                                                         <th>Pauze</th>
+														<th>Goedkeuring</th>
 
                                                     </tr>
                                                 </thead>
