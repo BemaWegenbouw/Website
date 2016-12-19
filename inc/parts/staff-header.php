@@ -73,6 +73,7 @@
             <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 	    <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
 	    <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+            <link rel="stylesheet" href="../assets/bootstrap-select/dist/css/bootstrap-select.css">
             
         <?php } ?>
 

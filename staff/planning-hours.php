@@ -13,11 +13,12 @@ $uid = $_SESSION["uid"];
 
 <!-- Page Content -->
 <div id="page-wrapper">
+    <div class="row"><h1>Inroosterpagina</h1><div class="col-sm-8"<br><div>Op deze pagina kunt u de medewerkers inplannen. Via het menu Inplannen kunt u kiezen voor 1 of meerdere medewerkers die u op een bepaalde dag inpland. In het planningsmenu kunt u de huidige status van medewerkers inzien, in het beschikbaarheidsmenu kunt u zien op welke dagen uw medewerkers beschikbaar zijn, en in het ingeplande medewerkers menu kunt u de huidig ingeplande diensten verwijderen. </div><br></div></div>
     <div class="row">
         <div class="col-sm-6">
             <div class='panel panel-default'>
                 <div class='panel-heading'>
-                    <h3>Hier komt de calender</h3>
+                    <h3>Planningskalender</h3>
                 </div>
 
                 <div class='panel-body'>
@@ -43,7 +44,7 @@ $uid = $_SESSION["uid"];
                 </div>
 
                 <div class='panel-body'>
-                    <table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                    <table class='table table-striped table-bordered' id='dataTables-example'>
                         <thead>
                             <tr>
                                 <th>Persoon</th>
@@ -73,7 +74,7 @@ $uid = $_SESSION["uid"];
 
                 <div class='panel-body'>
 
-                    <table class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                    <table class='table table-striped table-bordered' id='dataTables-example2'>
 
                         <thead>
                             <tr>
@@ -104,7 +105,7 @@ $uid = $_SESSION["uid"];
 
                 <div class='panel-body'>
                     <form action="planning-verwerk.php" method="post">
-                        <div class="dropup">
+                        <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Medewerker
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
