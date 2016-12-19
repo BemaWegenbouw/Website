@@ -35,32 +35,12 @@ include("../inc/parts/staff-header.php");
                             $inplanninguid++;}
                             
                             
-                            
-//                            function yay(){print "hoi";}
-//                function please(){
-//                    $x=0;
-//                    while ($x<10){
-//                        
-//                        if($_POST[$x]){
-//                        $result= yay();
-//                        $result= $calendar->insertPlanning($_POST[$x],)
-//                        }
-//                        $x++;
-//                        
-//                    } return $result;
-//                    
-//                } 
-//                
-//               $doehet= please();          
-//               print $doehet;
-               
-               
-                        // $calendar->insertPlanning($uidd, $start_time_planning, $end_time_planning, $date_planning);
-                        
-                            
+                               
                             
                             ?>
-                        
+                        <script language="javascript">
+    window.location.href = "planning-hours.php"
+</script>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
