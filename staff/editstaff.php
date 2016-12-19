@@ -5,6 +5,11 @@
 
 $page = "staff-edit";
 require_once("../inc/engine.php");
+
+if($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("edit_staff")) {
+header("Location: dashboard.php");
+die("Unauthorized."); }
+
 include("../inc/parts/staff-header.php");
 
 if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
