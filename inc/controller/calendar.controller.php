@@ -213,7 +213,7 @@ class Calendar {
          $sth->bindParam(':currentdate', $current_date, PDO::PARAM_STR); //Vervang variabele
         $sth->execute(); //Voer de query uit
         
-        echo('<link rel="stylesheet" type="text/css" href="../assets/css/staff-custom.css">'); //Maak de CSS voor de tabel actief
+        //Maak de CSS voor de tabel actief
         
         $i = 0;
                 while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
@@ -279,7 +279,7 @@ class Calendar {
         $last_name=$row['last_name'];//haalt alle achternamen op
         $uidd=$row['uid'];//haalt alle uid's op
      
-      print "<li>".$first_name." ".$last_name."<input type='checkbox' value='".$uidd."' name='".$uidd."'<li>";  //maakt de dropdownmenu 
+      print "<li class='list-group-item'>".$first_name." ".$last_name." <input type='checkbox' value='".$uidd."' name='".$uidd."'<li>";  //maakt de dropdownmenu 
      } }//einde functie
 
 } //Einde class
