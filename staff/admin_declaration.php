@@ -16,14 +16,74 @@ $uid = $_SESSION["uid"];
             <div class="col-lg-12">
 				<h1 class="page-header">Uren Inzien</h1>
 				
-				<?php {
-                    $declaration->declist();
-                }
-                ?>
-				</div>
+						<div class='container-fluid'>
+                            <div class='row'>
+                                <div class='col-lg-12'>
+                                    <div class='panel panel-default'>
+                                        <div class='panel-heading'>
+											</div>
+
+                                        <div width="auto" class='panel-body'>
+                                            <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Voornaam</th>
+                                                        <th>Achternaam</th>
+                                                        <th>datum</th>
+                                                        <th>Start tijd</th>
+                                                        <th>Eind tijd</th>
+                                                        <th>pauze</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $userid = $uid;
+                                                    $declaration->declist($userid);
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+						</div>	
 					</div>
-						</div>
-							</div>
-							<?php
+					
+					<div class='container-fluid'>
+                            <div class='row'>
+                                <div class='col-lg-12'>
+                                    <div class='panel panel-default'>
+                                        <div class='panel-heading'>
+                                        </div>
+
+                                        <div width="auto" class='panel-body'>
+                                            <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable2'>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Voornaam</th>
+                                                        <th>Achternaam</th>
+                                                        <th>datum</th>
+                                                        <th>Start tijd</th>
+                                                        <th>Eind tijd</th>
+                                                        <th>pauze</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $userid = $uid;
+                                                    $declaration->declistgoedgekeurd($userid);
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+						</div>	
+					</div>
+					
+				<?php	
 include("../inc/parts/staff-footer.php");
 ?>
