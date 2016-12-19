@@ -55,7 +55,9 @@ $uid = $_SESSION["uid"];
                
                ?>
                         
-               
+               <script language="javascript">
+    window.location.href = "availability.php"
+</script>
 
 <?php
 

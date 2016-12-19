@@ -146,6 +146,7 @@
 		<!-- EIND AVAILABILITY -->
          <!-- START PLANNING -->
 		<?php if($page == "staff-planning") {?>
+         <script src="../assets/bootstrap-select/dist/js/bootstrap-select.js"></script>
                 <!--Calendar scripts-->
                 <script src='calendar/lib/moment.min.js'></script>               
                 <script src='calendar/fullcalendar.min.js'></script>
