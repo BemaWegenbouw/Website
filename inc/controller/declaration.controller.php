@@ -32,7 +32,7 @@ class declaration {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
-							FROM declaration d join staff s on d.uid = s.uid"); //query
+							FROM declaration d join staff s on d.uid = s.uid WHERE verify IS NULL"); //query
         $sth->execute(); //Voer de query uit
 
 
