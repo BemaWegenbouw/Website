@@ -116,14 +116,49 @@ if(isset($_SESSION["successmsg"])) {
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid" style="position: relative;">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <h1 class="page-header">Personeel Wijzigen</h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    
-           <form class="form" action="" method="POST" style="width: 300px;">
+				</div>	
+        <!-- start gehele vrijvraag tabel -->
+		<div class='row'>
+		<div class='col-sm-8'>
+		<div class='col-sm-12 panel panel-default'>
+		<div class='panel'>
+		<h1> Complete Personeelslijst</h1>
+		</div>
+		
+		<div  width="auto" class='panel-body'>
+		<table width="100%"class='table table-striped table-bordered table-hover' id='scrolltable'>
+		<thead>
+			<tr>
+				<th>GebruikerID</th>
+				<th>Accountnaam</th>
+				<th>Rang</th>
+				<th>Voornaam</th>
+				<th>Achternaam</th>
+				<th>Adres</th>
+				<th>Postcode</th>
+				<th>E-mail</th>	
+				<th>Functie</th>
+				<th>Bewerken</th>				
+			</tr>
+        </thead>
+		<tbody>
+		<?php $user->staffList();?>		
+		</tbody>
+		</table>
+		</div>
+		</div>
+		</div>
+		
+        <!-- eind gehele vrijvraag tabel -->
+		
+		   
+           <form class="form col-sm-4" action="" method="POST" style="width: 300px;">
                 
                 <div class="form-group">
                 
@@ -135,12 +170,12 @@ if(isset($_SESSION["successmsg"])) {
                 
                 </div>
                 
-                <p>
+                
                 
                 <label for="inputFirstname">Voornaam</label><br />
                 <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" value="<?php echo($first_name); ?>" required name="firstname"><br />
                 
-                <label for="inputLastname">Achernaam</label><br />
+                <label for="inputLastname">Achernaam</label>
                 <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" value="<?php echo($last_name); ?>" required name="lastname"><br />
                 
                 <label for="inputAddress">Adres</label><br />
@@ -160,16 +195,16 @@ if(isset($_SESSION["successmsg"])) {
                 <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
             </form>
-                    
-            <table border='1' style='position: absolute; left: 350px; top: 15%;'>
-            <?php $user->staffList(); ?>
-            
-                    
+                              
                 </div>
                 <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
+			
+			</div>
+			<!-- /.container-fluid -->
+
+		
+        </div>  
+       
         <!-- /#page-wrapper -->
 
     <!-- /#wrapper -->
