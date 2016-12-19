@@ -8,8 +8,8 @@ include("inc/parts/header.php");
 ?>
 
 <div class="container" id="Contact">
-    <div id="contact" class="container-fluid" style="margin-top: -125px;">
-
+    
+	
         <div class="row">
 
             <div class="col-sm-5">
@@ -49,7 +49,7 @@ include("inc/parts/header.php");
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button>
+                            <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button><br>
                         </div>
 
                     </div>			
@@ -164,15 +164,16 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 
     </div>
 </div>
-</div>
+
 </div>
 
-<div style="margin-left: 17.5%; margin-right: 17.5%; border-top-style: dotted; padding-bottom: 50px; color: #AEAEAE99;"></div>
 
-<div class="container-fluid" style="margin-top: -75px;">
+<div class = "container">
+<div >
   <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
     <div id="googleMap" class="container gmap"></div>
-</div>
+
+
 <!-- Add Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap"></script>
 <script>
@@ -193,6 +194,9 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+</div>
+</div>
+<br>
 <?php include("inc/parts/footer.php"); ?>
 
 

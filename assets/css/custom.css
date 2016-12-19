@@ -4,6 +4,7 @@
   margin-bottom: 30px;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
+  
 }
  .container-fluid {
       padding: 60px 50px;
@@ -23,7 +24,19 @@
   width: auto;
 } 
 
+ .footers {
+	height: 100%;
+	width:100%;
+	text-align: center;
+	color: white;
+	background-image: url("../img/footer.png");
+	background-size: cover;
   
+   
+        
+        
+
+ }
   
   body {
       font: 400 15px ;
@@ -154,7 +167,7 @@
   
   .gmap{
 	  height:500px;
-	  width:70%;
+	  width:100%;
   }
   
  
@@ -175,7 +188,8 @@
     top: 0;
     left: 0;
     right: 0;
-   opacity: 0.7;
+	background-color: #F1F1F1 !important;
+   
 
 }
 .navbar li a, .navbar .navbar-brand {
