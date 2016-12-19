@@ -46,6 +46,17 @@ class declaration {
 			  <td>" . $row['start_time'] . "</td>
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['break'] . "</td>
+                                                        <td>
+                                                        <select style='width:80%; 'name='" . $row['id'] . "' id='inputID' class='form-control' required>
+                                                            <option value='true'>
+                                                                ja
+                                                            </option>
+                                                            <option value='false'>
+                                                                nee
+                                                            </option>
+                                                        </select>
+                                                        </td>
+
 			  </tr>";
         }
     }
@@ -55,8 +66,9 @@ class declaration {
 
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
-							FROM declaration d join staff s on d.uid = s.uid"); //query
+        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break,verify
+                                            FROM declaration d join staff s on d.uid = s.uid
+                                            WHERE verify IS NOT null"); //query
         $sth->execute(); //Voer de query uit
 
 
@@ -70,6 +82,7 @@ class declaration {
 			  <td>" . $row['start_time'] . "</td>
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['break'] . "</td>
+                                                        <td class=" . $row["verify"] . ">" . $row['verify'] . "</td>
 			  </tr>";
         }
     }
