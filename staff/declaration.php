@@ -104,10 +104,10 @@ if (isset($_POST) && !empty($_POST)) {
                                 <tr>
                                     <th>Voornaam</th>
                                     <th>Achternaam</th>
-                                    <th>datum</th>
+                                    <th>Datum</th>
                                     <th>Start tijd</th>
                                     <th>Eind tijd</th>
-                                    <th>pauze</th>
+                                    <th>Pauze</th>
                                 </tr>
                             </thead>
                             <tbody>
