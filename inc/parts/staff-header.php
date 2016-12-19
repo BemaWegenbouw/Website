@@ -160,7 +160,10 @@
                                             </li>
 											<li>
                                                 <a href="freeapplications.php">Vrij aanvragingen</a>
-                                            </li> 
+                                            </li>
+											<li>
+                                                <a href="admin_declaration.php">Gedeclareerde uren</a>
+                                            </li>											
 											
                                         </ul>
                                         <!-- /.nav-second-level -->
