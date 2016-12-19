@@ -46,6 +46,17 @@ class declaration {
 			  <td>" . $row['start_time'] . "</td>
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['break'] . "</td>
+                                                        <td>
+                                                        <select style='width:80%; 'name='" . $row['first_name'] . "' id='inputID' class='form-control' required>
+                                                            <option value='true'>
+                                                                ja
+                                                            </option>
+                                                            <option value='false'>
+                                                                nee
+                                                            </option>
+                                                        </select>
+                                                        </td>
+
 			  </tr>";
         }
     }
@@ -55,22 +66,24 @@ class declaration {
 
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
-							FROM declaration d join staff s on d.uid = s.uid"); //query
+        $sth = $pdo->prepare('SELECT first_name, last_name, date, start_time, end_time, break,verify
+                                            FROM declaration d join staff s on d.uid = s.uid
+                                            WHERE verify IS NOT null or verify IS NOT NULL '); //query
         $sth->execute(); //Voer de query uit
 
 
 
 
         while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {   //Creates a loop to loop through results
-            echo "<tr class='gradeA'>
-			  <td>" . $row['first_name'] . "</td>
-			  <td>" . $row['last_name'] . "</td>
-			  <td>" . $row['date'] . "</td>
-			  <td>" . $row['start_time'] . "</td>
-			  <td>" . $row['end_time'] . "</td>
-			  <td>" . $row['break'] . "</td>
-			  </tr>";
+            echo "<tr class = 'gradeA'>
+<td>" . $row['first_name'] . "</td>
+<td>" . $row['last_name'] . "</td>
+<td>" . $row['date'] . "</td>
+<td>" . $row['start_time'] . "</td>
+<td>" . $row['end_time'] . "</td>
+<td>" . $row['break'] . "</td>
+<td class = " . $row["verify"] . ">" . $row['verify'] . "</td>
+</tr>";
         }
     }
 
@@ -79,8 +92,8 @@ class declaration {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
-                                            FROM declaration d join staff s on d.uid = s.uid
-                                            WHERE d.uid = :uid "); //query
+FROM declaration d join staff s on d.uid = s.uid
+WHERE d.uid = :uid "); //query
         $sth->bindParam(':uid', $userid, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
 
@@ -88,14 +101,14 @@ class declaration {
 
 
         while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {   //Creates a loop to loop through results
-            echo "<tr class='gradeA'>
-			  <td>" . $row['first_name'] . "</td>
-			  <td>" . $row['last_name'] . "</td>
-			  <td>" . $row['date'] . "</td>
-			  <td>" . $row['start_time'] . "</td>
-			  <td>" . $row['end_time'] . "</td>
-			  <td>" . $row['break'] . "</td>
-			  </tr>";
+            echo "<tr class = 'gradeA'>
+            <td>" . $row['first_name'] . "</td>
+            <td>" . $row['last_name'] . "</td>
+            <td>" . $row['date'] . "</td>
+            <td>" . $row['start_time'] . "</td>
+            <td>" . $row['end_time'] . "</td>
+            <td>" . $row['break'] . "</td>
+            </tr>";
         }
     }
 
