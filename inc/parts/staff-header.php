@@ -173,7 +173,10 @@
                                             </li>
 											<li>
                                                 <a href="freeapplications.php">Vrij aanvragingen</a>
-                                            </li>                                                                                   
+                                            </li> 
+											<li>
+												<a href="admin_declaration.php">Declaratie Inzien</a>
+											</li>
                                         </ul>
                                         <!-- /.nav-second-level -->
                                     
