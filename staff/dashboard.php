@@ -28,6 +28,8 @@ include("../inc/parts/staff-header.php");
 }
 ?>
 
+<!--start gebruiker dashboard-->
+   <?php if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("menu_admin")) { ?>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -46,11 +48,11 @@ include("../inc/parts/staff-header.php");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     
-                                    <h3>APPLE<br>SUCKS!</h3>
+                                    <h3>Beschikbaarheid<br>doorgeven</h3>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="availability.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -187,7 +189,7 @@ include("../inc/parts/staff-header.php");
                         
                         <!-- start calender -->  
                         <div class="col-sm-8">
-                            <h1> Hier komt de calender</h1>
+                            <h1>Kalender</h1>
                          <div class="container-fluid" style="position: relative;">
                         <div id='calendar'  ></div><br />
                         <!--                roept de calender aan-->
@@ -197,48 +199,117 @@ include("../inc/parts/staff-header.php");
                         
 			
          </div>
-        <!-- start table -->  
-		<div class="container-fluid">
-            <div>
-			<h1> Test print vrij aanvragen</h1>
-			
-		<div class='row'>
-		<div class='col-lg-12'>
-		<div class='panel panel-default'>
-		<div class='panel-heading'>
-		</div>
-		
-		<div class='panel-body'>
-		<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
-		<thead>
-			<tr>
-				<th>Voornaam</th>
-				<th>Achternaam</th>
-				<th>Van</th>
-				<th>Tot</th>
-				<th>Start tijd</th>
-				<th>Eind tijd</th>
-				<th>Reden</th>
-				<th>Goedkeuring</th>		
-			</tr>
-        </thead>
-		<tbody>
-		<?php $free->freeListCompleet();?>
-
-		</tbody>
-		</table>
-		</div>
-		</div>
-		</div>
-		</div>
-        </div>
         
-		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
-		
-		</div>
-		<br>
+   <?php } ?>
+   <!--eind gebruiker dashboard-->
+   <!--start admin dashboard-->
+   <?php if ($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">               
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-edit fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    
+                                    <h3>Gedeclareerde<br>uren</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="admin_declaration.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Zie Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-lock fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                   
+                                    <h3>Vrij<br>aanvragingen</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="freeapplications.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Zie Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+				<div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-apple fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    
+                                    <h3>Gebruikers<br>toevoegen</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="addstaff.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa  fa-android fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    
+                                    <h3>Gebruikers-<br>gegevens</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="liststaff.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Zie Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>		
+            </div>
+			
+                        
+			
+         </div>
+        
+   <?php } ?>
+   <!--einde admin dashboard-->
 	
-		<!-- end tabl -->
 		</div>
         <!-- /#page-wrapper -->
 <?php

@@ -117,8 +117,7 @@
                             <ul class="dropdown-menu dropdown-alert">
                                 <li><a href="gebruikersprofiel.php"><i class="fa fa-user fa-fw"></i> Gebruikersprofiel</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
-                                </li>
+                                
                                 <li class="divider"></li>
                                 <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Loguit</a>
                                 </li>
@@ -131,17 +130,7 @@
                     <div class="navbar-default sidebar" role="navigation">
                         <div class="sidebar-nav navbar-collapse">
                             <ul class="nav" id="side-menu">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" class="form-control" placeholder="Zoeken...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </li>
+                              
                                 <li>
                                     <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                                 </li>
@@ -151,9 +140,7 @@
 
                                 <!--start tables / blank template kopieer deze om een nieuwe pagina te maken
                                 als je tabellen wilt hebben of zo.-->
-                                <li>
-                                    <a href="tables.php"><i class="fa fa-edit fa-fw"></i> Tables (template)</a>
-                                </li>
+                            
                                 <li>
                                     <a href="availability.php"><i class="fa fa-edit fa-fw"></i> Beschikbaarheid</a>
                                 </li>
@@ -174,17 +161,17 @@
 											<li>
                                                 <a href="freeapplications.php">Vrij aanvragingen</a>
                                             </li> 
-											<li>
-												<a href="admin_declaration.php">Declaratie Inzien</a>
-											</li>
+											
                                         </ul>
                                         <!-- /.nav-second-level -->
                                     
-                                    <li>
+                                  
+                                    </li>
+
+                                <?php } ?>	
+								  <li>
                                         <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
                                     </li>
-                                    </li>
-                                <?php } ?>	
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
