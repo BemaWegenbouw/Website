@@ -5,6 +5,11 @@
 
 $page = "staff-delete";
 require_once("../inc/engine.php");
+
+if($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("edit_staff")) {
+header("Location: dashboard.php");
+die("Unauthorized."); }
+
 include("../inc/parts/staff-header.php");
 
 ?>
@@ -48,11 +53,18 @@ $calendar->ShowDeleteData($uidd,$datee);
              
                
                    if(isset($_POST['yesdeleteit'])){
-                      print "<br><br>Succesvol! Druk op iets om terug te gaan";
+                      print "<script language='javascript'>
+    window.location.href = 'planning-hours.php'
+</script>";
                     $calendar->DeletePlannedHour($_GET["uid"], $_GET["date"]);
                        //execute functie
                  
-                   }
+                   }else if(isset($_POST['nodonotdeleteit'])){
+                     print "<script language='javascript'>
+    window.location.href = 'planning-hours.php'
+                   </script>";}  
+                       
+                   
                    
                    
                    
@@ -64,7 +76,7 @@ $calendar->ShowDeleteData($uidd,$datee);
                     
                     
                     
-                    
+  
                     
                     <!-- /.col-lg-12 -->
                 </div>

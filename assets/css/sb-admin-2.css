@@ -5,17 +5,19 @@
  */
 body {
   background-color: #f8f8f8;
+  
 }
 
 }
 #wrapper {
   width: 100%;
- 
+	
 }
 #page-wrapper {
   padding: 0 15px;
-  min-height: 568px;
+  min-height: 800px;
   background-color: white;
+
   
 }
 @media (min-width: 768px) {
@@ -26,6 +28,14 @@ body {
     border-left: 1px solid #e7e7e7;
 	
   }
+}
+.afgekeurd{
+	color: red;
+	font-weight: bold;
+}
+.goedgekeurd{
+	color:green;
+	font-weight: bold;
 }
 .navbar-top-links {
   margin-right: 0;
