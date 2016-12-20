@@ -7,6 +7,11 @@
     $page = "staff-calendar";
    
     require_once("../inc/engine.php"); //voegt de controllers toe
+	
+	if($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("tt_page")) {
+	header("Location: dashboard.php");
+	die("Unauthorized."); }
+	
     include("../inc/parts/staff-header.php");
 
     $uid = $_SESSION["uid"];
