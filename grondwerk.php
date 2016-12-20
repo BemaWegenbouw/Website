@@ -18,7 +18,8 @@ include("inc/parts/header.php");
             <p><?php echo(lang('grondwerk_column1_text1')); ?></p>
         </div>
     </div>
-</div>   
-<br>
+</div> 
+<br>  
+
 
 <?php include("inc/parts/footer.php"); ?>
