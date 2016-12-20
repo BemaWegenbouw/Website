@@ -12,25 +12,29 @@ $lang_nl = array(
 //Index
     "index_title" => "Bema Wegenbouw BV",
     "index_slogan" => "Kwaliteit staat voorop",
-//Diensten
+//Index-Diensten 
     "index_column1_title" => "Wat kunnen wij voor u betekenen?",
     "index_column1_sub" => "Wij bieden allerlei soorten diensten aan. Hieronder ziet u een greep uit ons assortiment.",
     "index_column1_item1_name" => "Grondwerk",
-    "index_column1_item1_desc" => "Voor bouw, bestrating of wat dan ook. Wij zorgen ervoor dat de grond naar uw wensen wordt gevormd om de beste resultaten te kunnen behalen.",
-    "index_column1_item2_name" => "Riolering",
-    "index_column1_item2_desc" => "Wij zorgen naast de vorming van de grond ook graag voor uw riolering. Met vele jaren ervaring kunnen wij u het vakmanschap bieden dat u verdient.",
-    "index_column1_item3_name" => "Machinale Bestrating",
-    "index_column1_item3_desc" => "Wij maken gebruik van de nieuwste technieken om uw bestrating zo goed mogelijk op orde te brengen. Deze mechanisering zorgt voor lagere prijzen!",
-    "index_column1_item4_name" => "Uitvlakken",
-    "index_column1_item4_desc" => "Wij nemen u de volledige uitvlakking van uw grond graag uit handen. Neem contact met ons op voor meer informatie en een offerte op maat. Wij helpen u graag!",
-    "index_column1_item5_name" => "Lorem ipsum dolor",
-    "index_column1_item5_desc" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-    "index_column1_item6_name" => "Lorem ipsum dolor",
-    "index_column1_item6_desc" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-//Over ons
+    "index_column1_item1_desc" => "Grondwerk is het eerste stadium in een bouwproject. Voor het uitvoeren van deze werkzaamheden beschikken we over ruime ervaring.",
+	"index_column1_item1_desc2" => "View details",
+	"index_column1_item2_name" => "Riolering",
+    "index_column1_item2_desc" => "Riolering is de infrastructuur waarop afvalwater geloosd wordt. Een riolering is een systeem van buizen , putten en kolken dat ondergronds is aangelegd.",
+    "index_column1_item2_desc2" => "View details",
+	"index_column1_item3_name" => "Bestrating",
+    "index_column1_item3_desc" => "Bestrating kan zowel met de hand of machinaal gedaan worden. Machinaal bestraten gaat sneller en is efficiënter.",
+    "index_column1_item3_desc2" => "View details",
+	"index_column1_item4_name" => "Egaliseren",
+    "index_column1_item4_desc" => "Egaliseren grote nauwkeurigheid uw werkzaamheden verlopen efficiënter.",
+	 "index_column1_item4_desc2" => "View details",
+
+//Index-Overons
     "overons_column1_title" => "Over het bedrijf",
-    "overons_column1_head" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "overons_column1_text" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "overons_column1_head" => "Waarom Bema?",
+    "overons_column1_text" => "Bema wegenbouw b.v. is een jong bedrijf dat weet van aanpakken. Onze mensen zijn gespecialiseerd in het werk wat ze uitvoeren. 
+							   Ons motto is dat kwaliteit altijd voorop staat. Wij werken voor diverse opdracht gevers of het nu gaat om grote of kleine projecten 
+							   <br> de toewijding van Bema wegenbouw b.v. is voor elk project even belangrijk. Onze werkervaring bestaat uit grond-, weg- en water-
+							   <br> bouw in de breedste zin van het woord. Met de kennis die we hebben krijgen we elk project geklaard. Aan onze opdrachtgevers bieden we vertrouwen en vakmanschap om een project naar volle tevredenheid te kunnen uitvoeren.",
     "" => "",
     "" => "",
     "" => "",
@@ -38,7 +42,9 @@ $lang_nl = array(
 //Contact
     "contact_column1_title" => "Contactinformatie",
     "contact_column1_head" => "Neem contact met ons op en u ontvangt binnen 24 uur een bericht terug.",
-    "contact_column1_text1" => " Enschede, NL",
+    "contact_column1_text1" => "Aamsveenweg 294",								
+	"contact_column1_text1_2" => " &nbsp  &nbsp 7536 PB, Enschede",
+	"contact_column1_text1_3" => " &nbsp &nbsp Nederland, NL",	 
     "contact_column1_text2" => " +31 (0)534779223",
     "contact_column1_text3" => " +31 (0)613471605",
     "contact_column1_text4" => " info@bemawegenbouw.nl",
@@ -69,49 +75,49 @@ $lang_nl = array(
     "" => "",
     "" => "",
     "" => "",
-    //grondwerk
-    "grondwerk_column1_title" => "Grondwerk",
-    "grondwerk_column1_head" => "Titel onderdeel",
-    "grondwerk_column1_text1" => " Bla bla bla tekst invullen",
+    //Diensten-grondwerk
+    "grondwerk_column1_title" => "Onze diensten",
+    "grondwerk_column1_head" => "Grondwerk",
+    "grondwerk_column1_text1" => "Grondwerk is de basis voor alle overige werkzaamheden het is dan ook bepalend voor het eindresultaat. Een goede aanpak is voor ensensieël belang, schakel voor al uw grondwerken daarom altijd een speciallist in. Bema wegenbouw b.v. heeft de ervaring en kennis om vakkundig grondwerk uit te voeren, zodat u niet voor verrassingen komt te staan.",
     "" => "",
     "" => "",
     "" => "",
     "" => "",
     "" => "",
     "" => "",
+	//Diensten-riolering
+    "riolering_column1_head" => "Riolering",
+    "riolering_column1_text1" => "Voor het aanleggen van rioleringen of het nu gaat om het leggen van buizen, putten en kolken is het van groot belang dat dit goed gebeurt, U kunt dan ook vertrouwen dat  Bema wegenbouw b.v. de werkzaamheden nauwkeurig aanpakt.",
+    "" => "",
+    "" => "",
+    "" => "",
+    "" => "",
+    //Diensten-bestrating
+    "bestrating_column1_head" => "Bestrating",
+    "bestrating_column1_text1" => "Bij bestrating zijn meerdere toepassingen mogelijk. Bestrating dient als verharding wat bereden of belopen wordt. Bema wegenbouw b.v. heeft allerlei projecten gedaan of het nu gaat om kleine of grote opdrachten niets is ons te moeilijk. Wij leveren gespecialiseerde vakmensen. Wij zijn ook in machinaal bestraten gespecialiseerd de kennis en ervaring wat hiervoor nodig is hebben wij opgebouwd in de loop van de tijd. Wanneer Bema wegenbouw een project aanneemt vinden wij het belangrijk dat we samen met onze klant een goed werkstuk afleveren, kwaliteit staat dan ook altijd voorop.",
+    "" => "",
+    "" => "",
+    "" => "",
+    "" => "",
+    //Diensten-egaliseren
+    "egaliseren_column1_title" => "Egaliseren",
+    "egaliseren_column1_head" => "Egaliseren",
+    "egaliseren_column1_text1" => "Door gebruik te maken van lasertechnologie wordt elk terrein met grootst mogelijke nauwkeurigheid geëgaliseerd. Hierdoor wordt verspilling van grondstof geminimaliseerd de kwaliteit van uw straatwerk wordt beter er kan efficiënter worden gewerkt.
+								   Bema wegenbouw b.v. heeft veel ervaring met het egaliseren van diverse ondergronden, of het nu gaat om wegenbouw, paard rijbakken of industriële wij kunnen het allemaal.
+									",
+    "" => "",
+    "" => "",
+    "" => "",
+    "" => "",
+	
     //portfolio
-    "portfolio_column1_title" => "Portfolio",
+    "portfolio_column1_title" => "Riolering",
     "portfolio_column1_head" => "Titel onderdeel",
     "portfolio_column1_text1" => "blablabla tekst",
     "" => "",
     "" => "",
     "" => "",
     "" => "",
-    //riolering
-    "riolering_column1_title" => "Riolering",
-    "riolering_column1_head" => "Titel onderdeel",
-    "riolering_column1_text1" => "blablabla tekst",
-    "" => "",
-    "" => "",
-    "" => "",
-    "" => "",
-    //machinalebestrating
-    "machinalebestrating_column1_title" => "Machinale Bestrating",
-    "machinalebestrating_column1_head" => "Titel onderdeel",
-    "machinalebestrating_column1_text1" => "blablabla tekst",
-    "" => "",
-    "" => "",
-    "" => "",
-    "" => "",
-    //uitvlakken
-    "uitvlakken_column1_title" => "Uitvlakken",
-    "uitvlakken_column1_head" => "Titel onderdeel",
-    "uitvlakken_column1_text1" => "blablabla tekst",
-    "" => "",
-    "" => "",
-    "" => "",
-    "" => "",
-    
     //Login
     "login_error1_text" => "De door u opgegeven inloggegevens zijn helaas incorrect.",
     "login_error2_text" => "Error 2: U heeft zonder geldige invoer een pagina bezocht. Wij hebben deze activiteit vastgelegd voor nader onderzoek.",

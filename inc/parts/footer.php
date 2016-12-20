@@ -1,10 +1,8 @@
-
 <footer class="footers">
-    &copy; <?php echo date('Y'); ?> <a href="http://www.bemawegenbouw.nl/">Bema Wegenbouw BV</a>
-	Aamsveenweg 294 | 7536 PB Enschede Nederland | Tel:0031(0)53 4779223 |  Tel mobiel: 0031(0)6 3471605<br>
-    Email: info@bemawegenbouw.nl | Website: www.bemawegenbouw.nl |K.v.k Nr: 66369711 | BTW Nr: 8564.18.232.B01<br>
-	Bankverbinding: SNS Bank IBAN-Nr. NL 78 SNSB 08712633 27 BIC-Nr. SNSBNL2A | KNAB Bank: IBAN-Nr 12 KNAB 0255 2760 44 BIC-Nr. KNABNL2H
-</footer>
+			&copy; <?php echo date('Y'); ?> <a href="http://www.bemawegenbouw.nl/">Bema Wegenbouw BV</a>
+			Aamsveenweg 294 | 7536 PB Enschede Nederland | Tel:0031(0)53 4779223 |  Tel mobiel: 0031(0)6 3471605<br>
+			Email: info@bemawegenbouw.nl | Website: www.bemawegenbouw.nl |K.v.k Nr: 66369711 | BTW Nr: 8564.18.232.B01<br>
+	</footer>
 
 <?php //Javascript import ?>
 

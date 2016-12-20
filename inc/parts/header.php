@@ -10,7 +10,7 @@
 	<script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
-    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <body class = "fill-height" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 	    <nav class="navbar navbar-default transparent navbar-fixed-top" style="">
         <div class="nav-container-fluid">
             <div class="navbar-header">
@@ -29,14 +29,13 @@
                         echo "class='active'";
                     }
                     ?>><a href="index.php" title="To Top">Hoofdpagina</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Diensten <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="grondwerk.php">Grondwerk</a></li>
-                            <li><a href="riolering.php">Riolering</a></li>
-                            <li><a href="machinalebestrating.php">Machinale bestrating</a></li>
-                            <li><a href="uitvlakken.php">Uitvlakken</a></li>
-                        </ul>
-                    </li>
+                    <li>
+					<li <?php
+                    if ($page == "diensten") {
+                        echo "class='active'";
+                    }
+                    ?>><a href="diensten.php" title="To Top">Diensten</a></li>
+
                     <li <?php
                     if ($page == "portfolio") {
                         echo "class='active'";
@@ -63,7 +62,7 @@
         </div>
     </nav>
 
-    <div id="bg-fade-carousel" class="carousel carousel-fade " data-interval="10000"  data-ride="carousel">
+    <div id="bg-fade-carousel" class="carousel carousel-fade " data-interval="7000"  data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
                 <div class="slide1"></div>
