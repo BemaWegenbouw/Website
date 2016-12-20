@@ -70,6 +70,10 @@
  <?php if ($page == "staff-planning") { ?>
             <link href='calendar/fullcalendar.css' rel='stylesheet' />
             <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+            <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+	    <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+	    <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+            <link rel="stylesheet" href="../assets/bootstrap-select/dist/css/bootstrap-select.css">
             
         <?php } ?>
 
@@ -113,8 +117,7 @@
                             <ul class="dropdown-menu dropdown-alert">
                                 <li><a href="gebruikersprofiel.php"><i class="fa fa-user fa-fw"></i> Gebruikersprofiel</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
-                                </li>
+                                
                                 <li class="divider"></li>
                                 <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Loguit</a>
                                 </li>
@@ -127,17 +130,7 @@
                     <div class="navbar-default sidebar" role="navigation">
                         <div class="sidebar-nav navbar-collapse">
                             <ul class="nav" id="side-menu">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" class="form-control" placeholder="Zoeken...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </li>
+                              
                                 <li>
                                     <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                                 </li>
@@ -147,9 +140,7 @@
 
                                 <!--start tables / blank template kopieer deze om een nieuwe pagina te maken
                                 als je tabellen wilt hebben of zo.-->
-                                <li>
-                                    <a href="tables.php"><i class="fa fa-edit fa-fw"></i> Tables (template)</a>
-                                </li>
+                            
                                 <li>
                                     <a href="availability.php"><i class="fa fa-edit fa-fw"></i> Beschikbaarheid</a>
                                 </li>
@@ -169,15 +160,21 @@
                                             </li>
 											<li>
                                                 <a href="freeapplications.php">Vrij aanvragingen</a>
-                                            </li>                                                                                   
+                                            </li>
+											<li>
+                                                <a href="admin_declaration.php">Gedeclareerde uren</a>
+                                            </li>											
+											
                                         </ul>
                                         <!-- /.nav-second-level -->
                                     
-                                    <li>
+                                  
+                                    </li>
+
+                                <?php } ?>	
+								  <li>
                                         <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
                                     </li>
-                                    </li>
-                                <?php } ?>	
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->

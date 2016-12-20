@@ -83,7 +83,7 @@ class free {
 			  <td>" . $row['start_time']. "</td>
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['comment'] . "</td>
-			  <td>" . $row['verify'] . "</td>
+			  <td class=" . $row["verify"] . ">" . $row['verify'] . "</td>
 			  </tr>";
 			
 		}
@@ -91,44 +91,23 @@ class free {
 
 	}
 	
-	public function checkRequestExist($uid,$startdate,$enddate){
-		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
-		$sth = $pdo->prepare ("SELECT * from work_schedule WHERE uid = :uid AND (date >= :start_date and date <= :end_date)"); 
-		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
-		$sth->bindparam(':start_date', $startdate, PDO::PARAM_STR);//query
-		$sth->bindparam(':end_date', $enddate, PDO::PARAM_STR);//query
-		$sth->execute(); //Voer de query uit
-		$result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
-        return $result['date']; //Geef resultaat terug
-		
-	}
-	
+
 	public function approveFree($key){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET verify = 'true' WHERE id = :id"); //query
+		$sth = $pdo->prepare ("UPDATE free SET verify = 'goedgekeurd' WHERE id = :id"); //query
 		$sth->bindparam(':id', $key, PDO::PARAM_STR);
 		$sth->execute(); //Voer de query uit
-		
-		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET comment = 'goedgekeurd' WHERE id = :id"); //query
-		$sth->bindparam(':id', $key, PDO::PARAM_STR);
-		$sth->execute(); //Voer de query uit
-		
 	
 	}
 	
 	public function denyFree($key){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET verify = 'false' WHERE id = :id"); //query
+		$sth = $pdo->prepare ("UPDATE free SET verify = 'afgekeurd' WHERE id = :id"); //query
 		$sth->bindparam(':id', $key, PDO::PARAM_STR);
 		$sth->execute(); //Voer de query uit
-		
-		global $pdo; //Zoek naar $pdo buiten deze functie
-		$sth = $pdo->prepare ("UPDATE free SET comment = 'foutgekeurd' WHERE id = :id"); //query
-		$sth->bindparam(':id', $key, PDO::PARAM_STR);
-		$sth->execute(); //Voer de query uit
+	
 	}
 	
 	public function backupFree(){

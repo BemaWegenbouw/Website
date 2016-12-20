@@ -28,42 +28,90 @@ class declaration {
 
     public function declist() {
 
+
+
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT * FROM declaration"); //Maak de query klaar
+        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
+							FROM declaration d join staff s on d.uid = s.uid"); //query
         $sth->execute(); //Voer de query uit
 
-		
-        echo"<table width='100%' class='table table-striped table-bordered table-hover' id='dataTables-exampl'>"; //begin tabel
 
-        $i = 0;
 
-        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
-            if ($i == 0) {
-                $i++;
-                echo "<tr>"; //Vertel in HTML dat je tabelkopjes begint
 
-                foreach ($row as $key => $value) { //Begin kopjesverwerking
-                    echo "<th>" . $key . "</th>"; //Geef het kopje weer
-                } //Einde verwerking kopjes
-            } //Einde kopjesprojectie
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {   //Creates a loop to loop through results
+            echo "<tr class='gradeA'>
+			  <td>" . $row['first_name'] . "</td>
+			  <td>" . $row['last_name'] . "</td>
+			  <td>" . $row['date'] . "</td>
+			  <td>" . $row['start_time'] . "</td>
+			  <td>" . $row['end_time'] . "</td>
+			  <td>" . $row['break'] . "</td>
+                                                        <td>
+                                                        <select style='width:80%; 'name='" . $row['first_name'] . "' id='inputID' class='form-control' required>
+                                                            <option value='true'>
+                                                                ja
+                                                            </option>
+                                                            <option value='false'>
+                                                                nee
+                                                            </option>
+                                                        </select>
+                                                        </td>
 
-            echo "<tr>"; //Print de openingstag voor tabelinhoud
+			  </tr>";
+        }
+    }
 
-            foreach ($row as $key => $value) { //Begin inhoudverwerking
-                echo "<td>" . $value . "</td>"; //Print de inhoud
+    public function declistgoedgekeurd() {
 
-                if ($key == 'uid') { //Indien het een gebruiker ID betreft
-                    $uid = $value; //Houd deze vast
-                } //Einde check gebruiker ID
-            } //Einde inhoudverwerking
 
-            echo "</tr>"; //Einde tabel
-        } //Einde PDO tabelverwerking
 
-        echo "</table>"; //Einde van de tabel
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare('SELECT first_name, last_name, date, start_time, end_time, break,verify
+                                            FROM declaration d join staff s on d.uid = s.uid
+                                            WHERE verify IS NOT null or verify IS NOT NULL '); //query
+        $sth->execute(); //Voer de query uit
+
+
+
+
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {   //Creates a loop to loop through results
+            echo "<tr class = 'gradeA'>
+<td>" . $row['first_name'] . "</td>
+<td>" . $row['last_name'] . "</td>
+<td>" . $row['date'] . "</td>
+<td>" . $row['start_time'] . "</td>
+<td>" . $row['end_time'] . "</td>
+<td>" . $row['break'] . "</td>
+<td class = " . $row["verify"] . ">" . $row['verify'] . "</td>
+</tr>";
+        }
     }
 
 //Einde van de Staff Lijst functie.
+    public function decListCompleet($userid) {
+
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
+FROM declaration d join staff s on d.uid = s.uid
+WHERE d.uid = :uid "); //query
+        $sth->bindParam(':uid', $userid, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+
+
+
+
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {   //Creates a loop to loop through results
+            echo "<tr class = 'gradeA'>
+            <td>" . $row['first_name'] . "</td>
+            <td>" . $row['last_name'] . "</td>
+            <td>" . $row['date'] . "</td>
+            <td>" . $row['start_time'] . "</td>
+            <td>" . $row['end_time'] . "</td>
+            <td>" . $row['break'] . "</td>
+            </tr>";
+        }
+    }
+
 }
 
 $declaration = new declaration;
