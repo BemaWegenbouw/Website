@@ -6,7 +6,7 @@ $page = "contact";
 require_once("inc/engine.php");
 include("inc/parts/header.php");
 ?>
-
+ <div id="page-wrapper">
 <div class="container" id="Contact">
     
 	
@@ -15,7 +15,8 @@ include("inc/parts/header.php");
             <div class="col-sm-5">
                 <h2 class=""><?php echo(lang('contact_column1_title')); ?></h2>
                 <p><?php echo(lang('contact_column1_head')); ?></p>
-                <p><span class="glyphicon glyphicon-map-marker orangeglyph"></span><?php echo(lang('contact_column1_text1')); ?></p>
+                <p><span class="glyphicon glyphicon-map-marker orangeglyph"></span><?php echo(lang('contact_column1_text1')); ?><br><?php echo(lang('contact_column1_text1_2')); ?><br><?php echo(lang('contact_column1_text1_3')); ?></p>
+																														
                 <p><span class="glyphicon glyphicon-earphone orangeglyph"></span><?php echo(lang('contact_column1_text2')); ?></p>
                 <p><span class="glyphicon glyphicon-phone orangeglyph"></span><?php echo(lang('contact_column1_text3')); ?></p>
                 <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl"><?php echo(lang('contact_column1_text4')); ?></a> </p>
@@ -29,19 +30,19 @@ include("inc/parts/header.php");
                     <div class="row">
 
                         <div class="col-sm-6 form-group">
-                            <input class="form-control" id="name" name="name" placeholder="<?php echo(lang('contact_column2_placeholder1')); ?>" type="text" required>
+                            <input class="form-control" id="name" name="name" value="<?php if(isset($_POST['name'])){ echo $_POST['name'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder1')); ?>" type="text" required>
                         </div>
 
                         <div class="col-sm-6 form-group">
-                            <input class="form-control" id="email" name="email" placeholder="<?php echo(lang('contact_column2_placeholder2')); ?>" type="email" required>
+                            <input class="form-control" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder2')); ?>" type="email" required>
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <input class="form-control" id="subject" name="subject" placeholder="<?php echo(lang('contact_column2_placeholder3')); ?>" type="text" required>
+                            <input class="form-control" id="subject" name="subject" value="<?php if(isset($_POST['subject'])){ echo $_POST['subject'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder3')); ?>" type="text" required>
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <textarea class="form-control" id="comments" name="comments" placeholder="<?php echo(lang('contact_column2_placeholder4')); ?>" rows="5" requierd></textarea>
+                            <textarea class="form-control" id="comments" name="comments" value="<?php if(isset($_POST['comments'])){ $temp =($_POST); echo $temp;}?>"  placeholder="<?php echo(lang('contact_column2_placeholder4')); ?>" rows="10" requierd></textarea>
                         </div>
 
                         <div class="col-sm-12 form-group">
@@ -194,6 +195,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+</div>
 </div>
 </div>
 <br>
