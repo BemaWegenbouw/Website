@@ -42,13 +42,23 @@ include("inc/parts/header.php");
                         </div>
 
                         <div class="col-sm-12 form-group">
-                            <textarea class="form-control" id="comments" name="comments" value="<?php if(isset($_POST['comments'])){ $temp =($_POST); echo $temp;}?>"  placeholder="<?php echo(lang('contact_column2_placeholder4')); ?>" rows="10" requierd></textarea>
+                            <textarea class="form-control" id="comments" name="comments" placeholder="Vul hier uw bericht in." rows="10" requierd><?php echo $var = isset($_POST['comments']) ? $_POST['comments'] : ''; ?></textarea>
                         </div>
 
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-6 form-group">
                             <div class="g-recaptcha" data-sitekey="6LfplgwUAAAAAOzIgDSwZHltB5niJ5mIvrsq0mzZ"></div>
                         </div>
-
+						
+						<div class="col-sm-6 form-group">						
+							<div class="input-group">
+								<label class="input-group-btn">
+									<span class="btn btn-primary">
+										Browse&hellip; <input name="attachements" type="file" style="display: none;" multiple>
+									</span>
+								</label>
+								<input type="text" class="form-control" readonly>
+							</div>
+						</div>
                         <div class="col-sm-12 form-group">
                             <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button><br>
                         </div>
@@ -162,10 +172,8 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 ?>
 
         </form>
-
     </div>
 </div>
-
 </div>
 
 
