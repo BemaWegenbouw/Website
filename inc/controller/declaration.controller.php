@@ -100,7 +100,7 @@ class declaration {
     public function approveFree($key) {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("UPDATE declaration SET verify = 'goedgekeurd' WHERE uid = :id"); //query
+        $sth = $pdo->prepare("UPDATE declaration SET verify = 'goedgekeurd' WHERE id = :id"); //query
         $sth->bindparam(':id', $key, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
     }
