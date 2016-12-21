@@ -31,8 +31,9 @@ class declaration {
 
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
-							FROM declaration d join staff s on d.uid = s.uid"); //query
+        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break, d.id
+                                            FROM declaration d join staff s on d.uid = s.uid
+                                             WHERE verify IS NULL"); //query
         $sth->execute(); //Voer de query uit
 
 
@@ -47,7 +48,7 @@ class declaration {
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['break'] . "</td>
                                                         <td>
-                                                        <select style='width:80%; 'name='" . $row['first_name'] . "' id='inputID' class='form-control' required>
+                                                        <select style='width:80%;' name='" . $row['id'] . "' id='inputID' class='form-control' required>
                                                             <option value='true'>
                                                                 ja
                                                             </option>
@@ -85,6 +86,31 @@ class declaration {
 <td class = " . $row["verify"] . ">" . $row['verify'] . "</td>
 </tr>";
         }
+    }
+
+    public function get($id, $value) {
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM declaration WHERE id = :id"); //Maak de query klaar
+        $sth->bindParam(':id', $id, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result[$value]; //Geef resultaat terug
+    }
+
+    public function approveFree($key) {
+
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("UPDATE declaration SET verify = 'goedgekeurd' WHERE uid = :id"); //query
+        $sth->bindparam(':id', $key, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+    }
+
+    public function denyFree($key) {
+
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("UPDATE declaration SET verify = 'afgekeurd' WHERE id = :id"); //query
+        $sth->bindparam(':id', $key, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
     }
 
 //Einde van de Staff Lijst functie.
