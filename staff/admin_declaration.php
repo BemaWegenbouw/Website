@@ -45,8 +45,7 @@ $uid = $_SESSION["uid"];
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $userid = $uid;
-                                                $declaration->declist($userid);
+                                                $declaration->declist();
                                                 ?>
                                             </tbody>
                                             <div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
@@ -82,8 +81,7 @@ $uid = $_SESSION["uid"];
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $userid = $uid;
-                                        $declaration->declistgoedgekeurd($userid);
+                                        $declaration->declistgoedgekeurd();
                                         ?>
                                     </tbody>
                                 </table>
@@ -97,10 +95,11 @@ $uid = $_SESSION["uid"];
         <?php
         if (isset($_POST) && !empty($_POST)) {
             foreach ($_POST as $key => $value) {
+                if ($value == 'true') {
+                    $declaration->approveFree($key);
+                }
                 if ($value == 'false') {
                     $declaration->denyFree($key);
-                }if ($value == 'true') {
-                    $declaration->approveFree($key);
                 }
             }
         }
