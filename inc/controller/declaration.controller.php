@@ -31,7 +31,7 @@ class declaration {
 
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break
+        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break, d.id
                                             FROM declaration d join staff s on d.uid = s.uid
                                              WHERE verify IS NULL"); //query
         $sth->execute(); //Voer de query uit
@@ -48,7 +48,7 @@ class declaration {
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['break'] . "</td>
                                                         <td>
-                                                        <select style='width:80%; 'name='verify' id='inputID' class='form-control' required>
+                                                        <select style='width:80%;' name='" . $row['id'] . "' id='inputID' class='form-control' required>
                                                             <option value='true'>
                                                                 ja
                                                             </option>

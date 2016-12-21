@@ -20,9 +20,8 @@ if (isset($_POST) && !empty($_POST)) {
     $break = $_POST['break'];
 
     $declaration->insert($userid, $date, $start_time, $end_time, $break);
-} else
-
-    ?>
+}
+?>
 <!-- Page Content -->
 <div id="page-wrapper">
 

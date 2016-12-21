@@ -96,17 +96,11 @@ $uid = $_SESSION["uid"];
         </div>
         <?php
         if (isset($_POST) && !empty($_POST)) {
-
             foreach ($_POST as $key => $value) {
-
-                $value = $_POST["verify"];
-
                 if ($value == 'false') {
-
-                    $declaration->denyFree(4);
-                } elseif ($value == 'true') {
-
-                    $declaration->approveFree(4);
+                    $declaration->denyFree($key);
+                }if ($value == 'true') {
+                    $declaration->approveFree($key);
                 }
             }
         }
@@ -115,7 +109,3 @@ $uid = $_SESSION["uid"];
         <?php
         include("../inc/parts/staff-footer.php");
         ?>
-
-
-
-
