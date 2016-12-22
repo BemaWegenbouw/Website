@@ -1,22 +1,34 @@
- <?php 
+<?php 
  require_once "inc/phpmailer/PHPMailerAutoload.php";
- 
-//mail info
-			
-				$post_name = 'joey';
-				$email = 'j.benning@hotmail.nl';
-				$subject = '2 attachments';
-				$msg = 'hahahahahaa';
-				$headers = "From: $email";
 
-		// did files get send
-			if(isset($_FILES['file']) && !empty($_FILES['file'])){
+ //mail info
+			
+				$post_name = "joey";
+				$email = "j.benning@hotmail.nl";
+				$subject = "fuck you";
+				$msg = "hahahahahaha";
+				$headers = "From: $email";
+				
+				// send
+					$m = new PHPMailer;
+					$m->isSMTP();
+					$m->SMTPAuth = true;
+					$m->SMTPDebug = 0;
+					$m->Host = "smtp.gmail.com";
+					$m->Username = "testbema@gmail.com";
+					$m->Password = "BEMAtest1234";
+					$m->SMTPSecure = 'ssl';
+					$m->Port = 465;
+		
+				
+			// did files get send
+			if(isset($_FILES) && !empty($_FILES)){
 				$files = array();
 				
 			 $have_file = ($_FILES['file']['error'] != UPLOAD_ERR_NO_FILE);
 			if($have_file){
 			// define allowed extensions
-				$allowedExtensions = array("pdf","doc","docx","gif","jpeg","jpg","png","rtf","txt");	
+				$allowedExtensions = array("pdf","doc","docx","gif","jpeg","jpg","png","rtf","txt","rar","zip");	
 				
 			//loop trough all the files
 			foreach($_FILES as $name=>$file) {
@@ -38,6 +50,9 @@
 				move_uploaded_file($temp_name,$server_file);
 			//add this file to the array of files
 				array_push($files,$file);
+				foreach($files as $key => $value){
+				$m->addAttachment($server_file,$file_name);
+				}
 			}
 			
 			// boundary
@@ -56,12 +71,16 @@
 			//	$message .="Content-Transfer-Encoding: 7bit\n\n" . $msg . "\n\n";
 			//	$message .= "--{$mime_boundary}\n";
 			// part 2 loop and define mail attachements 
-				for($i = 0; $i<count($server_file); $i++) {
-					$afile = fopen($server_file[$i],"rb");
-					$data = fread($afile,filesize($server_file[$i]));
+				
+
+					
+					
+					foreach($files as $file){
+					$afile = fopen($server_file,"rb");
+					$data = fread($afile,filesize($server_file));
 					fclose($afile);
-					$name = $file_name[$i];
 					$data = chunk_split(base64_encode($data));
+					
 				//	$message .= "Content-Type: {\"application/octet-stream\"};\n";
 				//	$message .= "name=\"$file_name\"\n";
 				//	$message .= "Content-Disposition: attachment;\n";
@@ -69,19 +88,8 @@
 				//	$message .=	"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
 				//	$message .= "--{$mime_boundary}\n";
 				}
-
-					// send
-					$m = new PHPMailer;
-					$m->isSMTP();
-					$m->SMTPAuth = true;
-					$m->SMTPDebug = 0;
-					$m->Host = "smtp.gmail.com";
-					$m->Username = "testbema@gmail.com";
-					$m->Password = "BEMAtest1234";
-					$m->SMTPSecure = 'ssl';
-					$m->Port = 465;
 					
-					$m->addAttachment($server_file);
+					
 					$m->From = $email;
 					$m->FromName = $post_name;
 					$m->addReplyTo($email, $post_name);
@@ -90,8 +98,18 @@
 					$m->Body = $msg;
 
 					$m->send();
+					print_r($files);
+					print (
 					
-					print "succes attachement";
+					'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
+                                    </div>');
+					
+					
 			}else {
 				
 					// send
@@ -114,34 +132,100 @@
 					$m->Body = $msg;
 
 					$m->send();
-					print "succes";
-			}
-			}
-					 
-		
-				
 					
-
-	
-
- 
-
+					if ($m){
+						
+					
+					print (
+					
+					'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
+                                    </div>');
+					}else{
+					print (
+					
+					'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
+                                    </div>');	
+					}
+			}
+		}
+					 
+		else{
+			print (
+					
+					'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
+                                        <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
+                                    </div>');
+		}
 ?>
 
  
 
 <html>
+<head>
+		<script type="text/javascript">
+var i = 1;
+function addKid(){
+	if (i <= 3){
+		i++;	
+    	var div = document.createElement('div');
+		div.setAttribute('class', 'myclass');
+    	div.innerHTML = '<input type="button" value="-" onclick="removeKid(this)"><input type="file" name="file_'+i+'" >';
+    	document.getElementById('kids').appendChild(div);
+	}
+}
 
+function removeKid(div) {	
+    document.getElementById('kids').removeChild( div.parentNode );
+	i--;
+}
+</script>
+
+
+</head>
 	<body>
+<form method="post" action="test.php" enctype="multipart/form-data" >
+	
+  <div class="col-sm-6 form-group">
+						<input type="button" style="width:50%;" id="add_kid()" onClick="addKid()" value="+ (limit 4)" />
+						
+						<div id="kids">
+							<input type="file" name="file_1" >
+						</div>   				
+						 </div>   
+</form>
 
-		<form method="post" action="test.php" enctype="multipart/form-data">
 
-			<input type="file" name="file1"/>
-		<input type="file" name="file1"/>
-			<input type="submit" value="submit"/>
+<script type="text/javascript">
+var i = 1;
+function addKid(){
+	if (i <= 3){
+		i++;	
+    	var div = document.createElement('div');
+		div.setAttribute('class', 'myclass');
+    	div.innerHTML = '<input type="text" name="child_'+i+'" ><input type="button" value="-" onclick="removeKid(this)">';
+    	document.getElementById('kids').appendChild(div);
+	}
+}
 
-		</form>
+function removeKid(div) {	
+    document.getElementById('kids').removeChild( div.parentNode );
+	i--;
+}
+</script>
 
 	</body>
-
 </html>
