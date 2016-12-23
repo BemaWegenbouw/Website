@@ -555,7 +555,8 @@
 		<script>
 			$('.datepicker').datepicker({
 				format: 'yyyy-mm-dd',
-		//        startDate: '-3d',
+		        startDate: '-1w',
+				endDate: '0',
 				todayBtn: "linked",
 				language: "nl",
 				calendarWeeks: true,
