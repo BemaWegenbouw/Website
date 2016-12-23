@@ -47,7 +47,8 @@
 				});
 			})
 		</script>
-		<script>
+	<?php /*	WTF IS DIT??!?!?!
+	<script>
 		$(function() {
 
 		  // We can attach the `fileselect` event to all file inputs on the page
@@ -76,6 +77,25 @@
 		  
 		});	
 		</script>
+		
+	*/ ?>	
+		<script type="text/javascript">
+var i = 1;
+function addKid(){
+	if (i <= 3){
+		i++;	
+    	var div = document.createElement('div');
+		div.setAttribute('class', 'myclass');
+    	div.innerHTML = '<input type="file" name="file_'+i+'" ><input type="button" style="width:80%;"  value="Verwijderen" onclick="removeKid(this)">';
+    	document.getElementById('kids').appendChild(div);
+	}
+}
+
+function removeKid(div) {	
+    document.getElementById('kids').removeChild( div.parentNode );
+	i--;
+}
+</script>
 		<?php } ?>
 </body>
 </html>

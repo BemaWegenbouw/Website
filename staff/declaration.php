@@ -8,21 +8,7 @@ include("../inc/parts/staff-header.php");
 $uid = $_SESSION["uid"];
 ?>
 
-<?php
-if (isset($_POST) && !empty($_POST)) {
 
-    $userid = $uid;
-    $date = $_POST['date'];
-    $start = $_POST['start_time'];
-    $start_time = "$start:00";
-    $end = $_POST['end_time'];
-    $end_time = "$end:00";
-    $break = $_POST['break'];
-
-    $declaration->insert($userid, $date, $start_time, $end_time, $break);
-} else
-
-    ?>
 <!-- Page Content -->
 <div id="page-wrapper">
 
@@ -88,7 +74,21 @@ if (isset($_POST) && !empty($_POST)) {
         </div>
         <!-- /.col-lg-12 -->
     </div>
-    <br>
+    <?php
+    if (isset($_POST) && !empty($_POST)) {
+
+        $userid = $uid;
+        $date = $_POST['date'];
+        $start = $_POST['start_time'];
+        $start_time = "$start:00";
+        $end = $_POST['end_time'];
+        $end_time = "$end:00";
+        $break = $_POST['break'];
+
+        $declaration->insert($userid, $date, $start_time, $end_time, $break);
+    }
+    ?>
+
 
     <!-- /.panel-heading -->
     <div class='container-fluid'>
