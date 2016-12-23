@@ -28,7 +28,7 @@ $uid = $_SESSION["uid"];
                             <div class='panel panel-default'>
                                 <div class='panel-heading'>
                                 </div>
-                                <form method='POST' action="admin_declaration.php">
+                                <form method='POST' action="update_declaration.php">
                                     <div width="auto" class='panel-body'>
                                         <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
                                             <thead>
@@ -92,18 +92,6 @@ $uid = $_SESSION["uid"];
                 </div>
             </div>
         </div>
-        <?php
-        if (isset($_POST) && !empty($_POST)) {
-            foreach ($_POST as $key => $value) {
-                if ($value == 'true') {
-                    $declaration->approveFree($key);
-                }
-                if ($value == 'false') {
-                    $declaration->denyFree($key);
-                }
-            }
-        }
-        ?>
 
         <?php
         include("../inc/parts/staff-footer.php");
