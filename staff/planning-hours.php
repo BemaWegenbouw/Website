@@ -1,13 +1,13 @@
 <?php
 //Bema Wegenbouw BV Website
 //Copyright 2016
-
 $page = "staff-planning";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
-
-$uid = $_SESSION["uid"];
-
+if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
+    header("Location: dashboard.php");
+    die("Unauthorized.");
+}
 //
 ?>
 
@@ -44,7 +44,7 @@ $uid = $_SESSION["uid"];
                 </div>
 
                 <div class='panel-body'>
-                    <table class='table table-striped table-bordered' id='dataTables-example'>
+                    <table class='table table-striped table-bordered' id='scrolltable-2'>
                         <thead>
                             <tr>
                                 <th>Persoon</th>
@@ -55,7 +55,7 @@ $uid = $_SESSION["uid"];
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $calendar->GetAvailability(); ?>
+<?php $calendar->GetAvailability(); ?>
 
                         </tbody>
                     </table>
@@ -74,7 +74,7 @@ $uid = $_SESSION["uid"];
 
                 <div class='panel-body'>
 
-                    <table class='table table-striped table-bordered' id='dataTables-example2'>
+                    <table class='table table-striped table-bordered' id='scrolltable'>
 
                         <thead>
                             <tr>
@@ -89,7 +89,7 @@ $uid = $_SESSION["uid"];
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $calendar->SelectPlannedHours(); ?>
+<?php $calendar->SelectPlannedHours(); ?>
 
                         </tbody>
                     </table>
@@ -111,7 +111,7 @@ $uid = $_SESSION["uid"];
                             <ul class="dropdown-menu">
 
 
-                                <?php $calendar->DropDownMenuPlannedHours(); ?>
+<?php $calendar->DropDownMenuPlannedHours(); ?>
 
 
                             </ul></div>
@@ -156,4 +156,3 @@ $uid = $_SESSION["uid"];
 
 <?php
 include("../inc/parts/staff-footer.php");
-
