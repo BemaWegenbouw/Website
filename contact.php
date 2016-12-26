@@ -5,6 +5,9 @@
 $page = "contact";
 require_once("inc/engine.php");
 include("inc/parts/header.php");
+
+
+
 ?>
  <div id="page-wrapper">
 <div class="container" id="Contact">
@@ -44,21 +47,29 @@ include("inc/parts/header.php");
                         <div class="col-sm-12 form-group">
                             <textarea class="form-control" id="comments" name="comments" placeholder="Vul hier uw bericht in." rows="10" requierd><?php echo $var = isset($_POST['comments']) ? $_POST['comments'] : ''; ?></textarea>
                         </div>
-
+						
                         <div class="col-sm-6 form-group">
-                            <div class="g-recaptcha" data-sitekey="6LfplgwUAAAAAOzIgDSwZHltB5niJ5mIvrsq0mzZ"></div>
+                            <div class="g-recaptcha" data-sitekey="6LfqqwwUAAAAAOYfMohh04UsOIsYB1viYok9blcC"></div>
                         </div>
 						
-						
 						<div class="col-sm-6 form-group">
-						<input type="button" style="width:60%;" id="add_kid()" onClick="addKid()" value="Bijlagen toevoegen (max 4)" />						
-						<div id="kids">
-							<input type="file" name="file_1" >
-						</div>   				
-						 </div>
+						<!-- COMPONENT START -->
+						
+						<div class="input-group">
+							<label class="input-group-btn">
+								<span class="btn btn-primary">
+									Browse&hellip; <input type="file" name="upload[]" style="display: none;" multiple>
+							</span>
+							</label>
+							<input type="text" class="form-control" readonly>
+						</div>
+						<!-- COMPONENT END -->
+						</div>
+						
                         <div class="col-sm-12 form-group">
                             <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button><br>
                         </div>
+						
 
                     </div>			
 <?php
@@ -67,7 +78,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 	if(isset($_POST['submit'])){
 		
 		$url = 'https://www.google.com/recaptcha/api/siteverify';
-		$privatekey = "6LfplgwUAAAAAEya75YiEoIAvz5bqdmXbOHtnawI";
+		$privatekey = "6LfqqwwUAAAAAC6U79wrMeDciUwRKku4mb9nSK7Z";
 		
 		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
 		
@@ -133,73 +144,60 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 					$m->Password = "BEMAtest1234";
 					$m->SMTPSecure = 'ssl';
 					$m->Port = 465;
-				
-			// did files get send
+					
+								
 			if(isset($_FILES) && !empty($_FILES)){
-				$files = array();
-				
-			 $have_file = ($_FILES['file_1']['error'] != UPLOAD_ERR_NO_FILE);
-			if($have_file){
-			// define allowed extensions
-				$allowedExtensions = array("pdf","doc","docx","gif","jpeg","jpg","png","rtf","txt","rar","zip");	
-				
-			//loop trough all the files
-			foreach($_FILES as $name=>$file) {
-				
-		
-			// define some variables
-				$file_name = $file['name']; 
-				$temp_name = $file['tmp_name'];
-				$file_type = $file['type'];
-			// check if this file type is allowed
-				$path_parts = pathinfo($file_name);
-				$ext = $path_parts['extension'];
-				if(!in_array($ext,$allowedExtensions)) {
-						die("File $file_name has the extensions $ext which is not allowed");
-					}
-					
-			// move this file to the server YOU HAVE TO do THIS.
-				$server_file = "upload/$path_parts[basename]";
-				move_uploaded_file($temp_name,$server_file);
-			//add this file to the array of files
-				array_push($files,$file);				
-				foreach($files as $key => $value){
-				$m->addAttachment($server_file,$file_name);
-				};
-			}
-			
-			// boundary
-				$semi_rand = md5(time()); 
-				$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x"; 
-			
-			// tell header about the boundary
-				$headers .= "\nMIME-Version: 1.0\n";
-				$headers .= "Content-Type: multipart/mixed;\n";
-				$headers .= " boundary=\"{$mime_boundary}\"";
-				$headers .= "\nMIME-Version: 1.0\n";
-			
-			// part 1 define plain text email
-			//	$message ="\n\n--{$mime_boundary}\n";
-			//	$message .="Content-Type: text/plain; charset=\"iso-8859-1\"\n";
-			//	$message .="Content-Transfer-Encoding: 7bit\n\n" . $msg . "\n\n";
-			//	$message .= "--{$mime_boundary}\n";
-			// part 2 loop and define mail attachements 
-				
+			// Count # of uploaded files in array
+			$total = count($_FILES['upload']['name']);
+			// define allowed extensions && file size
 
-					
-				//	foreach($files as $file){
-				//	$afile = fopen($server_file,"rb");
-				//	$data = fread($afile,filesize($server_file));
-				//	fclose($afile);
-				//	$data = chunk_split(base64_encode($data));
+			$allowedExtensions = array("pdf","doc","docx","gif","jpeg","jpg","png","rtf","txt","rar","zip");					
+			//check if there is an attached file	
+			$noFile = $_FILES['upload']['size'][0] == 0 
+                 && $_FILES['upload']['tmp_name'][0] == '';
+		
+			if(!$noFile){	
+				// Loop through each file
+				for($i=0; $i<$total; $i++) {
+				  //Get the temp file path
+				$file_name = $_FILES['upload']['name'][$i];
+				  $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+					$size = $_FILES['upload']['size'][$i];
+					// check if this file type is allowed
+					$path_parts = pathinfo($file_name);
+					$ext = $path_parts['extension'];
+					if(!in_array($ext,$allowedExtensions)) {
+							die("Het bestand genaamd $file_name heeft de extentie $ext , wat niet is toegestaan.");
+						}
+							
+					//check file size
+					$maxsize = 4194304;
 				
-				//	$message .= "Content-Type: {\"application/octet-stream\"};\n";
-				//	$message .= "name=\"$file_name\"\n";
-				//	$message .= "Content-Disposition: attachment;\n";
-				//	$message .= "filename=\"$file_name\"\n";
-				//	$message .=	"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
-				//	$message .= "--{$mime_boundary}\n";
-				//}
+					if ($size > $maxsize){
+						echo ($file_name . ' Is groter dan de maximale grote van 4 Megabytes.');
+						die;
+					 }
+					  //Make sure we have a filepath
+					  if ($tmpFilePath != ""){
+						//Setup our new file path
+						$newFilePath = "upload/" . $_FILES['upload']['name'][$i];
+
+						//Upload the file into the temp dir
+						if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+						
+							//check if upload was successvol
+							$check = $_FILES ['upload']['error'] == UPLOAD_ERR_OK;
+							if($check == 0){								
+								//attach content to email
+								$m->addAttachment($newFilePath);								
+						}else{
+							echo 'Er was een probleem met het uploaden van het bestand genaamd '.$newFilePath;
+							
+					  }
+					}
+				}
+				}	
+			
 					
 					
 					$m->From = $email;
@@ -210,8 +208,12 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 					$m->Body = $msg;
 
 					$m->send();
-					print_r($files);
 					
+					$files = glob('upload/*'); // get all file names
+						foreach($files as $file){ // iterate files
+						  if(is_file($file))
+							unlink($file); // delete file
+						}
 					if ($m){
 						
 					
@@ -285,8 +287,9 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 			}
 		}
 					 
-		}else{
-			print (
+		
+	}else{
+		print (
 					
 					'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
@@ -294,8 +297,8 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
                                         <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
-                                    </div>');
-		}
+                                    </div>');	
+	  }			
 	}
 ?>
 
