@@ -5,89 +5,91 @@
 $page = "contact";
 require_once("inc/engine.php");
 include("inc/parts/header.php");
-
-
-
 ?>
- <div id="page-wrapper">
-<div class="container" id="Contact">
-    
-	
-        <div class="row">
-
-            <div class="col-sm-5">
-                <h2 class=""><?php echo(lang('contact_column1_title')); ?></h2>
-                <p><?php echo(lang('contact_column1_head')); ?></p>
-                <p><span class="glyphicon glyphicon-map-marker orangeglyph"></span><?php echo(lang('contact_column1_text1')); ?><br><?php echo(lang('contact_column1_text1_2')); ?><br><?php echo(lang('contact_column1_text1_3')); ?></p>
-																														
-                <p><span class="glyphicon glyphicon-earphone orangeglyph"></span><?php echo(lang('contact_column1_text2')); ?></p>
-                <p><span class="glyphicon glyphicon-phone orangeglyph"></span><?php echo(lang('contact_column1_text3')); ?></p>
-                <p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl"><?php echo(lang('contact_column1_text4')); ?></a> </p>
-            </div>
-            <div class="col-sm-7">
-
-                <h2 class=""><?php echo(lang('contact_column2_title')); ?></h2>
-                <p> <?php echo(lang('contact_column2_head')); ?></p>
-
-                <form action="contact.php" enctype="multipart/form-data" method="post">
-                    <div class="row">
-
-                        <div class="col-sm-6 form-group">
-                            <input class="form-control" id="name" name="name" value="<?php if(isset($_POST['name'])){ echo $_POST['name'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder1')); ?>" type="text" required>
-                        </div>
-
-                        <div class="col-sm-6 form-group">
-                            <input class="form-control" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder2')); ?>" type="email" required>
-                        </div>
-
-                        <div class="col-sm-12 form-group">
-                            <input class="form-control" id="subject" name="subject" value="<?php if(isset($_POST['subject'])){ echo $_POST['subject'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder3')); ?>" type="text" required>
-                        </div>
-
-                        <div class="col-sm-12 form-group">
-                            <textarea class="form-control" id="comments" name="comments" placeholder="Vul hier uw bericht in." rows="10" requierd><?php echo $var = isset($_POST['comments']) ? $_POST['comments'] : ''; ?></textarea>
-                        </div>
-						
-                        <div class="col-sm-6 form-group">
-                            <div class="g-recaptcha" data-sitekey="6LfqqwwUAAAAAOYfMohh04UsOIsYB1viYok9blcC"></div>
-                        </div>
-						
-						<div class="col-sm-6 form-group">
-						<!-- COMPONENT START -->
-						
-						<div class="input-group">
-							<label class="input-group-btn">
-								<span class="btn btn-primary">
-									Browse&hellip; <input type="file" name="upload[]" style="display: none;" multiple>
-							</span>
-							</label>
-							<input type="text" class="form-control" readonly>
+	<!--Start Page wrapper-->
+	<div id="page-wrapper">
+		<!--Start container contact-->
+		<div class="container" id="Contact">
+			<!--Start Row 1-->
+			<div class="row">
+				<!--Start left COL row 1-->
+				<div class="col-sm-5">
+					<h2 class=""><?php echo(lang('contact_column1_title')); ?></h2>
+					<p><?php echo(lang('contact_column1_head')); ?></p>
+					<p><span class="glyphicon glyphicon-map-marker orangeglyph"></span><?php echo(lang('contact_column1_text1')); ?><br><?php echo(lang('contact_column1_text1_2')); ?><br><?php echo(lang('contact_column1_text1_3')); ?></p>																															
+					<p><span class="glyphicon glyphicon-earphone orangeglyph"></span><?php echo(lang('contact_column1_text2')); ?></p>
+					<p><span class="glyphicon glyphicon-phone orangeglyph"></span><?php echo(lang('contact_column1_text3')); ?></p>
+					<p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl"><?php echo(lang('contact_column1_text4')); ?></a> </p>
+				</div>
+				<!--End left COL row 1-->
+				<!--Start right COL row 1-->
+				<div class="col-sm-7">
+					<h2 class=""><?php echo(lang('contact_column2_title')); ?></h2>
+					<p> <?php echo(lang('contact_column2_head')); ?></p>
+					<!--Start Form contact-->
+					<form action="contact.php" enctype="multipart/form-data" method="post">
+						<!--Start Row 2-->
+						<div class="row">
+							<!--Start input name-->
+							<div class="col-sm-6 form-group">
+								<input class="form-control" id="name" name="name" value="<?php if(isset($_POST['name'])){ echo $_POST['name'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder1')); ?>" type="text" required>
+							</div>
+							<!--End input name-->
+							<!--Start input email-->
+							<div class="col-sm-6 form-group">
+								<input class="form-control" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder2')); ?>" type="email" required>
+							</div>
+							<!--End input email-->
+							<!--Start input subject-->
+							<div class="col-sm-12 form-group">
+								<input class="form-control" id="subject" name="subject" value="<?php if(isset($_POST['subject'])){ echo $_POST['subject'];}?>" placeholder="<?php echo(lang('contact_column2_placeholder3')); ?>" type="text" required>
+							</div>
+							<!--End input subject-->
+							<!--Start input comments-->
+							<div class="col-sm-12 form-group">
+								<textarea class="form-control" id="comments" name="comments" placeholder="Vul hier uw bericht in." rows="10" requierd><?php echo $var = isset($_POST['comments']) ? $_POST['comments'] : ''; ?></textarea>
+							</div>
+							<!--End input comments-->	
+							<!--Start Google Recaptcha-->
+							<div class="col-sm-6 form-group">
+								<div class="g-recaptcha" data-sitekey="6LfplgwUAAAAAOzIgDSwZHltB5niJ5mIvrsq0mzZ"></div>
+							</div>
+							<!--End Google recaptcha-->
+							<!--Start Multiple file input-->
+							<div class="col-sm-6 form-group">									
+							<div class="input-group">
+								<label class="input-group-btn">
+									<span class="btn btn-primary">
+										Browse&hellip; <input type="file" name="upload[]" style="display: none;" multiple>
+								</span>
+								</label>
+								<input type="text" class="form-control" readonly>
+							</div>					
+							</div>
+							<!--End multiple file input-->
+							<!--Start Form submit-->
+							<div class="col-sm-12 form-group">
+								<button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button><br>
+							</div>
+							<!--End form submit-->
 						</div>
-						<!-- COMPONENT END -->
-						</div>
-						
-                        <div class="col-sm-12 form-group">
-                            <button class="btn btn-default pull-left" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button><br>
-                        </div>
-						
-
-                    </div>			
+						<!--End row 2-->						
 <?php
-//captcha code
+// start contact form
 require_once "inc/phpmailer/PHPMailerAutoload.php";
 	if(isset($_POST['submit'])){
+		// prepairing recaptcha validation
+		$url = 'https://www.google.com/recaptcha/api/siteverify';   //start url
+		$privatekey = "6LfplgwUAAAAAEya75YiEoIAvz5bqdmXbOHtnawI";  //site private key
 		
-		$url = 'https://www.google.com/recaptcha/api/siteverify';
-		$privatekey = "6LfqqwwUAAAAAC6U79wrMeDciUwRKku4mb9nSK7Z";
+		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);  //recaptcha response
 		
-		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
+		$data = json_decode($response);  //anwser recaptcha response
 		
-		$data = json_decode($response);
-		
-		if(isset($data->success) AND $data->success==true){
+		if(isset($data->success) AND $data->success==true){   //validation recaptcha response
 			
 				////true - What happens when user is verified
-				
+				// PHP check if form values are empty
 				if (empty($_POST["name"])) {
 					print(
 						'<br>
@@ -126,7 +128,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                     </div>');
 				}
 				
-			//mail info
+			//Mail content 
 			
 				$post_name = $_POST['name'];
 				$email = $_POST['email'];
@@ -134,7 +136,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 				$msg = $_POST['comments'];
 				$headers = "From: $email";
 				
-				// send
+				// send account information
 					$m = new PHPMailer;
 					$m->isSMTP();
 					$m->SMTPAuth = true;
@@ -145,17 +147,16 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 					$m->SMTPSecure = 'ssl';
 					$m->Port = 465;
 					
-								
+			//start input file check					
 			if(isset($_FILES) && !empty($_FILES)){
-			// Count # of uploaded files in array
-			$total = count($_FILES['upload']['name']);
-			// define allowed extensions && file size
-
-			$allowedExtensions = array("pdf","doc","docx","gif","jpeg","jpg","png","rtf","txt","rar","zip");					
-			//check if there is an attached file	
-			$noFile = $_FILES['upload']['size'][0] == 0 
-                 && $_FILES['upload']['tmp_name'][0] == '';
-		
+				// Count # of uploaded files in array
+				$total = count($_FILES['upload']['name']);
+					// define allowed extensions && file size
+					$allowedExtensions = array("pdf","doc","docx","gif","jpeg","jpg","png","rtf","txt","rar","zip");					
+						//check if there is an attached file	
+						$noFile = $_FILES['upload']['size'][0] == 0 
+							 && $_FILES['upload']['tmp_name'][0] == '';
+			//start loop if file is present
 			if(!$noFile){	
 				// Loop through each file
 				for($i=0; $i<$total; $i++) {
@@ -199,7 +200,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 				}	
 			
 					
-					
+					// prepair en send email
 					$m->From = $email;
 					$m->FromName = $post_name;
 					$m->addReplyTo($email, $post_name);
@@ -208,16 +209,16 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 					$m->Body = $msg;
 
 					$m->send();
-					
+					//delete uploaded files after mail has been send
 					$files = glob('upload/*'); // get all file names
 						foreach($files as $file){ // iterate files
 						  if(is_file($file))
 							unlink($file); // delete file
 						}
-					if ($m){
+					if ($m){     // check if mail has been send
 						
 					
-					print (
+					print (  // print this when mail was send successvoly
 					
 					'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
@@ -227,7 +228,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
                                     </div>');
 					}else{
-					print (
+					print ( // print this when mail was not send successvoly
 					
 					'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
@@ -238,9 +239,9 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                     </div>');	
 					}
 					
-			}else {
+			}else {  //if no file present do this
 				
-					// send
+					// account information
 					$m = new PHPMailer;
 					$m->isSMTP();
 					$m->SMTPAuth = true;
@@ -251,7 +252,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 					$m->SMTPSecure = 'ssl';
 					$m->Port = 465;
 					
-					
+					//prepair and send email
 					$m->From = $email;
 					$m->FromName = $post_name;
 					$m->addReplyTo($email, $post_name);
@@ -261,10 +262,10 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 
 					$m->send();
 					
-					if ($m){
+					if ($m){  //check if mail has been send
 						
 					
-					print (
+					print (  // print this when mail was send successvoly
 					
 					'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
@@ -274,7 +275,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <span data-notify="message"><br><?php echo(lang("contact_column2_success")); ?></span>
                                     </div>');
 					}else{
-					print (
+					print (  // print this when mail was not send successvoly
 					
 					'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
@@ -288,7 +289,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 		}
 					 
 		
-	}else{
+	}else{   // print this when google recaptcha was not verified
 		print (
 					
 					'<br>
@@ -301,43 +302,43 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 	  }			
 	}
 ?>
-
-        </form>
-    </div>
-</div>
-</div>
-
-
-<div class = "container">
-<div >
-  <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
-    <div id="googleMap" class="container gmap"></div>
-
-
-<!-- Add Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap"></script>
-<script>
-    var myCenter = new google.maps.LatLng(52.18029079999999, 6.929297700000006);
-    function initialize() {
-        var mapProp = {
-            center: myCenter,
-            zoom: 12,
-            scrollwheel: true,
-            draggable: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        var marker = new google.maps.Marker({
-            position: myCenter,
-        });
-        marker.setMap(map);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-</div>
-</div>
-</div>
-<br>
+					</form>
+					<!--End contact form-->
+				</div>
+				<!--End right COL row 1-->
+			</div>
+			<!--End Row 1-->
+		</div>
+		<!--End Container contact-->
+		<!--Start Container Google Maps-->
+		<div class = "container">		
+		  <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
+			<div id="googleMap" class="container gmap"></div>
+			<!--Start Add Google Maps  script-->
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap"></script>
+			<script>
+				var myCenter = new google.maps.LatLng(52.18029079999999, 6.929297700000006);
+				function initialize() {
+					var mapProp = {
+						center: myCenter,
+						zoom: 12,
+						scrollwheel: true,
+						draggable: true,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					};
+					var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+					var marker = new google.maps.Marker({
+						position: myCenter,
+					});
+					marker.setMap(map);
+				}
+				google.maps.event.addDomListener(window, 'load', initialize);
+			</script>
+			<!--End Add Google Maps script-->
+		</div><br>
+		<!--End Container Google Maps-->
+	</div>
+	<!--End page wrapper-->
 <?php include("inc/parts/footer.php"); ?>
 
 
