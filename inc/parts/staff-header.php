@@ -168,9 +168,7 @@
                                             <li>
                                                 <a href="planning-hours.php">Inroosteren</a>
                                             </li>
-                                            <li>
-                                                <a href="management.php">Management informatie</a>
-                                            </li>
+                                           
 
                                         </ul>
                                         <!-- /.nav-second-level -->

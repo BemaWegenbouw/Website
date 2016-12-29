@@ -44,7 +44,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                 </div>
 
                 <div class='panel-body'>
-                    <table class='table table-striped table-bordered' id='scrolltable-2'>
+                    <table width="100%" class='table table-striped table-bordered' id='scrolltable2'>
                         <thead>
                             <tr>
                                 <th>Persoon</th>
@@ -65,39 +65,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6" >    
-
-            <div class='panel panel-default'>
-                <div class='panel-heading'>
-                    <h3>Ingeplande Medewerkers</h3>
-                </div>
-
-                <div class='panel-body'>
-
-                    <table class='table table-striped table-bordered' id='scrolltable'>
-
-                        <thead>
-                            <tr>
-                                <th>Voornaam</th>
-                                <th>Achternaam</th>
-                                <th>userCode</th>
-                                <th>Start Tijd</th>
-                                <th>Eind Tijd</th>
-                                <th>Datum</th>
-                                <th>Verwijder</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-<?php $calendar->SelectPlannedHours(); ?>
-
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6" > 
+	 <div class="col-sm-6" > 
             <div class='panel panel-default'>
                 <div class='panel-heading'>
                     <h3>Inplannen</h3>
@@ -146,7 +114,39 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                     </form>         
                 </div> 
             </div>
-        </div>  
+        </div> 
+        <div class="col-sm-6" >    
+
+            <div class='panel panel-default'>
+                <div class='panel-heading'>
+                    <h3>Ingeplande Medewerkers</h3>
+                </div>
+
+                <div class='panel-body'>
+
+                    <table width="100%" class='table table-striped table-bordered' id='scrolltable'>
+
+                        <thead>
+                            <tr>
+                                <th>Voornaam</th>
+                                <th>Achternaam</th>
+                                <th>userCode</th>
+                                <th>Start Tijd</th>
+                                <th>Eind Tijd</th>
+                                <th>Datum</th>
+                                <th>Verwijder</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+<?php $calendar->SelectPlannedHours(); ?>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div> 
     </div> 
     <!-- /.row -->          
     <!-- /#page-wrapper -->
