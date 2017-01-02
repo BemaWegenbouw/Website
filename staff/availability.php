@@ -5,7 +5,6 @@
 $page = "staff-availability";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
-
 $uid = $_SESSION["uid"];
 ?>
 <!-- Page Content -->
@@ -20,10 +19,10 @@ $uid = $_SESSION["uid"];
                 <div class='panel-body'>
 
                     <div> Op deze pagina word uw vaste beschikbaarheid doorgegeven. 
-                        De beschikbaarheid die u nu doorgeeft word geldt voor elke week. 
-                        Indien u eenmalig niet beschikbaar bent voor een bepaalde tijd en niet uw vaste beschikbaarheid wil aanpassen, hoort u dit aan te vragen met de  vrijvraag formulier.<br><br></div>
+                        De beschikbaarheid die u nu doorgeeft geldt voor elke aankomende dag. 
+                        Indien u  niet beschikbaar bent kunt u het hier aangeven.<br><br></div>
 
-
+                        <!-------------------begin beschikbaarheid doorgeven ------------------------------>
                     <table width="100%" id="scrolltable" class="table table-striped table-bordered table-hover">
 
 
@@ -53,7 +52,7 @@ $uid = $_SESSION["uid"];
                                     <td>
 
                                         <div class="input-group clockpicker" data-autoclose="true">
-                                            <input type="time" name="endtimemonday"class="form-control" min="starttimemonday"placeholder="00:00" value="<?php $calendar->ShowEndTime($uid, "maandag") ?>"  >
+                                            <input type="time" name="endtimemonday"class="form-control" min="<?php $calendar->ShowStartTime($uid, "maandag") ?>" placeholder="00:00" value="<?php $calendar->ShowEndTime($uid, "maandag") ?>"  >
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-time "></span>
                                             </span>
@@ -216,12 +215,13 @@ $uid = $_SESSION["uid"];
                     <input type='submit' name='knopavailability' value="Aanpassen">
                 </div> </div>
         </div>
+                        <!-------------------eind Beschikbaarheid doorgeven ------------------------------>
 
 
 
-
-
-
+<?php 
+ ?>
+                        <!-------------------begin tabel om je beschikbaarheid te laten zien ------------------------------>
         </form>
 
         <div class="container col-sm-6">
@@ -245,10 +245,10 @@ $uid = $_SESSION["uid"];
                             <?php $calendar->GetAvailabilitySingle($uid); ?>
 
                         </tbody>
-                    </table>
+                    </table>                        <!-------------------eind tabelom beschikbaarheid te laten zien ------------------------------>
                 </div>
             </div>
-
+                              
         </div>
         <!-- /.col-lg-12 -->
     </div>

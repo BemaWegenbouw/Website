@@ -59,9 +59,7 @@ class Calendar {
                     "<td>" . $ending_time . "</td>" .
                     "</tr>";
         }
-    }
-
-//einde functie
+    }//einde functie
 //laat de starttijd zien van de medewerker voor de X gekozen dag
     public function ShowStartTime($uid, $day) {
         global $pdo;
@@ -114,6 +112,7 @@ class Calendar {
             $sth1->bindParam(':day', $day, PDO::PARAM_STR); //vervang variable
             $sth1->bindParam(':uid', $uid, PDO::PARAM_STR); //vervang variable
             $sth1->execute(); //Voer de query uit//voert de query uit 
+            
         } else {
             $stm = $pdo->prepare("INSERT INTO availability VALUES(:uid, :day, :start_time, :end_time)"); //Maak de query klaar
             $stm->bindParam(':start_time', $start_time, PDO::PARAM_STR); //vervang variable
@@ -174,7 +173,7 @@ class Calendar {
             if ($row["start_time"] == '00:00:00' && $row["end_time"] == '00:00:00') { //indien hij VRIJ is dan:
                 print "{ title:'" . "Vrij: " . $first_name . " " . $last_name . "',
                  start:'" . $time_table_date . "',
-                 end:'" . $time_table_date . "' },"; //plaatst de database gegevens in de calendar
+                 end:'" . $time_table_date . "', color: '#257e4a' },"; //plaatst de database gegevens in de calendar
             } else {
 
                 print "{ title:'" . $first_name . " " . $last_name . "',
@@ -190,7 +189,13 @@ class Calendar {
     //insertinplanning voegt de inplanning toe
     public function insertPlanning($uid, $start_time, $end_time, $date) {
         global $pdo;
-
+    
+                $stmt23 = $pdo->prepare("DELETE FROM work_schedule WHERE uid = :uid AND date = :date
+                                                        ");
+        $stmt23->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele      
+        $stmt23->bindParam(':date', $date, PDO::PARAM_STR); //Vervang :username naar $user variabele  
+        $stmt23->execute();
+        
         $stmt23 = $pdo->prepare("INSERT INTO work_schedule VALUES(:uid, :start_time, :end_time, :date)");
         $stmt23->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :uid naar  variabele   
         $stmt23->bindParam(':start_time', $start_time, PDO::PARAM_STR); //Vervang :startijd naar  variabele   
@@ -204,10 +209,8 @@ class Calendar {
     public function SelectPlannedHours() {
 
         $current_date = date("Y/m/d");
-
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT first_name, last_name, work_schedule.uid, start_time, end_time, date   FROM staff JOIN work_schedule ON staff.uid = work_schedule.uid WHERE start_time !='00:00' AND end_time !='00:00' AND date >= '$current_date' "); //Maak de query klaar
-        $sth->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang variabele
+        $sth = $pdo->prepare("SELECT first_name, last_name, work_schedule.uid, start_time, end_time, date   FROM staff JOIN work_schedule ON staff.uid = work_schedule.uid WHERE start_time !='00:00' AND end_time !='00:00' AND date >= :currentdate "); //Maak de query klaar
         $sth->bindParam(':currentdate', $current_date, PDO::PARAM_STR); //Vervang variabele
         $sth->execute(); //Voer de query uit
         //Maak de CSS voor de tabel actief
