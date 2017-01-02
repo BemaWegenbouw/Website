@@ -1,13 +1,13 @@
 <?php
 //Bema Wegenbouw BV Website
 //Copyright 2016
-
 $page = "staff-planning";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
-
-$uid = $_SESSION["uid"];
-
+if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
+    header("Location: dashboard.php");
+    die("Unauthorized.");
+}
 //
 ?>
 
@@ -44,7 +44,7 @@ $uid = $_SESSION["uid"];
                 </div>
 
                 <div class='panel-body'>
-                    <table class='table table-striped table-bordered' id='dataTables-example'>
+                    <table width="100%" class='table table-striped table-bordered' id='scrolltable2'>
                         <thead>
                             <tr>
                                 <th>Persoon</th>
@@ -55,7 +55,7 @@ $uid = $_SESSION["uid"];
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $calendar->GetAvailability(); ?>
+<?php $calendar->GetAvailability(); ?>
 
                         </tbody>
                     </table>
@@ -65,39 +65,7 @@ $uid = $_SESSION["uid"];
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6" >    
-
-            <div class='panel panel-default'>
-                <div class='panel-heading'>
-                    <h3>Ingeplande Medewerkers</h3>
-                </div>
-
-                <div class='panel-body'>
-
-                    <table class='table table-striped table-bordered' id='dataTables-example2'>
-
-                        <thead>
-                            <tr>
-                                <th>Voornaam</th>
-                                <th>Achternaam</th>
-                                <th>userCode</th>
-                                <th>Start Tijd</th>
-                                <th>Eind Tijd</th>
-                                <th>Datum</th>
-                                <th>Verwijder</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $calendar->SelectPlannedHours(); ?>
-
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6" > 
+	 <div class="col-sm-6" > 
             <div class='panel panel-default'>
                 <div class='panel-heading'>
                     <h3>Inplannen</h3>
@@ -111,7 +79,7 @@ $uid = $_SESSION["uid"];
                             <ul class="dropdown-menu">
 
 
-                                <?php $calendar->DropDownMenuPlannedHours(); ?>
+<?php $calendar->DropDownMenuPlannedHours(); ?>
 
 
                             </ul></div>
@@ -146,7 +114,39 @@ $uid = $_SESSION["uid"];
                     </form>         
                 </div> 
             </div>
-        </div>  
+        </div> 
+        <div class="col-sm-6" >    
+
+            <div class='panel panel-default'>
+                <div class='panel-heading'>
+                    <h3>Ingeplande Medewerkers</h3>
+                </div>
+
+                <div class='panel-body'>
+
+                    <table width="100%" class='table table-striped table-bordered' id='scrolltable'>
+
+                        <thead>
+                            <tr>
+                                <th>Voornaam</th>
+                                <th>Achternaam</th>
+                                <th>userCode</th>
+                                <th>Start Tijd</th>
+                                <th>Eind Tijd</th>
+                                <th>Datum</th>
+                                <th>Verwijder</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+<?php $calendar->SelectPlannedHours(); ?>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div> 
     </div> 
     <!-- /.row -->          
     <!-- /#page-wrapper -->
@@ -156,4 +156,3 @@ $uid = $_SESSION["uid"];
 
 <?php
 include("../inc/parts/staff-footer.php");
-
