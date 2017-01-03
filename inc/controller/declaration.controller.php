@@ -4,16 +4,31 @@
 class declaration {
 
     public function insert($userid, $date, $start_time, $end_time, $break) {
-
-        global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("INSERT INTO declaration (uid, date, start_time, end_time, break) values (:uid, :date, :start_time, :end_time, :break)"); //Maak de query klaar
+        global $pdo;
+        $sth = $pdo->prepare("SELECT date, uid
+                                            FROM declaration
+                                             WHERE uid=:uid and date=:date");
         $sth->bindParam(':uid', $userid, PDO::PARAM_STR);
         $sth->bindParam(':date', $date, PDO::PARAM_STR);
-        $sth->bindParam(':start_time', $start_time, PDO::PARAM_STR);
-        $sth->bindParam(':end_time', $end_time, PDO::PARAM_STR);
-        $sth->bindParam(':break', $break, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
-        return(true);
+
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+            $aantal = 0;
+            $aantal = count($row);
+        }
+        if ($aantal == 0) {
+            //Zoek naar $pdo buiten deze functie
+            $sth = $pdo->prepare("INSERT INTO declaration (uid, date, start_time, end_time, break) values (:uid, :date, :start_time, :end_time, :break)"); //Maak de query klaar
+            $sth->bindParam(':uid', $userid, PDO::PARAM_STR);
+            $sth->bindParam(':date', $date, PDO::PARAM_STR);
+            $sth->bindParam(':start_time', $start_time, PDO::PARAM_STR);
+            $sth->bindParam(':end_time', $end_time, PDO::PARAM_STR);
+            $sth->bindParam(':break', $break, PDO::PARAM_STR);
+            $sth->execute(); //Voer de query uit
+            return(true);
+        } else {
+            print("<script type='text/javascript'>noty({text: 'deze dag is al gedeclareerd', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        }
     }
 
 //    public function declist() {
