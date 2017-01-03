@@ -361,7 +361,7 @@ if (isset($_POST['resultradiobox'])) {
 
                                         <li class="list-group-item">    Gemiddelden <input type="radio" name="resultradiobox" value="gemiddeldperdag"></li> 
                                         <li class="list-group-item">  afgelopen  maand    <input type="radio" name="resultradiobox" value="afgelopenmaand"></li> 
-                                        <li class="list-group-item"> afgelopen per jaar     <input type="radio" name="resultradiobox" value="afgelopenjaar"></li> 
+                                        <li class="list-group-item"> afgelopen jaar     <input type="radio" name="resultradiobox" value="afgelopenjaar"></li> 
                                         <li class="list-group-item">    Totaal <input type="radio" name="resultradiobox" value="totaleaantal"></li>                        
                                     </ul></div>  
                             </div> </div><br>
