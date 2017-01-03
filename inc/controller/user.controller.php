@@ -40,6 +40,23 @@ class user {
         return(true);
         
     }
+	
+	public function Insert($username, $password, $first_name, $last_name, $address, $postal_code, $email, $rank) {
+        
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("INSERT staff (username, password, first_name, last_name, address, postal_code, email, rank_id) VALUES (:username, :password, :first_name, :last_name, :address, :postal_code, :email, :rank)"); //Maak de query klaar
+        $sth->bindParam(':username', $username, PDO::PARAM_STR);
+        $sth->bindParam(':password', $password, PDO::PARAM_STR);
+		$sth->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+        $sth->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+		$sth->bindParam(':address', $address, PDO::PARAM_STR);
+        $sth->bindParam(':postal_code', $postal_code, PDO::PARAM_STR);
+        $sth->bindParam(':email', $email, PDO::PARAM_STR);
+        $sth->bindParam(':rank', $rank, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+        return(true);
+        
+    }
     
     public function staffList() {
         

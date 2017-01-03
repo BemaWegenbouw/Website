@@ -84,8 +84,12 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
             //Alles is verder goed!
             //Begin verwerking
             
-            //Add user hier
-            
+			//Hash het wachtwoord
+			$hashed_password = $security->Hash($post_password);
+			echo "$post_username, $hashed_password, $post_firstname, $post_lastname, $post_address, $post_postalcode, $post_email, $post_rank";
+            //Gebruiker toevoegen
+			$user->Insert($post_username, $hashed_password, $post_firstname, $post_lastname, $post_address, $post_postalcode, $post_email, $post_rank);
+			
         }
         
         
