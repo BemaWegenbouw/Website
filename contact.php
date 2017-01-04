@@ -91,7 +91,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 				////true - What happens when user is verified
 				// PHP check if form values are empty
 				if (empty($_POST["name"])) {
-					print(
+					die(
 						'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
@@ -100,7 +100,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <span data-notify="message"><br>'.(lang("contact_column2_error2_3")).'</span>
                                     </div>');
 				}elseif (empty($_POST["email"])) {
-					print(
+					die(
 							'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
@@ -109,7 +109,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <span data-notify="message"><br>'.(lang("contact_column2_error2_4")).'</span>
                                     </div>');
 				}elseif (empty($_POST["subject"])) {
-					print(
+					die(
 							'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
@@ -118,7 +118,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <span data-notify="message"><br>'.(lang("contact_column2_error2_5")).'</span>
                                     </div>');
 				}elseif (empty($_POST["comments"])) {
-					print(
+					die(
 							'<br>
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
