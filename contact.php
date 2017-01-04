@@ -87,47 +87,9 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 		$data = json_decode($response);  //anwser recaptcha response
 		
 		if(isset($data->success) AND $data->success==true){   //validation recaptcha response
-			
-				////true - What happens when user is verified
-				// PHP check if form values are empty
-				if (empty($_POST["name"])) {
-					die(
-						'<br>
-                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
-                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_3")).'</span>
-                                    </div>');
-				}elseif (empty($_POST["email"])) {
-					die(
-							'<br>
-                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
-                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_4")).'</span>
-                                    </div>');
-				}elseif (empty($_POST["subject"])) {
-					die(
-							'<br>
-                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
-                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_5")).'</span>
-                                    </div>');
-				}elseif (empty($_POST["comments"])) {
-					die(
-							'<br>
-                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
-                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_6")).'></span>
-                                    </div>');
-				}
-				
+
+			//check if all fields are filled in
+			if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['comments'])){
 			//Mail content 
 			
 				$post_name = $_POST['name'];
@@ -285,7 +247,49 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 					}
 			}
 		}
-					 
+		
+			}else{
+				
+					////true - What happens when user is verified
+				// PHP check if form values are empty
+				if (empty($_POST["name"])) {
+					print(
+						'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_3")).'</span>
+                                    </div>');
+				}elseif (empty($_POST["email"])) {
+					print(
+							'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_4")).'</span>
+                                    </div>');
+				}elseif (empty($_POST["subject"])) {
+					print(
+							'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_5")).'</span>
+                                    </div>');
+				}elseif (empty($_POST["comments"])) {
+					print(
+							'<br>
+                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_6")).'></span>
+                                    </div>');
+				}
+			}
 		
 	}else{   // print this when google recaptcha was not verified
 		print (

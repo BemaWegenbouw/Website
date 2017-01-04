@@ -11,7 +11,12 @@ include("../inc/parts/staff-header.php");
   
  $sending = 0;
   if(isset($_POST['free_submit']) && !empty($_POST['free_submit'])) {
-       
+      	
+	if(!empty($_POST['start_date']) && !empty($_POST['end_date']) && !empty($_POST['start_time']) && !empty($_POST['end_time']) && !empty($_POST['comment'])){
+	
+		if($_POST['end_date'] < $_POST['start_date']){
+			$sending = 3;
+		}else{
 		$userid = $uid;
 		$start_date = $_POST["start_date"];
 		$end_date = $_POST["end_date"];
@@ -21,14 +26,16 @@ include("../inc/parts/staff-header.php");
 		$end_time = "$end:00";
 		$comment = $_POST["comment"];
 	
+	
 		$free->insert($userid, $start_date,$end_date,$start_time,$end_time,$comment); // insert the free form into the FREE table
-		$compleet = true;
-	if ($compleet){
-	$sending += 1;
-	}else{
-		$sending +=2;
-	}
+		
+		$sending = 1;
+		}
+}else{
+	$sending = 2;
+	
 }
+  }
 
 if (isset($_POST['resultradiobox'])) {
     $resultradiobox = $_POST['resultradiobox'];
@@ -195,16 +202,21 @@ if (isset($_POST['resultradiobox'])) {
 						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
-                                        <span data-notify="message"><br><?php echo(lang("contact_column2_error1_5")); ?></span>
+                                        <span data-notify="title">Uw vrij aanvraag is verzonden.</span>
                         </div>
 						<?php } ?>
 						<?php if ($sending == 2) { ?>
 						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
-                                        <span data-notify="message"><br><?php echo(lang("contact_column2_error1_5")); ?></span>
+                                        <span data-notify="title">Uw vrij aanvraag is niet verzonden, probeer het opnieuw.</span>
+                        </div>
+						<?php } ?>
+						<?php if ($sending == 3) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">Uw vrij aanvraag is niet verzonden, de eind datum begint voor de start datum.</span>
                         </div>
 						<?php } ?>
 									
