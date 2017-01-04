@@ -152,7 +152,7 @@ if (isset($_POST['resultradiobox'])) {
 						<h1>Vrij vragen</h1>
 						</div>
 						<div class="col-sm-12 form-group">
-                            Van:
+                            Van:<span style="color:red;"> *</span>
                             <div class="input-group date datepicker" data-provide="datepicker">
                                 <input type="date" name="start_date"class="form-control" placeholder="yyyy-mm-dd" required>
                                 <div class="input-group-addon">
@@ -161,7 +161,7 @@ if (isset($_POST['resultradiobox'])) {
                             </div>
                         </div>
 						<div class="col-sm-12 form-group">
-                            Tot:
+                            Tot:<span style="color:red;"> *</span>
                             <div class="input-group date datepicker" data-provide="datepicker">
                                 <input type="date" name="end_date"class="form-control" placeholder="yyyy-mm-dd" required>
                                 <div class="input-group-addon">
@@ -170,7 +170,7 @@ if (isset($_POST['resultradiobox'])) {
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
-                            Begintijd:
+                            Begintijd:<span style="color:red;"> *</span>
                             <div class="input-group clockpicker" data-autoclose="true">
                                 <input type="text" name="start_time" class="form-control" placeholder="00:00" value="" required >
                                 <span class="input-group-addon">
@@ -179,7 +179,7 @@ if (isset($_POST['resultradiobox'])) {
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
-                            Eindtijd:
+                            Eindtijd:<span style="color:red;"> *</span>
                             <div class="input-group clockpicker" data-autoclose="true">
                                 <input type="text" name="end_time"class="form-control" placeholder="00:00" value="" required >
                                 <span class="input-group-addon">
@@ -189,7 +189,7 @@ if (isset($_POST['resultradiobox'])) {
 							
                         </div>
 						<div class="col-sm-12 form-group">
-                            Reden:
+                            Reden:<span style="color:red;"> *</span>
                             <textarea class="form-control" id="comment" name="comment" placeholder="Reden"  value="" rows="10" requierd></textarea>
                         </div>
 						
@@ -197,7 +197,9 @@ if (isset($_POST['resultradiobox'])) {
                         <div class="col-sm-6 form-group">
                         <button class="btn btn-lg btn-primary btn-right" backgroundcolor="blue" type="submit" name="free_submit" value="verzend">Verzenden</button><br />
                         </div>
-						
+						<div class="col-sm-12 form-group">
+							Alles met een <span style="color:red;">*</span> is een verplicht veld.
+						</div>
 						<?php if ($sending == 1) { ?>
 						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>

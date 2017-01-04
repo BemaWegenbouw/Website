@@ -10,6 +10,20 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("decl_admin")) {
     die("Unauthorized.");
 }
 
+if (isset($_POST) && !empty($_POST)) {
+    foreach ($_POST as $key => $value) {
+        if ($value == 'true') {
+            $declaration->approveFree($key);
+        }
+        if ($value == 'false') {
+            $declaration->denyFree($key);
+        }
+    }
+	print
+		"<script type='text/javascript'>
+		window.location.href = 'admin_declaration.php';
+		</script>";
+}
 include("../inc/parts/staff-header.php");
 $uid = $_SESSION["uid"];
 ?>
@@ -17,18 +31,19 @@ $uid = $_SESSION["uid"];
 
 <!-- Page Content -->
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Uren Inzien</h1>
-
+    <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Uren inzien</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+	</div>
                 <div class='container-fluid'>
                     <div class='row'>
                         <div class='col-lg-12'>
                             <div class='panel panel-default'>
                                 <div class='panel-heading'>
                                 </div>
-                                <form method='POST' action="update_declaration.php">
+                                <form method='POST'>
                                     <div width="auto" class='panel-body'>
                                         <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
                                             <thead>
@@ -40,7 +55,6 @@ $uid = $_SESSION["uid"];
                                                     <th>Eind tijd</th>
                                                     <th>Pauze</th>
                                                     <th>Goedkeuring</th>
-
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -48,21 +62,21 @@ $uid = $_SESSION["uid"];
                                                 $declaration->declist();
                                                 ?>
                                             </tbody>
-                                            <div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
                                         </table>
+										<div><button class='btn btn-sm btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            
 
             <div class='container-fluid'>
                 <div class='row'>
                     <div class='col-lg-12'>
                         <div class='panel panel-default'>
-                            <div class='panel-heading'>
+                            <div class='panel-heading'>test
                             </div>
 
                             <div width="auto" class='panel-body'>

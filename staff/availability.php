@@ -7,9 +7,84 @@ require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
 $uid = $_SESSION["uid"];
+$success = false; 
+if($_POST){
+			
+			if(empty($_POST['starttimemonday']) && empty($_POST['endtimemonday']) && empty($_POST['starttimetuesday'])
+				&& empty($_POST['endtimetuesday']) && empty($_POST['starttimewednesday']) && empty($_POST['endtimewednesday'])
+			  && empty($_POST['starttimethursday']) && empty($_POST['endtimethursday']) && empty($_POST['starttimefriday'])
+			  && empty($_POST['endtimefriday']) && empty($_POST['starttimesaturday']) && empty($_POST['endtimesaturday'])
+			  && empty($_POST['starttimesunday']) && empty($_POST['starttimesunday'])){
+				
+			  }else {
+			  
+			foreach ($_POST as $key => $value){
+				
+				$$key = $value;
+								
+				}
+				
+				if($starttimemonday && $endtimemonday != null){
+					if($endtimemonday < $starttimemonday){
+						$success  = true;
+					}else {
+					$calendar->SetTheUpdateAvailability($uid, $starttimemonday, $endtimemonday, 'maandag');
+					}
+				}
+				if($starttimetuesday && $endtimetuesday != null){
+					if($endtimetuesday < $starttimetuesday){
+						$success  = true;
+					}else {
+					$calendar->SetTheUpdateAvailability($uid, $starttimetuesday, $endtimetuesday, 'dinsdag');
+					}
+				}
+				if($starttimewednesday && $endtimewednesday != null){
+					if($endtimewednesday < $starttimewednesday){
+						$success  = true;
+					}else {
+					$calendar->SetTheUpdateAvailability($uid, $starttimewednesday, $endtimewednesday, 'woensdag');
+					}
+				}
+				if($starttimethursday && $endtimethursday != null){
+					if($endtimethursday < $starttimethursday){
+						$success  = true;
+					}else {
+					$calendar->SetTheUpdateAvailability($uid, $starttimethursday, $endtimethursday, 'donderdag');
+					}
+				}
+				if($starttimefriday && $endtimefriday != null){
+					if($endtimefriday < $starttimefriday){
+						$success = true;
+					}else {
+					$calendar->SetTheUpdateAvailability($uid, $starttimefriday, $endtimefriday, 'vrijdag');
+					}
+				}
+				if($starttimesaturday && $endtimesaturday != null){
+					if($endtimesaturday < $starttimesaturday){
+						$success= true;
+					}else {
+					$calendar->SetTheUpdateAvailability($uid, $starttimesaturday, $endtimesaturday, 'zaterdag');
+					}
+				}
+				if($starttimesunday && $endtimesunday != null){
+					if($endtimesunday < $starttimesunday){
+						$success  = true;
+					}else {
+					$calendar->SetTheUpdateAvailability($uid, $starttimesunday, $endtimesunday, 'zondag');
+					}
+				}
+				
+			  }	
+		}
 ?>
 <!-- Page Content -->
 <div id="page-wrapper">
+ <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Beschikbaarheid</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
     <div class="row">
         <div class="container col-sm-6">
             <div class='panel panel-default'>
@@ -26,8 +101,15 @@ $uid = $_SESSION["uid"];
 
                     <table width="100%" id="scrolltable" class="table table-striped table-bordered table-hover">
 
-
-                        <form action="update_availability.php" method="post">
+	
+                        <form  method="post">
+						<?php if ($success) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">Uw vrij aanvraag is niet verzonden omdat, bij 1 van de dagen de eindtijd eerder begint dan de begintijd.</span>
+                        </div>
+						<?php } ?>
                             <tbody>
                                 <tr>
                                     <td>Dag</td>
@@ -37,14 +119,14 @@ $uid = $_SESSION["uid"];
                                     <td>
 
                                         <span class="label label-default">Maandag</span>
-                                        <input type="text" width="100%"id="inputUsername" class="form-control hidden" value="Maandag"  disabled >
+                                        <input type="text" width="100%"id="inputUsername" class="form-control hidden" name="maandag" value="Maandag"  disabled >
 
                                     </td>
 
                                     <td>
                                         <?php //---------------Maandag---------------------------   ?>
                                         <div class="input-group clockpicker" data-autoclose="true"> 
-                                            <input type="time" name="starttimemonday" class="form-control"  placeholder="00:00" value="<?php $calendar->ShowStartTime($uid, "maandag") ?>"  >
+                                            <input type="time" name="starttimemonday" class="form-control"  placeholder="00:00"  value="<?php $calendar->ShowStartTime($uid, "maandag") ?>" >
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-time "></span>
                                             </span>
@@ -53,7 +135,7 @@ $uid = $_SESSION["uid"];
                                     <td>
 
                                         <div class="input-group clockpicker" data-autoclose="true">
-                                            <input type="time" name="endtimemonday"class="form-control" min="starttimemonday"placeholder="00:00" value="<?php $calendar->ShowEndTime($uid, "maandag") ?>"  >
+                                            <input type="time" name="endtimemonday"class="form-control" min="starttimemonday"placeholder="00:00" value="<?php $calendar->ShowEndTime($uid, "maandag") ?>" >
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-time "></span>
                                             </span>
@@ -213,15 +295,13 @@ $uid = $_SESSION["uid"];
 
                             </tbody>
                     </table>
-                    <input type='submit' name='knopavailability' value="Aanpassen">
+					
+                     <div class="col-sm-6 form-group">
+                        <button class="btn btn-sm btn-primary btn-right" backgroundcolor="blue" type="submit" name="submit" >Verzenden</button><br />
+                     </div>
                 </div> </div>
+				
         </div>
-
-
-
-
-
-
         </form>
 
         <div class="container col-sm-6">
@@ -242,7 +322,7 @@ $uid = $_SESSION["uid"];
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $calendar->GetAvailabilitySingle($uid); ?>
+                            <?php $calendar->GetAvailabilitySingle($uid);?>
 
                         </tbody>
                     </table>
