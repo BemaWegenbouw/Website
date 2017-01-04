@@ -133,7 +133,7 @@ if($_POST){
 									 <td>
 
                                         <div class="input-group clockpicker" data-autoclose="true">
-                                            <input type="time" name="endtimemonday"class="form-control" min="starttimemonday"placeholder="00:00" value="<?php $calendar->ShowEndTime($uid, "maandag") ?>" >
+                                            <input type="time" name="endtimemonday"class="form-control" min="<?php $calendar->ShowStartTime($uid, "maandag") ?>"placeholder="00:00" value="<?php $calendar->ShowEndTime($uid, "maandag") ?>" >
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-time "></span>
                                             </span>
