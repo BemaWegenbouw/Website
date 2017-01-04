@@ -33,6 +33,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
         <div class="col-sm-6">
             <div class='panel panel-default'>
                 <div class='panel-heading'>
+                    <!------------------------------- Calendar----------------------------- -->
                     <h3>Planningskalender</h3>
                 </div>
 
@@ -52,7 +53,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
 
 
 
-
+ <!------------------------------- Besschikbaarheid tabel----------------------------- -->
             <div class='panel panel-default'>
                 <div class='panel-heading'>
                     <h3>Beschikbaarheid</h3>
@@ -70,7 +71,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                             </tr>
                         </thead>
                         <tbody>
-<?php $calendar->GetAvailability(); ?>
+<?php $calendar->GetAvailability(); ?>  <!----- functie voor alle tabel rijen (tr)------ -->
 
                         </tbody>
                     </table>
@@ -83,6 +84,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
 	 <div class="col-sm-6" > 
             <div class='panel panel-default'>
                 <div class='panel-heading'>
+                     <!------------------------------- Input Form om mensen in te roosteren----------------------------- -->
                     <h3>Inplannen</h3>
                 </div>
 
@@ -94,11 +96,12 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                             <ul class="dropdown-menu">
 
 
-<?php $calendar->DropDownMenuPlannedHours(); ?>
+<?php $calendar->DropDownMenuPlannedHours(); ?>  <!-------- variables van dropdownmenu voor dropdownmenu----------- -->
 
 
                             </ul></div>
                         <br>
+                         <!----------------- datum input------------------- -->
                         <label>Datum</label>
                         <div class="input-group date datepicker" data-provide="datepicker" >
                             <input type="date" name="dateplanning"class="form-control" placeholder="yyyy-mm-dd" required>
@@ -107,7 +110,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                             </div>  </div>
 
 
-
+                    <!--------------- starttijd input--------------- -->
                         <label>Start tijd</label>
                         <div class="input-group clockpicker" data-autoclose="true">
                             <input type="time" name="starttimeplanning"class="form-control" placeholder="07:00" required >
@@ -115,6 +118,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                                 <span class="glyphicon glyphicon-time"></span>
                             </span>
                         </div>
+                         <!------------------------------- Eind tijd input----------------------------- -->
                         <label>Eind tijd</label>  
                         <div class="input-group clockpicker" data-autoclose="true">
                             <input type="time" name="endtimeplanning"class="form-control" placeholder="17:00" required >
@@ -134,6 +138,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
 
             <div class='panel panel-default'>
                 <div class='panel-heading'>
+                     <!------------------------------- Tabel voor ingeplande werknemers----------------------------- -->
                     <h3>Ingeplande Medewerkers</h3>
                 </div>
 				
@@ -154,7 +159,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                             </tr>
                         </thead>
                         <tbody>
-<?php $calendar->SelectPlannedHours(); ?>
+<?php $calendar->SelectPlannedHours(); ?>  <!------------- De TR rijen voor de tabel , inclusief variablen meenemen naar de delete functie-------- -->
 
                         </tbody>
                     </table>
