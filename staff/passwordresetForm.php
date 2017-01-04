@@ -13,7 +13,9 @@ $userNAME = $user->get($userID,'username');
 
 $resetsuccess = '';
 
-if($tempcode == 0) {
+$tempcodeexists = array_search($tempcode, $restore->checkTempc($userID));
+
+if($tempcodeexists == false) {
 header("Location:login.php");
 die("Unauthorized."); 
 

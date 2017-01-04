@@ -32,6 +32,16 @@ class restore {
         
     }
 	
+	public function checkTempc($uid){
+		
+	
+		global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM restore WHERE uid = :uid"); //Maak de query klaar
+        $sth->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+        return $result; //Geef resultaat terug
+	}
 }
 
 $restore = new restore;

@@ -5,6 +5,11 @@
 
 $page = "staff-freeapplications";
 require_once("../inc/engine.php");
+
+if($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("free_form")) {
+header("Location: dashboard.php");
+die("Unauthorized."); }
+
 include("../inc/parts/staff-header.php");
  $uid = $_SESSION["uid"];
 
