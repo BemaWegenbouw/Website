@@ -11,11 +11,10 @@ class declaration {
         $sth->bindParam(':uid', $userid, PDO::PARAM_STR);
         $sth->bindParam(':date', $date, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
-
-        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
-            $aantal = 0;
-            $aantal = count($row);
-        }
+        
+		$row = $sth->fetchall(PDO::FETCH_ASSOC);         
+		$aantal = count($row); 
+		 
         if ($aantal == 0) {
             //Zoek naar $pdo buiten deze functie
             $sth = $pdo->prepare("INSERT INTO declaration (uid, date, start_time, end_time, break) values (:uid, :date, :start_time, :end_time, :break)"); //Maak de query klaar

@@ -102,9 +102,10 @@ class Calendar {
         $sth->bindParam(':uid', $uid, PDO::PARAM_STR); //vervang variable
         $sth->bindParam(':day', $day, PDO::PARAM_STR); //vervang variable
         $sth->execute(); //Voer de query uit//voert de query uit
-        while ($row = $sth->fetch()) {
+		while ($row = $sth->fetch()) {
             $trueorfalse = count($row);
         }
+		
         IF ($trueorfalse) {
             $sth1 = $pdo->prepare("UPDATE availability SET start_time = :start_time, end_time = :end_time WHERE day = :day AND uid = :uid"); //Maak de query klaar
             $sth1->bindParam(':start_time', $start_time, PDO::PARAM_STR); //vervang variable
@@ -123,6 +124,7 @@ class Calendar {
 
             return(true);
         }
+		
     }
 
 //einde functie

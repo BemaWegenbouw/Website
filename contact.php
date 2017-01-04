@@ -5,7 +5,9 @@
 $page = "contact";
 require_once("inc/engine.php");
 include("inc/parts/header.php");
-?>
+?><style>
+    .required:after { content:" *"; }
+</style>
 	<!--Start Page wrapper-->
 	<div id="page-wrapper">
 		<!--Start container contact-->
@@ -47,7 +49,7 @@ include("inc/parts/header.php");
 							<!--End input subject-->
 							<!--Start input comments-->
 							<div class="col-sm-12 form-group">
-								<textarea class="form-control" id="comments" name="comments" placeholder="Vul hier uw bericht in." rows="10" requierd><?php echo $var = isset($_POST['comments']) ? $_POST['comments'] : ''; ?></textarea>
+								<textarea class="form-control" id="comments" name="comments" placeholder="<?php echo(lang('contact_column2_placeholder4')); ?>" rows="10" requierd><?php echo $var = isset($_POST['comments']) ? $_POST['comments'] : ''; ?></textarea>
 							</div>
 							<!--End input comments-->	
 							<!--Start Google Recaptcha-->

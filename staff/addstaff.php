@@ -11,7 +11,7 @@ header("Location: dashboard.php");
 die("Unauthorized."); }
 
 include("../inc/parts/staff-header.php");
-
+$checkuser = '';
 if (isset($_POST) && !empty($_POST)) { //Check of er een post is
     
     if ( //Check of alles is gepost
@@ -55,6 +55,7 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
             //Foute input!
             $_SESSION["error"] = "De formulering van de gebruikersnaam is incorrect!";
         }
+		
         
         //CHECK OVEREENKOMST WACHTWOORD\\
         if($post_password == $post_confirmpass) {
@@ -79,17 +80,19 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
             //Er is een fout opgetreden tijdens de integriteitscheck!
             //Stop met het uitvoeren van het script.
             //Laat verderop de melding zien.
-        } else {
+        }elseif($user->checkUser($post_username)){
+			//User bestaat al
+			$checkuser = true;
+		}else {
         
             //Alles is verder goed!
             //Begin verwerking
             
 			//Hash het wachtwoord
 			$hashed_password = $security->Hash($post_password);
-			echo "$post_username, $hashed_password, $post_firstname, $post_lastname, $post_address, $post_postalcode, $post_email, $post_rank";
             //Gebruiker toevoegen
 			$user->Insert($post_username, $hashed_password, $post_firstname, $post_lastname, $post_address, $post_postalcode, $post_email, $post_rank);
-			
+				
         }
         
         
@@ -121,7 +124,13 @@ if(isset($_SESSION["error"])) {
                     <!-- /.col-lg-12 -->
             <div class="col-sm-4">                
                       <form class="form" action="" method="POST" style="">
-                
+                <?php if($checkuser) { ?>
+				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+				<p>De gebruiker bestaat al, kiez een andere gebruiker!</p>				
+				</div>
+			  <?php } ?>
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
