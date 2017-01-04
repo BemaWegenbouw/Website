@@ -97,7 +97,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error1_2")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_3")).'</span>
                                     </div>');
 				}elseif (empty($_POST["email"])) {
 					print(
@@ -106,7 +106,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error1_3")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_4")).'</span>
                                     </div>');
 				}elseif (empty($_POST["subject"])) {
 					print(
@@ -115,7 +115,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error1_4")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_5")).'</span>
                                     </div>');
 				}elseif (empty($_POST["comments"])) {
 					print(
@@ -124,7 +124,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error1_5")).'></span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_6")).'></span>
                                     </div>');
 				}
 				
@@ -224,8 +224,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_success")).'</span>
+                                        <span data-notify="title">'.(lang("contact_column2_success")).'</span>
                                     </div>');
 					}else{
 					print ( // print this when mail was not send successvoly
@@ -235,7 +234,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_success")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_1")).'</span>
                                     </div>');	
 					}
 					
@@ -271,8 +270,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_success")).'</span>
+                                        <span data-notify="title">'.(lang("contact_column2_success")).'</span>
                                     </div>');
 					}else{
 					print (  // print this when mail was not send successvoly
@@ -282,7 +280,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_success")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_1")).'</span>
                                     </div>');	
 					}
 			}
@@ -297,7 +295,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_success")).'</span>
+                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_2")).'</span>
                                     </div>');	
 	  }			
 	}
