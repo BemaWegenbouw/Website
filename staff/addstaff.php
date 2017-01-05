@@ -166,7 +166,7 @@ if(isset($_SESSION["error"])) {
                 
                 </p>
                 
-                <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Toevoegen</button><br />
+                <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Toevoegen</button><br />
                 
                 <p />
                 

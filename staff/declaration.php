@@ -103,7 +103,7 @@ $sending = '';
                     </div>
 
                     <div class="col-sm-12 form-group">
-                        <button class="btn btn-block btn-default pull-left" type="submit" name="submit" value="Submit">verzenden</button>
+                        <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit" value="Submit">verzenden</button>
                     </div>
 					<div class="col-sm-12 form-group">
 					Alles met een <span style="color:red;">*</span> is een verplicht veld.

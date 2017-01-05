@@ -8,6 +8,8 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
     header("Location: dashboard.php");
     die("Unauthorized.");
 }
+$get_error = $_GET["error"]
+
 //
 ?>
 
@@ -127,8 +129,14 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                             </span>
                         </div>
                         <br>
-                        <label></label>  <input type="submit" class="form_control" >
-
+                        <div><button class='btn btn-sm btn-primary btn-right pull-left' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
+						<?php if ($get_error) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">De einddatum begint voor de startdatum, probeer het opnieuw</span>
+                        </div>
+						<?php } ?>
 
                     </form>         
                 </div> 
