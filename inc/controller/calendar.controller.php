@@ -96,7 +96,7 @@ class Calendar {
 //einde functie
     //update de starttijd en eindtijd en datum van de gekozen persoon
     public function SetTheUpdateAvailability($uid, $start_time, $end_time, $day) {
-
+		$trueorfalse = '';
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT start_time, end_time, day, uid FROM availability WHERE uid = :uid AND day = :day"); //Maak de query klaar
         $sth->bindParam(':uid', $uid, PDO::PARAM_STR); //vervang variable

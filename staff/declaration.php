@@ -119,6 +119,7 @@ $sending = '';
             <div class='col-lg-12'>
                 <div class='panel panel-default'>
                     <div class='panel-heading'>
+					<h4>Openstaande declaraties</h4>
                     </div>
 
                     <div width="auto" class='panel-body'>
@@ -136,7 +137,39 @@ $sending = '';
                             <tbody>
                                 <?php
                                 $userid = $uid;
-                                $declaration->declistcompleet($userid);
+                                $declaration->declistcompleetUnapproved($userid);
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-lg-12'>
+                <div class='panel panel-default'>
+                    <div class='panel-heading'>
+					<h4>Gesloten declaraties</h4>
+                    </div>
+
+                    <div width="auto" class='panel-body'>
+                        <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable2'>
+                            <thead>
+                                <tr>
+                                    <th>Voornaam</th>
+                                    <th>Achternaam</th>
+                                    <th>Datum</th>
+                                    <th>Start tijd</th>
+                                    <th>Eind tijd</th>
+                                    <th>Pauze</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $userid = $uid;
+                                $declaration->declistcompleetApproved($userid);
                                 ?>
                             </tbody>
                         </table>
@@ -146,7 +179,7 @@ $sending = '';
         </div>
     </div>
 </div>
-
+</div>
 
 <?php
 include("../inc/parts/staff-footer.php");
