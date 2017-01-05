@@ -146,10 +146,10 @@
                                     <a href="availability.php"><i class="fa fa-edit fa-fw"></i> Beschikbaarheid</a>
                                 </li>
                                 <li>
-                                    <a href="passwordchange.php"><i class="fa fa-edit fa-fw"></i> Wijzig wachtwoord</a>
+                                    <a href="passwordchange.php"><i class="fa fa-key fa-fw"></i> Wijzig wachtwoord</a>
                                 </li>
 								<li>
-                                    <a href="staff-contact.php"><i class="fa fa-edit fa-fw"></i> Contact</a>
+                                    <a href="staff-contact.php"><i class="fa fa-envelope-o fa-fw"></i> Contact</a>
                                 </li>
                                 <!--einde tables / blank template-->
                                 <?php if ($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
@@ -170,6 +170,9 @@
                                             </li>
                                             <li>
                                                 <a href="planning-hours.php">Inroosteren</a>
+                                            </li>
+											<li>
+                                                <a href="Management.php">Management</a>
                                             </li>
                                            
 
