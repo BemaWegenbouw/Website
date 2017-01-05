@@ -8,7 +8,10 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
     header("Location: dashboard.php");
     die("Unauthorized.");
 }
-$get_error = $_GET["error"]
+$get_error = '';
+if (isset($_GET["error"])) {
+	$get_error = $_GET["error"];
+}
 
 //
 ?>

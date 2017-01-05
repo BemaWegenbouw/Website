@@ -128,7 +128,7 @@ if(isset($_SESSION["error"])) {
 				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
 				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
 				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<p>De gebruiker bestaat al, kiez een andere gebruiker!</p>				
+				<p>De gebruiker bestaat al, gebruik een andere gebruikersnaam!</p>				
 				</div>
 			  <?php } ?>
                 <div class="form-group">

@@ -96,8 +96,6 @@ include("../inc/parts/staff-header.php");
 	
 	foreach ( $_POST as $key => $value){
 
-		
-		
 		/* controleer of er user al is ingeroosterd*/
 		$startdate = $free->get($key,'start_date');
 		$enddate = $free->get($key,'end_date');
@@ -106,15 +104,6 @@ include("../inc/parts/staff-header.php");
 		$firstname = $user->get($uidKey,'first_name');
 		$lastname= $user->get($uidKey,'last_name');
 		
-		
-		/*
-		$datetime1 =new Datetime('2006-11-12');
-		$datetime2 = new Datetime('2006-11-16');
-		$interval = $datetime1->diff($datetime2);
-		$temp = $interval->format('%d%');
-		
-		 */
-
 			if($value == 'false'){
 			
 			$free->denyFree($key);

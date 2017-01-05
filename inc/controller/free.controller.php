@@ -129,23 +129,35 @@ class free {
 		$date = $startdate; 	
 		$date2 = $enddate;
 		
-		while ($date < $date2){
-		
-		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
-		$sth = $pdo->prepare ("INSERT INTO work_schedule (uid,start_time,end_time, date) VALUES (:uid,'00:00:00','00:00:00', :date)"); 
-		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
-		$sth->bindparam(':date', $date, PDO::PARAM_STR);//query
-		$sth->execute(); //Voer de query uit
-		
-		$time_original = strtotime($date);
-		$time_add      = $time_original + (3600*24); //add seconds of one day
+		if ($date == $date2){
+			
+			global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+				$sth = $pdo->prepare ("INSERT INTO work_schedule (uid,start_time,end_time, date) VALUES (:uid,'00:00:00','00:00:00', :date)"); 
+				$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+				$sth->bindparam(':date', $date, PDO::PARAM_STR);//query
+				$sth->execute(); //Voer de query uit
 
-		$new_date      = date("Y-m-d", $time_add);
-		$date = $new_date;
-	
-		/* $daycount = $daycount + 1; */
+				
+		}else{
+			
+				while ($date < $date2){
+				
+				global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
+				$sth = $pdo->prepare ("INSERT INTO work_schedule (uid,start_time,end_time, date) VALUES (:uid,'00:00:00','00:00:00', :date)"); 
+				$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
+				$sth->bindparam(':date', $date, PDO::PARAM_STR);//query
+				$sth->execute(); //Voer de query uit
+				
+				$time_original = strtotime($date);
+				$time_add      = $time_original + (3600*24); //add seconds of one day
 
-	}
+				$new_date      = date("Y-m-d", $time_add);
+				$date = $new_date;
+			
+				/* $daycount = $daycount + 1; */
+
+			}
+		}
 	}
 	
 	public function insertNewWorkHours($uid,$startdate){
