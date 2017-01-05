@@ -379,7 +379,7 @@ if (isset($_POST['resultradiobox'])) {
                                         <li class="list-group-item">    Totaal <input type="radio" name="resultradiobox" value="totaleaantal"></li>                        
                                     </ul></div>  
                             </div> </div><br>
-                        <button class="btn btn-submit" type="submit" name="Verzenden" value="haal op">
+                        <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="Verzenden" value="haal op">
                             Verzenden</button>
 
                         </form>

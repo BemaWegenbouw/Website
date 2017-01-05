@@ -13,6 +13,7 @@ die("Unauthorized."); }
 include("../inc/parts/staff-header.php");
 $checkrank = false;
 $changeinfo = '';
+$changerank = false;
 if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
     
     //Stel variabelen in
@@ -67,8 +68,13 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
 			 
                 //Rang edit check
                 if($post_rank != $rank) {
+					if($user->Get($_SESSION["uid"], "rank_id") < $post_rank){
+						$changerank = true;
+						
+					}else{
                     $user->Set("$userid", "rank_id", "$post_rank");
                     $rank = $post_rank;
+					}
                 }
                 
                 if($post_firstname != $first_name) {
@@ -96,8 +102,11 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
                     $email = $post_email;
                 }
                 
-           
+			if($changerank){
+				//doe niks
+			}else{
             $changeinfo = true;
+			}
             }
 			}
         
@@ -183,7 +192,14 @@ if(isset($_SESSION["successmsg"])) {
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">De gegevens zijn succesvol gewijzigd.</span>
                         </div>
-						<?php } ?>					
+						<?php } ?>	
+						<?php if ($changerank) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">U kunt uw rang niet verhogen, alleen een admin kan dit.</span>
+                        </div>
+						<?php } ?>
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
@@ -211,12 +227,12 @@ if(isset($_SESSION["successmsg"])) {
                 <label for="inputEmail">Email adres</label><br />
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email" value="<?php echo($email); ?>" required name="email"><br />
                 
-                <label for="inputRank">Rang</label><br />
-                <input type="text" id="inputRank" class="form-control" placeholder="Email" value="<?php echo($rank); ?>" required name="rank"><br />
+               <label for="inputRank">Rang</label><br />
+                <select name="rank" id="inputRank" class="form-control" required><?php $permission->ListRanks(); ?></select>
                 
                 </p>
                 
-                <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
+                <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
             </form>
                               

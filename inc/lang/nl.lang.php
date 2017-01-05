@@ -50,7 +50,7 @@ $lang_nl = array(
     "contact_column1_text4" => " info@bemawegenbouw.nl",
     "contact_column2_title" => "Contactformulier",
     "contact_column2_head" => "Indien u een afspraak wilt maken, of als u vragen heeft.
-                    Kunt u hieronder een email naar sturen.",
+                    Kunt u hieronder een email naar sturen.<br><span style='color:red;'>LET OP: Alle velden zijn verplicht.</span>",
     "contact_column2_placeholder1" => "Naam",
     "contact_column2_placeholder2" => "Email",
     "contact_column2_placeholder3" => "Onderwerp",

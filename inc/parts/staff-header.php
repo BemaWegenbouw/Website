@@ -148,6 +148,9 @@
                                 <li>
                                     <a href="passwordchange.php"><i class="fa fa-edit fa-fw"></i> Wijzig wachtwoord</a>
                                 </li>
+								<li>
+                                    <a href="staff-contact.php"><i class="fa fa-edit fa-fw"></i> Contact</a>
+                                </li>
                                 <!--einde tables / blank template-->
                                 <?php if ($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
                                     <li>
