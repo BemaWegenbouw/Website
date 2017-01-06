@@ -153,6 +153,7 @@ if (isset($_POST) && !empty($_POST)) {//als de POST leeg is dan:
                                     <th>Start tijd</th>
                                     <th>Eind tijd</th>
                                     <th>Pauze</th>
+									<th>Verwijder</th>
                                 </tr>
                             </thead>
                             <tbody>

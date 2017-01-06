@@ -4,12 +4,12 @@
 
 $page = "admin-declaration";
 require_once("../inc/engine.php");
-//controleert of je gemachtigd bent om de pagina te bekijken
+
 if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("decl_admin")) {
     header("Location: dashboard.php");
     die("Unauthorized.");
 }
-//
+
 if (isset($_POST) && !empty($_POST)) {
     foreach ($_POST as $key => $value) {
         if ($value == 'true') {
@@ -24,26 +24,25 @@ if (isset($_POST) && !empty($_POST)) {
 		window.location.href = 'admin_declaration.php';
 		</script>";
 }
-//einde controle
 include("../inc/parts/staff-header.php");
 $uid = $_SESSION["uid"];
 ?>
 <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
 <!-- Page Content -->
 <div id="page-wrapper">
     <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Uren inzien</h1>
                     </div>
-    </div>
+                    <!-- /.col-lg-12 -->
+	</div>
                 <div class='container-fluid'>
                     <div class='row'>
                         <div class='col-lg-12'>
                             <div class='panel panel-default'>
-                                <div class='panel-heading'>
-                                    <h4>Openstaande declaraties</h4>
+                                <div class='panel-heading'><h4>Ongekeurde uren</h4>
                                 </div>
-                            <!-- maakt de openstaande declaraties tabel -->
                                 <form method='POST'>
                                     <div width="auto" class='panel-body'>
                                         <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
@@ -59,15 +58,12 @@ $uid = $_SESSION["uid"];
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- Haalt de info van SQL op en zet in de tabel -->
                                                 <?php
                                                 $declaration->declist();
                                                 ?>
-                                                <!-- einde info ophalen -->
                                             </tbody>
                                         </table>
-                                        <!-- einde openstaande declaraties tabel -->
-                                        <div><button class='btn btn-sm btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
+										<div><button class='btn btn-sm btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
                                     </div>
                                 </form>
                             </div>
@@ -80,8 +76,7 @@ $uid = $_SESSION["uid"];
                 <div class='row'>
                     <div class='col-lg-12'>
                         <div class='panel panel-default'>
-                            <!-- Gesloten/goedgekeurde declaraties tabel -->
-                            <div class='panel-heading'><h4>Gesloten declaraties</h4>
+                            <div class='panel-heading'><h4>Goedgekeurde uren</h4>
                             </div>
 
                             <div width="auto" class='panel-body'>
@@ -95,19 +90,16 @@ $uid = $_SESSION["uid"];
                                             <th>Eind tijd</th>
                                             <th>Pauze</th>
                                             <th>Goedkeuring</th>
-
+											<th>Verwijder</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Haalt de info van SQL op en zet in de tabel -->
                                         <?php
                                         $declaration->declistgoedgekeurd();
                                         ?>
-                                        <!-- einde info ophalen -->
                                     </tbody>
                                 </table>
                             </div>
-<!-- Einde gesloten/goedgekeurde declaraties tabel -->
 
                         </div>
                     </div>

@@ -77,7 +77,8 @@ include("../inc/parts/staff-header.php");
 				<th>Start tijd</th>
 				<th>Eind tijd</th>
 				<th>Reden</th>
-				<th>Goedkeuring</th>			
+				<th>Goedkeuring</th>
+				<th>Verwijder</th>		
 			</tr>
         </thead>
 		<tbody>

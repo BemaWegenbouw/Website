@@ -84,6 +84,7 @@ class free {
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['comment'] . "</td>
 			  <td class=" . $row["verify"] . ">" . $row['verify'] . "</td>
+			  <td><a class='btn btn-sm btn-primary btn-right' role='button' href='delete_free_request.php?id=".$row['id']."'>verwijder</a></td>
 			  </tr>";
 			
 		}
@@ -91,6 +92,31 @@ class free {
 
 	}
 	
+	public function ShowDeleteRecord($id){
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id,verify 
+								FROM free f join staff s on f.uid = s.uid where id = :id"); //query
+		$sth->bindParam(':id', $id, PDO::PARAM_STR);
+		$sth->execute(); //Voer de query uit
+		
+		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
+		
+			print "<span style='font-weight:bold;'>Naam:</span> " . $row['first_name'] ." " . $row['last_name'] . "<br>";
+			print "<span style='font-weight:bold;'>Vrij van:</span> " . $row['start_date'] ." tot " . $row['end_date'] . "<br>";
+			print "<span style='font-weight:bold;'>Vrij van:</span> " . $row['start_time'] ." tot " . $row['end_time'] . "<br>";
+			print "<span style='font-weight:bold;'>Reden: </span>" . $row['comment'];
+			 			  
+			
+			
+		}
+	}
+	public function deleteRecord($id){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("delete from free where id = :id"); //Maak de query klaar
+        $sth->bindParam(':id', $id, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+	}
 
 	public function approveFree($key){
 		
@@ -110,11 +136,6 @@ class free {
 	
 	}
 	
-	public function backupFree(){
-		
-		global $pdo; //Zoek naar $pdo buiten deze functie
-		
-	}
 	
 	public function updateWorkHours($uid,$startdate,$enddate){
 		
@@ -159,28 +180,7 @@ class free {
 			}
 		}
 	}
-	
-	public function insertNewWorkHours($uid,$startdate){
-		
-		/*
-		$date = $startdate;
-		$daycount = 0;
-		$i = $temp;
-	
-		while ($daycount > $temp){
-		*/
-		global $pdo; //Zoek naar $pdo buiten deze functie    als date work, valt tussen start en eind date dan delete van een bepaalde gebruiker
-		$sth = $pdo->prepare ("INSERT INTO work_schedule (uid,start_time,end_time, date)  VALUES (:uid,'00:00:00','00:00:00', :date)"); 
-		$sth->bindparam(':uid', $uid, PDO::PARAM_STR);//query
-		$sth->bindparam(':date', $startdate, PDO::PARAM_STR);//query
-		$sth->execute(); //Voer de query uit
-		/*
-		$date->add(new DateInterval('P1D'));
-		$daycount = $daycount + 1; 
-	}
-	*/
-	
-}
+
 }
 
 	

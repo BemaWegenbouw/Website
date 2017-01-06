@@ -66,7 +66,7 @@ class declaration {
     public function declistgoedgekeurd() {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare('SELECT first_name, last_name, date, start_time, end_time, break,verify
+        $sth = $pdo->prepare('SELECT first_name, last_name, date, start_time, end_time, break,verify,id
                                             FROM declaration d join staff s on d.uid = s.uid
                                             WHERE verify IS NOT null or verify IS NOT NULL '); //query
         $sth->execute(); //Voer de query uit
@@ -79,9 +79,38 @@ class declaration {
 <td>" . $row['end_time'] . "</td>
 <td>" . $row['break'] . "</td>
 <td class = " . $row["verify"] . ">" . $row['verify'] . "</td>
+<td><a class='btn btn-sm btn-primary btn-right' role='button' href='delete_declrations.php?id=".$row['id']."'>verwijder</a></td>
 </tr>";
         }
     }//einde functie
+	// haal 1 record op aan hand van ID
+	public function ShowDeleteRecord($id){
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("SELECT first_name, last_name, date, start_time, end_time, break,id
+                                            FROM declaration d join staff s on d.uid = s.uid
+                                            WHERE id = :id"); //query
+		$sth->bindParam(':id', $id, PDO::PARAM_STR);
+		$sth->execute(); //Voer de query uit
+		
+		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
+		
+			print "<span style='font-weight:bold;'>Naam:</span> " . $row['first_name'] ." " . $row['last_name'] . "<br>";
+			print "<span style='font-weight:bold;'>Dag:</span> " . $row['date'] ."<br>";
+			print "<span style='font-weight:bold;'>Gewerkt van:</span> " . $row['start_time'] ." tot " . $row['end_time'] . "<br>";
+			print "<span style='font-weight:bold;'>Pauze tijd: </span>" . $row['break'];
+			 			  
+			
+			
+		}
+	}
+	// Delete goed of afgekeurde declaraties 
+	public function deleteRecord($id){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("delete from declaration where id = :id"); //Maak de query klaar
+        $sth->bindParam(':id', $id, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+	}
     
     //---------------------haalt de gegevens op van de medewerkers------------------------------
     public function get($id, $value) {
@@ -116,7 +145,7 @@ class declaration {
     public function decListCompleetUnapproved($userid) {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break FROM declaration d join staff s on d.uid = s.uid WHERE d.uid = :uid and verify is null"); //query
+        $sth = $pdo->prepare("SELECT first_name, last_name, date, start_time, end_time, break,id FROM declaration d join staff s on d.uid = s.uid WHERE d.uid = :uid and verify is null"); //query
         $sth->bindParam(':uid', $userid, PDO::PARAM_STR);//vervang variable :uid naar $userid
         $sth->execute(); //Voer de query uit     
         while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {   //Creates a loop to loop through results  
@@ -127,6 +156,7 @@ class declaration {
             <td>" . $row['start_time'] . "</td>
             <td>" . $row['end_time'] . "</td>
             <td>" . $row['break'] . "</td>
+			<td><a class='btn btn-sm btn-primary btn-right' role='button' href='delete_declrations_user.php?id=".$row['id']."'>verwijder</a></td>
             </tr>";
         }//einde while
     }//einde functie
