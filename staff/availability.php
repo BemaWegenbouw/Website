@@ -7,7 +7,7 @@ require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 $uid = $_SESSION["uid"];
 $success = false; 
-if($_POST){
+if($_POST){//als er iets gepost word
 			
 			if(empty($_POST['starttimemonday']) && empty($_POST['endtimemonday']) && empty($_POST['starttimetuesday'])
 				&& empty($_POST['endtimetuesday']) && empty($_POST['starttimewednesday']) && empty($_POST['endtimewednesday'])
@@ -23,51 +23,51 @@ if($_POST){
 								
 				}
 				
-				if($starttimemonday && $endtimemonday != null){
-					if($endtimemonday < $starttimemonday){
-						$success  = true;
-					}else {
-					$calendar->SetTheUpdateAvailability($uid, $starttimemonday, $endtimemonday, 'maandag');
+				if($starttimemonday && $endtimemonday != null){//als de start tijd en eind tijd ingevuld zijn dan:
+					if($endtimemonday < $starttimemonday){//als de eindtijd kleiner is dan de start tijd
+						$success  = true;//foutmelding
+					}else {//update het
+					$calendar->SetTheUpdateAvailability($uid, $starttimemonday, $endtimemonday, 'maandag');//update de availability
 					}
 				}
-				if($starttimetuesday && $endtimetuesday != null){
-					if($endtimetuesday < $starttimetuesday){
-						$success  = true;
+				if($starttimetuesday && $endtimetuesday != null){//als de start tijd en eind tijd ingevuld zijn dan:
+					if($endtimetuesday < $starttimetuesday){//als de eindtijd kleiner is dan de start tijd
+						$success  = true;//foutmelding
 					}else {
 					$calendar->SetTheUpdateAvailability($uid, $starttimetuesday, $endtimetuesday, 'dinsdag');
 					}
 				}
-				if($starttimewednesday && $endtimewednesday != null){
-					if($endtimewednesday < $starttimewednesday){
-						$success  = true;
+				if($starttimewednesday && $endtimewednesday != null){//als de start tijd en eind tijd ingevuld zijn dan:
+					if($endtimewednesday < $starttimewednesday){//als de eindtijd kleiner is dan de start tijd
+						$success  = true;//foutmelding
 					}else {
 					$calendar->SetTheUpdateAvailability($uid, $starttimewednesday, $endtimewednesday, 'woensdag');
 					}
 				}
-				if($starttimethursday && $endtimethursday != null){
-					if($endtimethursday < $starttimethursday){
-						$success  = true;
+				if($starttimethursday && $endtimethursday != null){//als de start tijd en eind tijd ingevuld zijn dan:
+					if($endtimethursday < $starttimethursday){//als de eindtijd kleiner is dan de start tijd
+						$success  = true;//foutmelding
 					}else {
 					$calendar->SetTheUpdateAvailability($uid, $starttimethursday, $endtimethursday, 'donderdag');
 					}
 				}
-				if($starttimefriday && $endtimefriday != null){
-					if($endtimefriday < $starttimefriday){
-						$success = true;
+				if($starttimefriday && $endtimefriday != null){//als de start tijd en eind tijd ingevuld zijn dan:
+					if($endtimefriday < $starttimefriday){//als de eindtijd kleiner is dan de start tijd
+						$success = true;//foutmelding
 					}else {
 					$calendar->SetTheUpdateAvailability($uid, $starttimefriday, $endtimefriday, 'vrijdag');
 					}
 				}
-				if($starttimesaturday && $endtimesaturday != null){
-					if($endtimesaturday < $starttimesaturday){
-						$success= true;
+				if($starttimesaturday && $endtimesaturday != null){//als de start tijd en eind tijd ingevuld zijn dan:
+					if($endtimesaturday < $starttimesaturday){//als de eindtijd kleiner is dan de start tijd
+						$success= true;//foutmelding
 					}else {
 					$calendar->SetTheUpdateAvailability($uid, $starttimesaturday, $endtimesaturday, 'zaterdag');
 					}
 				}
-				if($starttimesunday && $endtimesunday != null){
-					if($endtimesunday < $starttimesunday){
-						$success  = true;
+				if($starttimesunday && $endtimesunday != null){//als de start tijd en eind tijd ingevuld zijn dan:
+					if($endtimesunday < $starttimesunday){//als de eindtijd kleiner is dan de start tijd
+						$success  = true;//foutmelding
 					}else {
 					$calendar->SetTheUpdateAvailability($uid, $starttimesunday, $endtimesunday, 'zondag');
 					}
@@ -78,18 +78,22 @@ if($_POST){
 ?>
 <!-- Page Content -->
 <div id="page-wrapper">
+    <!--------Begin Titel beschikbaarheid---------->
  <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Beschikbaarheid</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+     <!--------Eind Titel beschikbaarheid---------->
     <div class="row">
+        
+        <!-------begin titel  beschikbaarheid doorgeven-->
         <div class="container col-sm-6">
             <div class='panel panel-default'>
                 <div class='panel-heading'>
                     <h3>Beschikbaarheid doorgeven</h3>
-                </div>
+   </div> <!------Iind titel  beschikbaarheid doorgeven-->
 
                 <div class='panel-body'>
 
@@ -102,12 +106,13 @@ if($_POST){
 
 	
                         <form  method="post">
+                                                          <!--------------start foutmelding------------>
 						<?php if ($success) { ?>
 						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span data-notify="title">Uw vrij aanvraag is niet verzonden omdat, bij 1 van de dagen de eindtijd eerder begint dan de begintijd.</span>
-                        </div>
+                        </div>                        <!----------------Eind foutmelding--------------->
 						<?php } ?>
                             <tbody>
                                 <tr>
@@ -321,7 +326,7 @@ if($_POST){
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $calendar->GetAvailabilitySingle($uid);?>
+                            <?php $calendar->GetAvailabilitySingle($uid);?> <!----laad alle TR'S en TD'S in de tabel De tabel laad de beschikbaarheid van de individu----->
 
                         </tbody>
                     </table>                        <!-------------------eind tabelom beschikbaarheid te laten zien ------------------------------>
