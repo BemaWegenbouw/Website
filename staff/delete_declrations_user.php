@@ -3,25 +3,28 @@
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-$page = "staff_delete_free";
+$page = "staff_delete_declarations_user";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 $id = $_GET['id']; 
+
 if(isset($_POST['ja'])){
 	
-	$free->deleteRecord($id);
+	$declaration->deleteRecord($id);
 	print
 		"<script type='text/javascript'>
-		window.location.href = 'freeapplications.php';
+		window.location.href = 'declaration.php';
 		</script>";
+		
 }
 if(isset($_POST['nee'])){
 	
 	print
 		"<script type='text/javascript'>
-		window.location.href = 'freeapplications.php';
+		window.location.href = 'declaration.php';
 		</script>";
 }
+
 
 ?>
         <!-- Page Content -->
@@ -29,7 +32,7 @@ if(isset($_POST['nee'])){
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                        <h1 class="page-header">Werktijd</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -39,18 +42,19 @@ if(isset($_POST['nee'])){
 			<div class="container-fluid">
                     <div class="col-lg-12">
 					<div class="row">
-					<h4>Weet je zeker dat je deze record wilt deleten?<h4>
+					
 					
 					<div class="col-sm-6">
 					<?php 
 						
-						$free->ShowDeleteRecord($id);?>
+						$declaration->ShowDeleteRecord($id);?>
 					</div>
 					</div>
 					<!-- /.row -->
 					<div class="row">
 					<div class="col-sm-6">
-					<form method="POST">					
+					<form method="POST">
+					<h4>Weet je zeker dat je deze record wilt verwijderen?<h4>					
 					<div class="col-sm-3"><button class='btn btn-sm btn-primary btn-right pull-right' backgroundcolor='blue' type='submit' name='ja'>Ja</button></div>
 					<div class="col-sm-3"><button class='btn btn-sm btn-primary btn-right pull-right'  backgroundcolor='blue' type='submit' name='nee'>Nee</button></div>
 					</form>
