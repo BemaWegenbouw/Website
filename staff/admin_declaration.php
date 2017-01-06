@@ -41,7 +41,7 @@ $uid = $_SESSION["uid"];
                     <div class='row'>
                         <div class='col-lg-12'>
                             <div class='panel panel-default'>
-                                <div class='panel-heading'>
+                                <div class='panel-heading'><h4>Ongekeurde uren</h4>
                                 </div>
                                 <form method='POST'>
                                     <div width="auto" class='panel-body'>
@@ -76,7 +76,7 @@ $uid = $_SESSION["uid"];
                 <div class='row'>
                     <div class='col-lg-12'>
                         <div class='panel panel-default'>
-                            <div class='panel-heading'>test
+                            <div class='panel-heading'><h4>Goedgekeurde uren</h4>
                             </div>
 
                             <div width="auto" class='panel-body'>
@@ -90,7 +90,7 @@ $uid = $_SESSION["uid"];
                                             <th>Eind tijd</th>
                                             <th>Pauze</th>
                                             <th>Goedkeuring</th>
-
+											<th>Verwijder</th>
                                         </tr>
                                     </thead>
                                     <tbody>
