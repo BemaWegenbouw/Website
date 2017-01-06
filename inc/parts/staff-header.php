@@ -77,6 +77,9 @@
             <link rel="stylesheet" href="../assets/bootstrap-select/dist/css/bootstrap-select.css">
 
         <?php } ?>
+             <?php if ($page == "admin-declaration") { ?>
+           <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+        <?php } ?>
 
 
     </head>
