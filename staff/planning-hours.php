@@ -8,12 +8,32 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
     header("Location: dashboard.php");
     die("Unauthorized.");
 }
+$get_error = '';
+if (isset($_GET["error"])) {
+	$get_error = $_GET["error"];
+}
+
 //
 ?>
 
 <!-- Page Content -->
 <div id="page-wrapper">
-    <div class="row"><h1>Inroosterpagina</h1><div class="col-sm-8"<br><div>Op deze pagina kunt u de medewerkers inplannen. Via het menu Inplannen kunt u kiezen voor 1 of meerdere medewerkers die u op een bepaalde dag inpland. In het planningsmenu kunt u de huidige status van medewerkers inzien, in het beschikbaarheidsmenu kunt u zien op welke dagen uw medewerkers beschikbaar zijn, en in het ingeplande medewerkers menu kunt u de huidig ingeplande diensten verwijderen. </div><br></div></div>
+    <div class="row"><h1>Inroosterpagina</h1></div>
+	<ul>
+	<div style="font-weight:bold;">Op deze pagina kunt u de medewerkers inplannen.</div><br>
+	<div style="font-weight:bold;">Menu Planningkalender:</div>
+	<li>In dit menu zie je alle medewerkers die al zijn ingeroosterd.</li>
+	<div style="font-weight:bold;">Menu Beschikbaarheid:</div>
+	<li>In dit menu ziet u wanneer welke medewerkers beschikbaar zijn.</li>
+	<li>U kunt zoeken op de inhoud van de tabel via de search functie</li>
+	<div style="font-weight:bold;">Menu inplannen:</div>
+	<li>In dit menu kunt u 1 of meerdere medewerkers inplannen voor 1 dag.</li>
+	<li>In dit menu kunt u de uren van een medewerker die is ingeroosterd wijzigen door deze opnieuw in te voeren voor een dag in het verleden</li>
+	<div style="font-weight:bold;">Menu Ingeplande medewerkers:</div>
+	<li>In dit menu kunt u medewerkers verwijderen voor deze dag of een toekomstige dag zijn ingepland.<Br>
+		Om de uren te wijzigen van een medewerker die al gewerkt heeft zie "Menu inplannen".</li>
+	</ul>
+
     <div class="row">
         <div class="col-sm-6">
             <div class='panel panel-default'>
@@ -112,8 +132,14 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                             </span>
                         </div>
                         <br>
-                        <label></label>  <input type="submit" class="form_control" >
-
+                        <div><button class='btn btn-sm btn-primary btn-right pull-left' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
+						<?php if ($get_error) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">De einddatum begint voor de startdatum, probeer het opnieuw</span>
+                        </div>
+						<?php } ?>
 
                     </form>         
                 </div> 
@@ -126,7 +152,7 @@ if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
                      <!------------------------------- Tabel voor ingeplande werknemers----------------------------- -->
                     <h3>Ingeplande Medewerkers</h3>
                 </div>
-
+				
                 <div class='panel-body'>
 
                     <table width="100%" class='table table-striped table-bordered' id='scrolltable'>

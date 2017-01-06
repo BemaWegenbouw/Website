@@ -11,7 +11,9 @@ header("Location: dashboard.php");
 die("Unauthorized."); }
 
 include("../inc/parts/staff-header.php");
-
+$checkrank = false;
+$changeinfo = '';
+$changerank = false;
 if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
     
     //Stel variabelen in
@@ -44,8 +46,12 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
             $post_address = $_POST["address"];
             $post_postalcode = $_POST["postalcode"];
             $post_email = $_POST["email"];
-                
-                //Wachtwoord check
+            
+			
+            if($user->Get($_SESSION["uid"], "rank_id") < $user->Get($userid, "rank_id")) {
+				$checkrank = true;	
+			}else{
+			  //Wachtwoord check
                 if(isset($_POST["password"]) && !empty($_POST["password"])) {
                     
                     $post_password = $_POST["password"]; //Stel wachtwoord post variabele in
@@ -59,11 +65,16 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
                             $user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
                         }
                 }
-                
+			 
                 //Rang edit check
                 if($post_rank != $rank) {
+					if($user->Get($_SESSION["uid"], "rank_id") < $post_rank){
+						$changerank = true;
+						
+					}else{
                     $user->Set("$userid", "rank_id", "$post_rank");
                     $rank = $post_rank;
+					}
                 }
                 
                 if($post_firstname != $first_name) {
@@ -91,9 +102,13 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
                     $email = $post_email;
                 }
                 
-            $_SESSION["successmsg"] = "Uw wijzigingen zijn succesvol doorgevoerd.";
-            
+			if($changerank){
+				//doe niks
+			}else{
+            $changeinfo = true;
+			}
             }
+			}
         
         }
         
@@ -164,14 +179,34 @@ if(isset($_SESSION["successmsg"])) {
 		
 		   
            <form class="form col-sm-4" action="" method="POST" style="width: 300px;">
-                
+                <?php if ($checkrank) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">Uw rank is niet hoog genoeg om gegevens van de admin te wijzigen</span>
+                        </div>
+						<?php } ?>
+						<?php if ($changeinfo) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">De gegevens zijn succesvol gewijzigd.</span>
+                        </div>
+						<?php } ?>	
+						<?php if ($changerank) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">U kunt uw rang niet verhogen, alleen een admin kan dit.</span>
+                        </div>
+						<?php } ?>
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
                 <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" value="<?php echo($username); ?>" disabled autofocus name="username"><br />
                 
                 <label for="inputPassword">Wachtwoord (invullen = aanpassen)</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Alleen invullen als je dit aan wilt passen!" value="" name="password"><br />
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Alleen invullen als je dit aan wilt passen!" value="" name="password"><br />
                 
                 </div>
                 
@@ -192,12 +227,12 @@ if(isset($_SESSION["successmsg"])) {
                 <label for="inputEmail">Email adres</label><br />
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email" value="<?php echo($email); ?>" required name="email"><br />
                 
-                <label for="inputRank">Rang</label><br />
-                <input type="text" id="inputRank" class="form-control" placeholder="Email" value="<?php echo($rank); ?>" required name="rank"><br />
+               <label for="inputRank">Rang</label><br />
+                <select name="rank" id="inputRank" class="form-control" required><?php $permission->ListRanks(); ?></select>
                 
                 </p>
                 
-                <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
+                <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
             </form>
                               
