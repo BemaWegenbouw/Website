@@ -134,7 +134,7 @@ if(isset($_SESSION["error"])) {
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
-                <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" autofocus name="username"><br />
+                <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" autofocus name="username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];}?>"><br />
                 
                 <label for="inputPassword">Wachtwoord</label><br />
                 <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" value="" name="password"><br />
@@ -147,19 +147,19 @@ if(isset($_SESSION["error"])) {
                 <p>
                 
                 <label for="inputFirstname">Voornaam</label><br />
-                <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" required name="firstname"><br />
+                <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" required name="firstname" value="<?php if(isset($_POST['firstname'])){ echo $_POST['firstname'];}?>"><br />
                 
                 <label for="inputLastname">Achernaam</label><br />
-                <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" required name="lastname"><br />
+                <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" required name="lastname" value="<?php if(isset($_POST['lastname'])){ echo $_POST['lastname'];}?>"><br />
                 
                 <label for="inputAddress">Adres</label><br />
-                <input type="text" id="inputAddress" class="form-control" placeholder="Adres" required name="address"><br />
+                <input type="text" id="inputAddress" class="form-control" placeholder="Adres" required name="address" value="<?php if(isset($_POST['address'])){ echo $_POST['address'];}?>"><br />
                 
                 <label for="inputLastname">Postcode</label><br />
-                <input type="text" id="inputPostalcode" class="form-control" placeholder="Postcode" required name="postalcode"><br />
+                <input type="text" id="inputPostalcode" class="form-control" placeholder="Postcode" required name="postalcode" value="<?php if(isset($_POST['postalcode'])){ echo $_POST['postalcode'];}?>"><br />
                     
                 <label for="inputEmail">Email adres</label><br />
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required name="email"><br />
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>"><br />
                 
                 <label for="inputRank">Rang</label><br />
                 <select name="rank" id="inputRank" class="form-control" required><?php $permission->ListRanks(); ?></select>
