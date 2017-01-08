@@ -70,10 +70,8 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
 		}
 }
 ?>
-
-
+	<!-- start contrainer pagina-->
     <div class="container">
-
         <form class="form-signin" action="" method="POST" style="width: 300px;">
 
                 <div class="form-group">
@@ -104,10 +102,9 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
 				<span data-notify="title">Dit account wordt niet herkend, probeer het opnieuw.</span>
 				</div>
 				<?php } ?>
-				</form>
-				
-           
-    </div> <!-- /container -->
+				</form>		           
+    </div> 
+	<!-- /container -->
 
 <?php
 

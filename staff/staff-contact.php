@@ -159,7 +159,7 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
 
 					$m->send();
 					//delete uploaded files after mail has been send
-					$files = glob('upload/*'); // get all file names
+					$files = glob('../upload/*'); // get all file names
 						foreach($files as $file){ // iterate files
 						  if(is_file($file))
 							unlink($file); // delete file

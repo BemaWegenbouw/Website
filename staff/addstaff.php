@@ -137,10 +137,10 @@ if(isset($_SESSION["error"])) {
                 <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" autofocus name="username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];}?>"><br />
                 
                 <label for="inputPassword">Wachtwoord</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" value="" name="password"><br />
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" value="" name="password"><br />
                 
                 <label for="inputPassword">Bevestig Wachtwoord</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Typ het wachtwoord over" value="" name="confirmpassword"><br />
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Typ het wachtwoord over" value="" name="confirmpassword"><br />
                 
                 </div>
                 

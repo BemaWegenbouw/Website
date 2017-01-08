@@ -43,8 +43,8 @@ if (isset($_POST['resultradiobox'])) {
 
 ?>
 
-<!--start gebruiker dashboard-->
- 
+
+		<!-- Page wrapper -->
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -53,7 +53,7 @@ if (isset($_POST['resultradiobox'])) {
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-			<!--start admin dashboard-->
+			<!--start admin dashboard kopjes-->
    <?php if ($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
             <!-- /.row -->
 			<div class="row">
@@ -153,13 +153,14 @@ if (isset($_POST['resultradiobox'])) {
                 </div>		
             </div>
 			<?php } ?>
-			<!-- Eind admin dashboard-->
+			<!-- Eind admin dashboard kopjes-->
 			<div class="row">
                 <div class="col-lg-12">
                     <h3 class="panel-header">Eigen gegevens</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+			<!-- start gezamelijke kopjes, alle gebruiker -->
 			<div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
@@ -250,6 +251,7 @@ if (isset($_POST['resultradiobox'])) {
                     </div>
                 </div>		
             </div>
+			<!-- Eind gezamelijke kopjes elke gebruiker -->
 			<!-- start free && calender -->
 			<div class="row">
 				<div class="col-sm-4">
@@ -341,12 +343,8 @@ if (isset($_POST['resultradiobox'])) {
                         <!--                roept de calender aan-->
                          </div>
                         </div>
-			<!-- end calender -->
-                        
-			
+			<!-- end calender -->                    
          </div>
-
-   <!--eind gebruiker dashboard-->
  </div>
  <!-- /.page wrapper --> 		
 <?php

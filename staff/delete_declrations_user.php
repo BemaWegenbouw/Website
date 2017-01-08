@@ -29,7 +29,9 @@ if(isset($_POST['nee'])){
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
+			<!-- container fuid -->
             <div class="container-fluid">
+				<!-- row -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Werktijd</h1>
@@ -46,7 +48,7 @@ if(isset($_POST['nee'])){
 					
 					<div class="col-sm-6">
 					<?php 
-						
+						//haalt gegevens op aan de hand van de meegenomen ID
 						$declaration->ShowDeleteRecord($id);?>
 					</div>
 					</div>
@@ -64,8 +66,10 @@ if(isset($_POST['nee'])){
 				<!-- /.row -->
 			</div>
 			 <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
+		</div>
+		<!-- /container fluid -->
+      </div>
+      <!-- /#page-wrapper -->
 
 <?php
 
