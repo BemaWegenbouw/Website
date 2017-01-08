@@ -14,7 +14,6 @@ include("inc/parts/header.php");
 			<div class="row">
 				<!--Start "Overons" content-->
 				<h2 class="text-center"><?php echo(lang('overons_column1_title')); ?></h2><br>
-				<h4 style="margin-top: -25px;"><?php echo(lang('overons_column1_head')); ?></h4><br>
 				<p class="text-left"><?php echo(lang('overons_column1_text')); ?></p>
 				<!--End "Overons" content-->
 			</div>
