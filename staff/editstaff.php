@@ -55,17 +55,19 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
                 if(isset($_POST["password"]) && !empty($_POST["password"])) {
                     
                     $post_password = $_POST["password"]; //Stel wachtwoord post variabele in
-                    
+                    $checkPassReq = $user -> checkPassReq($post_password); 
                     $password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
                     
                     $passverify = $security->checkPassword($username, $post_password); //Check of het ingevoerde wachtwoord hetzelfde is
-                    
+                    if ($checkPassReq == true){
                         if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
                             $hashedpassword = $security->Hash($post_password); //Hash het wachtwoord
                             $user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
                         }
-                }
-			 
+					
+                
+				
+				
                 //Rang edit check
                 if($post_rank != $rank) {
 					if($user->Get($_SESSION["uid"], "rank_id") < $post_rank){
@@ -107,9 +109,12 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
 			}else{
             $changeinfo = true;
 			}
+				}else{
+						print("<script type='text/javascript'>noty({text: 'Het wachtwoord voldoet niet aan de eisen! Probeer het opnieuw.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding	
+					}
             }
 			}
-        
+			}
         }
         
     } else {
@@ -179,6 +184,14 @@ if(isset($_SESSION["successmsg"])) {
 		
 		   
            <form class="form col-sm-4" action="" method="POST" style="width: 300px;">
+		   <div>
+		   <h4> Wachtwoord eisen</h4>
+		   <ul>
+		   <li>Het wachtwoord moet minimaal 8 tekens bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 hoofdletter bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 cijfer bevatten.</li>
+		   </ul>
+		   </div>
                 <?php if ($checkrank) { ?>
 						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
