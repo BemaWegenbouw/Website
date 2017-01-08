@@ -11,7 +11,7 @@ header("Location: dashboard.php");
 die("Unauthorized."); }
 
 include("../inc/parts/staff-header.php");
-
+$checkuser = '';
 if (isset($_POST) && !empty($_POST)) { //Check of er een post is
     
     if ( //Check of alles is gepost
@@ -55,6 +55,7 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
             //Foute input!
             $_SESSION["error"] = "De formulering van de gebruikersnaam is incorrect!";
         }
+		
         
         //CHECK OVEREENKOMST WACHTWOORD\\
         if($post_password == $post_confirmpass) {
@@ -79,13 +80,19 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
             //Er is een fout opgetreden tijdens de integriteitscheck!
             //Stop met het uitvoeren van het script.
             //Laat verderop de melding zien.
-        } else {
+        }elseif($user->checkUser($post_username)){
+			//User bestaat al
+			$checkuser = true;
+		}else {
         
             //Alles is verder goed!
             //Begin verwerking
             
-            //Add user hier
-            
+			//Hash het wachtwoord
+			$hashed_password = $security->Hash($post_password);
+            //Gebruiker toevoegen
+			$user->Insert($post_username, $hashed_password, $post_firstname, $post_lastname, $post_address, $post_postalcode, $post_email, $post_rank);
+				
         }
         
         
@@ -117,11 +124,17 @@ if(isset($_SESSION["error"])) {
                     <!-- /.col-lg-12 -->
             <div class="col-sm-4">                
                       <form class="form" action="" method="POST" style="">
-                
+                <?php if($checkuser) { ?>
+				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+				<p>De gebruiker bestaat al, gebruik een andere gebruikersnaam!</p>				
+				</div>
+			  <?php } ?>
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
-                <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" autofocus name="username"><br />
+                <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" autofocus name="username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];}?>"><br />
                 
                 <label for="inputPassword">Wachtwoord</label><br />
                 <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Wachtwoord" value="" name="password"><br />
@@ -134,26 +147,26 @@ if(isset($_SESSION["error"])) {
                 <p>
                 
                 <label for="inputFirstname">Voornaam</label><br />
-                <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" required name="firstname"><br />
+                <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" required name="firstname" value="<?php if(isset($_POST['firstname'])){ echo $_POST['firstname'];}?>"><br />
                 
                 <label for="inputLastname">Achernaam</label><br />
-                <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" required name="lastname"><br />
+                <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" required name="lastname" value="<?php if(isset($_POST['lastname'])){ echo $_POST['lastname'];}?>"><br />
                 
                 <label for="inputAddress">Adres</label><br />
-                <input type="text" id="inputAddress" class="form-control" placeholder="Adres" required name="address"><br />
+                <input type="text" id="inputAddress" class="form-control" placeholder="Adres" required name="address" value="<?php if(isset($_POST['address'])){ echo $_POST['address'];}?>"><br />
                 
                 <label for="inputLastname">Postcode</label><br />
-                <input type="text" id="inputPostalcode" class="form-control" placeholder="Postcode" required name="postalcode"><br />
+                <input type="text" id="inputPostalcode" class="form-control" placeholder="Postcode" required name="postalcode" value="<?php if(isset($_POST['postalcode'])){ echo $_POST['postalcode'];}?>"><br />
                     
                 <label for="inputEmail">Email adres</label><br />
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required name="email"><br />
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>"><br />
                 
                 <label for="inputRank">Rang</label><br />
                 <select name="rank" id="inputRank" class="form-control" required><?php $permission->ListRanks(); ?></select>
                 
                 </p>
                 
-                <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Toevoegen</button><br />
+                <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Toevoegen</button><br />
                 
                 <p />
                 

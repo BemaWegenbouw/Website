@@ -20,7 +20,12 @@ include("../inc/parts/staff-header.php");
                             $date_planning=$_POST['dateplanning'];
 //                           $test=$_POST['4'];
 //                            print $test;
-               
+					if ($end_time_planning < $start_time_planning){
+						print
+						"<script type='text/javascript'>
+						window.location.href = 'planning-hours.php?error=true';
+						</script>";
+					}else{
                    $inplanninguid=0;
                             while($inplanninguid<100){
                             
@@ -33,7 +38,7 @@ include("../inc/parts/staff-header.php");
                             }
                                 
                             $inplanninguid++;}
-                            
+					}      
                             
                                
                             

@@ -1,33 +1,34 @@
 <?php
+
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-$page = "contact";
-require_once("inc/engine.php");
-include("inc/parts/header.php");
+$page = "staff-contact";
+require_once("../inc/engine.php");
+include("../inc/parts/staff-header.php");
+
 ?>
-	<!--Start Page wrapper-->
-	<div id="page-wrapper">
-		<!--Start container contact-->
-		<div class="container" id="Contact">
-			<!--Start Row 1-->
-			<div class="row">
-				<!--Start left COL row 1-->
-				<div class="col-sm-5">
-					<h2 class=""><?php echo(lang('contact_column1_title')); ?></h2>
-					<p><?php echo(lang('contact_column1_head')); ?></p>
-					<p><span class="glyphicon glyphicon-map-marker orangeglyph"></span><?php echo(lang('contact_column1_text1')); ?><br><?php echo(lang('contact_column1_text1_2')); ?><br><?php echo(lang('contact_column1_text1_3')); ?></p>																															
-					<p><span class="glyphicon glyphicon-earphone orangeglyph"></span><?php echo(lang('contact_column1_text2')); ?></p>
-					<p><span class="glyphicon glyphicon-phone orangeglyph"></span><?php echo(lang('contact_column1_text3')); ?></p>
-					<p><span class="glyphicon glyphicon-envelope orangeglyph"></span> <a href="mailto:info@bemawegenbouw.nl"><?php echo(lang('contact_column1_text4')); ?></a> </p>
-				</div>
-				<!--End left COL row 1-->
-				<!--Start right COL row 1-->
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Contact</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid header -->
+			<div class="container-fluid">
+                <div class="row">
+			<!--Start right COL row 1-->
 				<div class="col-sm-7">
 					<h2 class=""><?php echo(lang('contact_column2_title')); ?></h2>
-					<p> <?php echo(lang('contact_column2_head')); ?></p>
+					<p>Indien u contact wilt opnemen met uw werkgever kunt u het onderstaande formulier invullen.						
+						Alle mails worden verstuurd naar info@bemawegenbouw.nl.<br><br><span style="color:red;">LET OP: Alle velden zijn verplicht.</span></p>
 					<!--Start Form contact-->
-					<form action="contact.php" enctype="multipart/form-data" method="post">
+					<form action="staff-contact.php" enctype="multipart/form-data" method="post">
 						<!--Start Row 2-->
 						<div class="row">
 							<!--Start input name-->
@@ -50,11 +51,6 @@ include("inc/parts/header.php");
 								<textarea class="form-control" id="comments" name="comments" placeholder="<?php echo(lang('contact_column2_placeholder4')); ?>" rows="10" requierd><?php echo $var = isset($_POST['comments']) ? $_POST['comments'] : ''; ?></textarea>
 							</div>
 							<!--End input comments-->	
-							<!--Start Google Recaptcha-->
-							<div class="col-sm-6 form-group">
-								<div class="g-recaptcha" data-sitekey="6LfplgwUAAAAAOzIgDSwZHltB5niJ5mIvrsq0mzZ"></div>
-							</div>
-							<!--End Google recaptcha-->
 							<!--Start Multiple file input-->
 							<div class="col-sm-6 form-group">									
 							<div class="input-group">
@@ -69,24 +65,15 @@ include("inc/parts/header.php");
 							<!--End multiple file input-->
 							<!--Start Form submit-->
 							<div class="col-sm-12 form-group">
-								<button class="btn btn-md btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit" value="Submit"><?php echo(lang('contact_column2_button')); ?></button><br>
+								<button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Verzenden</button><br /><br>
 							</div>
 							<!--End form submit-->
 						</div>
 						<!--End row 2-->						
 <?php
 // start contact form
-require_once "inc/phpmailer/PHPMailerAutoload.php";
-	if(isset($_POST['submit'])){
-		// prepairing recaptcha validation
-		$url = 'https://www.google.com/recaptcha/api/siteverify';   //start url
-		$privatekey = "6LfplgwUAAAAAEya75YiEoIAvz5bqdmXbOHtnawI";  //site private key
-		
-		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);  //recaptcha response
-		
-		$data = json_decode($response);  //anwser recaptcha response
-		
-		if(isset($data->success) AND $data->success==true){   //validation recaptcha response
+require_once "../inc/phpmailer/PHPMailerAutoload.php";
+	if(isset($_POST['submit'])){		
 
 			//check if all fields are filled in
 			if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['comments'])){
@@ -143,7 +130,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 					  //Make sure we have a filepath
 					  if ($tmpFilePath != ""){
 						//Setup our new file path
-						$newFilePath = "upload/" . $_FILES['upload']['name'][$i];
+						$newFilePath = "../upload/" . $_FILES['upload']['name'][$i];
 
 						//Upload the file into the temp dir
 						if(move_uploaded_file($tmpFilePath, $newFilePath)) {
@@ -250,8 +237,8 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 		
 			}else{
 				
-					////true - What happens when user is verified
-				// PHP check if form values are empty
+				
+				// check missing inputs
 				if (empty($_POST["name"])) {
 					print(
 						'<br>
@@ -291,57 +278,23 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 				}
 			}
 		
-	}else{   // print this when google recaptcha was not verified
-		print (
-					
-					'<br>
-                                    <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
-                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title">'.(lang("contact_column2_error1")).'</span>
-                                        <span data-notify="message"><br>'.(lang("contact_column2_error2_2")).'</span>
-                                    </div>');	
-	  }			
-	}
+	}			
+	
 ?>
 					</form>
 					<!--End contact form-->
 				</div>
 				<!--End right COL row 1-->
 			</div>
-			<!--End Row 1-->
-		</div>
-		<!--End Container contact-->
-		<!--Start Container Google Maps-->
-		<div class = "container">		
-		  <h2 class="text-center">Bema Wegenbouw BV - Hoofdkantoor</h2>
-			<div id="googleMap" class="container gmap"></div>
-			<!--Start Add Google Maps  script-->
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4rGAUi21LFUmkpQ-DLAKdhaOxTXIlDLo&callback=initMap"></script>
-			<script>
-				var myCenter = new google.maps.LatLng(52.18029079999999, 6.929297700000006);
-				function initialize() {
-					var mapProp = {
-						center: myCenter,
-						zoom: 12,
-						scrollwheel: true,
-						draggable: true,
-						mapTypeId: google.maps.MapTypeId.ROADMAP
-					};
-					var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-					var marker = new google.maps.Marker({
-						position: myCenter,
-					});
-					marker.setMap(map);
-				}
-				google.maps.event.addDomListener(window, 'load', initialize);
-			</script>
-			<!--End Add Google Maps script-->
-		</div><br>
-		<!--End Container Google Maps-->
-	</div>
-	<!--End page wrapper-->
-<?php include("inc/parts/footer.php"); ?>
+			</div>	
+        </div>
+        <!-- /#page-wrapper -->
 
+    </div>
+    <!-- /#wrapper -->
 
+<?php
 
+include("../inc/parts/staff-footer.php");
+
+?>

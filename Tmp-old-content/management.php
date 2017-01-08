@@ -1,33 +1,25 @@
 <?php
-
 //Bema Wegenbouw BV Website
 //Copyright 2016
 
-$page = "staff-management";
+$page = "staff-blank";
 require_once("../inc/engine.php");
 include("../inc/parts/staff-header.php");
 
 if (isset($_POST['resultradiobox'])) {
     $resultradiobox = $_POST['resultradiobox'];
 }
-
+if ($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("add_staff")) {
+    header("Location: dashboard.php");
+    die("Unauthorized.");
+}
 ?>
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-		 <div class="container-fluid">
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h4>Management informatie</h4>
+                <h1 class="page-header">Management informatie</h1>
 
                 <!------------------- Dropdownmenu voor medewerkers  ------------------>
                 <div class='panel panel-default'>
@@ -56,11 +48,11 @@ if (isset($_POST['resultradiobox'])) {
 
                                         <li class="list-group-item">    Gemiddelden <input type="radio" name="resultradiobox" value="gemiddeldperdag"></li> 
                                         <li class="list-group-item">  afgelopen  maand    <input type="radio" name="resultradiobox" value="afgelopenmaand"></li> 
-                                        <li class="list-group-item"> afgelopen jaar     <input type="radio" name="resultradiobox" value="afgelopenjaar"></li> 
+                                        <li class="list-group-item"> afgelopen per jaar     <input type="radio" name="resultradiobox" value="afgelopenjaar"></li> 
                                         <li class="list-group-item">    Totaal <input type="radio" name="resultradiobox" value="totaleaantal"></li>                        
                                     </ul></div>  
                             </div> </div><br>
-                        <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="Verzenden" value="haal op">
+                        <button class="btn btn-submit" type="submit" name="Verzenden" value="haal op">
                             Verzenden</button>
 
                         </form>
@@ -178,31 +170,42 @@ if (isset($_POST['resultradiobox'])) {
                                                 $whatuidtotal++;
                                             }
                                         }
-									
                                     }//einde isset$_post['resultradiobox'] 
                                     ?>
 
                                 </tbody>
                             </table>
-					
+
                         </div>
                     </div>
+
+
+
                     <?php
                 } else {
                     print "Je moet een tijdsperiode invoeren!";
                 }
                 ?>
+
+
+
+
+
+
+
+
             </div>
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
-    </div><br>
-    <!-- /.container-fluid -->		
-        </div>
-        <!-- /#page-wrapper -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
 
 <?php
-
 include("../inc/parts/staff-footer.php");
-
 ?>

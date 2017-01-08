@@ -23,8 +23,7 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
                                     <div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
                                         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
                                         <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
-                                        <span data-notify="message"><br><?php echo(lang("contact_column2_error1_2")); ?></span>
+                                        <span data-notify="title">'."Vul a.u.b. uw account naam in.".'</span>
                                     </div>');
 				}
 				
@@ -88,22 +87,21 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
 				<div data-notify="container" class="col-xs-12 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
 				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
 				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<p>De instellinge zijn successvol gewijzigd!</p>				
+				<p>Er is een mail verzonden naar het gekoppelde mail adres van dit account.</p>				
 				</div>
 				<?php } ?>
 				<?php if($sendstatus == 'failed') { ?>
 				<div data-notify="container" class="col-xs-12 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
 				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
 				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<p>De instellinge zijn niet verzonden!</p>				
+				<p>Er is geen mail verzonden probeer het opnieuw.</p>				
 				</div>
 				<?php } ?>
 				<?php if($sendstatus == 'unknown') { ?>
 				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
 				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
 				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<span data-notify="title"><?php echo(lang("contact_column2_error1")); ?></span>
-				<span data-notify="message"><br><?php echo(lang("contact_column2_error1_2")); ?></span>
+				<span data-notify="title">Dit account wordt niet herkend, probeer het opnieuw.</span>
 				</div>
 				<?php } ?>
 				</form>
