@@ -189,6 +189,21 @@ class user {
         
     }
 	
+	 public function checkPassReq($password) {
+        $value = '';
+		
+		if( preg_match( '~[A-Z]~', $password) &&
+		preg_match( '~[a-z]~', $password) &&
+		preg_match( '~\d~', $password) &&
+		(strlen( $password) > 7)){
+		$value = true;
+		return $value;
+	} else {
+		$value = false;
+		return $value;
+	}
+		}
+	
 }
 
 $user = new user; //Zorg dat deze class aangeroepen kan worden met $user->functie();

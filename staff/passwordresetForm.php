@@ -29,12 +29,18 @@ die("Unauthorized.");
 			if ($checknewpassword1 == $checknewpassword2){
 				//Stel post variabelen in	
 				$post_newpassword = $_POST["newpassword1"];	
+				$checkPassReq = $user -> checkPassReq($post_newpassword); 
+				if ($checkPassReq == true){
 				$hashedpassword = $security->Hash($post_newpassword); //Hash het wachtwoord
 				$user->Set("$userID", "password", "$hashedpassword"); //Sla het wachtwoord op
 				
 				$restore->del($userID); // delete alle tijdelijke passwords
 				
 				$resetsuccess = 'true';
+				
+				}else{
+					print("<script type='text/javascript'>noty({text: 'Het wachtwoord voldoet niet aan de eisen! Probeer het opnieuw.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding	
+				}
 			}else{
 				$resetsuccess = 'false';	
 				}
@@ -44,7 +50,14 @@ die("Unauthorized.");
 ?>
     <div class="container">
         <form class="form-signin" action="" method="POST" style="width: 300px;">
-
+		<div>
+		<h4> Wachtwoord eisen</h4>
+		   <ul>
+		   <li>Het wachtwoord moet minimaal 8 tekens bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 hoofdletter bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 cijfer bevatten.</li>
+		   </ul>
+		</div>
                 <div class="form-group">
                         <h2 class="form-signin-heading">Verander uw wachtwoord</h2>
                 <label for="inputUsername">Gebruikersnaam</label><br />

@@ -32,13 +32,12 @@ if (isset($_POST) && !empty($_POST) && isset($_POST["username"]) && !empty($_POS
             $user->authorize($username); //Log gebruiker in
             header("Location: dashboard.php"); //Doorverwijzen naar dashboard
         } else { //Indien gebruikersnaam/wachtwoord niet klopt
-            
             $_SESSION["login-error"] = lang("login_error1_text"); //Stel foutmelding in
             header("Location: login.php"); //Verwijs door naar login.php
             die(lang("global_error_redirect")); //Stop met het laden van de pagina
             
         } //Stop met het checken van correcte login
-        
+  
     } // Stop met het checken van schone invoer
 
 } else { //Indien er geen post is...
