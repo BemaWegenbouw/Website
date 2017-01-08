@@ -51,13 +51,7 @@
                         echo "class='active'";
                     }
                     ?>><a href="contact.php">Contact</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li><a href="lang/nl.php"><span class="flag-icon flag-icon-nl"></span> NL</a></li>
-                    <li><a href="lang/en.php"><span class="flag-icon flag-icon-gb"></span> EN</a></li>
-                    <li><a href="lang/de.php"><span class="flag-icon flag-icon-de"></span> DE</a></li>
-                </ul>
+                </ul>             
             </div>
         </div>
     </nav>
