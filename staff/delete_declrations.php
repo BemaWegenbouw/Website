@@ -45,7 +45,7 @@ if(isset($_POST['nee'])){
 					
 					<div class="col-sm-6">
 					<?php 
-						
+						// haalt gegevens op bij de meegeleverde ID
 						$declaration->ShowDeleteRecord($id);?>
 					</div>
 					</div>

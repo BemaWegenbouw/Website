@@ -68,7 +68,7 @@ if (isset($_POST) && !empty($_POST)) {//als de POST leeg is dan:
                         
                         <!-----------------------------Begin datum ------------------------------------------->
                     <div class="col-sm-12 form-group">
-                        datum:<span style="color:red;"> *</span>
+                        Datum:<span style="color:red;"> *</span>
                         <div class="input-group date datepicker" data-provide="datepicker">
                             <input type="date" name="date"class="form-control" placeholder="jjjj-mm-dd" required>
                             <div class="input-group-addon">
@@ -80,7 +80,7 @@ if (isset($_POST) && !empty($_POST)) {//als de POST leeg is dan:
                       
                       <!------------------------------------Start  Start tijd----------------------------------->
                     <div class="col-sm-6 form-group">
-                        begintijd:<span style="color:red;"> *</span>
+                        Begintijd:<span style="color:red;"> *</span>
                         <div class="input-group clockpicker" data-autoclose="true">
                             <input type="time" name="start_time"class="form-control" placeholder="--:--" required >
                             <span class="input-group-addon">
@@ -92,7 +92,7 @@ if (isset($_POST) && !empty($_POST)) {//als de POST leeg is dan:
                       
                       <!------------------------------------Start Eind tijd------------------------------------->
                     <div class="col-sm-6 form-group">
-                        eindtijd:<span style="color:red;"> *</span>
+                        Eindtijd:<span style="color:red;"> *</span>
                         <div class="input-group clockpicker" data-autoclose="true">
                             <input type="time" name="end_time"class="form-control" placeholder="--:--" required >
                             <span class="input-group-addon">
@@ -104,7 +104,7 @@ if (isset($_POST) && !empty($_POST)) {//als de POST leeg is dan:
                        
                        <!--------------------------------------Start Pauze--------------------------------------->
                     <div class="col-sm-12 form-group">
-                        pauze:
+                        Pauze:
 
                         <div >
                             <div class="input-group">
@@ -122,7 +122,7 @@ if (isset($_POST) && !empty($_POST)) {//als de POST leeg is dan:
                       
                        <!--------------------------------------Start Submit----------------------------------------->
                     <div class="col-sm-12 form-group">
-                        <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit" value="Submit">verzenden</button>
+                        <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit" value="Submit">Verzenden</button>
                     </div>
 					<div class="col-sm-12 form-group">
 					Alles met een <span style="color:red;">*</span> is een verplicht veld.

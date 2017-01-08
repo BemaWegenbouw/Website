@@ -1,7 +1,7 @@
 
 <?php
 
-class declaration {
+class Declaration {
 
 //------------------------toevoegen van een declaratie : medewerker----------------------------------    
     public function insert($userid, $date, $start_time, $end_time, $break) {
@@ -185,5 +185,5 @@ class declaration {
 
 }
 
-$declaration = new declaration;//maakt de class aan
+$declaration = new Declaration;//maakt de class aan
 ?>

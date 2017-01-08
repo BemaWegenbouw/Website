@@ -53,8 +53,7 @@ include("../inc/parts/staff-header.php");
                     <div class="col-lg-12">
                         <h1 class="page-header">Wachtwoord Wijzigen</h1>
                     </div>
-                    <!-- /.col-lg-12 -->
-                    
+                    <!-- /.col-lg-12 -->                   
            <form class="form" action="" method="POST" style="width: 300px;">
               <?php if($geslaagdbericht == 'goed') { ?>
 				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
@@ -91,10 +90,7 @@ include("../inc/parts/staff-header.php");
                 <p />
             </form>
                     
-            <table border='1' style='position: absolute; left: 350px; top: 15%;'>
-           
-            
-                    
+            <table border='1' style='position: absolute; left: 350px; top: 15%;'>                                        
                 </div>
                 <!-- /.row -->
             </div>

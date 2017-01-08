@@ -42,7 +42,7 @@ if(isset($_POST['nee'])){
 									
 					<div class="col-sm-6">
 					<?php 
-						
+						// haalt gegevens op bij de bijbehorende ID
 						$free->ShowDeleteRecord($id);?>
 					</div>
 					</div>

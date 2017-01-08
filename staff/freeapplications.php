@@ -11,22 +11,20 @@ header("Location: dashboard.php");
 die("Unauthorized."); }
 
 include("../inc/parts/staff-header.php");
- $uid = $_SESSION["uid"];
+$uid = $_SESSION["uid"];
 
-?>
-	
+?>	
         <!-- Page Content -->
-        <div id="page-wrapper">
-		
+        <div id="page-wrapper">		
 		 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">Vrij aanvragingen</h3>
                     </div>
                     <!-- /.col-lg-12 -->
-		</div>
-	
-	<!-- start gehele vrijvraag tabel -->
+		</div>	
+	<!-- start ongekeurde vrijvraag tabel -->
 	   <div class='container-fluid'>
+	   <!-- start row -->
 		<div class='row'>
 		<div class='col-sm-12'>
 		<form method='POST'>
@@ -57,8 +55,8 @@ include("../inc/parts/staff-header.php");
 		</form>
 		</div>
 		
-        <!-- eind gehele vrijvraag tabel -->
-		<!-- start gehele vrijvraag tabel -->
+        <!-- eind ongekeurde vrijvraag tabel -->
+		<!-- start gekeurde vrijvraag tabel -->
 	   
 		<div class='col-sm-12'>
 		<div class='panel panel-default'>
@@ -87,9 +85,8 @@ include("../inc/parts/staff-header.php");
 		</table>
 		</div>
 		</div>
-		</div>
-		
-        <!-- eind gehele vrijvraag tabel -->
+		</div>		
+        <!-- eind gekeurde vrijvraag tabel -->
 		
     <?php
 	require_once "../inc/phpmailer/PHPMailerAutoload.php";
@@ -108,13 +105,7 @@ include("../inc/parts/staff-header.php");
 			if($value == 'false'){
 			
 			$free->denyFree($key);
-			
-			/* 	in verify moet true of false komen te staan.
-				andere tabel wijzigen rooster ( nu comment naar foutgekeurd)
-				Verwijder de record en en sla het op in een backup tabel.
-				*/
-				
-				
+				// verzamel gegevens voor een afkeurings email en stell deze op.
 				     $name= $firstname . " " .$lastname;
 						$useremail = $user->Get($uidKey, 'email');
 						$fromemail = 'j.benning@hotmail.nl';
@@ -138,25 +129,15 @@ include("../inc/parts/staff-header.php");
 						$m->addAddress($useremail);
 						$m->Subject = $subject;
 						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
-
+						// verzend email
 						$m->send();
-						
-						
+												
 		}if ($value == 'true'){ 
-			
-			
-			
-		    
-			$free->approveFree($key);
-			/* 	in verify moet true of false komen te staan.
-				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
-				Verwijder de record en en sla het op in een backup tabel.
-				*/
-			
+			//zet kolom verify in de tabel restore op goedgekeurd		    
+			$free->approveFree($key);			
+			//update de werktijden van de medewerker in de tabel work_hour
 			$free->updateWorkHours($uidKey,$startdate,$enddate);
-			
-			
-						
+						// verzamel gegevens voor een goedkeurings email.
 						$name= $firstname . " " .$lastname;
 						$useremail = $user->Get($uidKey, 'email');
 						$fromemail = 'j.benning@hotmail.nl';
@@ -181,33 +162,21 @@ include("../inc/parts/staff-header.php");
 						$m->addAddress($useremail);
 						$m->Subject = $subject;
 						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
-
-						$m->send();
-						
-			
-			}
-		
-		
-		
-		 
-		} 
-		$currenturl = $_SERVER['REQUEST_URI'];
-		print
-		"<script type='text/javascript'>
-		window.location.href = 'freeapplications.php';
-		</script>";
-		
-	}
-		
-	
-	
-	
-	 
+						//verzend de mail
+						$m->send();								
+			} 
+		}  //refresh de pagina
+			$currenturl = $_SERVER['REQUEST_URI'];
+			print
+			"<script type='text/javascript'>
+			window.location.href = 'freeapplications.php';
+			</script>";		
+	} 
 	?>
 	</div>
-    <!-- /container -->
-
+    <!-- /row-->
 	</div>
+	<!-- / container fluid -->
 	</div>
 	<!-- /page wrapper -->
 

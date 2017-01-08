@@ -3,16 +3,14 @@
 class Calendar {
 
 //<------------------------------------------------ Beschikbaarheid ------------------------------------------------------------>
+
     //functie voor tabel beschikbaarheid ophalen (hij maakt de tr en td , de table moet je dan zelf maken)
     public function GetAvailability() {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT first_name, last_name, start_time , end_time, day FROM availability a join staff s on a.uid = s.uid ORDER BY first_name;"); //Maak de query klaar
 
-
         $sth->execute(); //Voer de query uit
-
-
 
         while ($row = $sth->fetch()) {
 
@@ -22,17 +20,19 @@ class Calendar {
             $ending_time = $row["end_time"]; //haalt alle eindtijden op
             $day = $row["day"]; //haalt alle dagen op
             $persoon = $row["first_name"] . " " . $row["last_name"]; //haalt de persoongegevens op op
-            //----print de tabel -----
+            
+			//----print de tabel -----
             print "<tr>" .
                     "<td>" . $persoon . "</td>" .
                     "<td>" . $day . "</td>" .
                     "<td>" . $starting_time . "</td>" .
                     "<td>" . $ending_time . "</td>" .
                     "</tr>";
-        }//ende functie
+        } //einde functie
     }
 
 //<----------------functies voor bescbhikbaarheid , maar hier gaat het om een ENKEL geval ---------------------->
+
     public function GetAvailabilitySingle($uid) {
 
         global $pdo; //Zoek naar $pdo buiten deze functie
@@ -41,11 +41,7 @@ class Calendar {
 
         $sth->execute(); //Voer de query uit
 
-
-
         while ($row = $sth->fetch()) {
-
-
 
             $starting_time = $row["start_time"]; //haalt alle startijdgegevens op
             $ending_time = $row["end_time"]; //haalt alle eindtijd gegevens op
@@ -58,9 +54,12 @@ class Calendar {
                     "<td>" . $starting_time . "</td>" .
                     "<td>" . $ending_time . "</td>" .
                     "</tr>";
-        }
-    }//einde functie
-//laat de starttijd zien van de medewerker voor de X gekozen dag
+
+		}
+
+	} //einde functie
+
+	//laat de starttijd zien van de medewerker voor de X gekozen dag
     public function ShowStartTime($uid, $day) {
         global $pdo;
         $stmt23 = $pdo->prepare("select start_time from availability where uid = :uid AND day = :day");
@@ -70,10 +69,9 @@ class Calendar {
 
         while ($row = $stmt23->fetch()) {
             $startingtimeMonday = $row["start_time"];
-
             print $startingtimeMonday;
         }
-    }
+    } //Einde Functie
 
 //einde functie
 //laat de eindtijd zien van de medewerker voor de X gekozen dag
@@ -88,9 +86,8 @@ class Calendar {
             $endingtimeMonday = $row["end_time"];
             print $endingtimeMonday;
         }
-    }
-
-//einde functie
+    } //einde functie
+	
     //update de starttijd en eindtijd en datum van de gekozen persoon
     public function SetTheUpdateAvailability($uid, $start_time, $end_time, $day) {
 		$trueorfalse = '';
@@ -98,7 +95,7 @@ class Calendar {
         $sth = $pdo->prepare("SELECT start_time, end_time, day, uid FROM availability WHERE uid = :uid AND day = :day"); //Maak de query klaar
         $sth->bindParam(':uid', $uid, PDO::PARAM_STR); //Vervang :uid naar $uid variabele 
         $sth->bindParam(':day', $day, PDO::PARAM_STR); //Vervang :day naar $day variabele 
-        $sth->execute(); //Voer de query uit//voert de query uit
+        $sth->execute(); //Voer de query uit
 		while ($row = $sth->fetch()) {
             $trueorfalse = count($row);
         }
@@ -122,9 +119,8 @@ class Calendar {
             return(true);
         }
 		
-    }
-
-//einde functie
+    } //Einde functie
+	
     //<<-----------------------------------------------------------Calendar functies ------------------------------------------------------------------->
     //deze functie word gebruikt in de calender en laat gegevens van een ENKELE persoon zien
     public function CalendarView($uid) {
@@ -139,22 +135,23 @@ class Calendar {
             $time_table_startingtime = $row["start_time"]; //startijd word geselecteerd
             $time_table_endingtime = $row["end_time"]; //eindtijd word geselecteerd
             $time_table_date = $row["date"]; //datum word geselecteerd
-//als de persoon VRIJ is:
+			
+			//als de persoon VRIJ is:
             if ($row["start_time"] == '00:00:00' && $row["end_time"] == '00:00:00') {
 
                 print "{ title:'Vrij',
                  start:'" . $time_table_date . "',
                  end:'" . $time_table_date . "' },"; //haal de gegevens op van de database en het word in de calender input gedaan
             } else {
-//als de persoon INGEPLAND is:
+			
+			//als de persoon INGEPLAND is:
                 print "{ title:'Geplande uren',
                  start:'" . $time_table_date . "T" . $time_table_startingtime . "',
                  end:'" . $time_table_date . "T" . $time_table_endingtime . "' },"; //haal de gegevens op van de database en het word in de calender input gedaan
             }
         }
-    }
+    }//einde functie
 
-//einde functie  
     //deze functie word gebruikt in de calender en laat gegevens van een MEERDERE personen zien
     public function CalendarAllView() {
 
