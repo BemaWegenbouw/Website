@@ -36,6 +36,8 @@ include("inc/parts/header.php");
 				<div class="col-sm-8 col-md-8">
 						<p><strong><?php echo(lang('portfolio_column1_head')); ?></strong></p>
 						<p><?php echo(lang('portfolio_column1_text1')); ?></p>
+						<h1>Deze pagina is onder constructie!!!</h1>
+			<h1>Deze wordt na het inleveren van het project afgerond door de project aannemer!!!</h1>
 				</div>
 				<!--End carousel text-->
 			</div><br>
