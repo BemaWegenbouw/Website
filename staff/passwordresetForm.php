@@ -42,10 +42,7 @@ die("Unauthorized.");
 		}
 }
 ?>
-
-
     <div class="container">
-
         <form class="form-signin" action="" method="POST" style="width: 300px;">
 
                 <div class="form-group">
@@ -79,7 +76,6 @@ die("Unauthorized.");
 				</div>
 				<?php } ?>
             </form>
-
     </div> <!-- /container -->
 
 <?php
