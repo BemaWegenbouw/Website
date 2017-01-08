@@ -17,7 +17,7 @@ if (isset($_POST['resultradiobox'])) {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                        <h1 class="page-header">Management</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -27,12 +27,10 @@ if (isset($_POST['resultradiobox'])) {
 		 <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h4>Management informatie</h4>
-
                 <!------------------- Dropdownmenu voor medewerkers  ------------------>
                 <div class='panel panel-default'>
                     <div class='panel-heading'>
-                        <h3>Invullen managementinfo</h3>
+                        <h3>Invullen Informatie</h3>
                     </div>
 
                     <div class='panel-body'><p>Hieronder kunt u aangeven over welke(meerdere) medewerkers u gegevens wil inzien. Daarna kiest u voor een tijdsperiode of gemiddelde, en drukt op verzenden. Onderaande pagina zal een tabel verschijnen met de opgevraagde informatie</p>

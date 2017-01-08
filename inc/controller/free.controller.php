@@ -1,6 +1,6 @@
 <?php
 
-class free {
+class Free {
 	//insert vrij aanvraag in de database
     public function insert($userid,$start_date,$end_date,$start_time,$end_time,$comment) {
         
@@ -187,8 +187,6 @@ class free {
 
 }
 
-	
-
-$free = new free;
+$free = new Free;
 
 ?>

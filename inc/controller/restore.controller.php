@@ -1,6 +1,7 @@
 <?php
 
-class restore {
+class Restore {
+
 	// Deze functie insert de random code + uid in de tabel restore na password reset aanvraag.
     public function insert($userid, $value) {
         
@@ -48,6 +49,6 @@ class restore {
 	}
 }
 
-$restore = new restore;
+$restore = new Restore;
 
 ?>

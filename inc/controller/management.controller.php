@@ -1,6 +1,6 @@
 <?php
 
-class management {
+class Management {
 
 //<-------------------------de <TH>  gedeelte van het tabel die alle medewerkers oproept --------------------------------->    
     public function showpersons($uid){
@@ -401,18 +401,13 @@ WHERE uid = :uid");
         
              }//einde while
        
-        }//--------------------------------einde functie       ------------ 
+        }//--------------------------------einde functie ------------ 
         //-----------------------------------------------------EINDE TOTAAL ------------------------------------------------->
         
         
         
 } //Einde class
 
-
-
-
-
-
-$management = new management; //Zet class vast in variabele
+$management = new Management; //Zet class vast in variabele
 
 ?>
