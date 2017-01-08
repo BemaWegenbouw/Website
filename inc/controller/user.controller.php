@@ -141,7 +141,77 @@ class user {
         $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
         return $result["uid"]; //Geef resultaat terug
     }
-    
+
+    public function ban($username, $time) {
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("INSERT INTO ban (username, timestamp) VALUES (:username, :time)"); //Maak de query klaar
+        $sth->bindParam(':username', $username, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->bindParam(':time', $time); //Vervang :time naar $time variabele
+        $sth->execute(); //Voer de query uit
+        return true; //Geef resultaat terug
+    }
+
+    public function getBan($username) {
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM ban WHERE username = :username"); //Maak de query klaar
+        $sth->bindParam(':username', $username, PDO::PARAM_STR); //Vervang :username naar $username variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+
+        if(isset($result["username"]) && !empty($result["username"])) {
+            return true;
+        } else {
+            return false;
+        }
+
+    } //Einde Functie
+
+    public function unban($username) {
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        global $_SESSION; //Zoek naar de SESSION array in de global scope
+        $sth = $pdo->prepare("DELETE FROM ban WHERE username = :username"); //Maak de query klaar
+        $sth->bindParam(':username', $username, PDO::PARAM_STR); //Vervang :username naar $username variabele
+        $sth->execute(); //Voer de query uit
+        $_SESSION["login-count"] = 0;
+        return true;
+    } //Einde functie
+
+    public function getUnban($username) {
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM ban WHERE username = :username"); //Maak de query klaar
+        $sth->bindParam(':username', $username, PDO::PARAM_STR); //Vervang :username naar $username variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+
+        $bannedtime = $result["timestamp"];
+        $unbantime = $bannedtime + 900;
+        $curtime = time();
+
+        if($curtime >= $unbantime) {
+            $this->unban($username);
+            return true;
+        } else {
+            return false;
+        }
+
+    } //Einde functie
+
+    public function test($username) {
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM ban WHERE username = :username"); //Maak de query klaar
+        $sth->bindParam(':username', $username, PDO::PARAM_STR); //Vervang :username naar $username variabele
+        $sth->execute(); //Voer de query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
+
+        $bannedtime = $result["timestamp"];
+        $unbantime = $bannedtime + 900;
+        $curtime = time();
+        echo $curtime;
+        echo $unbantime;
+        echo $bannedtime;
+        print_r($result);
+    }
+
     public function authorize($user) {
         $userid = $this->getID($user); //Krijg het userID via de getID functie in dit bestand
         $_SESSION["username"] = $user; //Stel de username in als sessie variabele
