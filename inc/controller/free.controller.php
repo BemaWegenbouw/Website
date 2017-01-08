@@ -1,13 +1,13 @@
 <?php
 
 class free {
-
+	//insert vrij aanvraag in de database
     public function insert($userid,$start_date,$end_date,$start_time,$end_time,$comment) {
         
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("INSERT INTO free (uid,start_date,end_date,start_time,end_time,comment) values (:uid,:start_date,:end_date,:start_time,:end_time,:comment)"); //Maak de query klaar
-        $sth->bindParam(':uid', $userid, PDO::PARAM_STR);
-		$sth->bindParam(':start_date', $start_date, PDO::PARAM_STR);
+        $sth->bindParam(':uid', $userid, PDO::PARAM_STR);  
+		$sth->bindParam(':start_date', $start_date, PDO::PARAM_STR); 
 		$sth->bindParam(':end_date', $end_date, PDO::PARAM_STR);
 		$sth->bindParam(':start_time', $start_time, PDO::PARAM_STR);
 		$sth->bindParam(':end_time', $end_time, PDO::PARAM_STR);
@@ -16,11 +16,11 @@ class free {
         return(true);
         
     }
-	
+	 // Haal uit de tabel gegevens op aan de hand van het uniek ID
 	public function get($id,$value){
 		global $pdo; //Zoek naar $pdo buiten deze functie
          $sth = $pdo->prepare("SELECT * FROM free WHERE id = :id"); //Maak de query klaar
-        $sth->bindParam(':id', $id, PDO::PARAM_STR); //Vervang :username naar $user variabele
+        $sth->bindParam(':id', $id, PDO::PARAM_STR); 
         $sth->execute(); //Voer de query uit
         $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
         return $result[$value]; //Geef resultaat terug
@@ -36,7 +36,7 @@ class free {
 		$result = $sth->fetch(PDO::FETCH_ASSOC); //Sla het resultaat op in een variabele
         return $result[$value]; //Geef resultaat terug
 	}	
-		
+		// haalt alle vrij aanvragen op die nog niet zijn goedgekeurd en stopt deze in TD
 		public function approveRequest(){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
@@ -46,7 +46,7 @@ class free {
 		
 	
 		
-		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
+		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //loop door alle rijen en maakt hier TD van.
 		echo "<tr class='gradeA'>
 			  <td>" . $row['first_name'] . "</td>
 			  <td>" . $row['last_name'] . "</td>
@@ -56,14 +56,14 @@ class free {
 			  <td>" . $row['end_time'] . "</td>
 			  <td>" . $row['comment'] . "</td>
 			 <td><select style='width:80%; 'name='".$row['id']."' id='inputID' class='form-control'
-			  required><option value='true'>ja</option><option value='false'>nee</option></select></td>
-			  </tr>";
+			  required><option value='true'>ja</option><option value='false'>nee</option></select></td>  
+			  </tr>";  
 			
 		}
 		
 
 	}
-	
+	 //haal alle gegevens op uit de tabel free om een vrij aanvraag geschiedenis te tonen.  Met voor en achternaam
 	public function freeListCompleet(){
 	
 	global $pdo; //Zoek naar $pdo buiten deze functie
@@ -91,8 +91,8 @@ class free {
 		
 
 	}
-	
-	public function ShowDeleteRecord($id){
+	//neem alle gegevens uit dezelfde rij van de de gekeurde vrij aanvraag naar de delete pagina zie freelistcompleet
+	public function ShowDeleteRecord($id){     
 		global $pdo; //Zoek naar $pdo buiten deze functie
 		$sth = $pdo->prepare ("SELECT first_name, last_name, start_date, end_date, start_time, end_time,comment,id,verify 
 								FROM free f join staff s on f.uid = s.uid where id = :id"); //query
@@ -110,6 +110,8 @@ class free {
 			
 		}
 	}
+	
+	//delete de gekeurde vrij aanvraag uit de geschiedenis
 	public function deleteRecord($id){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
