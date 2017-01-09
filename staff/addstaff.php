@@ -38,7 +38,11 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
         $post_email = $_POST["email"];
         $post_rank = $_POST["rank"];
         
-        //Tijd om de integriteit te gaan checken.
+        //check password vereisten
+		 $checkPassReq = $user -> checkPassReq($post_password); 
+		  if ($checkPassReq == true){
+		
+		//Tijd om de integriteit te gaan checken.
         
         //CHECK EMAIL ADRES\\
         if (!filter_var($post_email, FILTER_VALIDATE_EMAIL) === false) {
@@ -95,7 +99,9 @@ if (isset($_POST) && !empty($_POST)) { //Check of er een post is
 				
         }
         
-        
+		  }else{
+			print("<script type='text/javascript'>noty({text: 'Het wachtwoord voldoet niet aan de eisen! Probeer het opnieuw.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+		  }
     } else {
         
         //Er is iets niet gepost!
