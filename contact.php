@@ -52,7 +52,7 @@ include("inc/parts/header.php");
 							<!--End input comments-->	
 							<!--Start Google Recaptcha-->
 							<div class="col-sm-6 form-group">
-								<div class="g-recaptcha" data-sitekey="6LfplgwUAAAAAOzIgDSwZHltB5niJ5mIvrsq0mzZ"></div>
+								<div class="g-recaptcha" data-sitekey="6LfqqwwUAAAAAOYfMohh04UsOIsYB1viYok9blcC"></div>
 							</div>
 							<!--End Google recaptcha-->
 							<!--Start Multiple file input-->
@@ -80,7 +80,7 @@ require_once "inc/phpmailer/PHPMailerAutoload.php";
 	if(isset($_POST['submit'])){
 		// prepairing recaptcha validation
 		$url = 'https://www.google.com/recaptcha/api/siteverify';   //start url
-		$privatekey = "6LfplgwUAAAAAEya75YiEoIAvz5bqdmXbOHtnawI";  //site private key
+		$privatekey = "6LfqqwwUAAAAAC6U79wrMeDciUwRKku4mb9nSK7Z";  //site private key
 		
 		$response = file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);  //recaptcha response
 		

@@ -122,6 +122,8 @@ $lang_nl = array(
     "login_error1_text" => "De door u opgegeven inloggegevens zijn helaas incorrect.",
     "login_error2_text" => "Error 2: U heeft zonder geldige invoer een pagina bezocht. Wij hebben deze activiteit vastgelegd voor nader onderzoek.",
     "login_error3_text" => "Error 3: U heeft proberen in te loggen met onveilige gebruikersgegevens. Uw activiteit staat geregistreerd voor nader onderzoek.",
+    "login_error4_text" => "Error 4: U bent enige tijd geleden verbannen vanwege veelvuldig foutief inloggen. Probeer later a.u.b. opnieuw.",
+    "login_error5_text" => "Error 5: U bent nu helaas verbannen vanwege veelvuldig foutief inloggen. Probeer het na 15 minuten nogmaals.",
     
 );
 ?>
