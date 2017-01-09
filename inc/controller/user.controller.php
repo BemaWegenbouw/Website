@@ -99,6 +99,7 @@ class user {
         } //Einde inhoudverwerking
         
         echo "<td><a href='editstaff.php?uid=$uid'>Berwerken</a></td>"; //Plak overal bewerkknop achter
+		echo "<td><a href='delstaff.php?uid=$uid'>Verwijder</a></td>"; //Plak overal verwijder knop achter
         echo "</tr>"; //Einde tabel
             
         } //Einde PDO tabelverwerking
@@ -106,6 +107,34 @@ class user {
         echo "</tbody>"; //Einde van de tabel
         
     } //Einde van de Staff Lijst functie.
+	
+	public function ShowDeleteRecord($uid){     
+		global $pdo; //Zoek naar $pdo buiten deze functie
+		$sth = $pdo->prepare ("SELECT first_name, last_name, username from staff where uid = :uid"); //query
+		$sth->bindParam(':uid', $uid, PDO::PARAM_STR);
+		$sth->execute(); //Voer de query uit
+		
+		while($row = $sth->fetch(PDO::FETCH_ASSOC)){   //Creates a loop to loop through results
+			
+			print "<span style='font-weight:bold;'>Accountnaam:</span> " . $row['username'] ."<br>";			
+			print "<span style='font-weight:bold;'>Eigenaar:</span> " . $row['first_name'] ." " . $row['last_name'] . "<br>";			
+		}
+	}
+	
+	public function deleteRecord($uid){
+		
+		global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("delete from staff where uid = :uid"); //Maak de query klaar
+        $sth->bindParam(':uid', $uid, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	public function staffList2() {
         
