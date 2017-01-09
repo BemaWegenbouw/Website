@@ -44,8 +44,7 @@ include("../inc/parts/staff-header.php");
 				<th>Postcode</th>
 				<th>E-mail</th>	
 				<th>Functie</th>
-				<th>Bewerken</th>
-				<th>Verwijder</th>				
+				<th>Bewerken</th>				
 			</tr>
         </thead>
 		<tbody>
