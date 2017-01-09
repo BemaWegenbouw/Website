@@ -108,7 +108,6 @@ class user {
         
     } //Einde van de Staff Lijst functie.
 	
-	//neem alle gegevens uit dezelfde rij van de de gekeurde vrij aanvraag naar de delete pagina zie freelistcompleet
 	public function ShowDeleteRecord($uid){     
 		global $pdo; //Zoek naar $pdo buiten deze functie
 		$sth = $pdo->prepare ("SELECT first_name, last_name, username from staff where uid = :uid"); //query
@@ -122,7 +121,6 @@ class user {
 		}
 	}
 	
-	//delete de gekeurde vrij aanvraag uit de geschiedenis
 	public function deleteRecord($uid){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie

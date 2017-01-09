@@ -5,8 +5,14 @@
 
 $page = "staff_delete_declarations";
 require_once("../inc/engine.php");
+
+if($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("del_staff")) {
+header("Location: dashboard.php");
+die("Unauthorized."); }
+
 include("../inc/parts/staff-header.php");
 $userid = $_GET['uid']; 
+
 
 if(isset($_POST['ja'])){
 	
