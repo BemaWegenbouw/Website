@@ -173,7 +173,7 @@ if(isset($_SESSION["successmsg"])) {
 			</tr>
         </thead>
 		<tbody>
-		<?php $user->staffList();?>		
+		<?php $user->staffLists();?>		
 		</tbody>
 		</table>
 		</div>

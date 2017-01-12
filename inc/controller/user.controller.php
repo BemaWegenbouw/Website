@@ -108,6 +108,58 @@ class user {
         
     } //Einde van de Staff Lijst functie.
 	
+	  
+    public function staffLists() {
+        
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT * FROM staff"); //Maak de query klaar
+        $sth->execute(); //Voer de query uit
+        
+        $i = 0;
+        
+        while($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
+           /* 
+            if ($i == 0) {
+            $i++;
+            echo "<tr>"; //Vertel in HTML dat je tabelkopjes begint
+                
+                foreach ($row as $key => $value) { //Begin kopjesverwerking
+                    
+                    if($key != 'password') { //Indien het geen wachtwoord betreft
+                        echo "<th>" . $key . "</th>"; //Geef het kopje weer
+                    } //Einde weergave
+                    
+                } //Einde verwerking kopjes
+        
+            echo "<th>Bewerken</th></tr>"; //Maak bewerkkop aan en sluit de kopjes
+            
+            } //Einde kopjesprojectie */
+        
+        echo "<tr>"; //Print de openingstag voor tabelinhoud
+        
+        foreach ($row as $key => $value) { //Begin inhoudverwerking
+            
+                if($key != 'password') { //Indien het geen wachtwoord betreft
+                    echo "<td>" . $value . "</td>"; //Print de inhoud
+                } //Einde check
+            
+                if ($key == 'uid') { //Indien het een gebruiker ID betreft
+                    $uid = $value; //Houd deze vast
+                } //Einde check gebruiker ID
+        
+        } //Einde inhoudverwerking
+        
+        echo "<td><a href='editstaff.php?uid=$uid'>Berwerken</a></td>"; //Plak overal bewerkknop achter
+		
+        echo "</tr>"; //Einde tabel
+            
+        } //Einde PDO tabelverwerking
+        
+        echo "</tbody>"; //Einde van de tabel
+        
+    } //Einde van de Staff Lijst functie.
+	
+	//// laat gebruiker account zien bij delete pagina
 	public function ShowDeleteRecord($uid){     
 		global $pdo; //Zoek naar $pdo buiten deze functie
 		$sth = $pdo->prepare ("SELECT first_name, last_name, username from staff where uid = :uid"); //query
@@ -121,6 +173,7 @@ class user {
 		}
 	}
 	
+	//delete de gebruiker account uit staff
 	public function deleteRecord($uid){
 		
 		global $pdo; //Zoek naar $pdo buiten deze functie
