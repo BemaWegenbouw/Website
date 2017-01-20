@@ -1,10 +1,8 @@
-
 <footer class="footers">
-    &copy; <?php echo date('Y'); ?> <a href="http://www.bemawegenbouw.nl/">Bema Wegenbouw BV</a>
-	Aamsveenweg 294 | 7536 PB Enschede Nederland | Tel:0031(0)53 4779223 |  Tel mobiel: 0031(0)6 3471605<br>
-    Email: info@bemawegenbouw.nl | Website: www.bemawegenbouw.nl |K.v.k Nr: 66369711 | BTW Nr: 8564.18.232.B01<br>
-	Bankverbinding: SNS Bank IBAN-Nr. NL 78 SNSB 08712633 27 BIC-Nr. SNSBNL2A | KNAB Bank: IBAN-Nr 12 KNAB 0255 2760 44 BIC-Nr. KNABNL2H
-</footer>
+			&copy; <?php echo date('Y'); ?> <a href="http://www.bemawegenbouw.nl/">Bema Wegenbouw BV</a>
+			Aamsveenweg 294 | 7536 PB Enschede Nederland | Tel: 0031(0)53 4779223 |  Mobiel: 0031(0)6 3471605<br>
+			Email: info@bemawegenbouw.nl | Website: www.bemawegenbouw.nl | KvK-nr: 66369711 | BTW-nr: NL8564.18.232.B01<br>
+	</footer>
 
 <?php //Javascript import ?>
 
@@ -49,6 +47,36 @@
 				});
 			})
 		</script>
+		<script>
+		$(function() {
+
+  // We can attach the `fileselect` event to all file inputs on the page
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  // We can watch for our custom `fileselect` event like this
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
+  
+});
+		</script>
+		
 		<?php } ?>
 </body>
 </html>

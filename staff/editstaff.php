@@ -5,8 +5,15 @@
 
 $page = "staff-edit";
 require_once("../inc/engine.php");
-include("../inc/parts/staff-header.php");
 
+if($user->Get($_SESSION["uid"], "rank_id") < $permission->Get("edit_staff")) {
+header("Location: dashboard.php");
+die("Unauthorized."); }
+
+include("../inc/parts/staff-header.php");
+$checkrank = false;
+$changeinfo = '';
+$changerank = false;
 if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
     
     //Stel variabelen in
@@ -39,26 +46,37 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
             $post_address = $_POST["address"];
             $post_postalcode = $_POST["postalcode"];
             $post_email = $_POST["email"];
-                
-                //Wachtwoord check
+            
+			
+            if($user->Get($_SESSION["uid"], "rank_id") < $user->Get($userid, "rank_id")) {
+				$checkrank = true;	
+			}else{
+			  //Wachtwoord check
                 if(isset($_POST["password"]) && !empty($_POST["password"])) {
                     
                     $post_password = $_POST["password"]; //Stel wachtwoord post variabele in
-                    
+                    $checkPassReq = $user -> checkPassReq($post_password); 
                     $password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
                     
                     $passverify = $security->checkPassword($username, $post_password); //Check of het ingevoerde wachtwoord hetzelfde is
-                    
+                    if ($checkPassReq == true){
                         if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
                             $hashedpassword = $security->Hash($post_password); //Hash het wachtwoord
                             $user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
                         }
-                }
+					
                 
+				
+				
                 //Rang edit check
                 if($post_rank != $rank) {
+					if($user->Get($_SESSION["uid"], "rank_id") < $post_rank){
+						$changerank = true;
+						
+					}else{
                     $user->Set("$userid", "rank_id", "$post_rank");
                     $rank = $post_rank;
+					}
                 }
                 
                 if($post_firstname != $first_name) {
@@ -86,10 +104,17 @@ if (isset($_GET) && !empty($_GET)) { //Check of er een GET is
                     $email = $post_email;
                 }
                 
-            $_SESSION["successmsg"] = "Uw wijzigingen zijn succesvol doorgevoerd.";
-            
+			if($changerank){
+				//doe niks
+			}else{
+            $changeinfo = true;
+			}
+				}else{
+						print("<script type='text/javascript'>noty({text: 'Het wachtwoord voldoet niet aan de eisen! Probeer het opnieuw.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding	
+					}
             }
-        
+			}
+			}
         }
         
     } else {
@@ -116,31 +141,94 @@ if(isset($_SESSION["successmsg"])) {
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid" style="position: relative;">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <h1 class="page-header">Personeel Wijzigen</h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    
-           <form class="form" action="" method="POST" style="width: 300px;">
-                
+				</div>	
+        <!-- start gehele vrijvraag tabel -->
+		<div class='row'>
+		<div class='col-sm-8'>
+		<div class='col-sm-12 panel panel-default'>
+		<div class='panel'>
+		<h1> Complete Personeelslijst</h1>
+		</div>
+		
+		<div  width="auto" class='panel-body'>
+		<table width="100%"class='table table-striped table-bordered table-hover' id='scrolltable'>
+		<thead>
+			<tr>
+				<th>GebruikerID</th>
+				<th>Accountnaam</th>
+				<th>Rang</th>
+				<th>Voornaam</th>
+				<th>Achternaam</th>
+				<th>Adres</th>
+				<th>Postcode</th>
+				<th>E-mail</th>	
+				<th>Functie</th>
+				<th>Bewerken</th>				
+			</tr>
+        </thead>
+		<tbody>
+		<?php $user->staffLists();?>		
+		</tbody>
+		</table>
+		</div>
+		</div>
+		</div>
+		
+        <!-- eind gehele vrijvraag tabel -->
+		
+		   
+           <form class="form col-sm-4" action="" method="POST" style="width: 300px;">
+		   <div>
+		   <h4> Wachtwoord eisen</h4>
+		   <ul>
+		   <li>Het wachtwoord moet minimaal 8 tekens bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 hoofdletter bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 cijfer bevatten.</li>
+		   </ul>
+		   </div>
+                <?php if ($checkrank) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">Uw rank is niet hoog genoeg om gegevens van de admin te wijzigen</span>
+                        </div>
+						<?php } ?>
+						<?php if ($changeinfo) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">De gegevens zijn succesvol gewijzigd.</span>
+                        </div>
+						<?php } ?>	
+						<?php if ($changerank) { ?>
+						<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
+                                        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
+                                        <span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
+                                        <span data-notify="title">U kunt uw rang niet verhogen, alleen een admin kan dit.</span>
+                        </div>
+						<?php } ?>
                 <div class="form-group">
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
                 <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" value="<?php echo($username); ?>" disabled autofocus name="username"><br />
                 
                 <label for="inputPassword">Wachtwoord (invullen = aanpassen)</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Alleen invullen als je dit aan wilt passen!" value="" name="password"><br />
+                <input type="password" id="inputPassword" autocomplete="off" class="form-control" placeholder="Alleen invullen als je dit aan wilt passen!" value="" name="password"><br />
                 
                 </div>
                 
-                <p>
+                
                 
                 <label for="inputFirstname">Voornaam</label><br />
                 <input type="text" id="inputFirstname" class="form-control" placeholder="Voornaam" value="<?php echo($first_name); ?>" required name="firstname"><br />
                 
-                <label for="inputLastname">Achernaam</label><br />
+                <label for="inputLastname">Achernaam</label>
                 <input type="text" id="inputLastname" class="form-control" placeholder="Achternaam" value="<?php echo($last_name); ?>" required name="lastname"><br />
                 
                 <label for="inputAddress">Adres</label><br />
@@ -152,24 +240,24 @@ if(isset($_SESSION["successmsg"])) {
                 <label for="inputEmail">Email adres</label><br />
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email" value="<?php echo($email); ?>" required name="email"><br />
                 
-                <label for="inputRank">Rang</label><br />
-                <input type="text" id="inputRank" class="form-control" placeholder="Email" value="<?php echo($rank); ?>" required name="rank"><br />
+               <label for="inputRank">Rang</label><br />
+                <select name="rank" id="inputRank" class="form-control" required><?php $permission->ListRanks(); ?></select>
                 
                 </p>
                 
-                <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
+                <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
             </form>
-                    
-            <table border='1' style='position: absolute; left: 350px; top: 15%;'>
-            <?php $user->staffList(); ?>
-            
-                    
+                              
                 </div>
                 <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
+			
+			</div>
+			<!-- /.container-fluid -->
+
+		
+        </div>  
+       
         <!-- /#page-wrapper -->
 
     <!-- /#wrapper -->

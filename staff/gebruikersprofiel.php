@@ -34,20 +34,7 @@ include("../inc/parts/staff-header.php");
             $post_postalcode = $_POST["postalcode"];
             $post_email = $_POST["email"];
                 
-                //Wachtwoord check
-                if(isset($_POST["password"]) && !empty($_POST["password"])) {
-                    
-                    $post_password = $_POST["password"]; //Stel wachtwoord post variabele in
-                    
-                    $password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
-                    
-                    $passverify = $security->checkPassword($username, $post_password); //Check of het ingevoerde wachtwoord hetzelfde is
-                    
-                        if($passverify != true) { //Als het ingevoerde wachtwoord niet hetzelfde is
-                            $hashedpassword = $security->Hash($post_password); //Hash het wachtwoord
-                            $user->Set("$userid", "password", "$hashedpassword"); //Sla het wachtwoord op
-                        }
-                }
+            
                 
                 //Rang edit check
                 if($post_firstname != $first_name) {
@@ -103,10 +90,7 @@ include("../inc/parts/staff-header.php");
                 
                 <label for="inputUsername">Gebruikersnaam</label><br />
                 <input type="text" id="inputUsername" class="form-control" placeholder="Gebruikersnaam" value="<?php echo($username); ?>" disabled autofocus name="username"><br />
-                
-                <label for="inputPassword">Wachtwoord (invullen = aanpassen)</label><br />
-                <input type="text" id="inputPassword" autocomplete="off" class="form-control" placeholder="Alleen invullen als je dit aan wilt passen!" value="" name="password"><br />
-                
+              
                 </div>
                 
                 <p>
@@ -136,12 +120,7 @@ include("../inc/parts/staff-header.php");
                 
                 <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
-            </form>
-                    
-            <table border='1' style='position: absolute; left: 350px; top: 15%;'>
-           
-            
-                    
+            </form>                                        
                 </div>
                 <!-- /.row -->
             </div>

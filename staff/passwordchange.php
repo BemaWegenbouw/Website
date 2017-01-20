@@ -22,12 +22,14 @@ include("../inc/parts/staff-header.php");
 			$checknewpassword1 = $_POST["newpassword1"];
 			$checknewpassword2 = $_POST["newpassword2"];    
 			
+			
 			if ($checknewpassword1 == $checknewpassword2){
 				//Stel post variabelen in
-				$post_oldpassword = $_POST["oldpassword"];
-				
+				$post_oldpassword = $_POST["oldpassword"];				
 				$post_newpassword = $_POST["newpassword1"];
-
+				
+				$checkPassReq = $user -> checkPassReq($post_newpassword); 
+				if ($checkPassReq == true){
 					$password = $user->Get($userid, 'password'); //Haal wachtwoord op uit database
 					
 					$passverify = $security->checkPassword($username, $post_newpassword); //Check of het ingevoerde wachtwoord hetzelfde is
@@ -38,6 +40,9 @@ include("../inc/parts/staff-header.php");
 							$geslaagdbericht = 'goed';
 						}
                 }else{
+					print("<script type='text/javascript'>noty({text: 'Het wachtwoord voldoet niet aan de eisen! Probeer het opnieuw.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding	
+				}
+			}else{
 				$geslaagdbericht = 'fout';	
 				}
 		}else{
@@ -53,8 +58,13 @@ include("../inc/parts/staff-header.php");
                     <div class="col-lg-12">
                         <h1 class="page-header">Wachtwoord Wijzigen</h1>
                     </div>
-                    <!-- /.col-lg-12 -->
-                    
+                    <!-- /.col-lg-12 -->  
+		   <h4> Wachtwoord eisen</h4>
+		   <ul>
+		   <li>Het wachtwoord moet minimaal 8 tekens bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 hoofdletter bevatten.</li>
+		   <li>Het wachtwoord moet minimaal 1 cijfer bevatten.</li>
+		   </ul>
            <form class="form" action="" method="POST" style="width: 300px;">
               <?php if($geslaagdbericht == 'goed') { ?>
 				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
@@ -87,14 +97,11 @@ include("../inc/parts/staff-header.php");
                 
                 </div>
 				
-                <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
+                <button class="btn btn-sm btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">Aanpassen</button><br />
                 <p />
             </form>
                     
-            <table border='1' style='position: absolute; left: 350px; top: 15%;'>
-           
-            
-                    
+            <table border='1' style='position: absolute; left: 350px; top: 15%;'>                                        
                 </div>
                 <!-- /.row -->
             </div>

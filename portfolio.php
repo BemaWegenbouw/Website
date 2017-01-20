@@ -6,49 +6,46 @@ $page = "portfolio";
 require_once("inc/engine.php");
 include("inc/parts/header.php");
 ?>
-<div class="container"id="Portfolio">
-    <h2 class="text-center"><?php echo(lang('portfolio_column1_title')); ?></h2><br>
-    <div class="row">
-        <div class="col-sm-4 col-md-4">
-            <div id="myCarousel" class="carousel slide  text-center" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                      </ol>
-                  <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
-                        <div class="carousel-caption">
-                                    <h3>Chania</h3>
-                                    <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-                                  </div>
-                            </div>
-                        <div class="item">
-                              <img src="assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
-                            </div>
-                        <div class="item">
-                              <img src="assets/img/grondwerk.jpg" alt="grondwerk" width="100%" >
-                            </div>
-                      </div>
-                  <!-- Left and right controls -->
-                  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-            </div>
-        </div>
-        <div class="col-sm-8 col-md-8">
-            <p><strong><?php echo(lang('portfolio_column1_head')); ?></strong></p>
-            <p><?php echo(lang('portfolio_column1_text1')); ?></p>
-        </div>
-    </div>
-</div>
-<!-- Header -->
+	<!--Start Container-->
+	<div class="container"id="Portfolio">
+		<!--Start Title-->
+		<h2 class="text-center"><?php echo(lang('portfolio_column1_title')); ?></h2><br>
+		<!--End Title-->
+		<!--Start COL-->
+		<div class="col-sm-12">
+			<!--Start Row-->
+			<div class="row">
+				<!--Start carousel images-->
+				<div class="col-sm-4 col-md-4">
+					<div id="bg-fade-carousel" class="carousel carousel-fade" data-interval="7000"  data-ride="carousel">
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="slide1"></div>
+							</div>
+							<div class="item">
+								<div class="slide2"></div>
+							</div>
+							<div class="item">
+								<div class="slide3"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--End carousel images-->
+				<!--Start carousel text-->
+				<div class="col-sm-8 col-md-8">
+						<p><strong><?php echo(lang('portfolio_column1_head')); ?></strong></p>
+						<p><?php echo(lang('portfolio_column1_text1')); ?></p>
+						<h1>Deze pagina is onder constructie!!!</h1>
+			<h1>Deze wordt na het inleveren van het project afgerond door de project aannemer!!!</h1>
+				</div>
+				<!--End carousel text-->
+			</div><br>
+			<!--End Row-->
+		</div>
+		<!--End COL-->
+	</div>
+	<!--End container-->
+<!--Start footer-->
 <?php include("inc/parts/footer.php"); ?>
-</body>
-</html>
+

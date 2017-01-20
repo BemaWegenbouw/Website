@@ -1,1 +1,5 @@
 inc/config.php
+.idea/modules.xml
+.idea/workspace.xml
+*.iml
+.idea/vcs.xml

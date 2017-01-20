@@ -22,6 +22,12 @@
         <!-- Noty -->
         <script type="text/javascript" src="../assets/js/noty/themes/relax.js"></script>
         <script type="text/javascript" src="../assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+        <!-- DataTables CSS -->
+        <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
+        <!-- DataTables Responsive CSS -->
+        <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
+        <!-- Bootstrap select CSS -->
+        <link rel="stylesheet" href="dist/css/bootstrap-select.css">
 
         <?php if ($page == "login") { ?>
             <link href="../assets/css/signin.css" rel="stylesheet">
@@ -30,42 +36,50 @@
         <?php if ($page == "staff-dashboard") { ?>
             <!-- Morris Charts CSS -->
             <link type="text/css" href="vendor/morrisjs/morris.css" rel="stylesheet">
-			<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
-			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
-			<!-- DataTables CSS -->
-            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
-            <!-- DataTables Responsive CSS -->
-            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
-             <link href='calendar/fullcalendar.css' rel='stylesheet' />
+            <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+            <link href='calendar/fullcalendar.css' rel='stylesheet' />
             <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+            <!-- DataTables CSS -->
+
         <?php } ?>
         <?php if ($page == "resetpassword") { ?>
             <!-- Morris Charts CSS -->
             <link href="../assets/css/signin.css" rel="stylesheet">
         <?php } ?>
-        <?php if ($page == "staff-tables") { ?>
-            <!-- DataTables CSS -->
-            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
-            <!-- DataTables Responsive CSS -->
-            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
+
+
+
+        <?php if ($page == "staff-declaration") { ?>
+            <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+
         <?php } ?>
-		<?php if ($page == "staff-declaration") { ?>
-			<link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
-			<link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+        <?php if ($page == "staff-availability") { ?>
+            <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+
         <?php } ?>
-		<?php if ($page == "staff-freeapplications") { ?>
-            <!-- DataTables CSS -->
-            <link type="text/css" href="vendor/datatables-plugins/dataTables.bootstrap.css">
-            <!-- DataTables Responsive CSS -->
-            <link type="text/css" href="vendor/datatables-responsive/dataTables.responsive.css">
-        <?php } ?>
-            <?php if ($page == "staff-calendar") { ?>
+
+        <?php if ($page == "staff-calendar") { ?>
             <link href='calendar/fullcalendar.css' rel='stylesheet' />
             <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
         <?php } ?>
+        <?php if ($page == "staff-planning") { ?>
+            <link href='calendar/fullcalendar.css' rel='stylesheet' />
+            <link href='calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+            <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+            <link type="text/css" rel="stylesheet" type="text/css" href="../assets/clockpicker-gh-pages/assets/css/github.min.css">
+            <link rel="stylesheet" href="../assets/bootstrap-select/dist/css/bootstrap-select.css">
 
+        <?php } ?>
+             <?php if ($page == "admin-declaration") { ?>
+           <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+        <?php } ?>
 
 
     </head>
@@ -95,7 +109,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="staff-dashboard.php">Bema Personeelszaken</a>
+                        <a class="navbar-brand" href="dashboard.php">Bema Personeelszaken</a>
                     </div>
                     <!-- /.navbar-header top-->
 
@@ -107,8 +121,7 @@
                             <ul class="dropdown-menu dropdown-alert">
                                 <li><a href="gebruikersprofiel.php"><i class="fa fa-user fa-fw"></i> Gebruikersprofiel</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
-                                </li>
+
                                 <li class="divider"></li>
                                 <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Loguit</a>
                                 </li>
@@ -121,17 +134,7 @@
                     <div class="navbar-default sidebar" role="navigation">
                         <div class="sidebar-nav navbar-collapse">
                             <ul class="nav" id="side-menu">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" class="form-control" placeholder="Zoeken...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </li>
+
                                 <li>
                                     <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                                 </li>
@@ -141,14 +144,15 @@
 
                                 <!--start tables / blank template kopieer deze om een nieuwe pagina te maken
                                 als je tabellen wilt hebben of zo.-->
+
                                 <li>
-                                    <a href="tables.php"><i class="fa fa-edit fa-fw"></i> Tables (template)</a>
+                                    <a href="availability.php"><i class="fa fa-edit fa-fw"></i> Beschikbaarheid</a>
                                 </li>
                                 <li>
-                                    <a href="timetable.php"><i class="fa fa-edit fa-fw"></i> Rooster</a>
+                                    <a href="passwordchange.php"><i class="fa fa-key fa-fw"></i> Wijzig wachtwoord</a>
                                 </li>
-                                <li>
-                                    <a href="passwordchange.php"><i class="fa fa-edit fa-fw"></i> Wijzig wachtwoord</a>
+								<li>
+                                    <a href="staff-contact.php"><i class="fa fa-envelope-o fa-fw"></i> Contact</a>
                                 </li>
                                 <!--einde tables / blank template-->
                                 <?php if ($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("menu_admin")) { ?>
@@ -161,22 +165,35 @@
                                             <li>
                                                 <a href="liststaff.php">Personeelslijst</a>
                                             </li>
-											<li>
+                                            <li>
                                                 <a href="freeapplications.php">Vrij aanvragingen</a>
-                                            </li>                                                                                   
+                                            </li>
+                                            <li>
+                                                <a href="admin_declaration.php">Gedeclareerde uren</a>
+                                            </li>
+                                            <li>
+                                                <a href="planning-hours.php">Inroosteren</a>
+                                            </li>
+											<li>
+                                                <a href="management.php">Management</a>
+                                            </li>
+                                           
+
                                         </ul>
                                         <!-- /.nav-second-level -->
-                                    
-                                    <li>
-                                        <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
+
+
                                     </li>
-                                    </li>
+
                                 <?php } ?>	
+                                <li>
+                                    <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
-						
-					</div>
+
+                    </div>
                     <!-- /.navbar-static-side -->
                 </nav>
 
