@@ -11,62 +11,57 @@ header("Location: dashboard.php");
 die("Unauthorized."); }
 
 include("../inc/parts/staff-header.php");
- $uid = $_SESSION["uid"];
+$uid = $_SESSION["uid"];
 
-?>
-	
+?>	
         <!-- Page Content -->
-        <div id="page-wrapper">
-		
+        <div id="page-wrapper">		
 		 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Vrij aanvragingen</h1>
+                        <h3 class="page-header">Vrij aanvragingen</h3>
                     </div>
                     <!-- /.col-lg-12 -->
-			    </div>
-	
-	<!-- start gehele vrijvraag tabel -->
+		</div>	
+	<!-- start ongekeurde vrijvraag tabel -->
 	   <div class='container-fluid'>
+	   <!-- start row -->
 		<div class='row'>
 		<div class='col-sm-12'>
 		<form method='POST'>
 		<div class='panel panel-default'>
-		<div class='panel'>
-		<h1>Openstaande vrij aanvragingen</h1>
+			<div class='panel-heading'><h3>Openstaande vrijaanvragen</h3>
+			</div>		
+				<div  width="auto" class='panel-body'>
+				<table width="100%"class='table table-striped table-bordered table-hover' id='scrolltable2'>
+				<thead>
+					<tr>
+						<th>Voornaam</th>
+						<th>Achternaam</th>
+						<th>Van</th>
+						<th>Tot</th>
+						<th>Start tijd</th>
+						<th>Eind tijd</th>
+						<th>Reden</th>
+						<th>Goedkeuring</th>			
+					</tr>
+				</thead>
+				<tbody>
+				<?php $free->approveRequest();?>		
+				</tbody>
+				</table>
+				<div><button class='btn btn-sm btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
+				</div>
+		</div>
+		</form>
 		</div>
 		
-		<div  width="auto" class='panel-body'>
-		<table width="100%"class='table table-striped table-bordered table-hover' id='scrolltable2'>
-		<thead>
-			<tr>
-				<th>Voornaam</th>
-				<th>Achternaam</th>
-				<th>Van</th>
-				<th>Tot</th>
-				<th>Start tijd</th>
-				<th>Eind tijd</th>
-				<th>Reden</th>
-				<th>Goedkeuring</th>			
-			</tr>
-        </thead>
-		<tbody>
-		<?php $free->approveRequest();?>		
-		</tbody>
-		</table>
-		<div><button class='btn btn-lg btn-primary btn-right pull-right' style='margin-right:1%' backgroundcolor='blue' type='submit' name='submit'>Verzenden</button></div>
-		</div>
-		</div>
-		<form method='POST'>
-		</div>
-		
-        <!-- eind gehele vrijvraag tabel -->
-		<!-- start gehele vrijvraag tabel -->
+        <!-- eind ongekeurde vrijvraag tabel -->
+		<!-- start gekeurde vrijvraag tabel -->
 	   
 		<div class='col-sm-12'>
-		<form method='POST'>
-		<div class='col-sm-12 panel panel-default'>
-		<div class='panel'>
-		<h1> Opgeslagen vrij aanvragingen</h1>
+		<div class='panel panel-default'>
+		<div class='panel-heading'>
+		<h3> Opgeslagen vrij aanvragingen</h3>
 		</div>
 		
 		<div  width="auto" class='panel-body'>
@@ -80,7 +75,8 @@ include("../inc/parts/staff-header.php");
 				<th>Start tijd</th>
 				<th>Eind tijd</th>
 				<th>Reden</th>
-				<th>Goedkeuring</th>			
+				<th>Goedkeuring</th>
+				<th>Verwijder</th>		
 			</tr>
         </thead>
 		<tbody>
@@ -89,9 +85,8 @@ include("../inc/parts/staff-header.php");
 		</table>
 		</div>
 		</div>
-		</div>
-		
-        <!-- eind gehele vrijvraag tabel -->
+		</div>		
+        <!-- eind gekeurde vrijvraag tabel -->
 		
     <?php
 	require_once "../inc/phpmailer/PHPMailerAutoload.php";
@@ -99,8 +94,6 @@ include("../inc/parts/staff-header.php");
 	
 	foreach ( $_POST as $key => $value){
 
-		
-		
 		/* controleer of er user al is ingeroosterd*/
 		$startdate = $free->get($key,'start_date');
 		$enddate = $free->get($key,'end_date');
@@ -109,25 +102,10 @@ include("../inc/parts/staff-header.php");
 		$firstname = $user->get($uidKey,'first_name');
 		$lastname= $user->get($uidKey,'last_name');
 		
-		
-		/*
-		$datetime1 =new Datetime('2006-11-12');
-		$datetime2 = new Datetime('2006-11-16');
-		$interval = $datetime1->diff($datetime2);
-		$temp = $interval->format('%d%');
-		
-		 */
-
 			if($value == 'false'){
 			
 			$free->denyFree($key);
-			
-			/* 	in verify moet true of false komen te staan.
-				andere tabel wijzigen rooster ( nu comment naar foutgekeurd)
-				Verwijder de record en en sla het op in een backup tabel.
-				*/
-				
-				
+				// verzamel gegevens voor een afkeurings email en stell deze op.
 				     $name= $firstname . " " .$lastname;
 						$useremail = $user->Get($uidKey, 'email');
 						$fromemail = 'j.benning@hotmail.nl';
@@ -151,25 +129,15 @@ include("../inc/parts/staff-header.php");
 						$m->addAddress($useremail);
 						$m->Subject = $subject;
 						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
-
+						// verzend email
 						$m->send();
-						
-						
+												
 		}if ($value == 'true'){ 
-			
-			
-			print $key . " " . $value;
-		    
-			$free->approveFree($key);
-			/* 	in verify moet true of false komen te staan.
-				andere tabel wijzigen rooster ( nu comment naar goedgekeurd)
-				Verwijder de record en en sla het op in een backup tabel.
-				*/
-			
+			//zet kolom verify in de tabel restore op goedgekeurd		    
+			$free->approveFree($key);			
+			//update de werktijden van de medewerker in de tabel work_hour
 			$free->updateWorkHours($uidKey,$startdate,$enddate);
-			
-			
-						
+						// verzamel gegevens voor een goedkeurings email.
 						$name= $firstname . " " .$lastname;
 						$useremail = $user->Get($uidKey, 'email');
 						$fromemail = 'j.benning@hotmail.nl';
@@ -194,33 +162,21 @@ include("../inc/parts/staff-header.php");
 						$m->addAddress($useremail);
 						$m->Subject = $subject;
 						$m->Body = $messagePart1. "\n". "\n". $messagePart2;
-
-						$m->send();
-						
-			
-			}
-		
-		
-		
-		 
-		} 
-		$currenturl = $_SERVER['REQUEST_URI'];
-		print
-		"<script type='text/javascript'>
-		window.location.href = 'freeapplications.php';
-		</script>";
-		
-	}
-		
-	
-	
-	
-	 
+						//verzend de mail
+						$m->send();								
+			} 
+		}  //refresh de pagina
+			$currenturl = $_SERVER['REQUEST_URI'];
+			print
+			"<script type='text/javascript'>
+			window.location.href = 'freeapplications.php';
+			</script>";		
+	} 
 	?>
 	</div>
-    <!-- /container -->
-
+    <!-- /row-->
 	</div>
+	<!-- / container fluid -->
 	</div>
 	<!-- /page wrapper -->
 

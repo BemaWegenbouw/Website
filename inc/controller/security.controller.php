@@ -3,7 +3,7 @@
 //Copyright J.E. v.d. Heide
 //Wees voorzichtig.
 
-class security {
+class Security {
     
     public function checkRisk($input) {
         //Checkt het risico van een gebruiker
@@ -18,24 +18,24 @@ class security {
     }
     
     public function Hash($pass) {
-        //Hasht/beveiligd het wachtwoord
+        // Hasht het wachtwoord
         
         $options = [
         'cost' => 15,
         ];
-        return password_hash($pass, PASSWORD_DEFAULT, $options);
+        return password_hash($pass, PASSWORD_DEFAULT, $options); //Retourneer hash
         
     }
     
     public function checkPassword($user, $pass) {
         //Check het wachtwoord van een gebruiker
         
-        global $pdo;
+        global $pdo; //Zoek naar PDO buiten de scope van de functie
         
-        $sth = $pdo->prepare("SELECT * FROM staff WHERE username = :username");
-        $sth->bindParam(':username', $user, PDO::PARAM_STR);
-        $sth->execute();
-        $result = $sth->fetch(PDO::FETCH_ASSOC);
+        $sth = $pdo->prepare("SELECT * FROM staff WHERE username = :username"); //Bereid query voor
+        $sth->bindParam(':username', $user, PDO::PARAM_STR); //Stel variabele in
+        $sth->execute(); //Voer query uit
+        $result = $sth->fetch(PDO::FETCH_ASSOC); //Sla resultaat op als array
         
         if(isset($result) && !empty($result)) {
             
@@ -61,7 +61,7 @@ class security {
     public function log($action) {
         //Functie voor het vastleggen van risicovolle interacties
         
-        //Laat hem buiten de class zoeken
+        //Zoek variabele buiten de functie, in de global scope.
         global $pdo;
         global $user;
         
@@ -82,10 +82,10 @@ class security {
         //Voer de query uit
         $stmt->execute();
         
-    }
+    } // Einde logfunctie
     
 }
 
-$security = new security; //Open de class voor toekomstig gebruik met $security->functie();
+$security = new Security; //Open de class voor toekomstig gebruik met $security->functie();
 
 ?>
