@@ -9,8 +9,6 @@ session_start();
 //Laad controllers
 require_once("controller/db.controller.php"); //Importeer DB controller
 require_once("controller/user.controller.php"); //Importeer user controller
-require_once("controller/staff.controller.php"); //Importeer staff controller
-require_once("controller/content.controller.php"); //Importeer inhoud controller
 require_once("controller/lang.controller.php"); //Importeer lang controller
 require_once("controller/security.controller.php"); //Importeer security controller
 require_once("controller/permission.controller.php"); //Importeer permission controller
@@ -18,6 +16,7 @@ require_once("controller/restore.controller.php"); //Importeer restore controlle
 require_once("controller/free.controller.php"); //Importeer free controller
 require_once("controller/calendar.controller.php"); //Importeer permission controller
 require_once("controller/declaration.controller.php");
+require_once("controller/management.controller.php");
 //Login check. Later verplaatsen naar los bestand!
 if (strpos($page, 'staff') !== false) { //Check of paginanaam 'staff' bevat.
     if ($user->LoggedIn()) {//Check login

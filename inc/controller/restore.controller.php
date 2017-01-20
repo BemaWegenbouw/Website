@@ -1,7 +1,8 @@
 <?php
 
-class restore {
+class Restore {
 
+	// Deze functie insert de random code + uid in de tabel restore na password reset aanvraag.
     public function insert($userid, $value) {
         
         global $pdo; //Zoek naar $pdo buiten deze functie
@@ -13,6 +14,7 @@ class restore {
         
     }
 	
+	//deze funcie haal de username op aan de hand van de tijdelijke code die in me mail word meegestuurd.
 	 public function getID($tempcode) {
         global $pdo; //Zoek naar $pdo buiten deze functie
         $sth = $pdo->prepare("SELECT uid FROM restore WHERE temppass = :temppass"); //Maak de query klaar
@@ -22,6 +24,8 @@ class restore {
         return $result["uid"]; //Geef resultaat terug
     }
 	
+	//deze functie delete na successvol password reset alles van de gebruiker uit die tabel restore.
+	//zodat er geen hacker gegevens uit de tabel kan gebruiken om wachtwoord te wijzigen van iemand.
 	public function del($userid) {
         
         global $pdo; //Zoek naar $pdo buiten deze functie
@@ -31,7 +35,8 @@ class restore {
         return(true);
         
     }
-	
+	//Deze fuctie haal alle tmp codes uit de database voor de user op en met php word gekeken of dezelfde code aanwezig is.
+	//indien dit niet het geval is kan de wachtwoord niet veranderd worden.
 	public function checkTempc($uid){
 		
 	
@@ -44,6 +49,6 @@ class restore {
 	}
 }
 
-$restore = new restore;
+$restore = new Restore;
 
 ?>

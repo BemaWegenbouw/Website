@@ -189,7 +189,6 @@ body {
     left: 0;
     right: 0;
 	background-color: #F1F1F1 !important;
-   
 
 }
 
@@ -197,7 +196,8 @@ body {
 
 
 .navbar li a, .navbar .navbar-brand {
-      color: black !important;
+    color: black !important;
+	margin-right: 15px;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
       color: #f4511e !important;
