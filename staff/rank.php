@@ -36,7 +36,7 @@ $uid = $_SESSION["uid"];
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
 
-                                            <?php $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers ?>
+                                            <?php $calendar->DropDownMenuPlannedHours(); // ?>
 
                                         </ul></div><!--EINDE dropdownmenu rank wijzigen --->
                             </div>
@@ -55,7 +55,7 @@ $uid = $_SESSION["uid"];
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
 
-                                            <?php $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers ?>
+                                            <?php $rank->Insert($rank_id, $name); // ?>
 
                                         </ul></div><!--EINDE dropdownmenu rank toevoegen --->
                             </div>
@@ -73,7 +73,7 @@ $uid = $_SESSION["uid"];
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
 
-                                            <?php $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers ?>
+                                            <?php $calendar->DropDownMenuPlannedHours(); // ?>
 
                                         </ul></div><!--EINDE dropdownmenu rank verwijderen --->
                             </div>
