@@ -3,16 +3,33 @@
 class Restore {
 
 	// Deze functie insert de random code + uid in de tabel restore na password reset aanvraag.
-    public function insert($userid, $value) {
-        
+     
+    public function insert($userid, $temp_code) {
+	
         global $pdo; //Zoek naar $pdo buiten deze functie
-        $sth = $pdo->prepare("INSERT INTO restore (uid,temppass) values (:uid,:temppass)"); //Maak de query klaar
-        $sth->bindParam(':temppass', $value, PDO::PARAM_STR);
-        $sth->bindParam(':uid', $userid, PDO::PARAM_STR); 
+        $sth = $pdo->prepare("SELECT uid from restore WHERE uid = :uid"); //Maak de query klaar
+        $sth->bindParam(':uid', $userid, PDO::PARAM_STR); //Vervang :uid naar $uid variabele 
         $sth->execute(); //Voer de query uit
-        return(true);
-        
-    }
+		
+		$row = $sth->fetchall(PDO::FETCH_ASSOC);         
+		$aantal = count($row); //kijk hoe veel records er uit komen
+		
+        IF ($aantal != 0) {
+            $sth1 = $pdo->prepare("UPDATE restore SET temppass = :temppass WHERE uid = :uid"); //Maak de query klaar
+            $sth1->bindParam(':uid', $userid, PDO::PARAM_STR); //vervang variable :uid naar $uid
+			$sth1->bindParam(':temppass', $temp_code, PDO::PARAM_STR); //vervang variable :uid naar $uid
+            $sth1->execute(); //Voer de query uit//voert de query uit 
+            
+        } else {
+            $stm = $pdo->prepare("INSERT INTO restore VALUES(:uid, :temppass)"); //Maak de query klaar
+            $stm->bindParam(':temppass', $temp_code, PDO::PARAM_STR); //vervang variable :temppass naar $temp_code
+            $stm->bindParam(':uid', $userid, PDO::PARAM_STR); //vervang variable :uid naar $uid
+            $stm->execute(); //Voer de query uit//voert de query uit
+
+            return(true);
+        }
+		
+    } //Einde functie
 	
 	//deze funcie haal de username op aan de hand van de tijdelijke code die in me mail word meegestuurd.
 	 public function getID($tempcode) {
