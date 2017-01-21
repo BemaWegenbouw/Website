@@ -25,9 +25,11 @@ $uid = $_SESSION["uid"];
                 <!------------------- Dropdownmenu voor rank wijzigen  ------------------>
                 <div class='panel panel-default'>
                     <div class='panel-heading'>
-                        <h3>Rank wijzigen</h3>
+                        <h3>Rank van medewerker wijzigen</h3>
                     </div>
-
+					<div class='panel-body'>
+					Selecteer hier de medewerker('s) van wie u de rank wil wijzigen.                                                  
+					</div>
                     <div class='panel-body'><p></p>
                         <div class="row">
                             <div class="col-sm-3">
@@ -41,54 +43,66 @@ $uid = $_SESSION["uid"];
                                             <?php $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers ?>
 
                                         </ul>
+										</div>
+										<div class='panel-body'> Selecteer hier de rank die u aan deze persoon/personen wil geven.</div>
+										<div class='panel-body'><p></p>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <form method="post">
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Rank
+                                            <span class="caret"></span><br>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <?php $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers ?>
+
+                                        </ul>
                                     </div><!--EINDE dropdownmenu rank wijzigen --->
+								<br><div><button class="btn btn-primary dropdown-toggle" type="button">Wijzigen</div>
+								</div>
                             </div>
                         </div>
                     </div>
-                </div><!------------------- Dropdownmenu voor rank toevoegen  ------------------>
+                </div>
+			</div></div>
+				<!------------------- Dropdownmenu voor rank toevoegen  ------------------>
 
                 <div class='panel panel-default'>
                     <div class='panel-heading'>
                         <h3>Rank toevoegen</h3>
                     </div>
-
-                    <div class='panel-body'><p></p>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <form method="post"> <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Medewerker
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-
-                                            <?php
-                                            $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers
-                                            $rank->insert($rank_id, $name);
-                                            ?>
-
-                                        </ul>
-                                    </div><!--EINDE dropdownmenu rank toevoegen --->
-                            </div>
-                        </div>
-                    </div>
-                </div><!------------------- Dropdownmenu voor rank verwijderen  ------------------>
+                    <div class='panel-body'>
+                        Rank Naam:
+                        <div><input name="rank_name" class="form-control" placeholder="Naam" required >
+						Rank:
+                        <div><input name="rank_number" class="form-control" placeholder="Number" required >
+						
+						</div>
+					</div>
+					</div>
+                <!------------------- Dropdownmenu voor rank verwijderen  ------------------>
                 <div class='panel panel-default'>
                     <div class='panel-heading'>
                         <h3>Rank verwijderen</h3>
                     </div>
-
+					<div class='panel-body'>
+						Selecteer de rank('s) die u wil verwijderen.
                     <div class='panel-body'><p></p>
                         <div class="row">
                             <div class="col-sm-3">
                                 <form method="post"> <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Medewerker
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Rank
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
 
-<?php $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers  ?>
+                                         <?php $calendar->DropDownMenuPlannedHours(); //de waardes worden meegenomenin de dropdownmenu , met de namen van de medwerkers  ?>
 
                                         </ul>
+										<button class="btn btn-primary dropdown-toggle" type="button">Verwijderen
                                     </div><!--EINDE dropdownmenu rank verwijderen --->
-                            </div>
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
