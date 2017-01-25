@@ -40,15 +40,18 @@ $uid = $_SESSION["uid"];
     };
     if (isset($_POST['edit']) && !empty($_POST['edit'])) {
         $rank_id1 = $_POST['rank_id1'];
-
+        print("<script type='text/javascript'>noty({text: 'deze dag is al gedeclareerd', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         $rank_id2 = $_POST['rank_id2'];
 
         $name = $_POST['name'];
-
-        if ($rank_id2 != 0 && $name != 0) {
-            $rank->updateboth($rank_id1, $rank_id2, $name);
-        } elseif ($name != 0) {
-            $rank->updatename($rank_id1, $name);
+        if ($security->Sanitize($name) == $name) {
+            if ($rank_id2 != 0 && $name != 0) {
+                $rank->updateboth($rank_id1, $rank_id2, $name);
+                print("<script type='text/javascript'>noty({text: 'both', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+            } elseif ($name != 0) {
+                $rank->updatename($rank_id1, $name);
+                print("<script type='text/javascript'>noty({text: 'only name', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+            };
         };
     };
     if (isset($_POST['delete']) && !empty($_POST['delete'])) {
