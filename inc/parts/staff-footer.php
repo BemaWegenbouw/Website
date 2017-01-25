@@ -1,4 +1,4 @@
-  
+
 </div>
 
 <!-- START ALGEMEEN -->
@@ -20,36 +20,32 @@
 <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
-    $(document).ready(function() {
+            $(document).ready(function() {
     $('#dataTables-example').DataTable({
     responsive: true
     });
-    });
-</script>
+    });</script>
 <script>
-    $(document).ready(function() {
+            $(document).ready(function() {
     $('#dataTables-example2').DataTable({
 
 
     });
-    });
-</script>
+    });</script>
 <script>
-    $(document).ready(function() {
+            $(document).ready(function() {
         $('#scrolltable').DataTable({
             "scrollX": true
                 });
-    });
-</script>
+    });</script>
 <script>
-    $(document).ready(function() {
+            $(document).ready(function() {
         $('#scrolltable2').DataTable({
             "scrollX": true
                 });
-    });
-</script>
+    });</script>
 
-<!-- EIND ALGEMEEN -->    
+<!-- EIND ALGEMEEN -->
 <!-- START AVAILABILITY -->
 <?php if ($page == "staff-availability") { ?>
     <script src="vendor/raphael/raphael.min.js"></script>
@@ -57,80 +53,78 @@
     <script src="data/morris-data.js"></script>
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js"></script>
     <script type="text/javascript">
-        $('.clockpicker').clockpicker()
-                .find('input').change(function () {
-        console.log(this.value);
-        });
-        var input = $('#single-input').clockpicker({
-        placement: 'bottom',
-                align: 'left',
-                autoclose: true,
-                'default': 'now'
-        });
-        $('.clockpicker-with-callbacks').clockpicker({
-        donetext: 'Done',
-                init: function () {
-                console.log("colorpicker initiated");
-                },
-                beforeShow: function () {
-                console.log("before show");
-                },
-                afterShow: function () {
-                console.log("after show");
-                },
-                beforeHide: function () {
-                console.log("before hide");
-                },
-                afterHide: function () {
-                console.log("after hide");
-                },
-                beforeHourSelect: function () {
-                console.log("before hour selected");
-                },
-                afterHourSelect: function () {
-                console.log("after hour selected");
-                },
-                beforeDone: function () {
-                console.log("before done");
-                },
-                afterDone: function () {
-                console.log("after done");
-                }
-        })
-                .find('input').change(function () {
-        console.log(this.value);
-        });
-        // Manually toggle to the minutes view
-        $('#check-minutes').click(function (e) {
-        // Have to stop propagation here
-        e.stopPropagation();
-        input.clockpicker('show')
-                .clockpicker('toggleView', 'minutes');
-        });
-        if (/mobile/i.test(navigator.userAgent)) {
-        $('input').prop('readOnly', true);
-        }
+            $('.clockpicker').clockpicker()
+            .find('input').change(function () {
+    console.log(this.value);
+    });
+            var input = $('#single-input').clockpicker({
+    placement: 'bottom',
+            align: 'left',
+            autoclose: true,
+            'default': 'now'
+    });
+            $('.clockpicker-with-callbacks').clockpicker({
+    donetext: 'Done',
+            init: function () {
+            console.log("colorpicker initiated");
+            },
+            beforeShow: function () {
+            console.log("before show");
+            },
+            afterShow: function () {
+            console.log("after show");
+            },
+            beforeHide: function () {
+            console.log("before hide");
+            },
+            afterHide: function () {
+            console.log("after hide");
+            },
+            beforeHourSelect: function () {
+            console.log("before hour selected");
+            },
+            afterHourSelect: function () {
+            console.log("after hour selected");
+            },
+            beforeDone: function () {
+            console.log("before done");
+            },
+            afterDone: function () {
+            console.log("after done");
+            }
+    })
+            .find('input').change(function () {
+    console.log(this.value);
+    });
+            // Manually toggle to the minutes view
+            $('#check-minutes').click(function (e) {
+    // Have to stop propagation here
+    e.stopPropagation();
+            input.clockpicker('show')
+            .clockpicker('toggleView', 'minutes');
+    });
+            if (/mobile/i.test(navigator.userAgent)) {
+    $('input').prop('readOnly', true);
+    }
     </script>
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/assets/js/highlight.min.js"></script>
     <script type="text/javascript">
-        hljs.configure({tabReplace: '    '});
-        hljs.initHighlightingOnLoad();
-    </script>
+            hljs.configure({tabReplace: '    '});
+            hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script>
-        $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-                //        startDate: '-3d',
-                todayBtn: "linked",
-                language: "nl",
-                calendarWeeks: true,
-                autoclose: true,
-                todayHighlight: true,
-                toggleActive: true
-        });
-    </script>
+            $('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+            //        startDate: '-3d',
+            todayBtn: "linked",
+            language: "nl",
+            calendarWeeks: true,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true
+    });</script>
     <script>
-        $('.datepicker').datepicker({
+                $('.datepicker').datepicker({
         format: 'dd/mm/yyyy',
                 startDate: '-3d',
                 todayBtn: "linked",
@@ -139,8 +133,7 @@
                 autoclose: true,
                 todayHighlight: true,
                 toggleActive: true
-        });
-    </script>
+        });</script>
 
 <?php } ?>
 <!-- EIND AVAILABILITY -->
@@ -148,13 +141,13 @@
 <?php if ($page == "staff-planning") { ?>
     <script src="../assets/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!--Calendar scripts-->
-    <script src='calendar/lib/moment.min.js'></script>               
+    <script src='calendar/lib/moment.min.js'></script>
     <script src='calendar/fullcalendar.min.js'></script>
     <script src='calendar/fullcalendar.js'></script>
     <script src='calendar/locale/nl.js'></script>
     <script>
 
-        $(document).ready(function () {
+                $(document).ready(function () {
 
         $('#calendar').fullCalendar({
         header: {
@@ -171,22 +164,21 @@
     $calendar->CalendarAllView();
     ?>]
         });
-        });
-    </script>
+        });</script>
     <!-- START CLOCKSCRIPT -->
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js"></script>
     <script type="text/javascript">
-        $('.clockpicker').clockpicker()
+                $('.clockpicker').clockpicker()
                 .find('input').change(function () {
         console.log(this.value);
         });
-        var input = $('#single-input').clockpicker({
+                var input = $('#single-input').clockpicker({
         placement: 'bottom',
                 align: 'left',
                 autoclose: true,
                 'default': 'now'
         });
-        $('.clockpicker-with-callbacks').clockpicker({
+                $('.clockpicker-with-callbacks').clockpicker({
         donetext: 'Done',
                 init: function () {
                 console.log("colorpicker initiated");
@@ -219,25 +211,24 @@
                 .find('input').change(function () {
         console.log(this.value);
         });
-        // Manually toggle to the minutes view
-        $('#check-minutes').click(function (e) {
+                // Manually toggle to the minutes view
+                $('#check-minutes').click(function (e) {
         // Have to stop propagation here
         e.stopPropagation();
-        input.clockpicker('show')
+                input.clockpicker('show')
                 .clockpicker('toggleView', 'minutes');
         });
-        if (/mobile/i.test(navigator.userAgent)) {
+                if (/mobile/i.test(navigator.userAgent)) {
         $('input').prop('readOnly', true);
         }
     </script>
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/assets/js/highlight.min.js"></script>
     <script type="text/javascript">
-        hljs.configure({tabReplace: '    '});
-        hljs.initHighlightingOnLoad();
-    </script>
+                hljs.configure({tabReplace: '    '});
+                hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script>
-        $('.datepicker').datepicker({
+                $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
                 //        startDate: '-3d',
                 todayBtn: "linked",
@@ -246,16 +237,15 @@
                 autoclose: true,
                 todayHighlight: true,
                 toggleActive: true
-        });
-    </script>
+        });</script>
     <script>
-        $('.btn-number').click(function (e) {
+                $('.btn-number').click(function (e) {
         e.preventDefault();
-        fieldName = $(this).attr('data-field');
-        type = $(this).attr('data-type');
-        var input = $("input[name='" + fieldName + "']");
-        var currentVal = parseInt(input.val());
-        if (!isNaN(currentVal)) {
+                fieldName = $(this).attr('data-field');
+                type = $(this).attr('data-type');
+                var input = $("input[name='" + fieldName + "']");
+                var currentVal = parseInt(input.val());
+                if (!isNaN(currentVal)) {
         if (type == 'minus') {
 
         if (currentVal > input.attr('min')) {
@@ -279,31 +269,31 @@
         input.val(0);
         }
         });
-        $('.input-number').focusin(function () {
+                $('.input-number').focusin(function () {
         $(this).data('oldValue', $(this).val());
         });
-        $('.input-number').change(function () {
+                $('.input-number').change(function () {
 
         minValue = parseInt($(this).attr('min'));
-        maxValue = parseInt($(this).attr('max'));
-        valueCurrent = parseInt($(this).val());
-        name = $(this).attr('name');
-        if (valueCurrent >= minValue) {
+                maxValue = parseInt($(this).attr('max'));
+                valueCurrent = parseInt($(this).val());
+                name = $(this).attr('name');
+                if (valueCurrent >= minValue) {
         $(".btn-number[data-type='minus'][data-field='" + name + "']")//.removeAttr('disabled')
         } else {
         alert('Sorry, het minimum aantal is bereikt');
-        $(this).val($(this).data('minValue'));
+                $(this).val($(this).data('minValue'));
         }
         if (valueCurrent <= maxValue) {
         $(".btn-number[data-type='plus'][data-field='" + name + "']")//.removeAttr('disabled')
         } else {
         alert('Sorry, het minimum aantal is bereikt');
-        $(this).val($(this).data('maxValue'));
+                $(this).val($(this).data('maxValue'));
         }
 
 
         });
-        $(".input-number").keydown(function (e) {
+                $(".input-number").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== - 1 ||
                 // Allow: Ctrl+A
@@ -317,8 +307,7 @@
                 if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                 e.preventDefault();
                 }
-                });
-    </script>
+                });</script>
     <!-- EINDE CLOCKSCRIPT -->
 <?php } ?>
 <!-- EIND PLANNING -->
@@ -329,17 +318,17 @@
     <script src="data/morris-data.js"></script>
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js"></script>
     <script type="text/javascript">
-        $('.clockpicker').clockpicker()
+                $('.clockpicker').clockpicker()
                 .find('input').change(function () {
         console.log(this.value);
         });
-        var input = $('#single-input').clockpicker({
+                var input = $('#single-input').clockpicker({
         placement: 'bottom',
                 align: 'left',
                 autoclose: true,
                 'default': 'now'
         });
-        $('.clockpicker-with-callbacks').clockpicker({
+                $('.clockpicker-with-callbacks').clockpicker({
         donetext: 'Done',
                 init: function () {
                 console.log("colorpicker initiated");
@@ -372,25 +361,24 @@
                 .find('input').change(function () {
         console.log(this.value);
         });
-        // Manually toggle to the minutes view
-        $('#check-minutes').click(function (e) {
+                // Manually toggle to the minutes view
+                $('#check-minutes').click(function (e) {
         // Have to stop propagation here
         e.stopPropagation();
-        input.clockpicker('show')
+                input.clockpicker('show')
                 .clockpicker('toggleView', 'minutes');
         });
-        if (/mobile/i.test(navigator.userAgent)) {
+                if (/mobile/i.test(navigator.userAgent)) {
         $('input').prop('readOnly', true);
         }
     </script>
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/assets/js/highlight.min.js"></script>
     <script type="text/javascript">
-        hljs.configure({tabReplace: '    '});
-        hljs.initHighlightingOnLoad();
-    </script>
+                hljs.configure({tabReplace: '    '});
+                hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script>
-        $('.datepicker').datepicker({
+                $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
                 //        startDate: '-3d',
                 todayBtn: "linked",
@@ -399,10 +387,9 @@
                 autoclose: true,
                 todayHighlight: true,
                 toggleActive: true
-        });
-    </script>
+        });</script>
     <script>
-        $('.datepicker').datepicker({
+                $('.datepicker').datepicker({
         format: 'dd/mm/yyyy',
                 startDate: '-3d',
                 todayBtn: "linked",
@@ -411,16 +398,15 @@
                 autoclose: true,
                 todayHighlight: true,
                 toggleActive: true
-        });
-    </script>
+        });</script>
     <!--Calendar scripts-->
-    <script src='calendar/lib/moment.min.js'></script>               
+    <script src='calendar/lib/moment.min.js'></script>
     <script src='calendar/fullcalendar.min.js'></script>
     <script src='calendar/fullcalendar.js'></script>
     <script src='calendar/locale/nl.js'></script>
     <script>
 
-        $(document).ready(function () {
+                $(document).ready(function () {
 
         $('#calendar').fullCalendar({
         header: {
@@ -437,20 +423,19 @@
     $calendar->CalendarView($uid);
     ?>]
         });
-        });
-    </script>
+        });</script>
 <?php } ?>
 <!--  EIND DASHBOARD-->
 
 <!-- START BESCHIKBAARHEID -->
 <?php if ($page == "staff-calendar") { ?>
-    <script src='calendar/lib/moment.min.js'></script>               
+    <script src='calendar/lib/moment.min.js'></script>
     <script src='calendar/fullcalendar.min.js'></script>
     <script src='calendar/fullcalendar.js'></script>
     <script src='calendar/locale/nl.js'></script>
     <script>
 
-        $(document).ready(function () {
+                $(document).ready(function () {
 
         $('#calendar').fullCalendar({
         header: {
@@ -467,8 +452,7 @@
     $calendar->CalendarView($uid);
     ?>]
         });
-        });
-    </script>
+        });</script>
 
 
 <?php } ?>
@@ -478,17 +462,17 @@
 <?php if ($page == "staff-declaration") { ?>
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js"></script>
     <script type="text/javascript">
-        $('.clockpicker').clockpicker()
+                $('.clockpicker').clockpicker()
                 .find('input').change(function () {
         console.log(this.value);
         });
-        var input = $('#single-input').clockpicker({
+                var input = $('#single-input').clockpicker({
         placement: 'bottom',
                 align: 'left',
                 autoclose: true,
                 'default': 'now'
         });
-        $('.clockpicker-with-callbacks').clockpicker({
+                $('.clockpicker-with-callbacks').clockpicker({
         donetext: 'Done',
                 init: function () {
                 console.log("colorpicker initiated");
@@ -521,25 +505,24 @@
                 .find('input').change(function () {
         console.log(this.value);
         });
-        // Manually toggle to the minutes view
-        $('#check-minutes').click(function (e) {
+                // Manually toggle to the minutes view
+                $('#check-minutes').click(function (e) {
         // Have to stop propagation here
         e.stopPropagation();
-        input.clockpicker('show')
+                input.clockpicker('show')
                 .clockpicker('toggleView', 'minutes');
         });
-        if (/mobile/i.test(navigator.userAgent)) {
+                if (/mobile/i.test(navigator.userAgent)) {
         $('input').prop('readOnly', true);
         }
     </script>
     <script type="text/javascript" src="../assets/clockpicker-gh-pages/assets/js/highlight.min.js"></script>
     <script type="text/javascript">
-        hljs.configure({tabReplace: '    '});
-        hljs.initHighlightingOnLoad();
-    </script>
+                hljs.configure({tabReplace: '    '});
+                hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript" src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script>
-        $('.datepicker').datepicker({
+                $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
                 //        startDate: '-3d',
                 todayBtn: "linked",
@@ -548,16 +531,15 @@
                 autoclose: true,
                 todayHighlight: true,
                 toggleActive: true
-        });
-    </script>
+        });</script>
     <script>
-        $('.btn-number').click(function (e) {
+                $('.btn-number').click(function (e) {
         e.preventDefault();
-        fieldName = $(this).attr('data-field');
-        type = $(this).attr('data-type');
-        var input = $("input[name='" + fieldName + "']");
-        var currentVal = parseInt(input.val());
-        if (!isNaN(currentVal)) {
+                fieldName = $(this).attr('data-field');
+                type = $(this).attr('data-type');
+                var input = $("input[name='" + fieldName + "']");
+                var currentVal = parseInt(input.val());
+                if (!isNaN(currentVal)) {
         if (type == 'minus') {
 
         if (currentVal > input.attr('min')) {
@@ -581,31 +563,31 @@
         input.val(0);
         }
         });
-        $('.input-number').focusin(function () {
+                $('.input-number').focusin(function () {
         $(this).data('oldValue', $(this).val());
         });
-        $('.input-number').change(function () {
+                $('.input-number').change(function () {
 
         minValue = parseInt($(this).attr('min'));
-        maxValue = parseInt($(this).attr('max'));
-        valueCurrent = parseInt($(this).val());
-        name = $(this).attr('name');
-        if (valueCurrent >= minValue) {
+                maxValue = parseInt($(this).attr('max'));
+                valueCurrent = parseInt($(this).val());
+                name = $(this).attr('name');
+                if (valueCurrent >= minValue) {
         $(".btn-number[data-type='minus'][data-field='" + name + "']")//.removeAttr('disabled')
         } else {
         alert('Sorry, het minimum aantal is bereikt');
-        $(this).val($(this).data('minValue'));
+                $(this).val($(this).data('minValue'));
         }
         if (valueCurrent <= maxValue) {
         $(".btn-number[data-type='plus'][data-field='" + name + "']")//.removeAttr('disabled')
         } else {
         alert('Sorry, het minimum aantal is bereikt');
-        $(this).val($(this).data('maxValue'));
+                $(this).val($(this).data('maxValue'));
         }
 
 
         });
-        $(".input-number").keydown(function (e) {
+                $(".input-number").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== - 1 ||
                 // Allow: Ctrl+A
@@ -619,45 +601,114 @@
                 if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                 e.preventDefault();
                 }
-                });
-    </script>
+                });</script>
 <?php } ?>
 <!-- EINDE DECLARATION -->
-<!-- start contact-->		
+<!-- start contact-->
 <?php if ($page == "staff-contact") { ?>
-<script>
-		$(function() {
+    <script>
+                $(function() {
 
-  // We can attach the `fileselect` event to all file inputs on the page
-  $(document).on('change', ':file', function() {
-    var input = $(this),
-        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [numFiles, label]);
-  });
+                // We can attach the `fileselect` event to all file inputs on the page
+                $(document).on('change', ':file', function() {
+                var input = $(this),
+                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                        input.trigger('fileselect', [numFiles, label]);
+                });
+                        // We can watch for our custom `fileselect` event like this
+                        $(document).ready(function() {
+                $(':file').on('fileselect', function(event, numFiles, label) {
 
-  // We can watch for our custom `fileselect` event like this
-  $(document).ready( function() {
-      $(':file').on('fileselect', function(event, numFiles, label) {
+                var input = $(this).parents('.input-group').find(':text'),
+                        log = numFiles > 1 ? numFiles + ' files selected' : label;
+                        if (input.length) {
+                input.val(log);
+                } else {
+                if (log) alert(log);
+                }
 
-          var input = $(this).parents('.input-group').find(':text'),
-              log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-          if( input.length ) {
-              input.val(log);
-          } else {
-              if( log ) alert(log);
-          }
-
-      });
-  });
-  
-});
-		</script>
+                });
+                });
+                });</script>
 
 <?php } ?>
-<!-- EINDE contact -->       
+<!-- EINDE contact -->
+<!--START rank -->
 
+<script>
+            $('.btn-number').click(function (e) {
+    e.preventDefault();
+            fieldName = $(this).attr('data-field');
+            type = $(this).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+    if (type == 'minus') {
+
+    if (currentVal > input.attr('min')) {
+    input.val(currentVal - 10).change();
+    }
+    if (parseInt(input.val()) == input.attr('min')) {
+    //                    $(this).attr('disabled', true);
+    }
+
+    } else if (type == 'plus') {
+
+    if (currentVal < input.attr('max')) {
+    input.val(currentVal + 10).change();
+    }
+    if (parseInt(input.val()) == input.attr('max')) {
+    //                    $(this).attr('disabled', true);
+    }
+
+    }
+    } else {
+    input.val(0);
+    }
+    });
+            $('.input-number').focusin(function () {
+    $(this).data('oldValue', $(this).val());
+    });
+            $('.input-number').change(function () {
+
+    minValue = parseInt($(this).attr('min'));
+            maxValue = parseInt($(this).attr('max'));
+            valueCurrent = parseInt($(this).val());
+            name = $(this).attr('name');
+            if (valueCurrent >= minValue) {
+    $(".btn-number[data-type='minus'][data-field='" + name + "']")//.removeAttr('disabled')
+    } else {
+    alert('Sorry, het minimum aantal is bereikt');
+            $(this).val($(this).data('minValue'));
+    }
+    if (valueCurrent <= maxValue) {
+    $(".btn-number[data-type='plus'][data-field='" + name + "']")//.removeAttr('disabled')
+    } else {
+    alert('Sorry, het minimum aantal is bereikt');
+            $(this).val($(this).data('maxValue'));
+    }
+
+
+    });
+            $(".input-number").keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== - 1 ||
+            // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right
+                            (e.keyCode >= 35 && e.keyCode <= 39)) {
+            // let it happen, don't do anything
+            return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+            }
+            });
+</script>
+
+<!-- EINDE rank -->
 </body>
 
 </html>
