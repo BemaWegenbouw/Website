@@ -59,14 +59,14 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
 
 						$m->send();
 						$restore->insert($userid,$temp_code);	
-						$sendstatus = 'success';	
+						print("<script type='text/javascript'>noty({text: 'Er is een mail verzonden naar het gekoppelde e-mail adres van dit account.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding	
 						
 						
 				}else{
-					$sendstatus = 'failed';
+					print("<script type='text/javascript'>noty({text: 'Er is geen mail verzonden probeer het opnieuw.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
 				}
 		}else {
-			$sendstatus = 'unknown';
+			print("<script type='text/javascript'>noty({text: 'Dit account wordt niet herkend, probeer het opnieuw.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
 		}
 }
 ?>
@@ -81,27 +81,6 @@ require_once "../inc/phpmailer/PHPMailerAutoload.php";
                 </div>				
                 <button class="btn btn-lg btn-primary btn-right" backgroundcolor="grey" type="submit" name="submit">verzenden</button><br />
 				<br>
-				<?php if($sendstatus == 'success') { ?>
-				<div data-notify="container" class="col-xs-12 col-sm-12 alert alert-{0}alert alert-success alert-dismissable" role="alert">
-				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<p>Er is een mail verzonden naar het gekoppelde mail adres van dit account.</p>				
-				</div>
-				<?php } ?>
-				<?php if($sendstatus == 'failed') { ?>
-				<div data-notify="container" class="col-xs-12 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
-				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<p>Er is geen mail verzonden probeer het opnieuw.</p>				
-				</div>
-				<?php } ?>
-				<?php if($sendstatus == 'unknown') { ?>
-				<div data-notify="container" class="col-xs-11 col-sm-12 alert alert-{0}alert alert-danger alert-dismissable" role="alert">
-				<button type="button" aria-hidden="true" class="close" data-notify="dismiss" data-dismiss="alert"><span data-notify="icon" class="glyphicon glyphicon-remove"></span></button>
-				<span data-notify="icon" class="glyphicon glyphicon-exclamation-sign"></span>
-				<span data-notify="title">Dit account wordt niet herkend, probeer het opnieuw.</span>
-				</div>
-				<?php } ?>
 				</form>		           
     </div> 
 	<!-- /container -->
