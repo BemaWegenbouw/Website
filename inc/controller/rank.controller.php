@@ -61,14 +61,14 @@ class rank {
         return(true);
     }
 
-    public function Updateboth($rank_id1, $rank_id2, $name) {
+    public function updateboth($rank_id1, $rank_id2, $rankname) {
         global $pdo;
         $sth = $pdo->prepare(
-                "Update rank SET rank_id = :rank_id2, name=':name' WHERE rank_id = :rank_id1;"
+                "Update rank SET rank_id = :rank_id2, name=:rankname WHERE rank_id = :rank_id1;"
         ); //Maak de query klaar
         $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
         $sth->bindParam(':rank_id2', $rank_id2, PDO::PARAM_STR);
-        $sth->bindParam(':name', $name, PDO::PARAM_STR);
+        $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
         return(true);
     }
@@ -84,13 +84,13 @@ class rank {
         return(true);
     }
 
-    public function Updatename($rank_id1, $name) {
+    public function updatename($rank_id1, $rankname) {
         global $pdo;
         $sth = $pdo->prepare(
-                "Update rank SET name = ':name' WHERE rank_id = :rank_id1;"
+                "Update rank SET name = :rankname WHERE rank_id = :rank_id1;"
         ); //Maak de query klaar
         $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
-        $sth->bindParam(':name', $name, PDO::PARAM_STR);
+        $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
         return(true);
     }
