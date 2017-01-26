@@ -26,12 +26,40 @@ $uid = $_SESSION["uid"];
     </div>
     <!-- /.container-fluid -->
     <?php
-    if (isset($_POST['editstaff']) && !empty($_POST['editstaff'])) {
-        $rank_id = $_POST['rank_id'];
-        $uidd = $_POST['uidd'];
-        print("<script type='text/javascript'>noty({text: 'Het rang van de medewerker is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-        $rank->editstaffrank($rank_id, $uidd);
+    if ((isset($_POST['editstaff']) && !empty($_POST['editstaff'])) OR ( isset($_POST['permission']) && !empty($_POST['permission']))) {
+        if (isset($_POST['editstaff'])) {
+            $rank_id = $_POST['rank_id'];
+            $uidd = $_POST['uidd'];
+            print("<script type='text/javascript'>noty({text: 'Het rang van de medewerker is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+            $rank->editstaffrank($rank_id, $uidd);
+        };
+        if (isset($_POST['permission'])) {
+            $rank_id = $_POST['rank_id'];
+            $permission_id = $_POST['permission_id'];
+            $rank->editpermission($permission_id, $rank_id);
+            print("<script type='text/javascript'>noty({text: 'Het minimale rang van de pagina is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        };
     };
+//    if (isset($_POST['perm']) && !empty($_POST['perm'])) {
+//        if (isset($_POST['rank'])) {
+//            $rank = $_POST['rank'];
+//            print("<script type='text/javascript'>noty({text: 'gelukt rank', type: 'success', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+//        } else {
+//            $rank = 0;
+//        };
+//        if (isset($_POST['pid'])) {
+//            $pid = $_POST['pid'];
+//            print("<script type='text/javascript'>noty({text: 'gelukt pid', type: 'success', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+//        } else {
+//            $pid = 0;
+//        };
+//        if ($pid != 0 && $rank != 0) {
+//            print("<script type='text/javascript'>noty({text: 'Het minimale rang van de pagina is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+//            $rank->editpermission($pid, $rank);
+//        } else {
+//            print("<script type='text/javascript'>noty({text: 'gefaalt', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+//        };
+//    };
     if (isset($_POST['add']) && !empty($_POST['add'])) {
         $rank_id = $_POST['rank_id'];
         $name = $_POST['name'];
@@ -97,8 +125,31 @@ $uid = $_SESSION["uid"];
                         </div>
                     </div>
                 </div><!------------------- Dropdownmenu voor rank toevoegen  ------------------>
+                <div class='panel col-sm-6' style="border:1px solid lightblue">
+                    <div class='panel-heading' style="background-color: lightblue; margin-left:-16px; margin-right:-16px">
+                        <h3>Minimale rang voor permissie op de pagina wijzigen</h3>
+                    </div>
 
-                <div class='panel col-sm-6' style="border:1px solid lightgreen">
+                    <div class='panel-body'><p></p>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form method="post" action="rank.php">
+                                    <label for="inputRank">pagina</label><br />
+                                    <select name="permission_id" id="inputname" class="form-control" required><?php $rank->Listpermission(); ?></select>
+                                    <br>
+                                    <label for="inputRank">minimale Rang</label><br />
+                                    <select name="rank_id" id="inputRank" class="form-control" required><?php $rank->ListRanks(); ?></select>
+                                    <!--EINDE dropdownmenu rank wijzigen --->
+                                    <br>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary btn-block" type="submit" name="permission" value="Submit">Verzenden</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div><!------------------- Dropdownmenu voor rank toevoegen  ------------------>
+                <div class='panel col-sm-4' style="border:1px solid lightgreen">
                     <div class='panel-heading' style="background-color: lightgreen; margin-left:-16px; margin-right:-16px">
                         <h3>Rang toevoegen</h3>
                     </div>
@@ -122,7 +173,7 @@ $uid = $_SESSION["uid"];
                                             </span>
                                         </div>
                                     </div>
-                                    <br>
+                                    <br><br><br><br><br>
                                     <div>
                                         <button class="btn btn-sm btn-primary btn-block" type="submit" name="add" value="submit">Verzenden</button>
                                     </div>
@@ -133,7 +184,7 @@ $uid = $_SESSION["uid"];
                         </div>
                     </div>
                 </div><!------------------- Dropdownmenu voor rank verwijderen  ------------------>
-                <div class='panel col-sm-6' style="border:1px solid lightblue">
+                <div class='panel col-sm-4' style="border:1px solid lightblue">
                     <div class='panel-heading' style="background-color: lightblue; margin-left:-16px; margin-right:-16px">
                         <h3>Rang aanpassen</h3>
                     </div>
@@ -171,7 +222,7 @@ $uid = $_SESSION["uid"];
                         </div>
                     </div>
                 </div>
-                <div class='panel col-sm-6' style="border:1px solid lightcoral;">
+                <div class='panel col-sm-4' style="border:1px solid lightcoral;">
                     <div class='panel-heading' style="background-color: lightcoral; margin-left:-16px; margin-right:-16px">
                         <h3>Rang verwijderen</h3>
                     </div>
