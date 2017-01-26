@@ -50,6 +50,15 @@ class rank {
         return(true);
     }
 
+    public function editpermission($pid, $rank) {
+        global $pdo;
+        $sth = $pdo->prepare("UPDATE permission SET rank = :rank WHERE pid = :pid"); //Maak de query klaar
+        $sth->bindParam(':pid', $pid, PDO::PARAM_STR);
+        $sth->bindParam(':rank', $rank, PDO::PARAM_STR);
+        $sth->execute(); //Voer de query uit
+        return(true);
+    }
+
     public function delete($rank_id) {
         global $pdo;
         $sth = $pdo->prepare(
@@ -103,6 +112,17 @@ class rank {
 
         while ($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
             echo '<option value="' . $row['uid'] . '">' . $row['first_name'] . ' ' . $row['last_name'] . ' (' . $row['name'] . ')' . '</option>';
+        }
+    }
+
+    public function Listpermission() {
+
+        global $pdo; //Zoek naar $pdo buiten deze functie
+        $sth = $pdo->prepare("SELECT pid, name, rank FROM permission"); //Maak de query klaar
+        $sth->execute(); //Voer de query uit
+
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) { //Begin PDO tabelverwerking
+            echo '<option value="' . $row['pid'] . '">' . $row['name'] . ' (' . $row['rank'] . ')' . '</option>';
         }
     }
 
