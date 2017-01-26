@@ -10,53 +10,57 @@ include("../inc/parts/staff-header.php");
 	//check of laatste page staff-contact / staff-contactMail is dan onthoud FORM INFORMATIE Anders UNSET SESSION
 	$url = $_SERVER['HTTP_REFERER'];
 	$pageRefreshed = basename(parse_url($url, PHP_URL_PATH));
-	
-	if($pageRefreshed == 'staff-contactMail.php' || $pageRefreshed == 'staff-contact.php'){
+	if($pageRefreshed == 'staff-contactMail.php'){
 		//
+	}elseif($pageRefreshed == 'staff-contact.php'){
+		if(!empty($_GET['status']) || !empty($_GET['name']) || !empty($_GET['email']) || !empty($_GET['subject'])
+			|| !empty($_GET['comments'])){
+				print "<script type='text/javascript'>window.location.href = 'staff-contact.php';</script>";
+			}
 	}else{
 		//enter code here
 		unset($_SESSION['name']); unset($_SESSION['email']); unset($_SESSION['subject']); unset($_SESSION['comments']);
 	}
 
-if (empty($_GET['status'])) {
-	//doe niets
-}else{
-	if($status = $_GET['status']){
-		print("<script type='text/javascript'>noty({text: 'Uw e-mail is verzonden.', type: 'success', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+	if (empty($_GET['status'])) {
+		//doe niets
 	}else{
-		print("<script type='text/javascript'>noty({text: 'Uw e-mail is niet verzonden.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+		if($status = $_GET['status']){
+			print("<script type='text/javascript'>noty({text: 'Uw e-mail is verzonden.', type: 'success', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+		}else{
+			print("<script type='text/javascript'>noty({text: 'Uw e-mail is niet verzonden.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+		}
 	}
-}
-if (empty($_GET['name'])) {
-	//doe niets
-}else{
-	if($name = $_GET['name']){
-			print("<script type='text/javascript'>noty({text: 'Uw naam is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+	if (empty($_GET['name'])) {
+		//doe niets
+	}else{
+		if($name = $_GET['name']){
+				print("<script type='text/javascript'>noty({text: 'Uw naam is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+		}
 	}
-}
-if (empty($_GET['email'])) {
-	//doe niets
-}else{
-	if($email = $_GET['email']){
-			print("<script type='text/javascript'>noty({text: 'Uw e-mail is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+	if (empty($_GET['email'])) {
+		//doe niets
+	}else{
+		if($email = $_GET['email']){
+				print("<script type='text/javascript'>noty({text: 'Uw e-mail is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+		}
 	}
-}
-if (empty($_GET['subject'])) {
-	//doe niets
-}else{
-	if($subject = $_GET['subject']){
-			print("<script type='text/javascript'>noty({text: 'Uw onderwerp is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+	if (empty($_GET['subject'])) {
+		//doe niets
+	}else{
+		if($subject = $_GET['subject']){
+				print("<script type='text/javascript'>noty({text: 'Uw onderwerp is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+		}
 	}
-}
-if (empty($_GET['comments'])) {
-	//doe niets
-}else{
-if($comments = $_GET['comments']){
-		print("<script type='text/javascript'>noty({text: 'Uw commentaar is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
-}else{
-	//doe niets
-}
-}
+	if (empty($_GET['comments'])) {
+		//doe niets
+	}else{
+	if($comments = $_GET['comments']){
+			print("<script type='text/javascript'>noty({text: 'Uw commentaar is niet ingevuld.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");//foutmelding
+	}else{
+		//doe niets
+	}
+	}
 ?>
         <!-- Page Content -->
         <div id="page-wrapper">
