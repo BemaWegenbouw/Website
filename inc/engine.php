@@ -17,6 +17,7 @@ require_once("controller/free.controller.php"); //Importeer free controller
 require_once("controller/calendar.controller.php"); //Importeer permission controller
 require_once("controller/declaration.controller.php");
 require_once("controller/management.controller.php");
+require_once("controller/rank.controller.php");
 //Login check. Later verplaatsen naar los bestand!
 if (strpos($page, 'staff') !== false) { //Check of paginanaam 'staff' bevat.
     if ($user->LoggedIn()) {//Check login
