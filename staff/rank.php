@@ -18,7 +18,7 @@ $uid = $_SESSION["uid"];
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Rank</h1>
+                <h1 class="page-header">Rangpagina</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -29,14 +29,14 @@ $uid = $_SESSION["uid"];
     if (isset($_POST['editstaff']) && !empty($_POST['editstaff'])) {
         $rank_id = $_POST['rank_id'];
         $uidd = $_POST['uidd'];
-        print("<script type='text/javascript'>noty({text: 'staff members rank is changed', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        print("<script type='text/javascript'>noty({text: 'Het rang van de medewerker is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         $rank->editstaffrank($rank_id, $uidd);
     };
     if (isset($_POST['add']) && !empty($_POST['add'])) {
         $rank_id = $_POST['rank_id'];
         $name = $_POST['name'];
         if ($security->Sanitize($name) == $name) {
-            print("<script type='text/javascript'>noty({text: 'rank " . $name . " added', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+            print("<script type='text/javascript'>noty({text: '" . $name . " rang toegevoegd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
             $rank->insert($rank_id, $name);
         };
     };
@@ -47,14 +47,14 @@ $uid = $_SESSION["uid"];
         if ($security->Sanitize($rankname) == $rankname) {
             if ($rank_id2 != 0) {
                 if ($rankname != "0") {
-                    print("<script type='text/javascript'>noty({text: 'both updated', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                    print("<script type='text/javascript'>noty({text: 'De naam en het nummer van de rang zijn aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
                     $rank->updateboth($rank_id1, $rank_id2, $rankname);
                 } else {
                     $rank->updaterank($rank_id1, $rank_id2);
-                    print("<script type='text/javascript'>noty({text: 'only rank updated', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                    print("<script type='text/javascript'>noty({text: 'Het nummer van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
                 };
             } elseif ($rankname != "0") {
-                print("<script type='text/javascript'>noty({text: 'only name updated', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                print("<script type='text/javascript'>noty({text: 'De naam van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
                 $rank->updatename($rank_id1, $rankname);
             };
         };
@@ -63,7 +63,7 @@ $uid = $_SESSION["uid"];
         $confirmation = $_POST['confirmation'];
         $rank_id = $_POST['rank_id'];
         if ($confirmation == 'yes') {
-            print("<script type='text/javascript'>noty({text: 'rank deleted', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+            print("<script type='text/javascript'>noty({text: 'De rang is verwijderd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
             $rank->delete($rank_id);
         };
     };
@@ -75,14 +75,14 @@ $uid = $_SESSION["uid"];
                 <!------------------- Dropdownmenu voor rank wijzigen  ------------------>
                 <div class='panel col-sm-6' style="border:1px solid lightblue">
                     <div class='panel-heading' style="background-color: lightblue; margin-left:-16px; margin-right:-16px">
-                        <h3>medewerker rang wijzigen</h3>
+                        <h3>Medewerker rang wijzigen</h3>
                     </div>
 
                     <div class='panel-body'><p></p>
                         <div class="row">
                             <div class="col-sm-12">
                                 <form method="post" action="rank.php">
-                                    <label for="inputRank">medewerker</label><br />
+                                    <label for="inputRank">Medewerker</label><br />
                                     <select name="uidd" id="inputname" class="form-control" required><?php $rank->Listname(); ?></select>
                                     <br>
                                     <label for="inputRank">Rang</label><br />
@@ -107,10 +107,10 @@ $uid = $_SESSION["uid"];
                         <div class="row">
                             <div class="col-sm-12">
                                 <form method="post">
-                                    <label for="inputUsername">rangnaam</label><br />
+                                    <label for="inputUsername">Rangnaam</label><br />
                                     <input type="text" id="inputUsername" class="form-control" placeholder="rangnaam" name="name" required><br />
 
-                                    <label for="inputUsername">rangnummer(1-100)</label><br />
+                                    <label for="inputUsername">Rangnummer(1-100)</label><br />
                                     <div >
                                         <div class="input-group">
                                             <span class="input-group-btn">
@@ -142,14 +142,14 @@ $uid = $_SESSION["uid"];
                         <div class="row">
                             <div class="col-sm-12">
                                 <form method="post">
-                                    <label for="inputRank">oud Rang</label><br />
+                                    <label for="inputRank">Oude Rangnaam</label><br />
                                     <select name="rank_id1" id="inputRank" class="form-control" required><?php $rank->ListRanks(); ?></select>
                                     <!--EINDE dropdownmenu rank wijzigen --->
                                     <br>
-                                    <label for="inputUsername">nieuw rang</label><br />
+                                    <label for="inputUsername">Nieuwe rangnaam (0=blijft gelijk)</label><br />
                                     <!--<input type="text" id="inputUsername" class="form-control" placeholder="rangnaam" name="rankname" required><br />-->
                                     <input type="text" class="form-control" placeholder="rangnaam" name="rankname" required><br />
-                                    <label for="inputUsername">rangnummer(1-100)(0=blijft gelijk)</label><br />
+                                    <label for="inputUsername">Nieuw rangnummer(1-100)(0=blijft gelijk)</label><br />
                                     <div >
                                         <div class="input-group">
                                             <span class="input-group-btn">
@@ -184,7 +184,7 @@ $uid = $_SESSION["uid"];
                                     <select name="rank_id" id="inputRank" class="form-control" required><?php $rank->ListRanksdelete(); ?></select>
                                     <!--EINDE dropdownmenu rank wijzigen --->
                                     <br>
-                                    <label for="inputRank">weet u zeker dat u dit rang wil verwijderen?(medewerkers met dit rang worden rang 10)</label><br />
+                                    <label for="inputRank">Weet u zeker dat u dit rang wil verwijderen?(medewerkers met dit rang worden rang 10)</label><br />
                                     <select name="confirmation" id="inputRank" class="form-control" required>
                                         <option value="no" name="confirmation">Nee</option>
                                         <option value="yes" name="confirmation">Ja</option>
@@ -206,8 +206,8 @@ $uid = $_SESSION["uid"];
                         <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
                             <thead>
                                 <tr>
-                                    <th>rangnummer</th>
-                                    <th>rangnaam</th>
+                                    <th>Rangnummer</th>
+                                    <th>Rangnaam</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -220,7 +220,7 @@ $uid = $_SESSION["uid"];
                 </div>
                 <div class='panel col-sm-6' style="border:1px solid lightblue">
                     <div class='panel-heading' style="background-color: lightblue; margin-left:-16px; margin-right:-16px">
-                        <h3>medewerkers met hun rang</h3>
+                        <h3>Medewerkers met hun rang</h3>
                     </div>
                     <div width="auto" class='panel-body'>
                         <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable2'>
@@ -228,7 +228,7 @@ $uid = $_SESSION["uid"];
                                 <tr>
                                     <th>Voornaam</th>
                                     <th>Achternaam</th>
-                                    <th>rangnaam</th>
+                                    <th>Rangnaam</th>
                                 </tr>
                             </thead>
                             <tbody>
