@@ -77,8 +77,8 @@
             <link rel="stylesheet" href="../assets/bootstrap-select/dist/css/bootstrap-select.css">
 
         <?php } ?>
-             <?php if ($page == "admin-declaration") { ?>
-           <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+        <?php if ($page == "admin-declaration") { ?>
+            <link href="../assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
         <?php } ?>
 
 
@@ -151,7 +151,7 @@
                                 <li>
                                     <a href="passwordchange.php"><i class="fa fa-key fa-fw"></i> Wijzig wachtwoord</a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="staff-contact.php"><i class="fa fa-envelope-o fa-fw"></i> Contact</a>
                                 </li>
                                 <!--einde tables / blank template-->
@@ -174,13 +174,14 @@
                                             <li>
                                                 <a href="planning-hours.php">Inroosteren</a>
                                             </li>
-											<li>
-												<a href="rank.php">Rank</a>
-											</li>
-											<li>
+                                            <li>
                                                 <a href="management.php">Management</a>
                                             </li>
-                                           
+                                            <?php if ($user->Get($_SESSION["uid"], "rank_id") >= $permission->Get("rank_staff")) { ?>
+                                                <li>
+                                                    <a href="rank.php">Rangpagina</a>
+                                                </li>
+                                            <?php }; ?>
 
                                         </ul>
                                         <!-- /.nav-second-level -->
@@ -188,7 +189,7 @@
 
                                     </li>
 
-                                <?php } ?>	
+                                <?php }; ?>
                                 <li>
                                     <a href="logout.php"><i class="fa fa-unlock fa-fw"></i> Uitloggen</a>
                                 </li>
