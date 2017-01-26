@@ -26,31 +26,36 @@ $uid = $_SESSION["uid"];
     </div>
     <!-- /.container-fluid -->
     <?php
-    if (isset($_POST['submit']) && !empty($_POST['submit'])) {
+    if (isset($_POST['editstaff']) && !empty($_POST['editstaff'])) {
         $rank_id = $_POST['rank_id'];
         $uidd = $_POST['uidd'];
+        print("<script type='text/javascript'>noty({text: 'staff members rank is changed', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         $rank->editstaffrank($rank_id, $uidd);
     };
     if (isset($_POST['add']) && !empty($_POST['add'])) {
         $rank_id = $_POST['rank_id'];
         $name = $_POST['name'];
         if ($security->Sanitize($name) == $name) {
+            print("<script type='text/javascript'>noty({text: 'rank " . $name . " added', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
             $rank->insert($rank_id, $name);
         };
     };
     if (isset($_POST['edit']) && !empty($_POST['edit'])) {
         $rank_id1 = $_POST['rank_id1'];
-        print("<script type='text/javascript'>noty({text: 'deze dag is al gedeclareerd', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         $rank_id2 = $_POST['rank_id2'];
-
-        $name = $_POST['name'];
-        if ($security->Sanitize($name) == $name) {
-            if ($rank_id2 != 0 && $name != 0) {
-                $rank->updateboth($rank_id1, $rank_id2, $name);
-                print("<script type='text/javascript'>noty({text: 'both', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-            } elseif ($name != 0) {
-                $rank->updatename($rank_id1, $name);
-                print("<script type='text/javascript'>noty({text: 'only name', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        $rankname = $_POST['rankname'];
+        if ($security->Sanitize($rankname) == $rankname) {
+            if ($rank_id2 != 0) {
+                if ($rankname != "0") {
+                    print("<script type='text/javascript'>noty({text: 'both updated', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                    $rank->updateboth($rank_id1, $rank_id2, $rankname);
+                } else {
+                    $rank->updaterank($rank_id1, $rank_id2);
+                    print("<script type='text/javascript'>noty({text: 'only rank updated', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                };
+            } elseif ($rankname != "0") {
+                print("<script type='text/javascript'>noty({text: 'only name updated', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                $rank->updatename($rank_id1, $rankname);
             };
         };
     };
@@ -58,6 +63,7 @@ $uid = $_SESSION["uid"];
         $confirmation = $_POST['confirmation'];
         $rank_id = $_POST['rank_id'];
         if ($confirmation == 'yes') {
+            print("<script type='text/javascript'>noty({text: 'rank deleted', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
             $rank->delete($rank_id);
         };
     };
@@ -141,8 +147,8 @@ $uid = $_SESSION["uid"];
                                     <!--EINDE dropdownmenu rank wijzigen --->
                                     <br>
                                     <label for="inputUsername">nieuw rang</label><br />
-                                    <input type="text" id="inputUsername" class="form-control" placeholder="rangnaam" name="name" required><br />
-
+                                    <!--<input type="text" id="inputUsername" class="form-control" placeholder="rangnaam" name="rankname" required><br />-->
+                                    <input type="text" class="form-control" placeholder="rangnaam" name="rankname" required><br />
                                     <label for="inputUsername">rangnummer(1-100)(0=blijft gelijk)</label><br />
                                     <div >
                                         <div class="input-group">
