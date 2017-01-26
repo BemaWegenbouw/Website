@@ -29,7 +29,7 @@ $uid = $_SESSION["uid"];
     if (isset($_POST['editstaff']) && !empty($_POST['editstaff'])) {
         $rank_id = $_POST['rank_id'];
         $uidd = $_POST['uidd'];
-        print("<script type='text/javascript'>noty({text: 'staff member's rank is changed', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        print("<script type='text/javascript'>noty({text: 'staff members rank is changed', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         $rank->editstaffrank($rank_id, $uidd);
     };
     if (isset($_POST['add']) && !empty($_POST['add'])) {

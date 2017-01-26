@@ -175,6 +175,9 @@
                                                 <a href="planning-hours.php">Inroosteren</a>
                                             </li>
 											<li>
+												<a href="rank.php">Rank</a>
+											</li>
+											<li>
                                                 <a href="management.php">Management</a>
                                             </li>
                                            
