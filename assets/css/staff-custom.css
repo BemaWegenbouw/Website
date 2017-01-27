@@ -7,3 +7,7 @@ td {
 padding: 5px;
 text-align: center;
 }
+
+.box {
+    height: auto !important;
+} 
