@@ -68,7 +68,7 @@ $uid = $_SESSION["uid"];
         if ($security->Sanitize($rankname) == $rankname) {
             if ($rank_id2 != 0) {
                 if ($rank_id2 <= 100 && $rank_id2 >= 1) {
-                    if ($rank_id2 != 10 && $rank != 20 && $rank != 100) {
+                    if ($rank_id1 != 10 && $rank_id1 != 20 && $rank_id1 != 100) {
                         if ($rankname != "0") {
                             $rank->updateboth($rank_id1, $rank_id2, $rankname);
                         } else {

@@ -33,12 +33,20 @@ class rank {
 //einde functie
 
     public function insert($rank_id, $name) {
+
         global $pdo;
-        $sth = $pdo->prepare("INSERT INTO rank (rank_id, name) values (:rank_id, :name) "); //Maak de query klaar
-        $sth->bindParam(':rank_id', $rank_id, PDO::PARAM_STR);
-        $sth->bindParam(':name', $name, PDO::PARAM_STR);
+        $sth = $pdo->prepare("SELECT rank_id FROM rank"); //query
         $sth->execute(); //Voer de query uit
-        print("<script type='text/javascript'>noty({text: '" . $name . " rang toegevoegd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        if ($rank_id != $row['rank_id']) {
+            $sth = $pdo->prepare("INSERT INTO rank (rank_id, name) values (:rank_id, :name) "); //Maak de query klaar
+            $sth->bindParam(':rank_id', $rank_id, PDO::PARAM_STR);
+            $sth->bindParam(':name', $name, PDO::PARAM_STR);
+            $sth->execute(); //Voer de query uit
+            print("<script type='text/javascript'>noty({text: '" . $name . " rang toegevoegd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        } else {
+            print("<script type='text/javascript'>noty({text: 'een rang met dat nummer bestaat al.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        }
         return(true);
     }
 
@@ -80,38 +88,59 @@ class rank {
 
     public function updateboth($rank_id1, $rank_id2, $rankname) {
         global $pdo;
-        $sth = $pdo->prepare(
-                "Update rank SET rank_id = :rank_id2, name=:rankname WHERE rank_id = :rank_id1;"
-        ); //Maak de query klaar
-        $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
-        $sth->bindParam(':rank_id2', $rank_id2, PDO::PARAM_STR);
-        $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
+        $sth = $pdo->prepare("SELECT rank_id FROM rank"); //query
         $sth->execute(); //Voer de query uit
-        print("<script type='text/javascript'>noty({text: 'De naam en het nummer van de rang zijn aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        if ($rank_id2 != $row['rank_id']) {
+            $sth = $pdo->prepare(
+                    "Update rank SET rank_id = :rank_id2, name=:rankname WHERE rank_id = :rank_id1;"
+            ); //Maak de query klaar
+            $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
+            $sth->bindParam(':rank_id2', $rank_id2, PDO::PARAM_STR);
+            $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
+            $sth->execute(); //Voer de query uit
+            print("<script type='text/javascript'>noty({text: 'De naam en het nummer van de rang zijn aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        } else {
+            print("<script type='text/javascript'>noty({text: 'een rang met dat nummer bestaat al.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        }
         return(true);
     }
 
     public function Updaterank($rank_id1, $rank_id2) {
         global $pdo;
-        $sth = $pdo->prepare(
-                "Update rank SET rank_id = :rank_id2 WHERE rank_id = :rank_id1;"
-        ); //Maak de query klaar
-        $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
-        $sth->bindParam(':rank_id2', $rank_id2, PDO::PARAM_STR);
+        $sth = $pdo->prepare("SELECT rank_id FROM rank"); //query
         $sth->execute(); //Voer de query uit
-        print("<script type='text/javascript'>noty({text: 'Het nummer van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        if ($rank_id2 != $row['rank_id']) {
+            $sth = $pdo->prepare(
+                    "Update rank SET rank_id = :rank_id2 WHERE rank_id = :rank_id1;"
+            ); //Maak de query klaar
+            $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
+            $sth->bindParam(':rank_id2', $rank_id2, PDO::PARAM_STR);
+            $sth->execute(); //Voer de query uit
+            print("<script type='text/javascript'>noty({text: 'Het nummer van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        } else {
+            print("<script type='text/javascript'>noty({text: 'een rang met dat nummer bestaat al.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        }
         return(true);
     }
 
     public function updatename($rank_id1, $rankname) {
         global $pdo;
-        $sth = $pdo->prepare(
-                "Update rank SET name = :rankname WHERE rank_id = :rank_id1;"
-        ); //Maak de query klaar
-        $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
-        $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
+        $sth = $pdo->prepare("SELECT rank_id FROM rank"); //query
         $sth->execute(); //Voer de query uit
-        print("<script type='text/javascript'>noty({text: 'De naam van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        if ($rank_id2 != $row['rank_id']) {
+            $sth = $pdo->prepare(
+                    "Update rank SET name = :rankname WHERE rank_id = :rank_id1;"
+            ); //Maak de query klaar
+            $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
+            $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
+            $sth->execute(); //Voer de query uit
+            print("<script type='text/javascript'>noty({text: 'De naam van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        } else {
+            print("<script type='text/javascript'>noty({text: 'een rang met dat nummer bestaat al.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        }
         return(true);
     }
 
