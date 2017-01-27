@@ -25,6 +25,18 @@ $uid = $_SESSION["uid"];
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
+    <style>
+        @media only screen and (max-width : 767px) {
+            .box {
+                height: auto !important;
+            }
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.box').matchHeight();
+        });
+    </script>
     <?php
     if ((isset($_POST['editstaff']) && !empty($_POST['editstaff'])) OR ( isset($_POST['permission']) && !empty($_POST['permission']))) {
         if (isset($_POST['editstaff'])) {
@@ -40,26 +52,6 @@ $uid = $_SESSION["uid"];
             print("<script type='text/javascript'>noty({text: 'Het minimale rang van de pagina is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         };
     };
-//    if (isset($_POST['perm']) && !empty($_POST['perm'])) {
-//        if (isset($_POST['rank'])) {
-//            $rank = $_POST['rank'];
-//            print("<script type='text/javascript'>noty({text: 'gelukt rank', type: 'success', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-//        } else {
-//            $rank = 0;
-//        };
-//        if (isset($_POST['pid'])) {
-//            $pid = $_POST['pid'];
-//            print("<script type='text/javascript'>noty({text: 'gelukt pid', type: 'success', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-//        } else {
-//            $pid = 0;
-//        };
-//        if ($pid != 0 && $rank != 0) {
-//            print("<script type='text/javascript'>noty({text: 'Het minimale rang van de pagina is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-//            $rank->editpermission($pid, $rank);
-//        } else {
-//            print("<script type='text/javascript'>noty({text: 'gefaalt', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-//        };
-//    };
     if (isset($_POST['add']) && !empty($_POST['add'])) {
         $rank_id = $_POST['rank_id'];
         $name = $_POST['name'];
@@ -107,7 +99,7 @@ $uid = $_SESSION["uid"];
                     </div>
 
                     <div class='panel-body'><p></p>
-                        <div class="row">
+                        <div class="row box">
                             <div class="col-sm-12">
                                 <form method="post" action="rank.php">
                                     <label for="inputRank">Medewerker</label><br />
@@ -127,11 +119,11 @@ $uid = $_SESSION["uid"];
                 </div><!------------------- Dropdownmenu voor rank toevoegen  ------------------>
                 <div class='panel col-sm-6' style="border:1px solid lightblue">
                     <div class='panel-heading' style="background-color: lightblue; margin-left:-16px; margin-right:-16px">
-                        <h3>Minimale rang voor permissie op de pagina wijzigen</h3>
+                        <h3>Minimale permissie voor pagina wijzigen</h3>
                     </div>
 
                     <div class='panel-body'><p></p>
-                        <div class="row">
+                        <div class="row box">
                             <div class="col-sm-12">
                                 <form method="post" action="rank.php">
                                     <label for="inputRank">pagina</label><br />
@@ -155,7 +147,7 @@ $uid = $_SESSION["uid"];
                     </div>
 
                     <div class='panel-body'><p></p>
-                        <div class="row">
+                        <div class="row box">
                             <div class="col-sm-12">
                                 <form method="post">
                                     <label for="inputUsername">Rangnaam</label><br />
@@ -173,7 +165,7 @@ $uid = $_SESSION["uid"];
                                             </span>
                                         </div>
                                     </div>
-                                    <br><br><br><br><br>
+                                    <br>
                                     <div>
                                         <button class="btn btn-sm btn-primary btn-block" type="submit" name="add" value="submit">Verzenden</button>
                                     </div>
@@ -190,7 +182,7 @@ $uid = $_SESSION["uid"];
                     </div>
 
                     <div class='panel-body'><p></p>
-                        <div class="row">
+                        <div class="row box">
                             <div class="col-sm-12">
                                 <form method="post">
                                     <label for="inputRank">Oude Rangnaam</label><br />
@@ -228,19 +220,19 @@ $uid = $_SESSION["uid"];
                     </div>
 
                     <div class='panel-body'><p></p>
-                        <div class="row">
+                        <div class="row box">
                             <div class="col-sm-12">
                                 <form method="post">
-                                    <label for="inputRank">Rang</label><br />
+                                    <label for="inputRank">Rang(rang medewerker, redacteur en beheerder kunnen niet verwijderd worden.)</label><br />
                                     <select name="rank_id" id="inputRank" class="form-control" required><?php $rank->ListRanksdelete(); ?></select>
                                     <!--EINDE dropdownmenu rank wijzigen --->
                                     <br>
-                                    <label for="inputRank">Weet u zeker dat u dit rang wil verwijderen?(medewerkers met dit rang worden rang 10)</label><br />
+                                    <label for="inputRank">Weet u zeker dat u dit rang wil verwijderen?(medewerkers met dit rang worden rang 10 (medewerker)</label><br />
                                     <select name="confirmation" id="inputRank" class="form-control" required>
                                         <option value="no" name="confirmation">Nee</option>
                                         <option value="yes" name="confirmation">Ja</option>
                                     </select>
-                                    <br><br><br><br>
+                                    <br>
                                     <div>
                                         <button class="btn btn-sm btn-primary btn-block" type="submit" name="delete" value="Submit">Verzenden</button>
                                     </div>
@@ -249,45 +241,49 @@ $uid = $_SESSION["uid"];
                         </div>
                     </div>
                 </div>
-                <div class='panel col-sm-6' style="border:1px solid lightblue">
+                <div class='panel col-sm-6' style="border:1px solid lightblue;">
                     <div class='panel-heading' style="background-color: lightblue; margin-left:-16px; margin-right:-16px">
                         <h3>Rangen</h3>
                     </div>
                     <div width="auto" class='panel-body'>
-                        <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
-                            <thead>
-                                <tr>
-                                    <th>Rangnummer</th>
-                                    <th>Rangnaam</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $rank->ranktabel(); //Laad de tr's en td's van alle openstaande declaraties voor de betreffende persoon.
-                                ?>
-                            </tbody>
-                        </table>
+                        <div class="row box">
+                            <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable'>
+                                <thead>
+                                    <tr>
+                                        <th>Rangnummer</th>
+                                        <th>Rangnaam</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $rank->ranktabel(); //Laad de tr's en td's van alle openstaande declaraties voor de betreffende persoon.
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div class='panel col-sm-6' style="border:1px solid lightblue">
+                <div class='panel col-sm-6' style="border:1px solid lightblue;">
                     <div class='panel-heading' style="background-color: lightblue; margin-left:-16px; margin-right:-16px">
                         <h3>Medewerkers met hun rang</h3>
                     </div>
                     <div width="auto" class='panel-body'>
-                        <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable2'>
-                            <thead>
-                                <tr>
-                                    <th>Voornaam</th>
-                                    <th>Achternaam</th>
-                                    <th>Rangnaam</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $rank->rankstafftabel(); //Laad de tr's en td's van alle openstaande declaraties voor de betreffende persoon.
-                                ?>
-                            </tbody>
-                        </table>
+                        <div class="row box">
+                            <table width="100%" class='table table-striped table-bordered table-hover' id='scrolltable2'>
+                                <thead>
+                                    <tr>
+                                        <th>Voornaam</th>
+                                        <th>Achternaam</th>
+                                        <th>Rangnaam</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $rank->rankstafftabel(); //Laad de tr's en td's van alle openstaande declaraties voor de betreffende persoon.
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
