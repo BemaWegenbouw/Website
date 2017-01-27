@@ -38,6 +38,7 @@ class rank {
         $sth->bindParam(':rank_id', $rank_id, PDO::PARAM_STR);
         $sth->bindParam(':name', $name, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
+        print("<script type='text/javascript'>noty({text: '" . $name . " rang toegevoegd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         return(true);
     }
 
@@ -47,6 +48,7 @@ class rank {
         $sth->bindParam(':rank_id', $rank_id, PDO::PARAM_STR);
         $sth->bindParam(':uidd', $uidd, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
+        print("<script type='text/javascript'>noty({text: 'Het rang van de medewerker is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         return(true);
     }
 
@@ -56,18 +58,24 @@ class rank {
         $sth->bindParam(':pid', $pid, PDO::PARAM_STR);
         $sth->bindParam(':rank', $rank, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
+        print("<script type='text/javascript'>noty({text: 'Het minimale rang van de pagina is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         return(true);
     }
 
     public function delete($rank_id) {
-        global $pdo;
-        $sth = $pdo->prepare(
-                "Update staff SET rank_id = 10 WHERE rank_id = :rank_id;"
-                . "DELETE FROM rank Where rank_id=:rank_id;"
-        ); //Maak de query klaar
-        $sth->bindParam(':rank_id', $rank_id, PDO::PARAM_STR);
-        $sth->execute(); //Voer de query uit
-        return(true);
+        if ($rank_id == 10 OR $rank_id == 20 OR $rank_id == 100) {
+            print("<script type='text/javascript'>noty({text: 'De rangen 10, 20 en 100 kunnen niet verwijderd worden.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+        } else {
+            global $pdo;
+            $sth = $pdo->prepare(
+                    "Update staff SET rank_id = 10 WHERE rank_id = :rank_id;"
+                    . "DELETE FROM rank Where rank_id=:rank_id;"
+            ); //Maak de query klaar
+            $sth->bindParam(':rank_id', $rank_id, PDO::PARAM_STR);
+            $sth->execute(); //Voer de query uit
+            print("<script type='text/javascript'>noty({text: 'De rang is verwijderd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+            return(true);
+        };
     }
 
     public function updateboth($rank_id1, $rank_id2, $rankname) {
@@ -79,6 +87,7 @@ class rank {
         $sth->bindParam(':rank_id2', $rank_id2, PDO::PARAM_STR);
         $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
+        print("<script type='text/javascript'>noty({text: 'De naam en het nummer van de rang zijn aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         return(true);
     }
 
@@ -90,6 +99,7 @@ class rank {
         $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
         $sth->bindParam(':rank_id2', $rank_id2, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
+        print("<script type='text/javascript'>noty({text: 'Het nummer van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         return(true);
     }
 
@@ -101,6 +111,7 @@ class rank {
         $sth->bindParam(':rank_id1', $rank_id1, PDO::PARAM_STR);
         $sth->bindParam(':rankname', $rankname, PDO::PARAM_STR);
         $sth->execute(); //Voer de query uit
+        print("<script type='text/javascript'>noty({text: 'De naam van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         return(true);
     }
 

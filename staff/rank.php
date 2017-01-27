@@ -42,22 +42,23 @@ $uid = $_SESSION["uid"];
         if (isset($_POST['editstaff'])) {
             $rank_id = $_POST['rank_id'];
             $uidd = $_POST['uidd'];
-            print("<script type='text/javascript'>noty({text: 'Het rang van de medewerker is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
             $rank->editstaffrank($rank_id, $uidd);
         };
         if (isset($_POST['permission'])) {
             $rank_id = $_POST['rank_id'];
             $permission_id = $_POST['permission_id'];
             $rank->editpermission($permission_id, $rank_id);
-            print("<script type='text/javascript'>noty({text: 'Het minimale rang van de pagina is gewijzigd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
         };
     };
     if (isset($_POST['add']) && !empty($_POST['add'])) {
         $rank_id = $_POST['rank_id'];
         $name = $_POST['name'];
         if ($security->Sanitize($name) == $name) {
-            print("<script type='text/javascript'>noty({text: '" . $name . " rang toegevoegd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-            $rank->insert($rank_id, $name);
+            if ($rank_id <= 100 && $rank_id >= 1) {
+                $rank->insert($rank_id, $name);
+            } else {
+                print("<script type='text/javascript'>noty({text: 'Het nummer moet tussen de 1 en 100 zijn.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+            };
         };
     };
     if (isset($_POST['edit']) && !empty($_POST['edit'])) {
@@ -66,15 +67,21 @@ $uid = $_SESSION["uid"];
         $rankname = $_POST['rankname'];
         if ($security->Sanitize($rankname) == $rankname) {
             if ($rank_id2 != 0) {
-                if ($rankname != "0") {
-                    print("<script type='text/javascript'>noty({text: 'De naam en het nummer van de rang zijn aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
-                    $rank->updateboth($rank_id1, $rank_id2, $rankname);
+                if ($rank_id2 <= 100 && $rank_id2 >= 1) {
+                    if ($rank_id2 != 10 && $rank != 20 && $rank != 100) {
+                        if ($rankname != "0") {
+                            $rank->updateboth($rank_id1, $rank_id2, $rankname);
+                        } else {
+                            $rank->updaterank($rank_id1, $rank_id2);
+                        };
+                    } else {
+                        print("<script type='text/javascript'>noty({text: 'van de rangen 10, 20 en 100 kan alleen de naam worden aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                        $rank->updatename($rank_id1, $rankname);
+                    };
                 } else {
-                    $rank->updaterank($rank_id1, $rank_id2);
-                    print("<script type='text/javascript'>noty({text: 'Het nummer van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
+                    print("<script type='text/javascript'>noty({text: 'Het nummer moet tussen de 1 en 100 zijn.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
                 };
             } elseif ($rankname != "0") {
-                print("<script type='text/javascript'>noty({text: 'De naam van de rang is aangepast.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
                 $rank->updatename($rank_id1, $rankname);
             };
         };
@@ -83,7 +90,6 @@ $uid = $_SESSION["uid"];
         $confirmation = $_POST['confirmation'];
         $rank_id = $_POST['rank_id'];
         if ($confirmation == 'yes') {
-            print("<script type='text/javascript'>noty({text: 'De rang is verwijderd.', type: 'error', layout: 'top', theme: 'relax', timeout: 10000});</script>");
             $rank->delete($rank_id);
         };
     };
@@ -185,7 +191,7 @@ $uid = $_SESSION["uid"];
                         <div class="row box">
                             <div class="col-sm-12">
                                 <form method="post">
-                                    <label for="inputRank">Oude Rangnaam</label><br />
+                                    <label for="inputRank">Oude Rangnaam (van de rangen 10, 20 en 100 kan alleen de naam worden aangepast.</label><br />
                                     <select name="rank_id1" id="inputRank" class="form-control" required><?php $rank->ListRanks(); ?></select>
                                     <!--EINDE dropdownmenu rank wijzigen --->
                                     <br>
